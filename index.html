@@ -672,6 +672,85 @@ Folga de C = 12 − 9 = 3 dias</pre>
 
     <div class="tip"><b>Como a banca cobra:</b> sem precedente direto nas provas antigas — são todos itens novos do edital 2026. Tratam-se de siglas e processos com definição bem específica; a banca tende a cobrar a definição literal de cada termo, então vale decorar a ordem das fases (incidente, pentest) e o que cada letra do STRIDE significa.</div>
   `
+},
+
+/* ============================================================
+   TÓPICOS DE ESTUDO — Prioridade 3 (sem precedente histórico)
+   ============================================================ */
+{
+  id:"ux", tier:"P3",
+  name:"User Experience (UX)",
+  editalRef:"Anexo IV · itens 6.1–6.11",
+  summary:"Acessibilidade/usabilidade, user stories, design thinking, MVP, personas, prototipação.",
+  html: `
+    <h4>Acessibilidade × Usabilidade</h4>
+    <p><b>Acessibilidade</b>: garantir que pessoas com diferentes deficiências ou limitações consigam usar o sistema (ex: leitor de tela, contraste adequado, navegação por teclado). <b>Usabilidade</b>: facilidade, eficiência e satisfação de QUALQUER usuário ao usar o sistema. São conceitos relacionados, mas não sinônimos — um sistema pode ser usável para a maioria e ainda não ser acessível.</p>
+
+    <h4>User Story — o formato clássico</h4>
+    <p>"Como [persona/papel], eu quero [ação/funcionalidade], para que [benefício/motivo]." Não confundir com o formato Gherkin/BDD ("Dado que... quando... então..."), que é usado para critérios de aceite/teste, não para a história em si.</p>
+
+    <h4>Design Thinking — as 5 fases (não necessariamente lineares)</h4>
+    <p><b>Empatizar</b> (entender o usuário) → <b>Definir</b> (delimitar o problema) → <b>Idear</b> (gerar alternativas) → <b>Prototipar</b> (materializar uma ideia) → <b>Testar</b> (validar com usuários reais, retroalimentando o ciclo).</p>
+
+    <h4>MVP (Mínimo Produto Viável)</h4>
+    <p>A versão com o MENOR conjunto de funcionalidades suficiente para VALIDAR uma hipótese de negócio com usuários reais — não é "a versão mais barata possível", é a versão que permite aprender o mais rápido possível antes de investir mais.</p>
+
+    <h4>Personas</h4>
+    <p>Representações fictícias (mas baseadas em dados e padrões reais) de perfis de usuário, usadas para orientar decisões de design — não são um usuário real específico, e sim um arquétipo que representa um grupo.</p>
+
+    <h4>Prototipação — fidelidade</h4>
+    <p><b>Baixa fidelidade</b> (wireframe, papel): rápido e barato, foca em fluxo/conceito, sem detalhe visual. <b>Alta fidelidade</b>: se aproxima da aparência e comportamento reais do produto final — mais caro e demorado de produzir.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — é conteúdo inteiramente novo no edital 2026. Espere definições literais e comparações conceituais (não cálculo), sem histórico específico da Cesgranrio para calibrar o nível de profundidade exigido.</div>
+  `
+},
+{
+  id:"agil-escala", tier:"P3",
+  name:"Ágil em Escala & Gestão de Portfólio",
+  editalRef:"Anexo IV · item 2.3",
+  summary:"SAFe (níveis, PI Planning, ART), gestão de portfólio alinhada à estratégia de negócio.",
+  html: `
+    <h4>Por que escalar agilidade</h4>
+    <p>Práticas ágeis de uma única equipe (Scrum/Kanban) resolvem bem a coordenação DENTRO de um time. Quando várias equipes precisam entregar um produto ou portfólio complexo em conjunto, surge a necessidade de frameworks de "ágil em escala" para coordenar esse trabalho entre times.</p>
+
+    <h4>SAFe (Scaled Agile Framework) — níveis</h4>
+    <p><b>Time</b> (equivalente ao Scrum/Kanban tradicional) → <b>Programa</b> (múltiplos times formam um <b>ART</b>, Agile Release Train) → <b>Grande Solução</b> (para soluções que exigem múltiplos ARTs) → <b>Portfólio</b> (alinhamento com a estratégia de negócio como um todo).</p>
+
+    <h4>PI Planning (Program Increment Planning)</h4>
+    <p>Evento do SAFe em que TODAS as equipes de um ART se reúnem (geralmente presencialmente ou em sessão dedicada) para planejar e alinhar o trabalho do próximo Incremento de Programa — é o evento de sincronização entre times, equivalente em escala a uma Sprint Planning, mas multiequipe.</p>
+
+    <h4>Gestão de portfólio × Gestão de projeto</h4>
+    <p><b>Gestão de projeto</b>: entregar um trabalho específico dentro de restrições de prazo/custo/escopo definidas. <b>Gestão de portfólio</b>: selecionar, priorizar e balancear o CONJUNTO de projetos/produtos da organização para maximizar valor em relação à estratégia, considerando recursos limitados — escopo e horizonte de decisão diferentes.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas. É uma extensão natural do bloco de Gestão de Projetos (Prioridade 1) — vale a leitura, mas o volume histórico de cobrança desse item específico é zero.</div>
+  `
+},
+{
+  id:"mercado-ti", tier:"P3",
+  name:"Mercado e Economia da Inovação em TI",
+  editalRef:"Anexo IV · itens 4.1–4.5",
+  summary:"Segmentos do mercado de TI, inovação incremental×disruptiva, ciclo de adoção, P&D, gestão de serviços.",
+  html: `
+    <h4>Segmentos do mercado de TI</h4>
+    <p>Tradicionalmente segmentado em <b>hardware</b>, <b>software</b> e <b>serviços de TI</b> — cada um com dinâmica econômica e cadeia de valor próprias.</p>
+
+    <h4>Inovação incremental × disruptiva</h4>
+    <p><b>Incremental</b>: melhorias contínuas e graduais sobre um produto/processo já existente. <b>Disruptiva</b>: cria um novo mercado ou modelo de valor, muitas vezes deslocando tecnologias e empresas já estabelecidas — não tem relação direta com "quanto custa", e sim com o tipo de impacto que gera.</p>
+
+    <h4>Ciclo de adoção de tecnologia (curva de difusão)</h4>
+    <p>Ordem clássica de categorias de adotantes: <b>Inovadores</b> → <b>Primeiros adotantes</b> (early adopters) → <b>Maioria inicial</b> → <b>Maioria tardia</b> → <b>Retardatários</b>.</p>
+
+    <h4>Pesquisa, Desenvolvimento e Indústria</h4>
+    <p>Investimento em P&D gera novas tecnologias/processos que, posteriormente, podem ser absorvidos e escalados pela indústria — não é uma relação automática ou instantânea (pesquisa não se converte sozinha e imediatamente em produto comercial).</p>
+
+    <h4>Obsolescência tecnológica</h4>
+    <p>Uma tecnologia se torna tecnicamente ou economicamente superada por alternativas mais novas/eficientes, perdendo relevância no mercado — não é exclusiva de hardware, nem significa quebra física.</p>
+
+    <h4>Gerenciamento de serviços de TI — visão ampla</h4>
+    <p>Foco em planejar, entregar, operar e melhorar continuamente os serviços de TI para gerar valor ao negócio — um conceito mais amplo do que qualquer framework específico (como o ITIL, já tratado no bloco de Infraestrutura).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — fraseologia nova do edital 2026, diferente do COBIT/ITIL clássico que a banca chegou a cobrar até 2012. Definições conceituais amplas, sem cálculo.</div>
+  `
 }
 ];
 
@@ -2790,6 +2869,425 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
       B:"Segurança física dos data centers é responsabilidade do provedor, não do cliente.",
       D:"Há, sim, divisão de responsabilidade — e ela varia conforme o modelo de serviço (IaaS, PaaS, SaaS), não é sempre inteiramente do provedor.",
       E:"O modelo de responsabilidade compartilhada é um conceito específico e central da computação em nuvem, não de ambientes on-premises tradicionais."
+    }
+  }
+},
+
+/* ============================================================
+   LOTE 4 — Prioridade 3 (18 questões, sem precedente histórico)
+   UX (6) · Ágil em Escala/SAFe (6) · Mercado e Inovação em TI (6)
+   ============================================================ */
+
+/* ---------------- UX — 6 ---------------- */
+{
+  id:"ux-01", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — acessibilidade/usabilidade, item 6.1 do Anexo IV",
+  stem:"Sobre os conceitos de acessibilidade e usabilidade em sistemas de software, é correto afirmar que:",
+  options:{
+    A:"são termos sinônimos, sem distinção prática entre eles.",
+    B:"acessibilidade trata de garantir que pessoas com diferentes deficiências ou limitações consigam usar o sistema; usabilidade trata da facilidade, eficiência e satisfação de qualquer usuário ao utilizá-lo — são conceitos relacionados, mas distintos.",
+    C:"usabilidade se refere exclusivamente a pessoas com deficiência visual.",
+    D:"um sistema acessível é automaticamente usável para todos os públicos, sem necessidade de nenhum teste adicional.",
+    E:"acessibilidade e usabilidade não têm relação alguma entre si, sendo tratadas por equipes completamente independentes."
+  },
+  correct:"B",
+  explanation:{
+    core:"Acessibilidade foca em remover barreiras para pessoas com deficiências/limitações específicas; usabilidade foca na experiência de uso para qualquer usuário (facilidade, eficiência, satisfação).",
+    detail:"Os dois conceitos se relacionam e se reforçam, mas não são a mesma coisa — um sistema pode ser bastante usável para a maioria dos usuários e ainda falhar em acessibilidade para grupos específicos.",
+    wrong:{
+      A:"São conceitos relacionados, mas com foco diferente — não são sinônimos.",
+      C:"Usabilidade é um conceito amplo, aplicável a qualquer usuário, não restrito a deficiência visual (isso seria mais próximo de um aspecto específico de acessibilidade).",
+      D:"Acessibilidade não garante automaticamente usabilidade — um sistema pode ser acessível e ainda ter uma experiência de uso ruim, exigindo testes de usabilidade próprios.",
+      E:"Os dois conceitos se relacionam diretamente no design de um sistema, mesmo sendo distintos."
+    }
+  }
+},
+{
+  id:"ux-02", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — histórias de usuário, item 6.2 do Anexo IV",
+  stem:"O formato clássico de escrita de uma história de usuário (user story) em metodologias ágeis segue a estrutura:",
+  options:{
+    A:"'Como [persona/papel], eu quero [ação/funcionalidade], para que [benefício/motivo].'",
+    B:"'Se [condição], então [ação], senão [alternativa].'",
+    C:"'Dado que [contexto], quando [evento], então [resultado].'",
+    D:"'O sistema deve [funcionalidade], conforme especificação técnica nº X.'",
+    E:"'Enquanto [papel] realiza [tarefa], o sistema [restrição].'"
+  },
+  correct:"A",
+  explanation:{
+    core:"O formato clássico de user story é 'Como [persona], eu quero [ação], para que [benefício]' — captura quem precisa, o que precisa e por quê.",
+    detail:"A opção C descreve o formato Gherkin/BDD ('Dado/Quando/Então'), usado para critérios de aceite e testes comportamentais — um formato real, mas diferente da user story em si, e uma pegadinha comum entre os dois.",
+    wrong:{
+      B:"Não corresponde a nenhum formato padrão de user story ou de critério de aceite ágil.",
+      C:"Esse é o formato Gherkin/BDD, usado para critérios de aceite/testes — não é o formato de escrita da história de usuário em si.",
+      D:"Esse formato corresponde a uma especificação de requisito tradicional (mais próximo de cascata), não ao formato ágil de user story.",
+      E:"Não corresponde a nenhum formato padrão reconhecido de user story."
+    }
+  }
+},
+{
+  id:"ux-03", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — design thinking, item 6.10 do Anexo IV",
+  stem:"O processo de Design Thinking, amplamente utilizado no desenho de soluções centradas no usuário, é tipicamente composto pelas seguintes fases, não necessariamente lineares:",
+  options:{
+    A:"Especificação, Programação, Teste, Implantação, Manutenção.",
+    B:"Empatizar, Definir, Idear, Prototipar, Testar.",
+    C:"Planejamento, Execução, Monitoramento, Encerramento.",
+    D:"Análise, Projeto, Codificação, Teste, Homologação.",
+    E:"Iniciação, Elaboração, Construção, Transição."
+  },
+  correct:"B",
+  explanation:{
+    core:"As cinco fases clássicas do Design Thinking são: Empatizar (entender o usuário), Definir (delimitar o problema), Idear (gerar alternativas), Prototipar (materializar uma ideia) e Testar (validar com usuários reais).",
+    detail:"As demais alternativas descrevem fases de outros modelos: A é um ciclo de vida de software genérico, C são grupos de processos do PMBOK, D é um ciclo de desenvolvimento em cascata, E são as fases do RUP — nenhum deles é o Design Thinking.",
+    wrong:{
+      A:"Descreve um ciclo de vida de desenvolvimento de software, não o processo de Design Thinking.",
+      C:"Descreve os grupos de processos do PMBOK, não as fases do Design Thinking.",
+      D:"Descreve um ciclo de desenvolvimento em cascata, não o Design Thinking.",
+      E:"Descreve as fases do RUP (Processo Unificado), não o Design Thinking."
+    }
+  }
+},
+{
+  id:"ux-04", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — MVP, item 6.8 do Anexo IV",
+  stem:"O conceito de MVP (Mínimo Produto Viável) refere-se a:",
+  options:{
+    A:"a versão do produto com o menor custo de desenvolvimento possível, independentemente de atender a qualquer necessidade real do usuário.",
+    B:"a versão do produto com o conjunto mínimo de funcionalidades suficiente para validar uma hipótese de negócio junto a usuários reais, permitindo aprendizado antes de investir em funcionalidades adicionais.",
+    C:"a versão final e completa do produto, pronta para escala em produção.",
+    D:"um protótipo exclusivamente visual, sem nenhuma funcionalidade real por trás.",
+    E:"um documento de especificação de requisitos, sem nenhum artefato de software associado."
+  },
+  correct:"B",
+  explanation:{
+    core:"MVP é sobre VALIDAÇÃO de hipótese com o mínimo de esforço/funcionalidade necessário — o objetivo central é aprender rápido, não simplesmente economizar.",
+    detail:"Um MVP ainda precisa atender a uma necessidade real mínima do usuário para gerar aprendizado válido — 'mais barato' sem validar nada não é o objetivo do conceito.",
+    wrong:{
+      A:"O objetivo central não é minimizar custo por si só, e sim validar uma hipótese real de negócio — sem atender a necessidade real, não há aprendizado válido.",
+      C:"É o oposto: MVP é uma versão MÍNIMA e inicial, não a versão final/completa do produto.",
+      D:"Um MVP tem funcionalidade REAL por trás (mesmo que mínima) — um protótipo puramente visual sem funcionalidade real seria outra técnica (ex: mockup), não um MVP.",
+      E:"MVP é, por definição, um produto (com software funcional), não apenas um documento de especificação."
+    }
+  }
+},
+{
+  id:"ux-05", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — personas, item 6.11 do Anexo IV",
+  stem:"No processo de design centrado no usuário, uma 'persona' corresponde a:",
+  options:{
+    A:"um usuário real específico, sempre entrevistado individualmente antes de qualquer decisão de design.",
+    B:"uma representação fictícia e semi-ficcional de um perfil/arquétipo de usuário, construída a partir de dados e padrões de comportamento reais, usada para orientar decisões de design.",
+    C:"um relatório técnico de bugs relatados pelos usuários.",
+    D:"um documento exclusivamente jurídico sobre direitos do usuário.",
+    E:"um teste automatizado de interface do usuário."
+  },
+  correct:"B",
+  explanation:{
+    core:"Persona é um arquétipo fictício, mas baseado em dados e padrões reais de comportamento de usuários, usado para representar um grupo/segmento e orientar decisões de design de forma consistente.",
+    detail:"Não é um usuário real específico entrevistado isoladamente — é uma síntese de padrões observados em VÁRIOS usuários reais, transformada em um perfil representativo.",
+    wrong:{
+      A:"Persona é uma síntese/representação, não um único usuário real entrevistado individualmente.",
+      C:"Relatório de bugs é um artefato de qualidade/suporte, sem relação direta com o conceito de persona.",
+      D:"Persona não é um documento jurídico — é uma ferramenta de design centrado no usuário.",
+      E:"Persona não é um teste automatizado — é uma representação de perfil de usuário usada para orientar decisões de design."
+    }
+  }
+},
+{
+  id:"ux-06", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — prototipação, item 6.9 do Anexo IV",
+  stem:"Sobre prototipação no desenvolvimento de interfaces, é correto afirmar que:",
+  options:{
+    A:"um protótipo de baixa fidelidade (ex: wireframe em papel) é sempre mais caro e demorado de produzir do que um protótipo de alta fidelidade totalmente funcional.",
+    B:"protótipos de baixa fidelidade priorizam rapidez e baixo custo para validar conceitos e fluxos, geralmente sem detalhes visuais ou interatividade completa; protótipos de alta fidelidade se aproximam bastante da aparência e do comportamento do produto final.",
+    C:"prototipação não deve ser usada em nenhuma etapa anterior ao desenvolvimento do código de produção.",
+    D:"só é possível criar protótipos de alta fidelidade utilizando o mesmo código-fonte do produto final.",
+    E:"protótipos de baixa e alta fidelidade têm exatamente o mesmo propósito e nível de detalhe."
+  },
+  correct:"B",
+  explanation:{
+    core:"O nível de fidelidade de um protótipo (baixa × alta) reflete o quanto ele se aproxima da aparência/comportamento final: baixa fidelidade é rápida e conceitual; alta fidelidade é mais próxima do produto real.",
+    detail:"É justamente essa diferença de custo/tempo × proximidade do produto final que orienta quando usar cada tipo — protótipos de baixa fidelidade são usados para validar rapidamente conceitos/fluxos ANTES de investir em algo mais caro e detalhado.",
+    wrong:{
+      A:"É o oposto: baixa fidelidade é tipicamente mais rápida e barata de produzir do que alta fidelidade.",
+      C:"Prototipação é justamente uma técnica usada em etapas ANTERIORES ao desenvolvimento do produto final, para validar ideias com menor custo de mudança.",
+      D:"Protótipos de alta fidelidade podem ser feitos com ferramentas de design (sem código de produção real) que simulam a aparência/comportamento final, sem precisar do código-fonte definitivo.",
+      E:"Têm propósitos diferentes: baixa fidelidade valida conceito/fluxo rapidamente; alta fidelidade valida detalhes mais próximos do produto final."
+    }
+  }
+},
+
+/* ---------------- ÁGIL EM ESCALA / SAFe — 6 ---------------- */
+{
+  id:"safe-01", topicId:"agil-escala", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — práticas ágeis em escala, item 2.3 do Anexo IV",
+  stem:"A necessidade de 'práticas ágeis em escala' surge principalmente quando:",
+  options:{
+    A:"uma única equipe pequena trabalha isoladamente em um produto simples, sem dependências externas.",
+    B:"múltiplas equipes precisam coordenar entregas de um produto ou portfólio complexo, exigindo alinhamento entre times além do que as práticas ágeis de uma única equipe (como o Scrum tradicional) conseguem resolver isoladamente.",
+    C:"a organização decide abandonar completamente qualquer prática ágil em favor do modelo cascata.",
+    D:"a empresa possui apenas um produto e uma única equipe de desenvolvimento.",
+    E:"não existe nenhuma necessidade real de escalar práticas ágeis, independentemente do tamanho da organização."
+  },
+  correct:"B",
+  explanation:{
+    core:"Frameworks de agilidade em escala existem para resolver um problema que o Scrum/Kanban de uma única equipe não resolve: a coordenação de dependências e alinhamento estratégico ENTRE múltiplas equipes trabalhando num mesmo produto/portfólio complexo.",
+    detail:"Quanto mais equipes e mais dependências entre elas, maior a necessidade de um framework de escala (como o SAFe) para sincronizar esse trabalho.",
+    wrong:{
+      A:"Uma única equipe pequena e isolada é justamente o cenário em que o Scrum/Kanban tradicional já é suficiente, sem necessidade de escalar.",
+      C:"Ágil em escala é uma extensão de práticas ágeis para múltiplas equipes, não um abandono da agilidade em favor do modelo cascata.",
+      D:"Com apenas uma equipe, não há múltiplas equipes para coordenar — não há motivação para escalar.",
+      E:"Há, sim, uma necessidade real em organizações com múltiplas equipes e produtos complexos — é justamente o motivo de frameworks como o SAFe existirem."
+    }
+  }
+},
+{
+  id:"safe-02", topicId:"agil-escala", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — SAFe, item 2.3 do Anexo IV",
+  stem:"O framework SAFe (Scaled Agile Framework) organiza a agilidade em escala tipicamente em torno de níveis, incluindo:",
+  options:{
+    A:"Time, Programa (Trem de Liberação Ágil), Grande Solução e Portfólio.",
+    B:"apenas um único nível, idêntico ao Scrum tradicional, sem qualquer camada adicional.",
+    C:"Cascata, Espiral e Incremental, como únicos modelos de referência.",
+    D:"Iniciação, Planejamento, Execução, Encerramento — os grupos de processos do PMBOK.",
+    E:"Micro, Pequeno, Médio e Grande, conforme o orçamento do projeto."
+  },
+  correct:"A",
+  explanation:{
+    core:"O SAFe organiza a agilidade em escala em níveis: Time (equivalente ao Scrum/Kanban tradicional), Programa (múltiplos times formando um Agile Release Train/ART), Grande Solução (para soluções que exigem múltiplos ARTs) e Portfólio (alinhamento com a estratégia).",
+    detail:"É justamente essa estrutura em camadas que diferencia o SAFe de simplesmente 'rodar vários Scrums separados sem coordenação'.",
+    wrong:{
+      B:"O SAFe adiciona explicitamente camadas ACIMA do nível de time — não é idêntico ao Scrum tradicional de uma única equipe.",
+      C:"São modelos de ciclo de vida de software (Engenharia de Software), não os níveis do SAFe.",
+      D:"São os grupos de processos do PMBOK, não os níveis do SAFe.",
+      E:"Não corresponde à nomenclatura real dos níveis do SAFe."
+    }
+  }
+},
+{
+  id:"safe-03", topicId:"agil-escala", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — PI Planning/ART, item 2.3 do Anexo IV",
+  stem:"No SAFe, o evento em que múltiplas equipes de um Trem de Liberação Ágil (Agile Release Train - ART) se reúnem para planejar e alinhar o trabalho do próximo incremento de programa é denominado:",
+  options:{ A:"Daily Scrum", B:"Sprint Retrospective", C:"PI Planning (Program Increment Planning)", D:"Sprint Review", E:"Backlog Refinement" },
+  correct:"C",
+  explanation:{
+    core:"PI Planning é o evento de sincronização entre TODAS as equipes de um ART, para planejar e alinhar o trabalho do próximo Incremento de Programa (Program Increment) do SAFe.",
+    detail:"É o equivalente, em escala multiequipe, do que a Sprint Planning é para uma única equipe no Scrum tradicional.",
+    wrong:{
+      A:"Daily Scrum é um evento diário de UMA equipe no Scrum tradicional, não um evento multiequipe de planejamento do SAFe.",
+      B:"Sprint Retrospective é um evento de UMA equipe, focado em melhoria de processo, não em planejamento multiequipe.",
+      D:"Sprint Review é um evento de UMA equipe, focado em apresentar o incremento de produto, não em planejamento multiequipe do ART.",
+      E:"Backlog Refinement é uma atividade de refinamento do backlog de UMA equipe, não o evento de sincronização multiequipe do SAFe."
+    }
+  }
+},
+{
+  id:"safe-04", topicId:"agil-escala", tier:"P3", format:"porque",
+  source:"inedita", insp:"Sem precedente nas provas antigas — gestão de portfólio × gestão de projeto, item 2.2 do Anexo IV",
+  stem:"Afirmação 1: gestão de portfólio e gestão de projeto são atividades com escopo e horizonte de decisão diferentes.\n\nPORQUE\n\nAfirmação 2: gestão de projeto foca em entregar um trabalho específico dentro de restrições de prazo/custo/escopo definidas, enquanto gestão de portfólio foca em selecionar e priorizar o conjunto de projetos/produtos que melhor atendem à estratégia da organização como um todo.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"A",
+  explanation:{
+    core:"Gestão de projeto e gestão de portfólio realmente têm escopos e horizontes de decisão diferentes — a primeira afirmação está correta.",
+    detail:"A segunda afirmação explica exatamente por quê: uma foca na entrega específica dentro de restrições definidas (visão tática/operacional), enquanto a outra foca em priorização estratégica do conjunto de iniciativas da organização (visão estratégica) — essa diferença de foco é justamente o que justifica a diferença de escopo afirmada na primeira frase.",
+    wrong:{
+      B:"A relação causal é direta: é exatamente essa diferença de foco (entrega específica × priorização estratégica do conjunto) que explica a diferença de escopo mencionada na primeira afirmação.",
+      C:"A segunda afirmação está correta e descreve com precisão a diferença real entre gestão de projeto e de portfólio.",
+      D:"A primeira afirmação também é verdadeira — as duas atividades têm, de fato, escopos e horizontes diferentes.",
+      E:"Ambas as afirmações estão corretas."
+    }
+  }
+},
+{
+  id:"safe-05", topicId:"agil-escala", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — entregas incrementais em escala, item 2.3 do Anexo IV",
+  stem:"Sobre a realização de entregas incrementais utilizando metodologias ágeis em escala (como o SAFe), é correto afirmar que:",
+  options:{
+    A:"o objetivo é entregar valor ao negócio em ciclos menores e frequentes, mesmo quando múltiplas equipes estão envolvidas, mantendo alinhamento estratégico entre elas.",
+    B:"entregas incrementais são incompatíveis com qualquer coordenação entre múltiplas equipes.",
+    C:"escalar agilidade elimina completamente a necessidade de qualquer sincronização entre equipes.",
+    D:"entregas incrementais em escala exigem que todas as equipes utilizem exatamente o mesmo backlog, sem qualquer distinção entre times.",
+    E:"a entrega incremental em escala é um conceito exclusivo de metodologias tradicionais (cascata), não de frameworks ágeis."
+  },
+  correct:"A",
+  explanation:{
+    core:"O objetivo central de escalar a entrega incremental é manter os benefícios da agilidade (ciclos curtos, valor frequente) mesmo quando há múltiplas equipes envolvidas, coordenando-as via eventos e artefatos comuns (como o PI Planning no SAFe).",
+    detail:"Escala não elimina a necessidade de coordenação — pelo contrário, ela EXISTE justamente para organizar essa coordenação entre equipes de forma estruturada.",
+    wrong:{
+      B:"É justamente o contrário: frameworks de escala existem para viabilizar entregas incrementais COM coordenação entre múltiplas equipes.",
+      C:"Escalar agilidade não elimina a sincronização — ela formaliza e estrutura essa sincronização (ex: PI Planning).",
+      D:"Cada time costuma manter seu próprio backlog de time, ainda que alinhado a um backlog de programa/portfólio mais amplo — não é um único backlog idêntico para todos.",
+      E:"Entrega incremental é um conceito central de frameworks ágeis (inclusive em escala); não é exclusivo de metodologias tradicionais."
+    }
+  }
+},
+{
+  id:"safe-06", topicId:"agil-escala", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — gestão de portfólio alinhada à estratégia, item 2.2 do Anexo IV",
+  stem:"Um dos objetivos centrais da gestão de portfólio de projetos/produtos, alinhada à estratégia de negócio, é:",
+  options:{
+    A:"executar todos os projetos propostos pela organização, independentemente de seu alinhamento com os objetivos estratégicos.",
+    B:"selecionar, priorizar e balancear o conjunto de projetos e produtos de forma a maximizar o valor entregue em relação à estratégia organizacional, considerando restrições de recursos.",
+    C:"garantir que cada projeto seja gerenciado de forma completamente isolada, sem qualquer visão do conjunto.",
+    D:"eliminar a necessidade de qualquer priorização entre iniciativas concorrentes.",
+    E:"focar exclusivamente no cronograma de um único projeto, ignorando os demais."
+  },
+  correct:"B",
+  explanation:{
+    core:"Gestão de portfólio existe justamente para tomar decisões de seleção e priorização entre MÚLTIPLAS iniciativas concorrentes, maximizando o valor estratégico entregue dentro das restrições reais de recursos da organização.",
+    detail:"É uma visão de CONJUNTO — diferente da gestão de um projeto individual, que foca apenas na entrega daquele projeto específico.",
+    wrong:{
+      A:"Executar tudo sem priorização contraria o próprio propósito da gestão de portfólio, que existe justamente para escolher o que vale mais a pena.",
+      C:"Gestão de portfólio exige justamente uma visão do CONJUNTO de projetos, não o isolamento de cada um.",
+      D:"Priorização entre iniciativas concorrentes é uma das funções centrais da gestão de portfólio, não algo a ser eliminado.",
+      E:"Gestão de portfólio olha para o conjunto de projetos/produtos da organização, não para o cronograma de um único projeto isoladamente."
+    }
+  }
+},
+
+/* ---------------- MERCADO E ECONOMIA DA INOVAÇÃO EM TI — 6 ---------------- */
+{
+  id:"mkt-01", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — inovação incremental×disruptiva, item 4.2 do Anexo IV",
+  stem:"Sobre os tipos de inovação tecnológica, é correto afirmar que:",
+  options:{
+    A:"inovação incremental introduz melhorias contínuas e graduais sobre um produto ou processo já existente; inovação disruptiva cria um novo mercado ou modelo de valor, muitas vezes deslocando tecnologias e empresas estabelecidas.",
+    B:"inovação incremental e disruptiva são termos sinônimos, sem distinção prática.",
+    C:"inovação disruptiva sempre exige menor investimento financeiro do que inovação incremental.",
+    D:"inovação incremental só ocorre em empresas iniciantes (startups), nunca em empresas estabelecidas.",
+    E:"inovação disruptiva se refere exclusivamente à substituição de hardware por software."
+  },
+  correct:"A",
+  explanation:{
+    core:"Inovação incremental melhora gradualmente o que já existe; inovação disruptiva cria algo suficientemente diferente para abrir um novo mercado ou modelo de valor, frequentemente deslocando players estabelecidos que não se adaptaram a tempo.",
+    detail:"A distinção é sobre o TIPO de impacto (evolução × ruptura de mercado), não sobre custo de investimento ou o tipo específico de tecnologia envolvida.",
+    wrong:{
+      B:"São conceitos distintos, com implicações diferentes para estratégia e mercado.",
+      C:"Não há essa regra fixa de custo — inovação disruptiva pode exigir investimento alto ou baixo, dependendo do caso.",
+      D:"Empresas estabelecidas também realizam inovação incremental o tempo todo (melhorias contínuas em produtos já existentes).",
+      E:"Inovação disruptiva não se limita a hardware/software — pode ocorrer em modelos de negócio, serviços, processos, etc."
+    }
+  }
+},
+{
+  id:"mkt-02", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — segmentos e mercado de TI, item 4.1 do Anexo IV",
+  stem:"O mercado de Tecnologia da Informação é tradicionalmente segmentado, entre outras formas de classificação, em:",
+  options:{
+    A:"apenas hardware, sem qualquer outra categoria relevante.",
+    B:"hardware, software e serviços de TI, cada um com dinâmicas econômicas e cadeias de valor distintas.",
+    C:"exclusivamente telecomunicações, sem relação com o restante da indústria de tecnologia.",
+    D:"apenas o setor público, uma vez que empresas privadas não fazem parte desse mercado.",
+    E:"um único segmento homogêneo, sem qualquer distinção interna relevante."
+  },
+  correct:"B",
+  explanation:{
+    core:"O mercado de TI é tradicionalmente segmentado em hardware, software e serviços, cada segmento com sua própria dinâmica de concorrência, precificação e cadeia de valor.",
+    detail:"Essa segmentação básica é o ponto de partida para análises mais específicas de mercado, orçamento de TI e estratégia setorial.",
+    wrong:{
+      A:"Reduz o mercado a apenas um dos três segmentos principais, ignorando software e serviços.",
+      C:"Telecomunicações é uma indústria relacionada, mas não é o único segmento do mercado de TI, nem está isolada do restante da indústria de tecnologia.",
+      D:"O mercado de TI é composto majoritariamente por empresas privadas (fornecedores, integradoras, consultorias), além do setor público como consumidor/comprador.",
+      E:"O mercado de TI tem segmentação interna relevante (hardware/software/serviços), não é homogêneo."
+    }
+  }
+},
+{
+  id:"mkt-03", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — perspectivas da tecnologia (ciclo de adoção), item 4.3 do Anexo IV",
+  stem:"O modelo clássico de difusão/adoção de novas tecnologias no mercado costuma descrever a evolução da adoção ao longo de categorias de adotantes, na seguinte ordem típica:",
+  options:{
+    A:"Maioria tardia, Retardatários, Inovadores, Primeiros adotantes, Maioria inicial.",
+    B:"Inovadores, Primeiros adotantes (early adopters), Maioria inicial, Maioria tardia, Retardatários.",
+    C:"Retardatários, Maioria tardia, Maioria inicial, Primeiros adotantes, Inovadores.",
+    D:"apenas duas categorias: quem adota e quem não adota, sem qualquer gradação intermediária.",
+    E:"Maioria inicial, Inovadores, Retardatários, Primeiros adotantes, Maioria tardia."
+  },
+  correct:"B",
+  explanation:{
+    core:"O modelo clássico de difusão de inovação (curva de adoção) segue a ordem: Inovadores → Primeiros adotantes → Maioria inicial → Maioria tardia → Retardatários, do grupo que adota mais cedo ao que adota por último.",
+    detail:"Cada categoria tem um perfil de risco/comportamento diferente em relação a novas tecnologias — os Inovadores assumem mais risco experimentando o novo primeiro, os Retardatários só adotam quando a tecnologia já está madura e amplamente estabelecida.",
+    wrong:{
+      A:"Apresenta a ordem fora de sequência, misturando categorias do fim e do início da curva de adoção.",
+      C:"Apresenta a ordem exatamente invertida em relação à sequência real de adoção.",
+      D:"O modelo clássico descreve gradações intermediárias específicas, não uma simples divisão binária.",
+      E:"Apresenta as categorias fora de ordem, sem seguir a sequência real de adoção."
+    }
+  }
+},
+{
+  id:"mkt-04", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — ciência, pesquisa, desenvolvimento e indústria, item 4.4 do Anexo IV",
+  stem:"Sobre a relação entre pesquisa, desenvolvimento e indústria no contexto da economia da inovação em TI, é correto afirmar que:",
+  options:{
+    A:"pesquisa e desenvolvimento (P&D) não têm nenhuma relação com a capacidade de inovação de uma indústria de tecnologia.",
+    B:"investimentos em pesquisa e desenvolvimento contribuem para a geração de novas tecnologias e processos, que podem ser posteriormente absorvidos e escalados pela indústria, impulsionando a inovação.",
+    C:"toda pesquisa científica resulta automaticamente, e sem nenhuma etapa intermediária, em um produto comercial de sucesso.",
+    D:"o desenvolvimento tecnológico independe totalmente de investimento financeiro.",
+    E:"a indústria de tecnologia nunca se beneficia de pesquisas realizadas em universidades ou institutos de pesquisa."
+  },
+  correct:"B",
+  explanation:{
+    core:"P&D alimenta a inovação industrial ao gerar conhecimento e tecnologias que, num processo posterior (nem sempre automático ou rápido), podem ser absorvidas e escaladas comercialmente pela indústria.",
+    detail:"Esse processo de absorção costuma exigir etapas intermediárias (validação, engenharia de produto, investimento) — não é uma conversão automática e instantânea de pesquisa em produto.",
+    wrong:{
+      A:"P&D é justamente uma das bases da capacidade de inovação de uma indústria de tecnologia — há relação direta.",
+      C:"A conversão de pesquisa científica em produto comercial geralmente exige etapas intermediárias de desenvolvimento, validação e investimento — não é automática.",
+      D:"Desenvolvimento tecnológico tipicamente demanda investimento financeiro significativo (equipe, infraestrutura, tempo).",
+      E:"A indústria frequentemente se beneficia (via parcerias, licenciamento, transferência de tecnologia) de pesquisas acadêmicas e de institutos de pesquisa."
+    }
+  }
+},
+{
+  id:"mkt-05", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — perspectivas da tecnologia, item 4.3 do Anexo IV",
+  stem:"O conceito de obsolescência tecnológica refere-se a:",
+  options:{
+    A:"uma tecnologia se tornar tecnicamente ou economicamente superada por alternativas mais novas, eficientes ou vantajosas, reduzindo sua relevância ou uso no mercado.",
+    B:"uma tecnologia nunca poder ser substituída por outra, independentemente do tempo.",
+    C:"exclusivamente a quebra física de um equipamento de hardware.",
+    D:"um processo que ocorre apenas em softwares, nunca em hardware.",
+    E:"a ausência total de qualquer inovação em um determinado setor."
+  },
+  correct:"A",
+  explanation:{
+    core:"Obsolescência tecnológica é o processo pelo qual uma tecnologia perde relevância/uso porque alternativas melhores (técnica ou economicamente) surgiram no mercado — não é sobre quebra física, e sim sobre superação competitiva.",
+    detail:"Pode afetar tanto hardware quanto software (e até modelos de negócio inteiros baseados em uma tecnologia específica).",
+    wrong:{
+      B:"É o oposto do conceito: obsolescência é justamente a substituição de uma tecnologia por outra mais vantajosa.",
+      C:"Quebra física é um problema de manutenção/durabilidade, diferente de obsolescência (que é sobre relevância competitiva no mercado, mesmo que o equipamento ainda funcione).",
+      D:"Obsolescência pode ocorrer tanto em hardware quanto em software — não é exclusiva de nenhum dos dois.",
+      E:"Obsolescência é resultado de HAVER inovação (que supera a tecnologia anterior), não da ausência de inovação."
+    }
+  }
+},
+{
+  id:"mkt-06", topicId:"mercado-ti", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — gerenciamento de serviços de TI, item 4.5 do Anexo IV",
+  stem:"O gerenciamento de serviços de TI, de forma geral, tem como foco principal:",
+  options:{
+    A:"o desenvolvimento exclusivo de novos softwares, sem qualquer relação com a operação de serviços já existentes.",
+    B:"planejar, entregar, operar e melhorar continuamente os serviços de TI de forma a gerar valor para o negócio e atender às necessidades dos usuários/clientes.",
+    C:"apenas a gestão financeira da área de TI, sem relação com qualidade ou entrega de serviços.",
+    D:"a substituição integral de pessoas por automação, sem qualquer outra consideração.",
+    E:"exclusivamente a manutenção de hardware físico dentro do data center."
+  },
+  correct:"B",
+  explanation:{
+    core:"Gerenciamento de serviços de TI é um conceito amplo, focado no ciclo completo de planejar, entregar, operar e melhorar continuamente os serviços prestados, sempre visando gerar valor para o negócio e para quem usa esses serviços.",
+    detail:"É um conceito mais amplo do que qualquer framework específico (como ITIL) — engloba a gestão de todo o ciclo de vida do serviço, não só desenvolvimento de software, finanças ou hardware isoladamente.",
+    wrong:{
+      A:"Gerenciamento de serviços cobre também (e principalmente) a OPERAÇÃO de serviços já existentes, não só o desenvolvimento de novos softwares.",
+      C:"Gestão financeira é apenas UM aspecto entre vários (qualidade, disponibilidade, entrega) do gerenciamento de serviços de TI, não o único foco.",
+      D:"O foco é gerar valor através da gestão do ciclo de vida do serviço, não simplesmente substituir pessoas por automação.",
+      E:"Gerenciamento de serviços de TI é um conceito muito mais amplo do que apenas manutenção física de hardware."
     }
   }
 }
