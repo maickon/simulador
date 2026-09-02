@@ -237,13 +237,38 @@
   .studydoc .tip b{ color:var(--accent-strong); }
 
   /* ---------- HISTORY ---------- */
-  .hist-row{ display:flex; align-items:center; gap:16px; padding:16px 20px; margin-bottom:10px; }
+  .hist-row{ display:flex; align-items:center; gap:16px; padding:16px 20px; margin-bottom:10px; cursor:pointer; }
+  .hist-row:hover{ border-color:var(--accent); }
   .hist-row .hd{ flex:1; }
   .hist-row .mode{ font-weight:700; font-size:14px; }
   .hist-row .when{ font-size:12px; color:var(--ink-soft); }
   .hist-row .sc{ font-family:ui-monospace,monospace; font-weight:800; font-size:16px; }
+  .hist-row .chev{ color:var(--ink-soft); font-size:14px; }
   .empty{ text-align:center; padding:60px 20px; color:var(--ink-soft); }
   .empty .big{ font-size:34px; margin-bottom:10px; }
+
+  /* ---------- ÁREA (ÊNFASE) SELECTOR ---------- */
+  .enfase-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  .enfase-pill{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; padding:9px 15px; border-radius:11px; border:1px solid var(--line); background:var(--surface); cursor:pointer; min-width:150px; }
+  .enfase-pill:hover{ border-color:var(--accent); }
+  .enfase-pill.active{ border-color:var(--accent); background:var(--accent-soft); }
+  .enfase-pill .en{ font-weight:700; font-size:13px; }
+  .enfase-pill.active .en{ color:var(--accent-strong); }
+  .enfase-pill .ev{ font-size:11px; color:var(--ink-soft); }
+  .enfase-pill .elock{ font-size:10.5px; font-weight:700; color:var(--muted); }
+  .enfase-empty{ padding:40px 30px; text-align:center; color:var(--ink-soft); font-size:14px; }
+  .enfase-empty b{ color:var(--ink); }
+
+  /* ---------- CONCURSO (INFO) ---------- */
+  .infodoc{ padding:30px 34px 34px; margin-bottom:20px; }
+  .infodoc h2{ font-size:19px; margin-bottom:14px; }
+  .infodoc table{ width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:6px; }
+  .infodoc th,.infodoc td{ text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); }
+  .infodoc th{ font-family:"Manrope",sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); background:var(--surface-2); }
+  .infodoc td.dt{ font-family:ui-monospace,monospace; white-space:nowrap; color:var(--accent-strong); font-weight:700; }
+  .infodoc tr.hi td{ background:var(--accent-soft); font-weight:700; }
+  .infodoc p{ font-size:14px; color:var(--ink-soft); margin:0 0 10px; max-width:74ch; }
+  .infodoc .note{ background:var(--amber-soft); border-radius:10px; padding:12px 16px; font-size:13px; color:var(--amber); margin-top:14px; }
 
   footer.appfoot{ text-align:center; padding:26px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--line); }
 
@@ -267,6 +292,7 @@
         <button data-tab="home" class="active">Provas</button>
         <button data-tab="study">Área de Estudo</button>
         <button data-tab="history">Histórico</button>
+        <button data-tab="concurso">Concurso</button>
       </nav>
     </div>
   </header>
@@ -288,12 +314,29 @@
     <!-- ===================== HISTORY ===================== -->
     <section class="view" id="view-history"></section>
 
+    <!-- ===================== CONCURSO (INFO) ===================== -->
+    <section class="view" id="view-concurso"></section>
+
   </div>
 
-  <footer class="appfoot">Banco de questões em construção por lotes — fase atual cobre a Prioridade 1 do padrão Cesgranrio. Ver o guia de prioridades para o mapa completo.</footer>
+  <footer class="appfoot">Banco de questões em construção por lotes — cobre as Prioridades 1, 2 e 3 do padrão Cesgranrio para Processos de Negócios. Ver a aba "Concurso" para dados do edital.</footer>
 </div>
 
 <script>
+/* ============================================================
+   ÊNFASES (ÁREAS) DO CONCURSO — dados do Anexo I do edital
+   Cada uma tem seu polo, vaga imediata e cadastro de reserva reais.
+   Hoje só "processos-negocio" tem banco de questões: foi a área
+   recomendada para o perfil do usuário (dev/engenharia de software).
+   ============================================================ */
+window.ENFASES = [
+  { id:"processos-negocio", nome:"Análise de Sistemas — Processos de Negócios", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PCD)", cr:{AC:5,PCD:3,PN:3,PI:0,PQ:0}, crTotal:11, hasContent:true, recomendada:true },
+  { id:"infraestrutura", nome:"Análise de Sistemas — Infraestrutura", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:6,PCD:2,PN:3,PI:0,PQ:0}, crTotal:11, hasContent:false },
+  { id:"sap", nome:"Análise de Sistemas — SAP", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:5,PCD:2,PN:4,PI:0,PQ:0}, crTotal:11, hasContent:false },
+  { id:"seguranca-cibernetica", nome:"Análise de Sistemas — Segurança Cibernética e da Informação", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:5,PCD:2,PN:3,PI:0,PQ:1}, crTotal:11, hasContent:false },
+  { id:"ciencia-dados", nome:"Ciência de Dados", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:9,PCD:2,PN:5,PI:0,PQ:0}, crTotal:16, hasContent:false }
+];
+
 /* ============================================================
    TÓPICOS DE ESTUDO — Prioridade 1
    ============================================================ */
@@ -3306,7 +3349,23 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
   var topicById = {};
   TOPICS.forEach(function(t){ topicById[t.id] = t; });
 
-  var state = { tab:"home", quiz:null, historyCache:null };
+  var enfaseById = {}; ENFASES.forEach(function(e){ enfaseById[e.id]=e; });
+  function loadSelectedEnfase(){
+    try { var v = localStorage.getItem("pn_sim_enfase"); return (v && enfaseById[v]) ? v : ENFASES[0].id; } catch(e){ return ENFASES[0].id; }
+  }
+  function saveSelectedEnfase(id){ try { localStorage.setItem("pn_sim_enfase", id); } catch(e){} }
+  /* Só "processos-negocio" tem banco de questões hoje — as demais ênfases
+     do edital aparecem no seletor (com vagas reais do Anexo I) mas ainda
+     sem conteúdo. Quando outra ênfase ganhar questões, é só passar a
+     marcar seus tópicos com enfase:"<id>" e trocar esta função por um
+     filtro real sobre TOPICS. */
+  function topicsForEnfase(enfaseId){ return enfaseId === "processos-negocio" ? TOPICS : []; }
+  function questionsForEnfase(enfaseId){
+    var ids = topicsForEnfase(enfaseId).map(function(t){ return t.id; });
+    return QUESTIONS.filter(function(q){ return ids.indexOf(q.topicId) !== -1; });
+  }
+
+  var state = { tab:"home", quiz:null, historyCache:null, enfase: loadSelectedEnfase() };
 
   /* ---------- db / storage ---------- */
   var dbPromise = null;
@@ -3367,7 +3426,7 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
      garante que Prioridade 1 puxe mais questões que P2/P3 conforme o
      banco crescer nas próximas fases, sem exigir mudança aqui. */
   function pickQuestions(count, topicFilter){
-    var pool = QUESTIONS.filter(function(q){ return !topicFilter || q.topicId === topicFilter; });
+    var pool = questionsForEnfase(state.enfase).filter(function(q){ return !topicFilter || q.topicId === topicFilter; });
     var remaining = pool.slice();
     var picked = [];
     var n = Math.min(count, pool.length);
@@ -3393,6 +3452,7 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     if (tab==="home"){ document.getElementById("view-home").classList.add("active"); renderHome(); }
     if (tab==="study"){ document.getElementById("view-study").classList.add("active"); renderStudyList(); }
     if (tab==="history"){ document.getElementById("view-history").classList.add("active"); renderHistory(); }
+    if (tab==="concurso"){ document.getElementById("view-concurso").classList.add("active"); renderConcurso(); }
   }
   document.getElementById("mainTabs").addEventListener("click", function(e){
     var b = e.target.closest("button[data-tab]");
@@ -3408,19 +3468,53 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
      HOME
      ============================================================ */
   function renderHome(){
-    var total = QUESTIONS.length;
-    var byTier = {}; QUESTIONS.forEach(function(q){ byTier[q.tier]=(byTier[q.tier]||0)+1; });
     var host = document.getElementById("view-home");
     host.innerHTML = "";
+    var enfase = enfaseById[state.enfase] || ENFASES[0];
 
     var head = el(
       '<header class="pagehead">'+
-        '<span class="eyebrow"><span class="dot"></span>Ênfase Processos de Negócios</span>'+
+        '<span class="eyebrow"><span class="dot"></span>'+enfase.nome+'</span>'+
         '<h1>Gere sua prova</h1>'+
-        '<p>Escolha um modo. Ao final você recebe sua nota na hora — e só depois disso a correção detalhada, com a explicação de cada questão, é liberada para estudo.</p>'+
+        '<p>Escolha a área do concurso e depois um modo. Ao final você recebe sua nota na hora — e só depois disso a correção detalhada, com a explicação de cada questão, é liberada para estudo.</p>'+
       '</header>'
     );
     host.appendChild(head);
+
+    /* ---- seletor de área (ênfase), guiado pelas vagas reais do edital ---- */
+    var enfaseRow = el('<div class="enfase-row"></div>');
+    ENFASES.forEach(function(ef){
+      var pill = el(
+        '<div class="enfase-pill'+(ef.id===enfase.id?' active':'')+'" data-ef="'+ef.id+'">'+
+          '<span class="en">'+ef.nome.replace("Análise de Sistemas — ","")+'</span>'+
+          '<span class="ev">'+ef.vagaImediata+' · '+ef.crTotal+' no cadastro de reserva</span>'+
+          (ef.hasContent ? '' : '<span class="elock">🔒 sem banco de questões ainda</span>')+
+        '</div>'
+      );
+      pill.addEventListener("click", function(){
+        state.enfase = ef.id;
+        saveSelectedEnfase(ef.id);
+        renderHome();
+      });
+      enfaseRow.appendChild(pill);
+    });
+    host.appendChild(enfaseRow);
+
+    if (!enfase.hasContent){
+      host.appendChild(el(
+        '<div class="card enfase-empty">'+
+          '<p><b>Ainda não construímos o banco de questões para '+enfase.nome+'.</b></p>'+
+          '<p>O perfil usado neste projeto (desenvolvimento/engenharia de software) foi combinado com o padrão histórico da Cesgranrio para recomendar <b>Processos de Negócios</b> como a área de estudo prioritária — por isso o conteúdo começou por ali.</p>'+
+          '<p>Se você quiser, dá para montar o banco desta área também (mesmo processo: mapear o Anexo IV, cruzar com o histórico da banca e escrever as questões em lotes). É só pedir na conversa.</p>'+
+        '</div>'
+      ));
+      return;
+    }
+
+    var pool = questionsForEnfase(enfase.id);
+    var topics = topicsForEnfase(enfase.id);
+    var total = pool.length;
+    var byTier = {}; pool.forEach(function(q){ byTier[q.tier]=(byTier[q.tier]||0)+1; });
 
     var grid = el('<div class="modegrid"></div>');
     var modes = [
@@ -3459,8 +3553,8 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     host.appendChild(strip);
 
     var sel = topicCard.querySelector("#topicSelect");
-    TOPICS.forEach(function(t){
-      var count = QUESTIONS.filter(function(q){ return q.topicId===t.id; }).length;
+    topics.forEach(function(t){
+      var count = pool.filter(function(q){ return q.topicId===t.id; }).length;
       var o = document.createElement("option");
       o.value = t.id; o.textContent = t.name + " (" + count + " questões)";
       sel.appendChild(o);
@@ -3468,7 +3562,7 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     topicCard.querySelector("#topicStart").addEventListener("click", function(ev){
       ev.stopPropagation();
       var tid = sel.value;
-      var n = QUESTIONS.filter(function(q){ return q.topicId===tid; }).length;
+      var n = pool.filter(function(q){ return q.topicId===tid; }).length;
       startQuiz(n, tid);
     });
   }
@@ -3617,10 +3711,15 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
   /* ============================================================
      RESULTS + REVISÃO
      ============================================================ */
-  function renderResults(result){
+  function renderResults(result, opts){
+    opts = opts || {};
     var attempt = result.attempt, questions = result.questions;
     var host = document.getElementById("view-results");
     host.innerHTML = "";
+
+    if (opts.missingCount){
+      host.appendChild(el('<div class="card enfase-empty" style="margin-bottom:16px;padding:16px 20px;">'+opts.missingCount+' questão(ões) desta tentativa não existe(m) mais no banco atual e foi(ram) omitida(s) da revisão abaixo.</div>'));
+    }
 
     var msg;
     if (attempt.pct>=70) msg = "Bom desempenho — o padrão da banca está entrando. Use a correção abaixo para fechar os últimos detalhes.";
@@ -3645,19 +3744,34 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
 
     var actions = el('<div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;"></div>');
     var reviewBtn = el('<button class="btn primary">Ver correção detalhada</button>');
-    var homeBtn = el('<button class="btn">Nova prova</button>');
-    homeBtn.addEventListener("click", function(){ switchTab("home"); });
-    actions.appendChild(reviewBtn); actions.appendChild(homeBtn);
+    var homeBtn = el('<button class="btn">'+(opts.fromHistory ? "← Voltar ao histórico" : "Nova prova")+'</button>');
+    homeBtn.addEventListener("click", function(){ switchTab(opts.fromHistory ? "history" : "home"); });
+    if (!opts.fromHistory) actions.appendChild(reviewBtn);
+    actions.appendChild(homeBtn);
     host.appendChild(actions);
 
     var reviewHost = el('<div id="reviewHost"></div>');
     host.appendChild(reviewHost);
 
-    reviewBtn.addEventListener("click", function(){
-      if (reviewHost.dataset.built){ reviewHost.style.display = reviewHost.style.display==="none"?"block":"none"; return; }
+    if (opts.fromHistory){
       reviewHost.dataset.built = "1";
       renderReview(reviewHost, attempt, questions);
-    });
+    } else {
+      reviewBtn.addEventListener("click", function(){
+        if (reviewHost.dataset.built){ reviewHost.style.display = reviewHost.style.display==="none"?"block":"none"; return; }
+        reviewHost.dataset.built = "1";
+        renderReview(reviewHost, attempt, questions);
+      });
+    }
+  }
+
+  function openHistoryDetail(attempt){
+    var ids = attempt.questionIds || [];
+    var questions = ids.map(function(id){ return QUESTIONS.find(function(q){ return q.id===id; }); }).filter(Boolean);
+    var missingCount = ids.length - questions.length;
+    switchToView("results");
+    renderResults({ attempt: attempt, questions: questions }, { fromHistory:true, missingCount: missingCount });
+    document.getElementById("view-results").scrollIntoView({behavior:"smooth", block:"start"});
   }
 
   function renderReview(host, attempt, questions){
@@ -3718,15 +3832,21 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
   function renderStudyList(){
     var host = document.getElementById("view-study");
     host.innerHTML = "";
+    var enfase = enfaseById[state.enfase] || ENFASES[0];
     host.appendChild(el(
       '<header class="pagehead">'+
-        '<span class="eyebrow"><span class="dot"></span>Livro de referência</span>'+
+        '<span class="eyebrow"><span class="dot"></span>Livro de referência · '+enfase.nome+'</span>'+
         '<h1>Área de Estudo</h1>'+
         '<p>Conteúdo condensado e otimizado para o contexto da prova — não é um curso completo, é o que basta para acertar a questão de múltipla escolha da Cesgranrio sobre cada tema.</p>'+
       '</header>'
     ));
+    var topics = topicsForEnfase(enfase.id);
+    if (!topics.length){
+      host.appendChild(el('<div class="card enfase-empty"><p>Ainda não há conteúdo de estudo para <b>'+enfase.nome+'</b>. Troque de área na aba "Provas" ou peça para construirmos o conteúdo desta área.</p></div>'));
+      return;
+    }
     var list = el('<div class="topiclist"></div>');
-    TOPICS.forEach(function(t){
+    topics.forEach(function(t){
       var count = QUESTIONS.filter(function(q){ return q.topicId===t.id; }).length;
       var row = el('<div class="card topicrow">'+
         '<span class="badge '+t.tier.toLowerCase()+'">'+TIER_LABEL[t.tier]+'</span>'+
@@ -3763,7 +3883,7 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
       '<header class="pagehead">'+
         '<span class="eyebrow"><span class="dot"></span>Progresso</span>'+
         '<h1>Histórico de provas</h1>'+
-        '<p>Fica salvo entre visitas — volte quando quiser para acompanhar sua evolução por tópico.</p>'+
+        '<p>Fica salvo entre visitas — clique em qualquer tentativa para reabrir a nota e a correção detalhada daquela prova.</p>'+
       '</header>'
     ));
     var loading = el('<div class="empty">Carregando…</div>');
@@ -3779,10 +3899,74 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
         var row = el('<div class="card hist-row">'+
           '<div class="hd"><div class="mode">'+a.mode+(a.topicFilter && topicById[a.topicFilter] ? " — "+topicById[a.topicFilter].name : "")+'</div><div class="when">'+when+' · '+fmtTime(a.elapsedSec||0)+'</div></div>'+
           '<div class="sc" style="color:'+pctColor(a.pct)+'">'+a.correct+'/'+a.total+' ('+a.pct+'%)</div>'+
+          '<span class="chev">→</span>'+
         '</div>');
+        row.addEventListener("click", function(){ openHistoryDetail(a); });
         host.appendChild(row);
       });
     });
+  }
+
+  /* ============================================================
+     CONCURSO (INFO)
+     ============================================================ */
+  function renderConcurso(){
+    var host = document.getElementById("view-concurso");
+    host.innerHTML = "";
+    var enfase = enfaseById[state.enfase] || ENFASES[0];
+
+    host.appendChild(el(
+      '<header class="pagehead">'+
+        '<span class="eyebrow"><span class="dot"></span>Edital nº 04 · Cesgranrio</span>'+
+        '<h1>TRANSPETRO/PSP/TERRA/NÍVEL SUPERIOR — 2026.4</h1>'+
+        '<p>Datas, formato de prova e vagas retiradas do edital oficial. Confira sempre o site da Fundação Cesgranrio para eventuais retificações — este edital já teve 3 (13/08, 19/08 e 28/08/2026).</p>'+
+      '</header>'
+    ));
+
+    var cronograma = el('<div class="card infodoc"></div>');
+    cronograma.innerHTML =
+      '<h2>Cronograma — principais datas</h2>'+
+      '<table><thead><tr><th>Evento</th><th>Data</th></tr></thead><tbody>'+
+        '<tr><td>Inscrições</td><td class="dt">12/08 a 14/09/2026</td></tr>'+
+        '<tr><td>Solicitação de isenção da taxa</td><td class="dt">12 a 19/08/2026</td></tr>'+
+        '<tr><td>Resultado preliminar da isenção</td><td class="dt">27/08/2026</td></tr>'+
+        '<tr><td>Cartão de Confirmação de Inscrição disponível</td><td class="dt">24/11/2026</td></tr>'+
+        '<tr class="hi"><td>Prova objetiva (todas as ênfases)</td><td class="dt">29/11/2026</td></tr>'+
+        '<tr><td>Divulgação do gabarito</td><td class="dt">30/11/2026</td></tr>'+
+        '<tr><td>Prazo de recurso contra questões/gabarito</td><td class="dt">30/11 e 01/12/2026</td></tr>'+
+        '<tr><td>Notas das provas objetivas (resultado preliminar)</td><td class="dt">14/01/2027</td></tr>'+
+        '<tr><td>Avaliação PcD / confirmação PN / verificação PI e PQ</td><td class="dt">13 a 15/02/2027</td></tr>'+
+        '<tr class="hi"><td>Previsão do resultado final</td><td class="dt">23/03/2027</td></tr>'+
+      '</tbody></table>'+
+      '<p style="margin-top:10px;">Datas sujeitas a alteração por conveniência da Transpetro/Cesgranrio — o próprio edital avisa que qualquer mudança será comunicada por novo Edital.</p>';
+    host.appendChild(cronograma);
+
+    var formato = el('<div class="card infodoc"></div>');
+    formato.innerHTML =
+      '<h2>Formato da prova</h2>'+
+      '<table><tbody>'+
+        '<tr><td>Estrutura</td><td>1 caderno único: 50 questões de Conhecimentos Específicos + 20 de Conhecimentos Gerais (10 Português + 10 Inglês)</td></tr>'+
+        '<tr><td>Alternativas</td><td>5 (A–E), uma única correta</td></tr>'+
+        '<tr><td>Penalidade por erro</td><td><b>Não há</b> — pode e deve chutar se não souber</td></tr>'+
+        '<tr><td>Duração</td><td>4h30 (5h30 só para a ênfase Advocacia, que também tem prova discursiva)</td></tr>'+
+        '<tr><td>Eliminação</td><td>aproveitamento &lt; 50% em Específicas OU em Gerais, ou zero em qualquer matéria de Gerais</td></tr>'+
+        '<tr><td>Taxa de inscrição</td><td>R$ 117,00 (boleto ou PIX)</td></tr>'+
+        '<tr><td>Validade do certame</td><td>18 meses, prorrogável uma vez por igual período</td></tr>'+
+        '<tr><td>Regime de contratação</td><td>CLT</td></tr>'+
+      '</tbody></table>';
+    host.appendChild(formato);
+
+    var vagas = el('<div class="card infodoc"></div>');
+    var rows = ENFASES.map(function(ef){
+      return '<tr'+(ef.id===enfase.id?' class="hi"':'')+'><td>'+ef.nome.replace("Análise de Sistemas — ","")+(ef.id===enfase.id?' ⭐':'')+'</td><td class="dt">'+ef.vagaImediata+'</td>'+
+        '<td class="dt">'+ef.cr.AC+'</td><td class="dt">'+ef.cr.PCD+'</td><td class="dt">'+ef.cr.PN+'</td><td class="dt">'+(ef.cr.PI||0)+'</td><td class="dt">'+(ef.cr.PQ||0)+'</td><td class="dt"><b>'+ef.crTotal+'</b></td></tr>';
+    }).join("");
+    vagas.innerHTML =
+      '<h2>Vagas de TI (Anexo I) — todas no polo Rio de Janeiro</h2>'+
+      '<table><thead><tr><th>Ênfase</th><th>Vaga imediata</th><th>AC</th><th>PCD</th><th>PN</th><th>PI</th><th>PQ</th><th>Total CR</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<p style="margin-top:10px;">CR = Vagas + Cadastro de Reserva. ⭐ marca a ênfase selecionada atualmente no simulador. Remuneração do cargo (todas as ênfases): salário básico R$ 8.647,34, com garantia de remuneração mínima de R$ 14.973,62.</p>'+
+      '<div class="note"><b>Nota:</b> os dados de vaga aqui são só uma referência de contexto — a decisão de qual ênfase prestar já foi feita nesta conversa com base no seu perfil, e não muda automaticamente se você só trocar a área no seletor de provas.</div>';
+    host.appendChild(vagas);
   }
 
   /* ---------- boot ---------- */
