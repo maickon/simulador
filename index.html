@@ -1,4 +1,4 @@
-<title>Simulado Processos de Negócios</title>
+<title>Simulador Cesgranrio TRANSPETRO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Literata:opsz,wght@18..36,400;18..36,500;18..36,600&family=Literata:ital,opsz,wght@1,18..36,500&display=swap">
 <style>
@@ -285,7 +285,7 @@
   <header class="topbar">
     <div class="topbar-row">
       <div class="brand">
-        <span class="b1">Simulado · Processos de Negócios</span>
+        <span class="b1">Simulador Cesgranrio · TI</span>
         <span class="b2">TRANSPETRO 2026 · estilo Cesgranrio</span>
       </div>
       <nav class="tabs" id="mainTabs">
@@ -319,7 +319,7 @@
 
   </div>
 
-  <footer class="appfoot">Banco de questões em construção por lotes — cobre as Prioridades 1, 2 e 3 do padrão Cesgranrio para Processos de Negócios. Ver a aba "Concurso" para dados do edital.</footer>
+  <footer class="appfoot">Banco de questões em construção área por área — Processos de Negócios já cobre as Prioridades 1, 2 e 3 do padrão Cesgranrio. Ver a aba "Concurso" para dados do edital.</footer>
 </div>
 
 <script>
@@ -330,11 +330,11 @@
    recomendada para o perfil do usuário (dev/engenharia de software).
    ============================================================ */
 window.ENFASES = [
-  { id:"processos-negocio", nome:"Análise de Sistemas — Processos de Negócios", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PCD)", cr:{AC:5,PCD:3,PN:3,PI:0,PQ:0}, crTotal:11, hasContent:true, recomendada:true },
-  { id:"infraestrutura", nome:"Análise de Sistemas — Infraestrutura", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:6,PCD:2,PN:3,PI:0,PQ:0}, crTotal:11, hasContent:false },
-  { id:"sap", nome:"Análise de Sistemas — SAP", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:5,PCD:2,PN:4,PI:0,PQ:0}, crTotal:11, hasContent:false },
-  { id:"seguranca-cibernetica", nome:"Análise de Sistemas — Segurança Cibernética e da Informação", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:5,PCD:2,PN:3,PI:0,PQ:1}, crTotal:11, hasContent:false },
-  { id:"ciencia-dados", nome:"Ciência de Dados", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:9,PCD:2,PN:5,PI:0,PQ:0}, crTotal:16, hasContent:false }
+  { id:"processos-negocio", nome:"Análise de Sistemas — Processos de Negócios", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PCD)", cr:{AC:5,PCD:3,PN:3,PI:0,PQ:0}, crTotal:11 },
+  { id:"infraestrutura", nome:"Análise de Sistemas — Infraestrutura", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:6,PCD:2,PN:3,PI:0,PQ:0}, crTotal:11 },
+  { id:"sap", nome:"Análise de Sistemas — SAP", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:5,PCD:2,PN:4,PI:0,PQ:0}, crTotal:11 },
+  { id:"seguranca-cibernetica", nome:"Análise de Sistemas — Segurança Cibernética e da Informação", polo:"Rio de Janeiro", vagaImediata:"1 vaga (AC)", cr:{AC:5,PCD:2,PN:3,PI:0,PQ:1}, crTotal:11 },
+  { id:"ciencia-dados", nome:"Ciência de Dados", polo:"Rio de Janeiro", vagaImediata:"1 vaga (PN)", cr:{AC:9,PCD:2,PN:5,PI:0,PQ:0}, crTotal:16 }
 ];
 
 /* ============================================================
@@ -342,7 +342,7 @@ window.ENFASES = [
    ============================================================ */
 window.TOPICS = [
 {
-  id:"sql-dados", tier:"P1",
+  id:"sql-dados", tier:"P1", enfase:["processos-negocio","infraestrutura"],
   name:"Modelagem de Dados & SQL",
   editalRef:"Anexo IV · itens 1.1–1.17",
   summary:"ER→relacional, chaves, normalização, SQL com JOIN/subconsultas, transações e ACID.",
@@ -391,7 +391,7 @@ HAVING COUNT(p.id) > 0;</pre>
   `
 },
 {
-  id:"eng-software", tier:"P1",
+  id:"eng-software", tier:"P1", enfase:["processos-negocio"],
   name:"Engenharia de Software & UML",
   editalRef:"Anexo IV · itens 5.1–5.5",
   summary:"Ciclo de vida, requisitos, UML (casos de uso/classes/estados), métricas.",
@@ -454,7 +454,7 @@ HAVING COUNT(p.id) > 0;</pre>
   `
 },
 {
-  id:"gestao-projetos", tier:"P1",
+  id:"gestao-projetos", tier:"P1", enfase:["processos-negocio","infraestrutura"],
   name:"Gestão de Projetos & Produtos",
   editalRef:"Anexo IV · itens 2.1–2.7 e 3",
   summary:"PMBOK (EAP, caminho crítico), Scrum (papéis, eventos, artefatos), Kanban.",
@@ -505,7 +505,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"seguranca", tier:"P1",
+  id:"seguranca", tier:"P1", enfase:["processos-negocio","infraestrutura"],
   name:"Segurança da Informação — Fundamentos",
   editalRef:"Anexo IV · itens 9.1–9.4, 9.6–9.10",
   summary:"Firewall/IDS/IPS, criptografia e PKI, malware, ISO 27002, VPN, IAM.",
@@ -583,7 +583,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
    TÓPICOS DE ESTUDO — Prioridade 2
    ============================================================ */
 {
-  id:"bi-olap", tier:"P2",
+  id:"bi-olap", tier:"P2", enfase:["processos-negocio"],
   name:"Business Intelligence, OLAP & Data Warehouse",
   editalRef:"Anexo IV · itens 7.1–7.11",
   summary:"Data Warehouse, modelagem dimensional (estrela/floco de neve), operações OLAP, ETL, dashboards.",
@@ -621,7 +621,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"lgpd", tier:"P2",
+  id:"lgpd", tier:"P2", enfase:["processos-negocio"],
   name:"LGPD — Lei Geral de Proteção de Dados",
   editalRef:"Anexo IV · item 4.6",
   summary:"Lei nº 13.709/2018: agentes de tratamento, bases legais, direitos do titular, ANPD.",
@@ -649,7 +649,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"logica-matematica", tier:"P2",
+  id:"logica-matematica", tier:"P2", enfase:["processos-negocio","infraestrutura"],
   name:"Lógica Matemática",
   editalRef:"Anexo IV · itens 8.1–8.9",
   summary:"Conectivos, tabelas-verdade, negação de proposições, quantificadores, validade de argumentos.",
@@ -679,7 +679,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"seguranca-avancada", tier:"P2",
+  id:"seguranca-avancada", tier:"P2", enfase:["processos-negocio","infraestrutura"],
   name:"Segurança da Informação — Extensões Modernas",
   editalRef:"Anexo IV · itens 9.11–9.21",
   summary:"NIST SP 800-61, threat intel/hunting, MITRE ATT&CK/CAPEC, STRIDE, pentest, ISO 31000/22301, nuvem.",
@@ -721,7 +721,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
    TÓPICOS DE ESTUDO — Prioridade 3 (sem precedente histórico)
    ============================================================ */
 {
-  id:"ux", tier:"P3",
+  id:"ux", tier:"P3", enfase:["processos-negocio"],
   name:"User Experience (UX)",
   editalRef:"Anexo IV · itens 6.1–6.11",
   summary:"Acessibilidade/usabilidade, user stories, design thinking, MVP, personas, prototipação.",
@@ -748,7 +748,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"agil-escala", tier:"P3",
+  id:"agil-escala", tier:"P3", enfase:["processos-negocio"],
   name:"Ágil em Escala & Gestão de Portfólio",
   editalRef:"Anexo IV · item 2.3",
   summary:"SAFe (níveis, PI Planning, ART), gestão de portfólio alinhada à estratégia de negócio.",
@@ -769,7 +769,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
   `
 },
 {
-  id:"mercado-ti", tier:"P3",
+  id:"mercado-ti", tier:"P3", enfase:["processos-negocio"],
   name:"Mercado e Economia da Inovação em TI",
   editalRef:"Anexo IV · itens 4.1–4.5",
   summary:"Segmentos do mercado de TI, inovação incremental×disruptiva, ciclo de adoção, P&D, gestão de serviços.",
@@ -793,6 +793,251 @@ Folga de C = 12 − 9 = 3 dias</pre>
     <p>Foco em planejar, entregar, operar e melhorar continuamente os serviços de TI para gerar valor ao negócio — um conceito mais amplo do que qualquer framework específico (como o ITIL, já tratado no bloco de Infraestrutura).</p>
 
     <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — fraseologia nova do edital 2026, diferente do COBIT/ITIL clássico que a banca chegou a cobrar até 2012. Definições conceituais amplas, sem cálculo.</div>
+  `
+},
+
+/* ============================================================
+   TÓPICOS EXCLUSIVOS — Infraestrutura
+   (sql-dados, gestao-projetos, seguranca, logica-matematica e
+   seguranca-avancada já são compartilhados com Processos de
+   Negócios, ver o campo enfase de cada um acima)
+   ============================================================ */
+{
+  id:"redes", tier:"P1", enfase:["infraestrutura"],
+  name:"Redes de Computadores",
+  editalRef:"Anexo IV (Infraestrutura) · item 1",
+  summary:"Modelo OSI×TCP/IP, protocolos de aplicação, TCP×UDP, endereçamento IP, NAT, IPv6.",
+  html: `
+    <h4>Modelo OSI × TCP/IP</h4>
+    <table>
+      <tr><th>OSI (7 camadas)</th><th>TCP/IP (4 camadas)</th><th>Exemplo</th></tr>
+      <tr><td>Aplicação / Apresentação / Sessão</td><td>Aplicação</td><td>HTTP, DNS, SMTP, FTP</td></tr>
+      <tr><td>Transporte</td><td>Transporte</td><td>TCP, UDP</td></tr>
+      <tr><td>Rede</td><td>Internet</td><td>IP, ICMP</td></tr>
+      <tr><td>Enlace / Física</td><td>Acesso à Rede</td><td>Ethernet, switch, hub</td></tr>
+    </table>
+    <p><b>Equipamento por camada</b>: hub opera na física (repete tudo, sem inteligência); switch opera no enlace (aprende endereço MAC, reduz domínio de colisão); roteador opera na rede (decide rota por endereço IP, separa domínios de broadcast).</p>
+
+    <h4>Protocolos de aplicação e suas portas — decore</h4>
+    <table>
+      <tr><th>Protocolo</th><th>Porta padrão</th><th>Função</th></tr>
+      <tr><td>DNS</td><td>53</td><td>traduz nome de domínio para IP</td></tr>
+      <tr><td>HTTP / HTTPS</td><td>80 / 443</td><td>transferência de páginas web (cifrado no HTTPS)</td></tr>
+      <tr><td>FTP</td><td>21 (controle) / 20 (dados)</td><td>transferência de arquivos</td></tr>
+      <tr><td>SSH</td><td>22</td><td>acesso remoto seguro (cifrado)</td></tr>
+      <tr><td>TELNET</td><td>23</td><td>acesso remoto — texto puro, sem cifragem</td></tr>
+      <tr><td>SMTP</td><td>25</td><td>envio de e-mail</td></tr>
+      <tr><td>DHCP</td><td>67 (servidor) / 68 (cliente)</td><td>atribuição automática de IP</td></tr>
+      <tr><td>SNMP</td><td>161</td><td>monitoramento/gerência de rede</td></tr>
+      <tr><td>LDAP</td><td>389</td><td>acesso a diretório (ex: Active Directory)</td></tr>
+    </table>
+
+    <h4>TCP × UDP</h4>
+    <p><b>TCP</b>: orientado a conexão (handshake de 3 vias), confiável (confirma entrega, reordena pacotes) — mais lento. <b>UDP</b>: sem conexão, sem garantia de entrega — mais rápido, usado onde velocidade importa mais que confiabilidade (streaming, DNS, VoIP).</p>
+
+    <h4>DHCP — o processo DORA</h4>
+    <p><b>D</b>iscover (cliente pergunta) → <b>O</b>ffer (servidor oferece um IP) → <b>R</b>equest (cliente confirma que quer aquele IP) → <b>A</b>ck (servidor confirma a concessão).</p>
+
+    <h4>NAT (Network Address Translation)</h4>
+    <p>Traduz endereços IP privados (rede interna) para um endereço IP público (internet) e vice-versa — permite que vários dispositivos de uma rede interna compartilhem um único IP público de saída.</p>
+
+    <h4>IPv6</h4>
+    <p>Endereço de 128 bits (contra 32 bits do IPv4), representado em 8 grupos hexadecimais separados por dois-pontos. Não depende de NAT para resolver escassez de endereços (o espaço de endereçamento é muito maior). Suporta configuração automática sem servidor DHCP (autoconfiguração stateless).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> historicamente um dos temas mais recorrentes em todas as ênfases (30 questões em 6 das 7 provas do acervo) — decore porta/função de cada protocolo e a diferença de camada de cada equipamento, é onde a maioria das pegadinhas mora.</div>
+  `
+},
+{
+  id:"admin-linux", tier:"P1", enfase:["infraestrutura"],
+  name:"Administração de Sistemas — Unix/Linux",
+  editalRef:"Anexo IV (Infraestrutura) · item 2",
+  summary:"Serviços de rede em Linux (DHCP/DNS/NIS/NFS), Apache, permissões, shell script, integração com Windows.",
+  html: `
+    <h4>Permissões de arquivo — a base de tudo</h4>
+    <p>Cada arquivo tem permissões para <b>dono (u)</b>, <b>grupo (g)</b> e <b>outros (o)</b>, cada um com <b>r</b>ead(4), <b>w</b>rite(2), e<b>x</b>ecute(1). <code>chmod 750 arquivo</code> = dono rwx(7), grupo r-x(5), outros ---(0). <code>chmod 644</code> é o padrão comum para arquivos (dono lê/escreve, os demais só leem).</p>
+
+    <h4>Serviços de rede tratados no item</h4>
+    <ul>
+      <li><b>DHCP/DNS</b>: mesmos conceitos gerais de redes, mas configurados via daemons Linux (ex: <code>dhcpd</code>, <code>bind/named</code>).</li>
+      <li><b>NIS</b> (Network Information Service): centraliza autenticação/configuração entre máquinas Unix de uma rede — precursor mais simples do que o LDAP.</li>
+      <li><b>NFS</b> (Network File System): compartilha sistemas de arquivo entre máquinas Unix pela rede.</li>
+      <li><b>CIFS/Samba</b>: implementa o protocolo de compartilhamento de arquivos do Windows em ambiente Linux — é a peça central de <b>integração com ambiente Windows</b>.</li>
+    </ul>
+
+    <h4>Apache — instalação e configuração básica</h4>
+    <p>Arquivo principal de configuração (<code>httpd.conf</code> ou <code>apache2.conf</code>), diretivas como <code>DocumentRoot</code> (raiz dos arquivos servidos), <code>Listen</code> (porta), <code>VirtualHost</code> (hospedar múltiplos sites num único servidor).</p>
+
+    <h4>Shell script — o básico que a banca cobra</h4>
+    <pre class="codeblock">#!/bin/bash
+for arquivo in /var/log/*.log; do
+  if [ -s "$arquivo" ]; then
+    echo "Arquivo não vazio: $arquivo"
+  fi
+done</pre>
+    <p>Estruturas mais cobradas: <code>if/then/fi</code>, <code>for/do/done</code>, variáveis (<code>$VAR</code>), teste de arquivo (<code>-s</code> não vazio, <code>-f</code> existe e é arquivo, <code>-d</code> é diretório), redirecionamento (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>|</code>).</p>
+
+    <h4>Agendamento — cron</h4>
+    <p>Arquivo <code>crontab</code>, cinco campos (minuto, hora, dia do mês, mês, dia da semana) antes do comando — ex: <code>0 3 * * * /script/backup.sh</code> roda todo dia às 3h.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> "Administração Linux/Windows" é classificada como tema de peso alto historicamente em Infraestrutura — espere questões objetivas sobre sintaxe de comando/permissão/diretiva, não só definição teórica.</div>
+  `
+},
+{
+  id:"admin-windows", tier:"P1", enfase:["infraestrutura"],
+  name:"Administração de Sistemas — Windows Server",
+  editalRef:"Anexo IV (Infraestrutura) · item 3",
+  summary:"Active Directory, IIS, Terminal Services, DNS/DHCP no Windows, PowerShell, integração com Unix.",
+  html: `
+    <h4>Active Directory (AD)</h4>
+    <p>Serviço de diretório do Windows Server, baseado em LDAP. Estrutura hierárquica: <b>Floresta</b> (o maior contêiner) → <b>Domínio</b> → <b>Unidade Organizacional (OU)</b> (agrupa usuários/computadores para aplicar políticas). <b>GPO</b> (Group Policy Object): conjunto de configurações aplicadas a usuários/computadores de uma OU — é como o AD centraliza políticas de segurança e configuração na rede.</p>
+
+    <h4>IIS (Internet Information Services)</h4>
+    <p>Servidor web do Windows Server — equivalente funcional ao Apache no mundo Linux. Hospeda sites/aplicações ASP.NET, com conceitos de <b>site</b>, <b>pool de aplicativos</b> (isola processos de diferentes aplicações) e <b>bindings</b> (porta/protocolo/host associado a um site).</p>
+
+    <h4>Terminal Services / RDP</h4>
+    <p>Permite acesso remoto à área de trabalho de um servidor Windows (protocolo RDP, porta 3389 por padrão) — usado tanto para administração remota quanto para publicar aplicações remotas a múltiplos usuários simultâneos.</p>
+
+    <h4>DNS/DHCP no Windows Server</h4>
+    <p>Mesmos conceitos gerais de redes, mas com papéis (roles) instaláveis no Windows Server e integração nativa com o Active Directory (ex: zonas DNS integradas ao AD, replicadas automaticamente entre controladores de domínio).</p>
+
+    <h4>PowerShell — o básico</h4>
+    <pre class="codeblock">Get-Service | Where-Object {$_.Status -eq "Stopped"}
+Get-ADUser -Filter * | Select-Object Name, Enabled</pre>
+    <p>Sintaxe baseada em cmdlets no padrão <code>Verbo-Substantivo</code> (<code>Get-Service</code>, <code>Set-ADUser</code>, <code>New-Item</code>) — diferente da sintaxe de comandos únicos do Bash/CMD tradicional.</p>
+
+    <h4>Integração com ambiente Unix</h4>
+    <p>Feita via protocolos compartilhados (Samba do lado Linux/CIFS do lado Windows para arquivos), autenticação federada (Kerberos, usado tanto pelo AD quanto por ambientes Unix/Linux modernos), ou serviços de identidade unificados.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> junto com Linux, esse é historicamente o tema de maior peso em Infraestrutura — Active Directory (estrutura de OU/GPO) e diferenças AD×IIS×Terminal Services são os pontos mais cobrados.</div>
+  `
+},
+{
+  id:"programacao-basica", tier:"P1", enfase:["infraestrutura"],
+  name:"Programação & Estruturas de Dados",
+  editalRef:"Anexo IV (Infraestrutura) · item 12",
+  summary:"Estruturas de dados, POO em Java, HTML/XML, noções de engenharia de software.",
+  html: `
+    <h4>Estruturas de dados — comportamento, não só nome</h4>
+    <table>
+      <tr><th>Estrutura</th><th>Regra de acesso</th></tr>
+      <tr><td>Pilha (stack)</td><td>LIFO — Last In, First Out (o último que entrou é o primeiro que sai)</td></tr>
+      <tr><td>Fila (queue)</td><td>FIFO — First In, First Out (o primeiro que entrou é o primeiro que sai)</td></tr>
+      <tr><td>Lista encadeada</td><td>acesso sequencial, inserção/remoção eficiente em qualquer ponto</td></tr>
+      <tr><td>Árvore binária de busca</td><td>filho esquerdo &lt; nó &lt; filho direito; busca em O(log n) se balanceada</td></tr>
+    </table>
+
+    <h4>POO em Java — o vocabulário cobrado</h4>
+    <ul>
+      <li><b>Herança</b>: uma classe (subclasse) reaproveita atributos/métodos de outra (superclasse) via <code>extends</code>.</li>
+      <li><b>Polimorfismo</b>: um mesmo método se comporta de forma diferente dependendo da classe do objeto (sobrescrita/override).</li>
+      <li><b>Interface</b>: contrato de métodos que uma classe se compromete a implementar (<code>implements</code>), sem herdar implementação.</li>
+      <li><b>Encapsulamento</b>: esconder o estado interno do objeto atrás de métodos públicos (getters/setters), controlando o acesso.</li>
+    </ul>
+
+    <h4>HTML e XML — a diferença que a banca gosta de cobrar</h4>
+    <p><b>HTML</b>: linguagem de marcação com tags PRÉ-DEFINIDAS, focada em apresentação de conteúdo num navegador. <b>XML</b>: linguagem de marcação onde as tags são definidas pelo próprio autor do documento, focada em estruturar e transportar dados (não define como exibir).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> "Programação Java/Python/Shell" é um dos temas mais transversais do histórico (presente em 6 das 7 provas) — espere trechos de código Java pequenos para rastrear execução, não apenas definição de conceito de POO.</div>
+  `
+},
+{
+  id:"storage-virtualizacao", tier:"P2", enfase:["infraestrutura"],
+  name:"Storage (NAS/SAN) & Virtualização",
+  editalRef:"Anexo IV (Infraestrutura) · item 6",
+  summary:"NAS×SAN, níveis de RAID, tipos de virtualização, hypervisor tipo 1×2.",
+  html: `
+    <h4>NAS × SAN</h4>
+    <p><b>NAS</b> (Network Attached Storage): dispositivo de armazenamento acessado pela rede no nível de ARQUIVO (protocolos NFS/CIFS) — aparece para o sistema como uma pasta compartilhada. <b>SAN</b> (Storage Area Network): rede dedicada de armazenamento acessada no nível de BLOCO — aparece para o servidor como se fosse um disco local próprio, geralmente mais rápida e usada para cargas de trabalho mais exigentes.</p>
+
+    <h4>RAID — níveis mais cobrados</h4>
+    <table>
+      <tr><th>Nível</th><th>Técnica</th><th>Tolerância a falha</th></tr>
+      <tr><td>RAID 0</td><td>Striping (distribui dados entre discos)</td><td>nenhuma — mais rápido, mais arriscado</td></tr>
+      <tr><td>RAID 1</td><td>Mirroring (espelha os dados)</td><td>tolera falha de 1 disco (mantém cópia idêntica)</td></tr>
+      <tr><td>RAID 5</td><td>Striping + paridade distribuída</td><td>tolera falha de 1 disco</td></tr>
+      <tr><td>RAID 6</td><td>Striping + paridade dupla</td><td>tolera falha de 2 discos</td></tr>
+      <tr><td>RAID 10</td><td>Combinação de mirror (1) + stripe (0)</td><td>tolera falha, com bom desempenho</td></tr>
+    </table>
+
+    <h4>Virtualização — tipos</h4>
+    <p><b>De computação</b>: várias VMs compartilham um hardware físico. <b>De rede</b>: recursos de rede (switches, firewalls) recriados em software, desacoplados do hardware físico. <b>De armazenamento</b>: agrega múltiplos dispositivos físicos de storage num único pool lógico gerenciado de forma centralizada.</p>
+
+    <h4>Hypervisor — tipo 1 × tipo 2</h4>
+    <p><b>Tipo 1 (bare-metal)</b>: roda diretamente sobre o hardware, sem sistema operacional hospedeiro por baixo (ex: uso comum em servidores de produção) — mais eficiente. <b>Tipo 2 (hosted)</b>: roda como um aplicativo sobre um sistema operacional já instalado — mais comum em uso de desktop/testes.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente direto nas provas antigas, mas é extensão natural do bloco de administração de sistemas (RAID apareceu na prova de 2018). Espere definição conceitual e comparação NAS×SAN, hypervisor tipo 1×2.</div>
+  `
+},
+{
+  id:"gestao-servicos-ti", tier:"P2", enfase:["infraestrutura"],
+  name:"Gerenciamento de Serviços de TI (ITIL/COBIT)",
+  editalRef:"Anexo IV (Infraestrutura) · item 9",
+  summary:"ITIL v4 (ciclo de vida/práticas), COBIT 4.1 (domínio Entrega de Serviço).",
+  html: `
+    <h4>ITIL v4 — mudança de estrutura em relação a versões antigas</h4>
+    <p>O ITIL v4 organiza o gerenciamento de serviços em torno do <b>Sistema de Valor de Serviço (SVS)</b>, que inclui a <b>Cadeia de Valor de Serviço</b> (6 atividades: planejar, engajar, projetar e transição, obter/construir, entregar e suportar, melhorar) e um conjunto de <b>práticas</b> (o ITIL v3 usava "processos" dentro de 5 fases de ciclo de vida — Estratégia, Desenho, Transição, Operação, Melhoria Contínua; o v4 substitui essa estrutura rígida de fases por práticas mais flexíveis).</p>
+    <p>Práticas mais citadas: Gerenciamento de Incidente (restaurar o serviço o mais rápido possível), Gerenciamento de Problema (encontrar a causa raiz), Gerenciamento de Mudança, Central de Serviço (Service Desk, ponto único de contato).</p>
+
+    <h4>Incidente × Problema — não confunda</h4>
+    <p><b>Incidente</b>: interrupção não planejada ou redução de qualidade de um serviço — o foco é restaurar rápido. <b>Problema</b>: causa raiz de um ou mais incidentes — o foco é investigar e eliminar a causa, prevenindo recorrência.</p>
+
+    <h4>COBIT 4.1 — domínio de Entrega de Serviço (DS)</h4>
+    <p>O COBIT 4.1 organiza a governança de TI em 4 domínios: Planejamento e Organização (PO), Aquisição e Implementação (AI), <b>Entrega e Suporte (DS — Delivery and Support)</b> e Monitoramento e Avaliação (ME). O edital foca especificamente no domínio de <b>Entrega de Serviço</b>, que trata da execução operacional dos serviços de TI já implementados (gerenciamento de nível de serviço, capacidade, disponibilidade, continuidade, segurança, entre outros processos operacionais).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> ITIL/COBIT tiveram presença real nas provas antigas até 2012, mas desapareceram em 2018 — o edital de 2026 os traz de volta explicitamente. Espere definição de termo e diferenciação incidente×problema, mais do que memorização de processo por processo.</div>
+  `
+},
+{
+  id:"alto-desempenho-devops", tier:"P3", enfase:["infraestrutura"],
+  name:"Arquitetura de Alto Desempenho, Contêineres & DevOps",
+  editalRef:"Anexo IV (Infraestrutura) · item 7",
+  summary:"Cluster×grid, balanceamento de carga, DevOps, containers×VM, microsserviços, infraestrutura como código.",
+  html: `
+    <h4>Cluster × Grid</h4>
+    <p><b>Cluster</b>: conjunto de máquinas fisicamente próximas (mesma rede local), fortemente acopladas, trabalhando como se fossem um único sistema. <b>Grid</b>: recursos computacionais geograficamente distribuídos e heterogêneos, coordenados para resolver um problema comum — mais fracamente acoplado que um cluster.</p>
+
+    <h4>Balanceamento de carga</h4>
+    <p>Distribui requisições entre múltiplos servidores para evitar sobrecarga de um único ponto, melhorando disponibilidade e desempenho — algoritmos comuns incluem round-robin, menor número de conexões ativas, e balanceamento por hash.</p>
+
+    <h4>Containers × Máquinas Virtuais</h4>
+    <p>Uma <b>VM</b> virtualiza o hardware inteiro, incluindo um sistema operacional completo próprio por VM. Um <b>container</b> compartilha o kernel do sistema operacional hospedeiro, isolando apenas processos/bibliotecas da aplicação — por isso é mais leve e rápido para iniciar do que uma VM completa.</p>
+
+    <h4>Microsserviços</h4>
+    <p>Arquitetura que decompõe uma aplicação em serviços pequenos, independentes, com responsabilidade única, que se comunicam por rede (geralmente APIs) — em oposição a uma aplicação monolítica única.</p>
+
+    <h4>DevOps</h4>
+    <p>Conjunto de práticas culturais e técnicas que busca integrar as equipes de Desenvolvimento e Operações, com entregas mais frequentes, automação de build/teste/deploy (CI/CD) e colaboração contínua entre quem escreve o código e quem o opera em produção.</p>
+
+    <h4>Infraestrutura como Código (IaC)</h4>
+    <p>Gerenciar e provisionar infraestrutura (servidores, redes, storage) através de arquivos de definição versionáveis, em vez de configuração manual — permite reproduzir ambientes de forma automatizada e consistente.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> nenhum precedente nas provas antigas — containers, DevOps e infraestrutura como código nunca apareceram nas 7 provas do acervo, apesar de estarem no edital 2026. Trate como leitura de nivelamento conceitual, sem aprofundar demais.</div>
+  `
+},
+{
+  id:"cloud-computing", tier:"P3", enfase:["infraestrutura"],
+  name:"Computação em Nuvem",
+  editalRef:"Anexo IV (Infraestrutura) · item 8",
+  summary:"Benefícios, elasticidade/escalabilidade, regiões/zonas de disponibilidade, modelos de cobrança.",
+  html: `
+    <h4>Benefícios centrais</h4>
+    <p><b>Escalabilidade</b>: capacidade de aumentar recursos conforme a demanda cresce. <b>Elasticidade</b>: além de escalar, a capacidade de ajustar automaticamente para CIMA e para BAIXO conforme a demanda varia (não é a mesma coisa que escalabilidade pura). <b>Alta disponibilidade</b>: manter o serviço no ar mesmo com falha de componentes individuais. <b>Recuperação de desastres</b>: capacidade de restaurar operação após uma falha catastrófica.</p>
+
+    <h4>Modelos de serviço</h4>
+    <table>
+      <tr><th>Modelo</th><th>O provedor cuida de</th><th>O cliente cuida de</th></tr>
+      <tr><td>IaaS</td><td>hardware físico, virtualização</td><td>sistema operacional, runtime, aplicação, dados</td></tr>
+      <tr><td>PaaS</td><td>hardware + sistema operacional + runtime</td><td>aplicação e dados</td></tr>
+      <tr><td>SaaS</td><td>tudo, inclusive a aplicação</td><td>apenas seus dados e configuração de uso</td></tr>
+    </table>
+
+    <h4>Distribuição geográfica</h4>
+    <p><b>Região</b>: área geográfica ampla onde o provedor mantém data centers (ex: "Sudeste do Brasil"). <b>Zona de disponibilidade</b>: um ou mais data centers isolados fisicamente dentro de uma mesma região, usados para tolerância a falha (se uma zona cai, outra na mesma região continua no ar).</p>
+
+    <h4>Gestão de custos na nuvem</h4>
+    <p>Modelo de cobrança tipicamente sob demanda (pay-as-you-go, paga pelo que usa), com opções de desconto por reserva de capacidade a longo prazo. Gerenciamento de subscrições/contas organiza o faturamento por projeto/departamento.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — nuvem pública nunca apareceu no acervo histórico. Cuidado especial com a diferença entre escalabilidade e elasticidade (troca comum de definição) e com o quadro de responsabilidade IaaS×PaaS×SaaS.</div>
   `
 }
 ];
@@ -3333,6 +3578,1223 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
       E:"Gerenciamento de serviços de TI é um conceito muito mais amplo do que apenas manutenção física de hardware."
     }
   }
+},
+
+/* ============================================================
+   LOTE 5 — questões exclusivas de Infraestrutura (53)
+   Redes(8) · Admin Linux(7) · Admin Windows(7) · Programação(7)
+   Storage/Virt(6) · Gestão Serviços TI(6) · Alto Desempenho/DevOps(6)
+   Cloud(6). Junto com os 5 tópicos compartilhados (57 questões),
+   Infraestrutura passa a ter banco próprio completo.
+   ============================================================ */
+
+/* ---------------- REDES DE COMPUTADORES — 8 ---------------- */
+{
+  id:"net-01", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Equipamentos por camada OSI — tema recorrente desde 2006",
+  stem:"Sobre os equipamentos de rede e as camadas do modelo OSI em que operam, é correto afirmar que:",
+  options:{
+    A:"um hub opera na camada de rede, decidindo rotas com base no endereço IP.",
+    B:"um switch opera na camada de enlace, aprendendo endereços MAC para encaminhar quadros apenas para a porta correta, reduzindo o domínio de colisão.",
+    C:"um roteador opera na camada física, apenas repetindo o sinal elétrico recebido.",
+    D:"hub, switch e roteador operam todos na mesma camada, diferindo apenas na velocidade de transmissão.",
+    E:"um switch nunca é capaz de aprender endereços MAC, apenas encaminhar tudo para todas as portas como um hub."
+  },
+  correct:"B",
+  explanation:{
+    core:"Cada equipamento de rede clássico está associado a uma camada OSI: hub (física), switch (enlace), roteador (rede).",
+    detail:"O switch aprende, com o tempo, qual endereço MAC está em qual porta, e passa a encaminhar o quadro só para a porta certa — isso reduz o domínio de colisão em comparação com um hub, que repete para todas as portas indiscriminadamente.",
+    wrong:{
+      A:"Essa é a descrição de um roteador, não de um hub — hub opera na camada física, sem decidir rota nenhuma.",
+      C:"Essa é a descrição de um hub — o roteador opera na camada de rede, decidindo rotas por IP.",
+      D:"Cada equipamento está associado a uma camada distinta — não operam todos na mesma camada.",
+      E:"É justamente a capacidade de aprender endereços MAC que diferencia um switch de um simples hub."
+    }
+  }
+},
+{
+  id:"net-02", topicId:"redes", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Cálculo de sub-rede/máscara — presente desde a prova de 2006",
+  stem:"Um endereço de rede é definido como 192.168.10.0/26. Quantos endereços de host utilizáveis essa sub-rede permite, descontando o endereço de rede e o endereço de broadcast?",
+  options:{ A:"30", B:"62", C:"126", D:"254", E:"14" },
+  correct:"B",
+  explanation:{
+    core:"Uma máscara /26 reserva 26 bits para a rede, sobrando 32-26 = 6 bits para hosts. Isso dá 2⁶ = 64 endereços totais na sub-rede.",
+    detail:"Descontando o endereço de rede (primeiro) e o de broadcast (último), restam 64 − 2 = 62 endereços utilizáveis para hosts.",
+    wrong:{
+      A:"30 corresponde a uma máscara /27 (5 bits de host: 2⁵−2=30), não à /26 do enunciado.",
+      C:"126 corresponde a uma máscara /25 (7 bits de host: 2⁷−2=126), não à /26 do enunciado.",
+      D:"254 corresponde a uma máscara /24 (8 bits de host: 2⁸−2=254), não à /26 do enunciado.",
+      E:"14 corresponde a uma máscara /28 (4 bits de host: 2⁴−2=14), não à /26 do enunciado."
+    }
+  }
+},
+{
+  id:"net-03", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"TCP×UDP — item 1.1 do Anexo IV (Infraestrutura)",
+  stem:"Sobre os protocolos de transporte TCP e UDP, é correto afirmar que:",
+  options:{
+    A:"o UDP estabelece uma conexão orientada com handshake de três vias antes de transmitir dados, assim como o TCP.",
+    B:"o TCP é orientado a conexão e garante entrega confiável e ordenada dos dados, com maior overhead; o UDP é sem conexão, mais rápido, mas sem garantia de entrega.",
+    C:"o UDP é sempre mais confiável que o TCP, pois retransmite pacotes perdidos automaticamente.",
+    D:"aplicações de streaming de vídeo em tempo real utilizam preferencialmente TCP, devido à sua confiabilidade.",
+    E:"TCP e UDP são termos sinônimos para o mesmo protocolo de transporte."
+  },
+  correct:"B",
+  explanation:{
+    core:"TCP prioriza confiabilidade (handshake, confirmação de entrega, reordenação) ao custo de mais overhead; UDP prioriza velocidade, dispensando essas garantias.",
+    detail:"É por isso que aplicações sensíveis a atraso (streaming, VoIP, jogos em tempo real) costumam preferir UDP — um pacote perdido é menos prejudicial do que o atraso causado por retransmissão.",
+    wrong:{
+      A:"É o UDP que não estabelece conexão prévia — o handshake de três vias é característica do TCP.",
+      C:"UDP não retransmite pacotes perdidos automaticamente — é justamente essa ausência de garantia que o torna mais rápido, mas menos confiável.",
+      D:"Streaming em tempo real tipicamente prefere UDP (ou variantes construídas sobre ele), não TCP, justamente para evitar o atraso da retransmissão.",
+      E:"São protocolos de transporte com características e propósitos diferentes, não sinônimos."
+    }
+  }
+},
+{
+  id:"net-04", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"DNS — item 1.1 do Anexo IV (Infraestrutura)",
+  stem:"O protocolo DNS (Domain Name System), que opera tipicamente na porta 53, tem como função principal:",
+  options:{
+    A:"atribuir automaticamente endereços IP a dispositivos que entram na rede.",
+    B:"traduzir nomes de domínio legíveis por humanos (ex: www.exemplo.com.br) para endereços IP correspondentes, e vice-versa.",
+    C:"cifrar o tráfego de e-mails entre servidores.",
+    D:"monitorar e gerenciar remotamente dispositivos de rede.",
+    E:"transferir arquivos entre um cliente e um servidor."
+  },
+  correct:"B",
+  explanation:{
+    core:"DNS é o serviço de resolução de nomes: converte nomes de domínio em endereços IP (resolução direta) e endereços IP em nomes (resolução reversa).",
+    detail:"Sem DNS, seria preciso decorar/digitar endereços IP numéricos para acessar qualquer site ou serviço na internet.",
+    wrong:{
+      A:"Essa é a função do DHCP, não do DNS.",
+      C:"Cifragem de e-mail não é função do DNS — SMTP trata do envio, e cifragem depende de mecanismos adicionais (TLS, PGP).",
+      D:"Essa é a função do SNMP, não do DNS.",
+      E:"Essa é a função do FTP, não do DNS."
+    }
+  }
+},
+{
+  id:"net-05", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"DHCP (processo DORA) — item 1.1 do Anexo IV (Infraestrutura)",
+  stem:"O processo pelo qual um cliente obtém um endereço IP automaticamente de um servidor DHCP segue a sequência de mensagens:",
+  options:{
+    A:"Request → Discover → Ack → Offer",
+    B:"Offer → Discover → Request → Ack",
+    C:"Discover → Offer → Request → Ack",
+    D:"Ack → Offer → Discover → Request",
+    E:"Discover → Request → Offer → Ack"
+  },
+  correct:"C",
+  explanation:{
+    core:"O processo DHCP é conhecido pela sigla DORA: Discover (cliente pergunta se há servidor DHCP disponível), Offer (servidor oferece um IP), Request (cliente confirma que aceita aquele IP ofertado), Ack (servidor confirma a concessão definitiva).",
+    detail:"Cada uma das quatro mensagens tem um papel específico e ordenado — inverter a ordem quebra a lógica do protocolo (o cliente não pode confirmar uma oferta antes de ela existir, por exemplo).",
+    wrong:{
+      A:"Inverte a ordem: o cliente não pode fazer um Request antes de existir uma Offer para confirmar.",
+      B:"O processo começa com o cliente perguntando (Discover), não com uma Offer que ainda não foi solicitada.",
+      D:"Inverte completamente a ordem lógica do processo DORA.",
+      E:"Troca a posição de Request e Offer — o cliente só confirma (Request) depois de receber uma oferta (Offer), nunca antes."
+    }
+  }
+},
+{
+  id:"net-06", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"NAT — item 1.1 do Anexo IV (Infraestrutura)",
+  stem:"A principal função do NAT (Network Address Translation) em uma rede é:",
+  options:{
+    A:"cifrar o tráfego entre dois hosts para garantir confidencialidade.",
+    B:"traduzir endereços IP privados de uma rede interna para um endereço IP público (e vice-versa), permitindo que múltiplos dispositivos compartilhem uma conexão com a internet.",
+    C:"atribuir automaticamente endereços IP aos dispositivos de uma rede.",
+    D:"resolver nomes de domínio para endereços IP.",
+    E:"balancear a carga de requisições entre múltiplos servidores."
+  },
+  correct:"B",
+  explanation:{
+    core:"NAT traduz endereços IP privados (não roteáveis na internet) para um endereço público compartilhado, permitindo que vários dispositivos de uma rede interna saiam para a internet através de um único IP público.",
+    detail:"É uma das técnicas que historicamente adiou a escassez de endereços IPv4, permitindo que redes inteiras compartilhem poucos endereços públicos.",
+    wrong:{
+      A:"NAT traduz endereços, não cifra tráfego — cifragem é papel de protocolos como IPsec ou TLS.",
+      C:"Essa é a função do DHCP, não do NAT.",
+      D:"Essa é a função do DNS, não do NAT.",
+      E:"Essa é a função de um balanceador de carga, não do NAT."
+    }
+  }
+},
+{
+  id:"net-07", topicId:"redes", tier:"P1", format:"porque",
+  source:"inedita", insp:"IPv6 — item 1.1 do Anexo IV (Infraestrutura), 'noções básicas de IPv6'",
+  stem:"Afirmação 1: o IPv6 elimina a necessidade prática de NAT para lidar com a escassez de endereços IP.\n\nPORQUE\n\nAfirmação 2: o espaço de endereçamento do IPv6 (128 bits) é dramaticamente maior do que o do IPv4 (32 bits), permitindo endereços públicos suficientes para praticamente qualquer quantidade de dispositivos.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"A",
+  explanation:{
+    core:"Uma das motivações centrais do IPv6 foi resolver a escassez de endereços IPv4, o que reduz drasticamente a necessidade prática de NAT.",
+    detail:"A segunda afirmação explica exatamente por quê: 128 bits de endereçamento (contra 32 bits do IPv4) resultam em um espaço de endereços tão grande que cada dispositivo pode, em teoria, ter seu próprio endereço público — eliminando o motivo original que popularizou o NAT.",
+    wrong:{
+      B:"A relação causal é direta: é justamente o tamanho do espaço de endereçamento do IPv6 que elimina a necessidade prática de NAT.",
+      C:"A segunda afirmação está correta — descreve com precisão a diferença de tamanho de endereçamento entre IPv4 e IPv6.",
+      D:"A primeira afirmação também é verdadeira — é um dos benefícios amplamente reconhecidos do IPv6.",
+      E:"Ambas as afirmações estão corretas."
+    }
+  }
+},
+{
+  id:"net-08", topicId:"redes", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"SSH×Telnet — item 1.1 do Anexo IV (Infraestrutura)",
+  stem:"Sobre os protocolos SSH e Telnet, ambos utilizados para acesso remoto a um servidor, é correto afirmar que:",
+  options:{
+    A:"Telnet cifra todo o tráfego, incluindo credenciais de login, enquanto o SSH transmite em texto puro.",
+    B:"SSH transmite dados, incluindo credenciais, de forma cifrada; Telnet transmite tudo em texto puro, sendo considerado inseguro para uso em redes não confiáveis.",
+    C:"Telnet e SSH operam na mesma porta padrão, sendo tecnicamente idênticos.",
+    D:"SSH é utilizado exclusivamente para transferência de arquivos, nunca para acesso a terminal remoto.",
+    E:"Telnet é a evolução moderna e mais segura do protocolo SSH."
+  },
+  correct:"B",
+  explanation:{
+    core:"SSH (porta 22) cifra toda a comunicação, incluindo usuário/senha; Telnet (porta 23) transmite tudo em texto puro, o que expõe credenciais a qualquer um capturando o tráfego da rede.",
+    detail:"É por isso que Telnet caiu em desuso para administração remota em redes não confiáveis, sendo substituído amplamente pelo SSH.",
+    wrong:{
+      A:"Inverte a característica real: é o SSH que cifra, e o Telnet que transmite em texto puro.",
+      C:"Operam em portas diferentes (SSH:22, Telnet:23) e têm características de segurança bem diferentes.",
+      D:"SSH é usado primariamente para acesso a terminal remoto (e também pode transportar outros protocolos, como SCP/SFTP para arquivos) — não é exclusivo de transferência de arquivos.",
+      E:"É o oposto cronológico e de segurança: o SSH é considerado a alternativa mais moderna e segura em relação ao Telnet."
+    }
+  }
+},
+
+/* ---------------- ADMINISTRAÇÃO UNIX/LINUX — 7 ---------------- */
+{
+  id:"lnx-01", topicId:"admin-linux", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Permissões de arquivo Unix — tema clássico de administração Linux",
+  stem:"O comando 'chmod 640 arquivo.txt' concede as seguintes permissões:",
+  options:{
+    A:"Dono: leitura e escrita; Grupo: apenas leitura; Outros: nenhuma permissão.",
+    B:"Dono: leitura, escrita e execução; Grupo: leitura e execução; Outros: nenhuma permissão.",
+    C:"Dono: apenas leitura; Grupo: leitura e escrita; Outros: leitura.",
+    D:"Dono: nenhuma permissão; Grupo: leitura e escrita; Outros: leitura.",
+    E:"Dono, grupo e outros recebem exatamente a mesma permissão de leitura e escrita."
+  },
+  correct:"A",
+  explanation:{
+    core:"Cada dígito do chmod numérico representa a soma de read(4)+write(2)+execute(1) para dono, grupo e outros, nessa ordem.",
+    detail:"640 se decompõe em: 6 = 4+2 = leitura+escrita (dono); 4 = leitura apenas (grupo); 0 = nenhuma permissão (outros).",
+    wrong:{
+      B:"750 (não 640) corresponderia a essa descrição — o enunciado pede especificamente 640.",
+      C:"Não corresponde à decomposição numérica de 640 (o dono teria só 'leitura' se o primeiro dígito fosse 4, não 6).",
+      D:"O dono não fica sem permissão nenhuma em 640 — o primeiro dígito (6) dá leitura e escrita a ele.",
+      E:"Os três dígitos de 640 são diferentes entre si (6, 4, 0) — não são permissões idênticas."
+    }
+  }
+},
+{
+  id:"lnx-02", topicId:"admin-linux", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"NIS — item 2 do Anexo IV (Infraestrutura)",
+  stem:"O serviço NIS (Network Information Service) em ambiente Unix/Linux tem como função:",
+  options:{
+    A:"compartilhar arquivos entre máquinas Unix pela rede, no nível de sistema de arquivos.",
+    B:"centralizar informações de autenticação e configuração (como contas de usuário) entre múltiplas máquinas Unix de uma mesma rede.",
+    C:"servir páginas web estáticas e dinâmicas.",
+    D:"implementar o protocolo de compartilhamento de arquivos do Windows em ambiente Linux.",
+    E:"traduzir nomes de domínio para endereços IP."
+  },
+  correct:"B",
+  explanation:{
+    core:"NIS centraliza informações administrativas — como contas de usuário e grupos — para que múltiplas máquinas Unix da mesma rede compartilhem essa base, sem precisar duplicar cadastro em cada máquina.",
+    detail:"É um serviço mais simples e antigo que o LDAP, mas resolve o mesmo tipo de problema: centralização de identidade/configuração numa rede Unix.",
+    wrong:{
+      A:"Essa é a função do NFS, não do NIS.",
+      C:"Essa é a função de um servidor web (como o Apache), não do NIS.",
+      D:"Essa é a função do Samba/CIFS, não do NIS.",
+      E:"Essa é a função do DNS, não do NIS."
+    }
+  }
+},
+{
+  id:"lnx-03", topicId:"admin-linux", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"NFS — item 2 do Anexo IV (Infraestrutura)",
+  stem:"O NFS (Network File System) permite que:",
+  options:{
+    A:"servidores web Linux sirvam páginas dinâmicas geradas por scripts.",
+    B:"uma máquina Unix/Linux monte e acesse, como se fosse local, um sistema de arquivos que fisicamente reside em outra máquina da rede.",
+    C:"usuários Windows autentiquem em um domínio Active Directory.",
+    D:"pacotes de rede sejam roteados entre diferentes sub-redes.",
+    E:"o tráfego de e-mail seja entregue entre servidores SMTP."
+  },
+  correct:"B",
+  explanation:{
+    core:"NFS é um protocolo de compartilhamento de arquivos que permite montar um diretório remoto como se fizesse parte do sistema de arquivos local de outra máquina Unix/Linux.",
+    detail:"É o equivalente, no mundo Unix, ao compartilhamento de pastas de rede — mas usando um protocolo próprio (diferente do CIFS/Samba usado para interoperar com Windows).",
+    wrong:{
+      A:"Servir páginas dinâmicas é função de um servidor de aplicação/web, não do NFS.",
+      C:"Autenticação em domínio Windows é função do Active Directory (via Kerberos/LDAP), não do NFS.",
+      D:"Roteamento de pacotes é função de equipamentos de camada de rede (roteadores), não do NFS.",
+      E:"Entrega de e-mail é função do SMTP, não do NFS."
+    }
+  }
+},
+{
+  id:"lnx-04", topicId:"admin-linux", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Samba/CIFS — integração com ambiente Windows, item 2 do Anexo IV",
+  stem:"Para integrar um servidor Linux ao compartilhamento de arquivos de uma rede Windows — permitindo que máquinas Windows acessem pastas hospedadas no servidor Linux como se fossem compartilhamentos nativos —, utiliza-se tipicamente:",
+  options:{ A:"NIS", B:"NFS", C:"Samba (implementando o protocolo CIFS)", D:"SNMP", E:"LDAP" },
+  correct:"C",
+  explanation:{
+    core:"Samba é o software que implementa, em Linux, o protocolo CIFS/SMB usado nativamente pelo Windows para compartilhamento de arquivos e impressoras — é a ferramenta padrão de integração Linux↔Windows nesse contexto.",
+    detail:"Enquanto NFS é o protocolo 'nativo' Unix para esse fim, um cliente Windows não fala NFS nativamente sem software adicional — por isso Samba/CIFS é a escolha natural quando o objetivo é interoperar com máquinas Windows.",
+    wrong:{
+      A:"NIS centraliza autenticação/configuração entre máquinas Unix — não é o mecanismo de integração de arquivos com Windows.",
+      B:"NFS é o protocolo de compartilhamento nativo entre máquinas Unix/Linux, não o usado por clientes Windows nativamente.",
+      D:"SNMP é um protocolo de monitoramento/gerência de rede, sem relação com compartilhamento de arquivos.",
+      E:"LDAP é um protocolo de acesso a diretório (como o usado pelo Active Directory), não de compartilhamento de arquivos."
+    }
+  }
+},
+{
+  id:"lnx-05", topicId:"admin-linux", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Shell script (Bash) — presente no acervo desde 2012",
+  stem:`Considere o script abaixo, executado em um diretório onde existem apenas dois arquivos: 'a.txt' (vazio, 0 bytes) e 'b.txt' (contém texto).
+
+<pre class="codeblock">for arq in a.txt b.txt; do
+  if [ -s "$arq" ]; then
+    echo "$arq tem conteudo"
+  else
+    echo "$arq esta vazio"
+  fi
+done</pre>
+
+Qual é a saída exata produzida por esse script, na ordem em que aparece?`,
+  options:{
+    A:"a.txt tem conteudo\nb.txt tem conteudo",
+    B:"a.txt esta vazio\nb.txt tem conteudo",
+    C:"a.txt tem conteudo\nb.txt esta vazio",
+    D:"a.txt esta vazio\nb.txt esta vazio",
+    E:"O script não produz nenhuma saída, pois a sintaxe está incorreta."
+  },
+  correct:"B",
+  explanation:{
+    core:"O teste '-s \"$arq\"' verifica se o arquivo existe E tem tamanho maior que zero (não está vazio).",
+    detail:"Para 'a.txt' (0 bytes), o teste -s falha, então o script imprime 'a.txt esta vazio'. Para 'b.txt' (contém texto, tamanho > 0), o teste -s é verdadeiro, então imprime 'b.txt tem conteudo'.",
+    wrong:{
+      A:"'a.txt' está vazio (0 bytes) — o teste -s falharia para ele, então essa linha não seria 'tem conteudo'.",
+      C:"Inverte o resultado: é 'a.txt' que está vazio e 'b.txt' que tem conteúdo, não o contrário.",
+      D:"'b.txt' tem conteúdo (não está vazio) — o teste -s seria verdadeiro para ele.",
+      E:"A sintaxe do script está correta — é um for/if/else válido em Bash."
+    }
+  }
+},
+{
+  id:"lnx-06", topicId:"admin-linux", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Apache — instalação e configuração, item 2.2 do Anexo IV",
+  stem:"Na configuração do servidor Apache, a diretiva responsável por definir o diretório do sistema de arquivos a partir do qual os arquivos serão servidos para um determinado site é:",
+  options:{ A:"Listen", B:"VirtualHost", C:"DocumentRoot", D:"ServerName", E:"Timeout" },
+  correct:"C",
+  explanation:{
+    core:"DocumentRoot define o caminho no sistema de arquivos que serve como raiz de onde o Apache busca os arquivos a entregar para um site.",
+    detail:"Listen define a porta em que o Apache escuta; VirtualHost permite hospedar múltiplos sites num único servidor; ServerName associa um nome de domínio a um VirtualHost — cada diretiva tem um papel específico e diferente.",
+    wrong:{
+      A:"Listen define a porta de escuta do servidor, não o diretório de arquivos servidos.",
+      B:"VirtualHost define um bloco de configuração para hospedar um site específico, mas o diretório de arquivos em si é definido pela diretiva DocumentRoot dentro desse bloco.",
+      D:"ServerName associa um nome de domínio ao VirtualHost, não define o diretório de arquivos.",
+      E:"Timeout define o tempo limite de espera de uma conexão, sem relação com o diretório de arquivos servidos."
+    }
+  }
+},
+{
+  id:"lnx-07", topicId:"admin-linux", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Agendamento de tarefas (cron) — administração de sistemas Unix/Linux",
+  stem:"A entrada de crontab '0 3 * * 0 /script/backup.sh' faz com que o script backup.sh seja executado:",
+  options:{
+    A:"Todos os dias, às 3h00.",
+    B:"Todo domingo, às 3h00.",
+    C:"Todo dia 3 de cada mês, à meia-noite.",
+    D:"A cada 3 minutos.",
+    E:"Todo sábado, às 3h00."
+  },
+  correct:"B",
+  explanation:{
+    core:"Os cinco campos do crontab são, nessa ordem: minuto, hora, dia do mês, mês, dia da semana (0=domingo). '0 3 * * 0' significa minuto 0, hora 3, qualquer dia do mês, qualquer mês, dia da semana 0 (domingo).",
+    detail:"Ou seja: todo domingo, às 3h00 da madrugada — os asteriscos nos campos de dia do mês e mês indicam 'qualquer valor', sem restrição.",
+    wrong:{
+      A:"'Todos os dias' exigiria asterisco também no campo de dia da semana, não o valor fixo '0' (domingo).",
+      C:"Essa leitura confunde o campo de dia da semana (0=domingo) com o campo de dia do mês (que está com asterisco, ou seja, qualquer dia).",
+      D:"O primeiro campo (minuto) está fixo em 0, não como um intervalo '*/3' que indicaria repetição a cada 3 minutos.",
+      E:"O valor 0 no campo de dia da semana corresponde a domingo, não a sábado (que seria representado por 6)."
+    }
+  }
+},
+
+/* ---------------- ADMINISTRAÇÃO WINDOWS SERVER — 7 ---------------- */
+{
+  id:"win-01", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Estrutura do Active Directory — item 3.2 do Anexo IV (Infraestrutura)",
+  stem:"Na estrutura hierárquica do Active Directory, a Unidade Organizacional (OU) tem como principal função:",
+  options:{
+    A:"ser o maior contêiner lógico, agrupando um ou mais domínios.",
+    B:"agrupar usuários, computadores e outros objetos para permitir a aplicação organizada de políticas de grupo (GPOs) e delegação de administração.",
+    C:"traduzir nomes de domínio para endereços IP.",
+    D:"armazenar fisicamente os arquivos de um servidor de arquivos.",
+    E:"substituir completamente a necessidade de um controlador de domínio."
+  },
+  correct:"B",
+  explanation:{
+    core:"A OU é um contêiner organizacional dentro de um domínio, usado para agrupar objetos (usuários, computadores, grupos) de forma lógica — o principal motivo prático de sua existência é aplicar GPOs de forma segmentada e delegar administração a subgrupos específicos.",
+    detail:"É diferente do Domínio (contêiner de segurança maior) e da Floresta (o maior contêiner lógico de todos) — a OU é, tipicamente, o nível mais granular usado para organização administrativa do dia a dia.",
+    wrong:{
+      A:"Essa é a descrição da Floresta, o maior contêiner lógico do AD — não da OU.",
+      C:"Essa é a função do DNS, não da OU.",
+      D:"Armazenamento físico de arquivos é função de um servidor de arquivos (file server), não da estrutura lógica de OU do AD.",
+      E:"A OU é uma estrutura organizacional DENTRO de um domínio gerenciado por um controlador de domínio — não substitui a necessidade dele."
+    }
+  }
+},
+{
+  id:"win-02", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"GPO — item 3.2 do Anexo IV (Infraestrutura)",
+  stem:"Um GPO (Group Policy Object) no Active Directory é utilizado para:",
+  options:{
+    A:"definir manualmente, em cada computador individualmente, as configurações de segurança e ambiente de trabalho.",
+    B:"aplicar de forma centralizada um conjunto de configurações (segurança, ambiente de trabalho, restrições) a usuários e/ou computadores vinculados a um domínio, site ou Unidade Organizacional.",
+    C:"armazenar exclusivamente senhas de usuários do domínio.",
+    D:"substituir o servidor DNS do domínio.",
+    E:"gerenciar apenas impressoras compartilhadas na rede."
+  },
+  correct:"B",
+  explanation:{
+    core:"GPO é o mecanismo central do Active Directory para aplicar configurações de forma centralizada e consistente a um conjunto de usuários/computadores, vinculado a um domínio, site ou OU.",
+    detail:"É justamente essa centralização — em vez de configurar máquina por máquina manualmente — que torna o GPO uma ferramenta essencial de administração em ambientes Windows corporativos.",
+    wrong:{
+      A:"É exatamente o oposto da proposta do GPO: centralizar em vez de configurar manualmente cada máquina.",
+      C:"GPO não é um mecanismo de armazenamento de senha — isso é tratado por outros componentes de segurança do AD.",
+      D:"GPO é um mecanismo de política de configuração, não um substituto do serviço DNS.",
+      E:"Gerenciamento de impressoras pode ser um dos aspectos configuráveis via GPO, mas está longe de ser sua única finalidade."
+    }
+  }
+},
+{
+  id:"win-03", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"IIS — item 3 do Anexo IV (Infraestrutura)",
+  stem:"No IIS (Internet Information Services), um pool de aplicativos tem como função principal:",
+  options:{
+    A:"armazenar o conteúdo estático (imagens, CSS) de um site.",
+    B:"isolar processos de diferentes aplicações web hospedadas no mesmo servidor, de forma que uma falha em uma aplicação não afete diretamente as demais.",
+    C:"traduzir nomes de domínio para endereços IP.",
+    D:"gerenciar contas de usuário do Active Directory.",
+    E:"substituir a necessidade de configurar bindings de porta/protocolo."
+  },
+  correct:"B",
+  explanation:{
+    core:"Um pool de aplicativos isola, em processos de trabalho (worker processes) separados, diferentes aplicações hospedadas no mesmo servidor IIS — é o principal mecanismo de isolamento de falhas entre sites/aplicações.",
+    detail:"Se uma aplicação de um pool trava, aplicações de outros pools continuam funcionando normalmente, já que rodam em processos isolados.",
+    wrong:{
+      A:"Armazenamento de conteúdo estático é resolvido pela estrutura de pastas do site, não pelo conceito de pool de aplicativos.",
+      C:"Essa é a função do DNS, não do pool de aplicativos.",
+      D:"Gerenciamento de contas é função do Active Directory, não do IIS.",
+      E:"Bindings (porta/protocolo/host) são configurados separadamente, no nível do site — o pool de aplicativos trata do isolamento de processo, não de rede."
+    }
+  }
+},
+{
+  id:"win-04", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Terminal Services/RDP — item 3.2 do Anexo IV (Infraestrutura)",
+  stem:"O protocolo utilizado pelo Terminal Services/Remote Desktop do Windows Server para acesso remoto à área de trabalho de um servidor opera, por padrão, na porta:",
+  options:{ A:"22", B:"443", C:"3389", D:"53", E:"25" },
+  correct:"C",
+  explanation:{
+    core:"RDP (Remote Desktop Protocol), usado pelo Terminal Services do Windows Server, opera por padrão na porta TCP 3389.",
+    detail:"É essa porta que costuma precisar ser liberada em firewalls (com os devidos cuidados de segurança) para permitir acesso remoto administrativo via área de trabalho a um servidor Windows.",
+    wrong:{
+      A:"Porta 22 é do SSH, protocolo típico de sistemas Unix/Linux, não do RDP.",
+      B:"Porta 443 é do HTTPS, não do RDP.",
+      D:"Porta 53 é do DNS, não do RDP.",
+      E:"Porta 25 é do SMTP, não do RDP."
+    }
+  }
+},
+{
+  id:"win-05", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"PowerShell — linguagens de script, item 3.5 do Anexo IV (Infraestrutura)",
+  stem:"Qual das alternativas abaixo apresenta a sintaxe correta de um cmdlet do PowerShell, seguindo o padrão Verbo-Substantivo utilizado por essa linguagem de script?",
+  options:{
+    A:"ServiceGet-Stopped",
+    B:"Get-Service",
+    C:"service.get()",
+    D:"SELECT * FROM Service",
+    E:"./get_service.sh"
+  },
+  correct:"B",
+  explanation:{
+    core:"Cmdlets do PowerShell seguem consistentemente o padrão Verbo-Substantivo, separados por hífen: Get-Service, Set-ADUser, New-Item, Stop-Process, entre outros.",
+    detail:"Essa convenção de nomenclatura é uma marca registrada do PowerShell, diferente da sintaxe de comandos do Bash/CMD tradicional ou de chamadas de método orientadas a objeto de outras linguagens.",
+    wrong:{
+      A:"Inverte a ordem esperada (Substantivo-Verbo em vez de Verbo-Substantivo) — não segue a convenção real do PowerShell.",
+      C:"Essa é uma sintaxe de chamada de método orientada a objeto (ex: JavaScript/Python), não a sintaxe de cmdlet do PowerShell.",
+      D:"Essa é sintaxe de consulta SQL, não de cmdlet do PowerShell.",
+      E:"Essa é a sintaxe de execução de um script Bash em Linux, não um cmdlet do PowerShell."
+    }
+  }
+},
+{
+  id:"win-06", topicId:"admin-windows", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Integração com ambiente Unix — item 3.4 do Anexo IV (Infraestrutura)",
+  stem:"O protocolo de autenticação utilizado tanto pelo Active Directory quanto por diversos ambientes Unix/Linux modernos, permitindo autenticação federada entre sistemas heterogêneos, é o:",
+  options:{ A:"SNMP", B:"Kerberos", C:"DHCP", D:"FTP", E:"NAT" },
+  correct:"B",
+  explanation:{
+    core:"Kerberos é um protocolo de autenticação baseado em tickets, adotado tanto pelo Active Directory (Windows) quanto por diversos ambientes Unix/Linux — é uma das bases técnicas que viabiliza integração de autenticação entre os dois mundos.",
+    detail:"Essa compatibilidade é o motivo pelo qual ambientes mistos Windows/Linux frequentemente usam Kerberos como mecanismo comum de autenticação, mesmo com sistemas operacionais diferentes.",
+    wrong:{
+      A:"SNMP é um protocolo de monitoramento/gerência de rede, não de autenticação.",
+      C:"DHCP atribui endereços IP automaticamente, sem relação com autenticação de usuários.",
+      D:"FTP é um protocolo de transferência de arquivos, sem relação com autenticação federada entre sistemas.",
+      E:"NAT traduz endereços IP, sem relação com autenticação de usuários."
+    }
+  }
+},
+{
+  id:"win-07", topicId:"admin-windows", tier:"P1", format:"porque",
+  source:"inedita", insp:"Estrutura Floresta×Domínio do Active Directory — item 3.2 do Anexo IV",
+  stem:"Afirmação 1: uma Floresta no Active Directory pode conter múltiplos domínios.\n\nPORQUE\n\nAfirmação 2: a Floresta é o menor contêiner lógico da hierarquia do Active Directory, estando sempre contida dentro de um único domínio.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"C",
+  explanation:{
+    core:"A primeira afirmação está correta: uma Floresta é, de fato, capaz de conter múltiplos domínios.",
+    detail:"Mas a segunda afirmação inverte a hierarquia real: a Floresta é o MAIOR contêiner lógico do Active Directory (não o menor), e é o domínio que está contido dentro da floresta — não o contrário.",
+    wrong:{
+      A:"A segunda afirmação é falsa, então não pode justificar a primeira.",
+      B:"A segunda afirmação não é verdadeira — inverte a relação real de contenção entre Floresta e Domínio.",
+      D:"A primeira afirmação é verdadeira, não falsa — Florestas realmente podem conter múltiplos domínios.",
+      E:"A primeira afirmação é verdadeira, mesmo que a segunda esteja incorreta."
+    }
+  }
+},
+
+/* ---------------- PROGRAMAÇÃO & ESTRUTURAS DE DADOS — 7 ---------------- */
+{
+  id:"prog-01", topicId:"programacao-basica", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Algoritmos e estruturas de dados — item 12.1 do Anexo IV (Infraestrutura)",
+  stem:"Sobre as estruturas de dados pilha (stack) e fila (queue), é correto afirmar que:",
+  options:{
+    A:"a pilha segue a disciplina FIFO (First In, First Out), enquanto a fila segue LIFO (Last In, First Out).",
+    B:"a pilha segue a disciplina LIFO (Last In, First Out) — o último elemento inserido é o primeiro a ser removido; a fila segue FIFO (First In, First Out) — o primeiro elemento inserido é o primeiro a ser removido.",
+    C:"pilha e fila são termos sinônimos para a mesma estrutura de dados.",
+    D:"em uma pilha, elementos podem ser removidos de qualquer posição, não apenas do topo.",
+    E:"uma fila não permite inserção de novos elementos após sua criação."
+  },
+  correct:"B",
+  explanation:{
+    core:"Pilha (LIFO) remove sempre o último elemento inserido primeiro (como uma pilha de pratos); Fila (FIFO) remove sempre o primeiro elemento inserido primeiro (como uma fila de pessoas).",
+    detail:"Essa é a distinção fundamental entre as duas estruturas — a ordem de remoção em relação à ordem de inserção.",
+    wrong:{
+      A:"Inverte as disciplinas: é a pilha que segue LIFO, e a fila que segue FIFO — não o contrário.",
+      C:"São estruturas com disciplinas de acesso opostas, não sinônimos.",
+      D:"Em uma pilha, por definição, só é possível inserir e remover elementos pelo topo — não de qualquer posição.",
+      E:"Uma fila permite inserção contínua de novos elementos (no final da fila) ao longo de sua existência."
+    }
+  }
+},
+{
+  id:"prog-02", topicId:"programacao-basica", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Programação básica em Java, polimorfismo — item 12.4 do Anexo IV (Infraestrutura)",
+  stem:`Considere o trecho de código Java abaixo:
+
+<pre class="codeblock">class Animal {
+    String som() { return "..."; }
+}
+class Cachorro extends Animal {
+    String som() { return "Au"; }
+}
+class Gato extends Animal {
+    String som() { return "Miau"; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Cachorro();
+        System.out.println(a.som());
+    }
+}</pre>
+
+Qual é a saída impressa por esse programa?`,
+  options:{ A:'"..."', B:'"Au"', C:'"Miau"', D:"Erro de compilação, pois Animal não pode referenciar um Cachorro.", E:'"AuMiau"' },
+  correct:"B",
+  explanation:{
+    core:"Mesmo com a variável declarada do tipo Animal, o método executado em tempo de execução é o da classe REAL do objeto (Cachorro) — esse é o comportamento de polimorfismo/sobrescrita (override) em Java.",
+    detail:"a.som() chama o método som() sobrescrito em Cachorro, que retorna 'Au', não o método da superclasse Animal.",
+    wrong:{
+      A:'"..." seria a saída se o método não tivesse sido sobrescrito, mas Cachorro sobrescreve som() com sua própria implementação.',
+      C:'"Miau" seria a saída se o objeto fosse um Gato, mas o objeto instanciado é um Cachorro (new Cachorro()).',
+      D:"É uma atribuição válida em Java: uma variável de um tipo superclasse pode referenciar um objeto de uma subclasse (upcasting implícito) — não gera erro de compilação.",
+      E:"Apenas um método é chamado (som() do objeto Cachorro) — não há concatenação dos sons das duas classes."
+    }
+  }
+},
+{
+  id:"prog-03", topicId:"programacao-basica", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Interface × herança em Java — item 12.4 do Anexo IV (Infraestrutura)",
+  stem:"Em Java, a principal diferença entre implementar uma interface e estender uma classe é que:",
+  options:{
+    A:"uma interface define um contrato de métodos que a classe se compromete a implementar, sem fornecer implementação herdada; herança (extends) reaproveita atributos e implementação de métodos já existentes de uma superclasse.",
+    B:"interface e herança são termos sinônimos, ambos definidos com a palavra-chave extends.",
+    C:"uma classe pode estender múltiplas classes ao mesmo tempo, mas só pode implementar uma única interface.",
+    D:"interfaces sempre contêm a implementação completa dos métodos declarados.",
+    E:"herança só pode ser usada em conjunto com interfaces, nunca isoladamente."
+  },
+  correct:"A",
+  explanation:{
+    core:"Herança (extends) reaproveita implementação já existente de uma superclasse; interface (implements) define apenas um contrato de métodos a serem implementados pela classe, sem herdar implementação pronta.",
+    detail:"Em Java, uma classe só pode estender uma única superclasse (herança simples), mas pode implementar múltiplas interfaces — o inverso do que a alternativa C sugere.",
+    wrong:{
+      B:"São mecanismos distintos, com palavras-chave diferentes (extends para herança, implements para interface).",
+      C:"É o contrário: em Java uma classe só pode ESTENDER uma única classe, mas pode IMPLEMENTAR múltiplas interfaces.",
+      D:"Interfaces tradicionalmente declaram apenas assinaturas de métodos, sem implementação (métodos default são uma exceção específica, não a regra geral).",
+      E:"Herança pode ser usada isoladamente, sem qualquer relação com interfaces — são mecanismos independentes."
+    }
+  }
+},
+{
+  id:"prog-04", topicId:"programacao-basica", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Encapsulamento em POO — item 12.4 do Anexo IV (Infraestrutura)",
+  stem:"O princípio de encapsulamento em orientação a objetos consiste em:",
+  options:{
+    A:"permitir acesso direto e irrestrito a todos os atributos internos de um objeto, a partir de qualquer outra classe.",
+    B:"esconder o estado interno de um objeto, expondo o acesso a ele apenas através de métodos públicos controlados (como getters e setters).",
+    C:"impedir que uma classe tenha mais de um método.",
+    D:"obrigar toda classe a herdar de uma superclasse comum.",
+    E:"substituir a necessidade de qualquer modificador de acesso (public/private)."
+  },
+  correct:"B",
+  explanation:{
+    core:"Encapsulamento é o princípio de esconder o estado interno de um objeto (geralmente com atributos privados), controlando o acesso externo através de métodos públicos — protege a integridade dos dados internos.",
+    detail:"É esse controle de acesso que permite, por exemplo, validar um valor antes de permitir que ele seja atribuído a um atributo, algo impossível se o atributo fosse acessado diretamente de fora da classe.",
+    wrong:{
+      A:"É exatamente o oposto do princípio de encapsulamento — acesso irrestrito quebra a proteção do estado interno.",
+      C:"Encapsulamento não tem relação com o número de métodos de uma classe.",
+      D:"Encapsulamento é um princípio independente de herança — não exige herança de superclasse comum.",
+      E:"Modificadores de acesso (private/public) são justamente o MECANISMO usado para implementar o encapsulamento, não algo que ele substitui."
+    }
+  }
+},
+{
+  id:"prog-05", topicId:"programacao-basica", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"HTML×XML — item 12.3 do Anexo IV (Infraestrutura)",
+  stem:"Sobre as linguagens de marcação HTML e XML, é correto afirmar que:",
+  options:{
+    A:"o HTML permite que o autor do documento defina livremente suas próprias tags; o XML utiliza um conjunto fixo e pré-definido de tags.",
+    B:"o XML foi criado principalmente para estruturar e transportar dados, com tags definidas pelo autor do documento; o HTML utiliza tags pré-definidas focadas na apresentação de conteúdo em um navegador.",
+    C:"HTML e XML são termos sinônimos para a mesma linguagem de marcação.",
+    D:"XML define, por padrão, como o conteúdo deve ser visualmente exibido em um navegador.",
+    E:"documentos XML não podem ser validados quanto à sua estrutura."
+  },
+  correct:"B",
+  explanation:{
+    core:"XML permite tags customizadas pelo autor, focado em ESTRUTURAR/TRANSPORTAR dados; HTML usa um vocabulário fixo de tags pré-definidas, focado em APRESENTAR conteúdo visualmente num navegador.",
+    detail:"É justamente por isso que XML é amplamente usado para troca de dados entre sistemas (ex: arquivos de configuração, web services antigos), enquanto HTML é a linguagem de marcação da web voltada à exibição.",
+    wrong:{
+      A:"Inverte a característica real: é o XML que permite tags customizadas, e o HTML que usa um conjunto fixo pré-definido.",
+      C:"São linguagens de marcação com propósitos e vocabulários de tags diferentes, não sinônimos.",
+      D:"XML não define, por si só, apresentação visual — isso exigiria uma tecnologia adicional (como XSLT/CSS); sua natureza é estrutural, não visual.",
+      E:"Documentos XML podem, sim, ser validados estruturalmente (via DTD ou XML Schema), garantindo que sigam um formato esperado."
+    }
+  }
+},
+{
+  id:"prog-06", topicId:"programacao-basica", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Estruturas de dados — árvore binária de busca, item 12.1 do Anexo IV (Infraestrutura)",
+  stem:"Em uma árvore binária de busca, ao inserir sequencialmente os valores 50, 30, 70, 20, 40 (cada valor menor vai para a subárvore esquerda do nó atual, cada valor maior vai para a subárvore direita), qual valor fica na raiz da árvore resultante?",
+  options:{ A:"20", B:"30", C:"40", D:"50", E:"70" },
+  correct:"D",
+  explanation:{
+    core:"Em uma árvore binária de busca construída por inserção sequencial simples (sem balanceamento), o PRIMEIRO valor inserido se torna a raiz — os demais valores são comparados a partir dela, indo para a subárvore esquerda ou direita conforme sejam menores ou maiores.",
+    detail:"Como 50 foi o primeiro valor inserido, ele permanece como raiz; 30 e 20 vão para a subárvore esquerda (30 como filho esquerdo de 50, 20 como filho esquerdo de 30); 70 vai para a subárvore direita de 50; 40 é maior que 30 mas menor que 50, então vira filho direito de 30.",
+    wrong:{
+      A:"20 é o último valor inserido e o menor de todos — fica nas folhas da subárvore esquerda, não na raiz.",
+      B:"30 é o segundo valor inserido, tornando-se filho esquerdo da raiz (50) — não a própria raiz.",
+      C:"40 é o último valor da subárvore esquerda, não a raiz da árvore.",
+      E:"70 é inserido como filho direito da raiz (50), não como a própria raiz."
+    }
+  }
+},
+{
+  id:"prog-07", topicId:"programacao-basica", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Noções de engenharia de software / complexidade de algoritmos — item 12.1-12.2 do Anexo IV (Infraestrutura)",
+  stem:"Um algoritmo que percorre uma lista de n elementos uma única vez, executando uma operação de custo constante para cada elemento, tem complexidade de tempo:",
+  options:{ A:"O(1)", B:"O(n)", C:"O(n²)", D:"O(log n)", E:"O(2^n)" },
+  correct:"B",
+  explanation:{
+    core:"Um laço que percorre n elementos uma única vez, com operação de custo constante por elemento, tem complexidade linear: O(n) — o tempo cresce proporcionalmente ao tamanho da entrada.",
+    detail:"O(1) seria um algoritmo de tempo constante (independente do tamanho de n); O(n²) exigiria, tipicamente, um laço aninhado dentro de outro laço sobre os mesmos n elementos — não é o caso descrito.",
+    wrong:{
+      A:"O(1) descreveria uma operação de tempo constante, independente de n — mas o algoritmo descrito percorre TODOS os n elementos.",
+      C:"O(n²) exigiria dois laços aninhados sobre a mesma entrada — o algoritmo descrito percorre a lista uma única vez.",
+      D:"O(log n) é típico de algoritmos que dividem o problema pela metade a cada passo (como busca binária) — não é o padrão de um laço simples percorrendo tudo uma vez.",
+      E:"O(2^n) é complexidade exponencial, típica de certos algoritmos recursivos combinatórios — muito acima do custo de um laço linear simples."
+    }
+  }
+},
+
+/* ---------------- STORAGE (NAS/SAN) & VIRTUALIZAÇÃO — 6 ---------------- */
+{
+  id:"sto-01", topicId:"storage-virtualizacao", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"NAS×SAN — item 6 do Anexo IV (Infraestrutura)",
+  stem:"Sobre as arquiteturas de armazenamento NAS e SAN, é correto afirmar que:",
+  options:{
+    A:"NAS opera no nível de bloco, e SAN no nível de arquivo.",
+    B:"NAS é acessado no nível de arquivo pela rede (ex: via NFS/CIFS), aparecendo como uma pasta compartilhada; SAN é acessado no nível de bloco através de uma rede dedicada de armazenamento, aparecendo para o servidor como um disco local.",
+    C:"NAS e SAN são termos sinônimos para a mesma arquitetura de armazenamento.",
+    D:"SAN não pode ser utilizada em ambientes de alta performance.",
+    E:"NAS sempre oferece desempenho superior ao SAN em qualquer cenário."
+  },
+  correct:"B",
+  explanation:{
+    core:"A diferença central é o NÍVEL de acesso: NAS opera no nível de arquivo (protocolos como NFS/CIFS, aparece como pasta de rede); SAN opera no nível de bloco (aparece para o servidor como se fosse um disco físico local).",
+    detail:"Por operar no nível de bloco e em rede dedicada, SAN costuma ser a escolha para cargas de trabalho mais exigentes de desempenho, como bancos de dados de alta transação.",
+    wrong:{
+      A:"Inverte a característica real: é o NAS que opera no nível de arquivo, e o SAN no nível de bloco.",
+      C:"São arquiteturas com nível de acesso e propósito diferentes, não sinônimos.",
+      D:"SAN é, historicamente, a escolha preferida justamente para ambientes de ALTA performance, não o contrário.",
+      E:"NAS não é superior ao SAN em qualquer cenário — para cargas de alta transação, SAN costuma ter vantagem justamente por operar no nível de bloco."
+    }
+  }
+},
+{
+  id:"sto-02", topicId:"storage-virtualizacao", tier:"P2", format:"calculo",
+  source:"inedita", insp:"RAID 1 (mirroring) — extensão do bloco de storage",
+  stem:"Em uma configuração RAID 1 com dois discos físicos de 1 TB cada, qual é, aproximadamente, a capacidade útil de armazenamento disponível para o usuário?",
+  options:{ A:"2 TB", B:"1 TB", C:"1,5 TB", D:"0,5 TB", E:"4 TB" },
+  correct:"B",
+  explanation:{
+    core:"RAID 1 (mirroring) espelha os dados entre os discos — o segundo disco é uma cópia exata do primeiro, usado para tolerância a falha, não para somar capacidade.",
+    detail:"Por isso, com dois discos de 1 TB em RAID 1, a capacidade útil disponível para o usuário é de apenas 1 TB (o espaço equivalente a um único disco), mesmo havendo 2 TB de capacidade física bruta somada.",
+    wrong:{
+      A:"2 TB seria a capacidade total se os discos fossem usados sem redundância (ex: JBOD) ou em RAID 0 (striping) — não é o caso do RAID 1.",
+      C:"1,5 TB não corresponde à lógica de espelhamento do RAID 1 nem a nenhuma configuração comum com dois discos iguais.",
+      D:"0,5 TB subestima a capacidade útil real — o RAID 1 com discos de 1 TB entrega 1 TB útil, não metade disso.",
+      E:"4 TB não tem relação com a capacidade física somada dos discos do enunciado (2×1 TB), muito menos com a lógica de espelhamento do RAID 1."
+    }
+  }
+},
+{
+  id:"sto-03", topicId:"storage-virtualizacao", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"RAID 5×RAID 6 — extensão do bloco de storage",
+  stem:"A diferença central entre RAID 5 e RAID 6 é que:",
+  options:{
+    A:"RAID 5 utiliza paridade dupla distribuída, tolerando falha de dois discos; RAID 6 utiliza paridade simples, tolerando falha de apenas um disco.",
+    B:"RAID 5 utiliza paridade distribuída simples, tolerando a falha de um disco; RAID 6 utiliza paridade dupla distribuída, tolerando a falha simultânea de dois discos.",
+    C:"RAID 5 e RAID 6 são configurações idênticas, diferindo apenas no nome.",
+    D:"nenhum dos dois níveis oferece qualquer tolerância a falha de disco.",
+    E:"RAID 6 não utiliza o conceito de paridade, apenas espelhamento total."
+  },
+  correct:"B",
+  explanation:{
+    core:"RAID 5 distribui paridade simples entre os discos, tolerando a falha de UM disco; RAID 6 acrescenta uma segunda paridade distribuída, tolerando a falha SIMULTÂNEA de DOIS discos.",
+    detail:"Essa capacidade extra de tolerância do RAID 6 tem um custo: mais espaço é reservado para paridade, reduzindo a capacidade útil disponível em comparação ao RAID 5 com o mesmo número de discos.",
+    wrong:{
+      A:"Inverte as capacidades reais: é o RAID 6 que tem paridade dupla (tolera 2 discos), e o RAID 5 que tem paridade simples (tolera 1 disco).",
+      C:"São níveis de RAID com esquemas de paridade e tolerância a falha diferentes, não idênticos.",
+      D:"Ambos os níveis oferecem tolerância a falha através de paridade distribuída — essa é justamente a razão de existirem.",
+      E:"RAID 6 usa paridade dupla distribuída, não espelhamento total (que é a técnica do RAID 1)."
+    }
+  }
+},
+{
+  id:"sto-04", topicId:"storage-virtualizacao", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Virtualização de rede — item 6.4 do Anexo IV (Infraestrutura)",
+  stem:"A virtualização de rede consiste em:",
+  options:{
+    A:"recriar em software recursos de rede (como switches e firewalls), desacoplando-os do hardware físico dedicado, permitindo maior flexibilidade de configuração.",
+    B:"aumentar fisicamente o número de cabos de rede conectados a um servidor.",
+    C:"substituir a necessidade de qualquer endereçamento IP.",
+    D:"uma técnica exclusiva para virtualização de armazenamento, sem relação com equipamentos de rede.",
+    E:"impedir que máquinas virtuais se comuniquem entre si."
+  },
+  correct:"A",
+  explanation:{
+    core:"Virtualização de rede recria, em software, funções que antes exigiam equipamentos físicos dedicados (switches, roteadores, firewalls), desacoplando a função de rede do hardware específico — permitindo reconfiguração muito mais ágil.",
+    detail:"É a base de conceitos modernos como SDN (Software-Defined Networking), onde toda a topologia lógica de rede pode ser reconfigurada via software, sem mexer fisicamente em cabos ou equipamentos.",
+    wrong:{
+      B:"Virtualização de rede não é sobre aumentar cabeamento físico — é justamente sobre reduzir a dependência de hardware físico dedicado.",
+      C:"Endereçamento IP continua necessário em redes virtualizadas — a virtualização recria a função de rede, não elimina seus conceitos fundamentais.",
+      D:"Virtualização de rede é um tipo distinto de virtualização, separado da virtualização de armazenamento (embora ambos façam parte do conjunto mais amplo de virtualização de infraestrutura).",
+      E:"Máquinas virtuais em redes virtualizadas continuam se comunicando normalmente — a virtualização de rede não impede comunicação, apenas muda como ela é implementada."
+    }
+  }
+},
+{
+  id:"sto-05", topicId:"storage-virtualizacao", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Hypervisor tipo 1 × tipo 2 — item 6.3 do Anexo IV (Infraestrutura)",
+  stem:"Sobre hypervisors, é correto afirmar que:",
+  options:{
+    A:"um hypervisor do tipo 1 (bare-metal) roda como uma aplicação sobre um sistema operacional hospedeiro já instalado.",
+    B:"um hypervisor do tipo 2 (hosted) roda diretamente sobre o hardware físico, sem sistema operacional hospedeiro.",
+    C:"um hypervisor do tipo 1 roda diretamente sobre o hardware físico, sem depender de um sistema operacional hospedeiro — geralmente mais eficiente, comum em servidores de produção; o tipo 2 roda como uma aplicação sobre um sistema operacional já instalado.",
+    D:"hypervisors tipo 1 e tipo 2 são tecnicamente idênticos, diferindo apenas no nome comercial do fabricante.",
+    E:"apenas hypervisors do tipo 2 podem hospedar mais de uma máquina virtual simultaneamente."
+  },
+  correct:"C",
+  explanation:{
+    core:"Hypervisor tipo 1 (bare-metal) roda diretamente sobre o hardware, sem sistema operacional hospedeiro por baixo — tipicamente usado em servidores de produção pela eficiência. Tipo 2 (hosted) roda como aplicativo sobre um SO já instalado — comum em uso de desktop/testes.",
+    detail:"Essa diferença de camada (direto no hardware × sobre um SO existente) é o que explica a diferença de desempenho e o uso típico de cada tipo.",
+    wrong:{
+      A:"Inverte a definição: é o tipo 2 que roda como aplicação sobre um SO hospedeiro — o tipo 1 roda direto no hardware.",
+      B:"Inverte a definição: é o tipo 1 que roda direto no hardware — o tipo 2 depende de um SO hospedeiro.",
+      D:"São arquiteturas tecnicamente diferentes (com/sem SO hospedeiro por baixo), não apenas nomes comerciais diferentes.",
+      E:"Tanto hypervisors tipo 1 quanto tipo 2 podem hospedar múltiplas VMs simultaneamente — essa não é uma limitação exclusiva de um dos tipos."
+    }
+  }
+},
+{
+  id:"sto-06", topicId:"storage-virtualizacao", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Virtualização de armazenamento — item 6.5 do Anexo IV (Infraestrutura)",
+  stem:"A virtualização de armazenamento tem como principal característica:",
+  options:{
+    A:"impedir o uso de mais de um dispositivo físico de armazenamento em uma mesma infraestrutura.",
+    B:"agregar múltiplos dispositivos físicos de armazenamento em um único pool lógico, gerenciado de forma centralizada, independentemente da localização física de cada dispositivo.",
+    C:"substituir totalmente a necessidade de backup dos dados armazenados.",
+    D:"ser aplicável exclusivamente a ambientes SAN, nunca a ambientes NAS.",
+    E:"reduzir a capacidade total de armazenamento disponível."
+  },
+  correct:"B",
+  explanation:{
+    core:"Virtualização de armazenamento abstrai múltiplos dispositivos físicos de storage — possivelmente de fabricantes/tecnologias diferentes — em um único pool lógico, gerenciável de forma centralizada e transparente para quem consome esse armazenamento.",
+    detail:"Isso simplifica a administração (provisionamento, expansão, migração de dados) sem que aplicações precisem saber onde fisicamente cada dado está armazenado.",
+    wrong:{
+      A:"É justamente o oposto: virtualização de armazenamento existe para agregar e gerenciar MÚLTIPLOS dispositivos físicos de forma unificada.",
+      C:"Virtualização de armazenamento não substitui a necessidade de backup — são preocupações distintas (disponibilidade/gestão × proteção contra perda de dados).",
+      D:"O conceito de virtualização de armazenamento é aplicável tanto a ambientes SAN quanto NAS, não é exclusivo de um deles.",
+      E:"Virtualização de armazenamento normalmente OTIMIZA o uso do espaço disponível (ex: thin provisioning), não reduz a capacidade total."
+    }
+  }
+},
+
+/* ---------------- GERENCIAMENTO DE SERVIÇOS DE TI (ITIL/COBIT) — 6 ---------------- */
+{
+  id:"itsm-01", topicId:"gestao-servicos-ti", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"ITIL — Incidente×Problema, item 9.1 do Anexo IV (Infraestrutura)",
+  stem:"Segundo as práticas de gerenciamento de serviços de TI (ITIL), a diferença entre um Incidente e um Problema é que:",
+  options:{
+    A:"Incidente e Problema são termos sinônimos, usados indistintamente.",
+    B:"um Incidente é uma interrupção não planejada ou redução de qualidade de um serviço, cujo foco é restaurar o serviço o mais rápido possível; um Problema é a causa raiz de um ou mais incidentes, cujo foco é investigar e eliminar essa causa.",
+    C:"um Problema é sempre resolvido antes de qualquer Incidente relacionado a ele.",
+    D:"um Incidente só pode ser registrado após a identificação completa de sua causa raiz.",
+    E:"o gerenciamento de Problema tem como objetivo restaurar o serviço o mais rápido possível, sem investigar a causa."
+  },
+  correct:"B",
+  explanation:{
+    core:"Incidente foca em RESTAURAR o serviço rapidamente (tratamento do sintoma); Problema foca em investigar e eliminar a CAUSA RAIZ, prevenindo recorrência — são práticas complementares, com objetivos diferentes.",
+    detail:"Um mesmo Problema pode estar por trás de vários Incidentes recorrentes — resolver o Problema evita que novos Incidentes daquele mesmo tipo continuem aparecendo.",
+    wrong:{
+      A:"São conceitos distintos, com foco e prazo de resolução diferentes.",
+      C:"Na prática, o Incidente costuma ser contornado/restaurado rapidamente ANTES que a investigação completa do Problema seja concluída — a ordem inversa da alternativa.",
+      D:"Um Incidente é registrado assim que ocorre a interrupção/degradação — não é necessário conhecer a causa raiz para abri-lo.",
+      E:"É o oposto: restaurar rápido sem necessariamente investigar a causa é o foco do gerenciamento de INCIDENTE, não do gerenciamento de Problema."
+    }
+  }
+},
+{
+  id:"itsm-02", topicId:"gestao-servicos-ti", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"ITIL v4 — mudança estrutural, item 9.1 do Anexo IV (Infraestrutura)",
+  stem:"Em relação à estrutura de fases de ciclo de vida do ITIL v3 (Estratégia, Desenho, Transição, Operação, Melhoria Continuada), o ITIL v4:",
+  options:{
+    A:"manteve exatamente a mesma estrutura de 5 fases fixas, sem qualquer alteração conceitual.",
+    B:"substituiu essa estrutura rígida de fases por um Sistema de Valor de Serviço (SVS), que inclui uma Cadeia de Valor de Serviço e um conjunto mais flexível de práticas.",
+    C:"eliminou completamente qualquer menção a gerenciamento de incidentes ou problemas.",
+    D:"passou a ser baseado exclusivamente em certificações de fornecedores de hardware.",
+    E:"deixou de ser um framework de gerenciamento de serviços de TI."
+  },
+  correct:"B",
+  explanation:{
+    core:"O ITIL v4 reestruturou o framework em torno do Sistema de Valor de Serviço (SVS), substituindo as 5 fases rígidas de ciclo de vida do v3 por uma abordagem mais flexível baseada em práticas e na Cadeia de Valor de Serviço.",
+    detail:"Isso não elimina os conceitos operacionais clássicos (incidente, problema, mudança) — eles continuam existindo como práticas dentro da nova estrutura, só deixam de estar amarrados a fases fixas e sequenciais.",
+    wrong:{
+      A:"Manteve a essência de vários conceitos, mas a estrutura central mudou — não é uma continuidade exata sem alteração.",
+      C:"Gerenciamento de Incidente e de Problema continuam existindo no ITIL v4, agora como práticas dentro do novo modelo.",
+      D:"O ITIL não é baseado em certificações de fornecedores de hardware — é um framework de boas práticas de gerenciamento de serviços.",
+      E:"O ITIL v4 continua sendo, essencialmente, um framework de gerenciamento de serviços de TI — apenas reestruturado."
+    }
+  }
+},
+{
+  id:"itsm-03", topicId:"gestao-servicos-ti", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Central de Serviço (Service Desk) — prática central do ITIL",
+  stem:"A prática de Central de Serviço (Service Desk), no contexto de gerenciamento de serviços de TI, tem como função principal:",
+  options:{
+    A:"ser o ponto único de contato entre a equipe de TI e os usuários, registrando e encaminhando solicitações e incidentes.",
+    B:"executar exclusivamente tarefas de desenvolvimento de novos sistemas.",
+    C:"substituir a necessidade de gerenciamento de mudanças.",
+    D:"ser responsável apenas pela segurança física dos servidores.",
+    E:"atuar exclusivamente na fase de encerramento de contratos com fornecedores."
+  },
+  correct:"A",
+  explanation:{
+    core:"A Central de Serviço é o ponto único de contato (single point of contact) entre usuários e a área de TI, centralizando o registro e encaminhamento de incidentes e solicitações de serviço.",
+    detail:"É essa centralização que evita que usuários precisem saber 'para quem' dentro da TI devem reportar cada tipo de problema — tudo passa por um único canal, que direciona internamente.",
+    wrong:{
+      B:"Desenvolvimento de novos sistemas é uma função de outras áreas de TI, não a função central de um Service Desk.",
+      C:"Gerenciamento de Mudança é uma prática distinta e complementar, não substituída pela Central de Serviço.",
+      D:"Segurança física de servidores é responsabilidade de outras práticas/áreas, não do Service Desk.",
+      E:"Encerramento de contratos com fornecedores é uma atividade de gestão contratual, fora do escopo central de um Service Desk."
+    }
+  }
+},
+{
+  id:"itsm-04", topicId:"gestao-servicos-ti", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"COBIT 4.1 — domínio de Entrega de Serviço, item 9.3 do Anexo IV (Infraestrutura)",
+  stem:"O framework COBIT 4.1 organiza a governança de TI em quatro domínios. O domínio responsável pela execução operacional dos serviços de TI já implementados — incluindo gerenciamento de nível de serviço, capacidade, disponibilidade e continuidade — é denominado:",
+  options:{
+    A:"Planejamento e Organização (PO)",
+    B:"Aquisição e Implementação (AI)",
+    C:"Entrega e Suporte (DS)",
+    D:"Monitoramento e Avaliação (ME)",
+    E:"Governança Corporativa (GC)"
+  },
+  correct:"C",
+  explanation:{
+    core:"O domínio Entrega e Suporte (DS - Delivery and Support) do COBIT 4.1 trata da execução operacional dos serviços de TI já implantados: nível de serviço, capacidade, disponibilidade, continuidade, segurança operacional, entre outros processos do dia a dia.",
+    detail:"Os outros três domínios cobrem etapas diferentes do ciclo: PO trata do planejamento estratégico; AI trata da aquisição/implementação de novas soluções; ME trata do monitoramento e avaliação de desempenho e conformidade.",
+    wrong:{
+      A:"PO (Planejamento e Organização) trata de planejamento estratégico de TI, não da operação do dia a dia dos serviços já implantados.",
+      B:"AI (Aquisição e Implementação) trata de adquirir/implementar novas soluções, não da operação contínua de serviços já em produção.",
+      D:"ME (Monitoramento e Avaliação) trata de avaliar desempenho e conformidade, não da execução operacional do serviço em si.",
+      E:"'Governança Corporativa' não é um dos quatro domínios formais do COBIT 4.1."
+    }
+  }
+},
+{
+  id:"itsm-05", topicId:"gestao-servicos-ti", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Gerenciamento de Mudança — prática central do ITIL",
+  stem:"A prática de Gerenciamento de Mudança, no contexto de gerenciamento de serviços de TI, tem como objetivo principal:",
+  options:{
+    A:"impedir que qualquer alteração seja feita nos serviços de TI em produção.",
+    B:"garantir que mudanças em serviços de TI sejam avaliadas, aprovadas, implementadas e revisadas de forma controlada, minimizando riscos e impactos negativos.",
+    C:"substituir completamente a necessidade de testes antes de uma implantação.",
+    D:"ser responsável exclusivamente pela troca de equipamentos físicos.",
+    E:"eliminar a necessidade de qualquer aprovação antes de uma alteração em produção."
+  },
+  correct:"B",
+  explanation:{
+    core:"Gerenciamento de Mudança busca controlar o processo de alteração de serviços de TI — desde a avaliação de risco/impacto, passando por aprovação, até implementação e revisão pós-mudança — reduzindo a chance de incidentes causados por mudanças mal planejadas.",
+    detail:"Não é sobre proibir mudanças, mas sobre garantir que elas aconteçam de forma controlada e previsível.",
+    wrong:{
+      A:"O objetivo não é impedir mudanças, e sim gerenciá-las de forma controlada — mudanças continuam acontecendo, só que com processo.",
+      C:"Gerenciamento de Mudança não substitui testes — pelo contrário, costuma exigir evidência de testes como parte da avaliação da mudança.",
+      D:"O escopo é muito mais amplo do que troca de equipamentos físicos — cobre qualquer alteração relevante em serviços de TI.",
+      E:"É o oposto: a prática existe justamente para formalizar um processo de avaliação/aprovação antes da mudança em produção."
+    }
+  }
+},
+{
+  id:"itsm-06", topicId:"gestao-servicos-ti", tier:"P2", format:"porque",
+  source:"inedita", insp:"ITIL×COBIT — escopos complementares",
+  stem:"Afirmação 1: ITIL e COBIT são frameworks com focos complementares, mas distintos, dentro da governança e gerenciamento de TI.\n\nPORQUE\n\nAfirmação 2: o ITIL foca principalmente nas práticas operacionais de gerenciamento de serviços de TI, enquanto o COBIT foca mais amplamente na governança e no controle de TI alinhados aos objetivos de negócio.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"A",
+  explanation:{
+    core:"ITIL e COBIT realmente têm focos complementares — não competem entre si, muitas organizações usam os dois em conjunto.",
+    detail:"A segunda afirmação descreve exatamente essa diferença de ênfase (ITIL mais operacional/prático; COBIT mais amplo, ligado a governança e controle alinhados ao negócio), o que justifica diretamente por que os dois frameworks são considerados complementares, e não substitutos um do outro.",
+    wrong:{
+      B:"A relação causal é direta: é justamente essa diferença de foco que os torna complementares em vez de redundantes.",
+      C:"A segunda afirmação está correta — descreve com precisão a diferença de ênfase entre os dois frameworks.",
+      D:"A primeira afirmação também é verdadeira — ITIL e COBIT são, de fato, amplamente reconhecidos como complementares.",
+      E:"Ambas as afirmações estão corretas."
+    }
+  }
+},
+
+/* ---------------- ARQUITETURA DE ALTO DESEMPENHO, CONTÊINERES & DEVOPS — 6 ---------------- */
+{
+  id:"dvo-01", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — cluster×grid, item 7.2 do Anexo IV (Infraestrutura)",
+  stem:"Sobre computação em cluster e em grid, é correto afirmar que:",
+  options:{
+    A:"um cluster é composto por recursos geograficamente distribuídos e heterogêneos; um grid é composto por máquinas fisicamente próximas e fortemente acopladas.",
+    B:"um cluster é tipicamente composto por máquinas fisicamente próximas (mesma rede local), fortemente acopladas, funcionando como um único sistema; um grid coordena recursos geograficamente distribuídos e heterogêneos, mais fracamente acoplados.",
+    C:"cluster e grid são termos sinônimos para a mesma arquitetura de computação distribuída.",
+    D:"grid computing exige, por definição, que todas as máquinas envolvidas estejam na mesma sala física.",
+    E:"cluster computing nunca pode ser utilizado para alta disponibilidade, apenas para alto desempenho."
+  },
+  correct:"B",
+  explanation:{
+    core:"Cluster: máquinas próximas, fortemente acopladas, atuando como um único sistema coeso. Grid: recursos distribuídos geograficamente, heterogêneos, coordenados de forma mais fracamente acoplada para um objetivo comum.",
+    detail:"Essa diferença de acoplamento e distribuição geográfica é o critério central para diferenciar as duas arquiteturas de computação distribuída.",
+    wrong:{
+      A:"Inverte as características: é o cluster que é fisicamente próximo/fortemente acoplado, e o grid que é geograficamente distribuído.",
+      C:"São arquiteturas com características de acoplamento e distribuição diferentes, não sinônimos.",
+      D:"É justamente o oposto de uma das características centrais do grid: distribuição GEOGRÁFICA dos recursos.",
+      E:"Cluster computing é amplamente utilizado também para alta disponibilidade (failover entre nós), não apenas para desempenho."
+    }
+  }
+},
+{
+  id:"dvo-02", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — contêineres×virtualização, item 7.6-7.8 do Anexo IV (Infraestrutura)",
+  stem:"Sobre a diferença entre contêineres e máquinas virtuais (VMs), é correto afirmar que:",
+  options:{
+    A:"uma VM compartilha o kernel do sistema operacional hospedeiro, enquanto um contêiner virtualiza o hardware completo, incluindo um sistema operacional próprio.",
+    B:"uma VM virtualiza o hardware, incluindo um sistema operacional completo próprio por VM; um contêiner compartilha o kernel do sistema operacional hospedeiro, isolando apenas processos e bibliotecas da aplicação — por isso é mais leve e rápido de iniciar.",
+    C:"contêineres e VMs são exatamente a mesma tecnologia, com nomes comerciais diferentes.",
+    D:"contêineres sempre exigem mais recursos de hardware do que VMs equivalentes.",
+    E:"VMs não podem rodar sobre um hypervisor, apenas contêineres podem."
+  },
+  correct:"B",
+  explanation:{
+    core:"A diferença de camada é o ponto central: VM virtualiza hardware (com SO completo por VM); contêiner compartilha o kernel do hospedeiro, isolando só o necessário para a aplicação — o que o torna significativamente mais leve.",
+    detail:"É essa leveza que permite iniciar um contêiner em segundos (ou menos), contra o tempo de boot de um sistema operacional completo numa VM tradicional.",
+    wrong:{
+      A:"Inverte as definições: é o contêiner que compartilha o kernel do hospedeiro; a VM que virtualiza hardware com SO próprio completo.",
+      C:"São tecnologias de virtualização com arquiteturas e níveis de isolamento diferentes, não a mesma coisa.",
+      D:"É o oposto: contêineres tipicamente exigem MENOS recursos do que VMs equivalentes, justamente por compartilharem o kernel do hospedeiro.",
+      E:"VMs rodam justamente sobre um hypervisor (tipo 1 ou 2) — essa é a base de qualquer ambiente de virtualização de VMs."
+    }
+  }
+},
+{
+  id:"dvo-03", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — microsserviços, item 7.10 do Anexo IV (Infraestrutura)",
+  stem:"A arquitetura de microsserviços se caracteriza por:",
+  options:{
+    A:"concentrar toda a lógica de negócio em uma única aplicação monolítica, facilitando a manutenção centralizada.",
+    B:"decompor uma aplicação em serviços pequenos, independentes entre si, com responsabilidade única, que se comunicam tipicamente por rede (ex: APIs).",
+    C:"exigir que todos os serviços de uma aplicação sejam implantados em um único processo, obrigatoriamente.",
+    D:"eliminar completamente a necessidade de comunicação entre diferentes partes do sistema.",
+    E:"ser aplicável apenas a sistemas que não utilizam nenhuma forma de virtualização ou contêiner."
+  },
+  correct:"B",
+  explanation:{
+    core:"Microsserviços decompõem uma aplicação em unidades pequenas e independentes, cada uma com responsabilidade única, comunicando-se por rede — o oposto de uma arquitetura monolítica centralizada.",
+    detail:"Essa independência permite implantar, escalar e evoluir cada serviço separadamente, mas exige um cuidado adicional com a comunicação e coordenação entre os serviços.",
+    wrong:{
+      A:"Essa é a descrição de uma arquitetura MONOLÍTICA, o oposto conceitual dos microsserviços.",
+      C:"Microsserviços são justamente implantados como processos SEPARADOS e independentes, não em um único processo.",
+      D:"Microsserviços ainda precisam se comunicar entre si (via rede/APIs) para compor a funcionalidade completa da aplicação.",
+      E:"Microsserviços frequentemente são implantados justamente usando contêineres — não há incompatibilidade entre os dois conceitos, pelo contrário, costumam andar juntos na prática."
+    }
+  }
+},
+{
+  id:"dvo-04", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — DevOps, item 7.5 do Anexo IV (Infraestrutura)",
+  stem:"A cultura e conjunto de práticas conhecido como DevOps tem como um de seus objetivos centrais:",
+  options:{
+    A:"manter as equipes de Desenvolvimento e Operações completamente isoladas uma da outra, sem qualquer comunicação.",
+    B:"integrar as equipes de Desenvolvimento e Operações, promovendo colaboração contínua, automação de build/teste/implantação (CI/CD) e entregas mais frequentes.",
+    C:"eliminar completamente a necessidade de testes automatizados antes da implantação.",
+    D:"ser aplicável exclusivamente a metodologias de desenvolvimento em cascata.",
+    E:"restringir implantações em produção a, no máximo, uma vez por ano."
+  },
+  correct:"B",
+  explanation:{
+    core:"DevOps busca romper a separação tradicional entre Desenvolvimento e Operações, promovendo colaboração contínua e automação de todo o pipeline (integração, testes, implantação) para viabilizar entregas mais rápidas e frequentes.",
+    detail:"O nome 'DevOps' é justamente a fusão de 'Development' e 'Operations', simbolizando essa integração de equipes e responsabilidades.",
+    wrong:{
+      A:"É exatamente o oposto do propósito do DevOps — que busca INTEGRAR, não isolar, as duas equipes.",
+      C:"DevOps valoriza fortemente a automação de testes (parte do pipeline de CI/CD), não a eliminação deles.",
+      D:"DevOps é mais associado a metodologias ágeis e entrega contínua, o oposto do ritmo lento e sequencial do modelo cascata.",
+      E:"É o oposto: DevOps busca viabilizar implantações MAIS frequentes, não restringi-las a uma vez por ano."
+    }
+  }
+},
+{
+  id:"dvo-05", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — infraestrutura como código, item 7.11 do Anexo IV (Infraestrutura)",
+  stem:"Infraestrutura como Código (IaC) consiste em:",
+  options:{
+    A:"documentar manualmente, em um arquivo de texto sem versionamento, os passos para configurar um servidor.",
+    B:"gerenciar e provisionar infraestrutura (servidores, redes, storage) através de arquivos de definição versionáveis, permitindo reproduzir ambientes de forma automatizada e consistente.",
+    C:"exigir que toda infraestrutura seja configurada manualmente, um servidor de cada vez, sem automação.",
+    D:"ser um conceito aplicável exclusivamente a ambientes on-premises, nunca à nuvem.",
+    E:"substituir totalmente a necessidade de qualquer monitoramento de infraestrutura em produção."
+  },
+  correct:"B",
+  explanation:{
+    core:"IaC trata a definição de infraestrutura como um artefato de código — versionável, revisável e reproduzível — em vez de configuração manual ad-hoc.",
+    detail:"Isso permite recriar ambientes inteiros de forma automatizada e consistente (ex: 'suba de novo exatamente o mesmo ambiente de homologação'), reduzindo erro humano e divergência de configuração entre ambientes.",
+    wrong:{
+      A:"Documentação manual sem versionamento é justamente o que o IaC busca substituir por definição versionada e executável.",
+      C:"É o oposto: IaC existe justamente para AUTOMATIZAR o provisionamento, não para reforçar configuração manual.",
+      D:"IaC é amplamente utilizado tanto em ambientes on-premises quanto em nuvem — não é exclusivo de nenhum dos dois.",
+      E:"IaC trata de provisionamento de infraestrutura, não substitui a necessidade de monitoramento contínuo em produção — são preocupações complementares."
+    }
+  }
+},
+{
+  id:"dvo-06", topicId:"alto-desempenho-devops", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — balanceamento de carga, item 7.3 do Anexo IV (Infraestrutura)",
+  stem:"Um balanceador de carga (load balancer) tem como principal função:",
+  options:{
+    A:"armazenar backups de dados de forma redundante.",
+    B:"distribuir requisições recebidas entre múltiplos servidores, evitando a sobrecarga de um único ponto e melhorando disponibilidade e desempenho.",
+    C:"cifrar o tráfego de rede entre cliente e servidor.",
+    D:"traduzir nomes de domínio para endereços IP.",
+    E:"substituir completamente a necessidade de mais de um servidor em qualquer cenário."
+  },
+  correct:"B",
+  explanation:{
+    core:"Balanceamento de carga distribui as requisições recebidas entre múltiplos servidores, evitando que um único servidor fique sobrecarregado — melhora tanto disponibilidade (se um servidor falha, outros continuam atendendo) quanto desempenho.",
+    detail:"Algoritmos comuns de distribuição incluem round-robin, menor número de conexões ativas, e balanceamento baseado em hash de origem.",
+    wrong:{
+      A:"Backup redundante é uma preocupação de proteção de dados, não a função de um balanceador de carga.",
+      C:"Cifragem de tráfego é papel de TLS/SSL, não do balanceador de carga em si (embora alguns balanceadores possam também terminar conexões TLS, essa não é sua função central).",
+      D:"Essa é a função do DNS, não de um balanceador de carga.",
+      E:"É exatamente o oposto: um balanceador de carga pressupõe a existência de MÚLTIPLOS servidores para distribuir requisições entre eles."
+    }
+  }
+},
+
+/* ---------------- COMPUTAÇÃO EM NUVEM — 6 ---------------- */
+{
+  id:"cld-01", topicId:"cloud-computing", tier:"P3", format:"porque",
+  source:"inedita", insp:"Sem precedente nas provas antigas — elasticidade×escalabilidade, item 8.1 do Anexo IV (Infraestrutura)",
+  stem:"Afirmação 1: elasticidade e escalabilidade são conceitos idênticos em computação em nuvem, sem qualquer distinção prática.\n\nPORQUE\n\nAfirmação 2: escalabilidade se refere à capacidade de aumentar recursos conforme a demanda cresce; elasticidade acrescenta a capacidade de ajustar os recursos automaticamente tanto para cima quanto para baixo, conforme a demanda varia.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"D",
+  explanation:{
+    core:"A primeira afirmação é falsa: elasticidade e escalabilidade NÃO são idênticas — são conceitos relacionados, mas com uma diferença prática importante.",
+    detail:"A segunda afirmação descreve corretamente essa diferença: escalabilidade é a capacidade de crescer (aumentar recursos); elasticidade acrescenta o ajuste automático e bidirecional (para cima E para baixo) conforme a demanda varia — é exatamente essa distinção que torna a primeira afirmação falsa.",
+    wrong:{
+      A:"A primeira afirmação é falsa — os conceitos não são idênticos, então a segunda não pode 'justificar' uma afirmação incorreta.",
+      B:"A primeira afirmação é falsa.",
+      C:"A primeira afirmação é falsa, não verdadeira — e é justamente a segunda afirmação, verdadeira, que evidencia essa diferença.",
+      E:"A segunda afirmação está correta — descreve com precisão a diferença real entre elasticidade e escalabilidade."
+    }
+  }
+},
+{
+  id:"cld-02", topicId:"cloud-computing", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — modelos de serviço PaaS, item 8.2 do Anexo IV (Infraestrutura)",
+  stem:"No modelo de serviço PaaS (Platform as a Service), o provedor de nuvem é responsável por:",
+  options:{
+    A:"apenas o hardware físico, deixando sistema operacional, runtime e aplicação a cargo do cliente.",
+    B:"hardware, virtualização, sistema operacional e runtime da aplicação, deixando a cargo do cliente apenas a aplicação e os dados.",
+    C:"toda a pilha, inclusive a aplicação final, deixando ao cliente apenas a configuração de uso.",
+    D:"nenhuma camada da infraestrutura, sendo o cliente responsável por absolutamente tudo.",
+    E:"apenas os dados armazenados pelo cliente."
+  },
+  correct:"B",
+  explanation:{
+    core:"Em PaaS, o provedor entrega a plataforma pronta (hardware, virtualização, sistema operacional e runtime), deixando ao cliente focar apenas no desenvolvimento e nos dados da sua aplicação.",
+    detail:"É um nível intermediário de responsabilidade entre IaaS (onde o cliente ainda cuida do SO/runtime) e SaaS (onde o provedor entrega até a aplicação pronta).",
+    wrong:{
+      A:"Essa descrição corresponde ao modelo IaaS, não ao PaaS — em IaaS o cliente ainda cuida de SO e runtime.",
+      C:"Essa descrição corresponde ao modelo SaaS, onde até a aplicação é entregue pronta pelo provedor.",
+      D:"Em PaaS, o provedor assume boa parte da pilha (hardware, virtualização, SO, runtime) — não é o cliente responsável por tudo.",
+      E:"O provedor em PaaS assume muito mais do que apenas os dados — cuida de toda a infraestrutura e plataforma de execução."
+    }
+  }
+},
+{
+  id:"cld-03", topicId:"cloud-computing", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — modelo IaaS, item 8.2 do Anexo IV (Infraestrutura)",
+  stem:"No modelo IaaS (Infrastructure as a Service), o cliente é tipicamente responsável por gerenciar:",
+  options:{
+    A:"apenas seus próprios dados, sem qualquer outra responsabilidade.",
+    B:"o sistema operacional, o runtime, a aplicação e os dados — enquanto o provedor cuida do hardware físico e da camada de virtualização.",
+    C:"o hardware físico dos servidores do provedor.",
+    D:"a infraestrutura de rede física do data center do provedor.",
+    E:"nenhuma camada, já que o IaaS entrega tudo pronto, incluindo a aplicação."
+  },
+  correct:"B",
+  explanation:{
+    core:"Em IaaS, o provedor entrega apenas a infraestrutura básica virtualizada (servidores, armazenamento, rede) — o cliente assume a responsabilidade por tudo que roda em cima disso: sistema operacional, runtime, aplicação e dados.",
+    detail:"É o modelo que dá mais controle (e mais responsabilidade) ao cliente, entre os três modelos clássicos (IaaS, PaaS, SaaS).",
+    wrong:{
+      A:"O cliente em IaaS assume muito mais do que apenas os dados — inclui SO, runtime e aplicação também.",
+      C:"O hardware físico é responsabilidade do PROVEDOR em IaaS, não do cliente.",
+      D:"A infraestrutura de rede física do data center é responsabilidade do provedor, não do cliente.",
+      E:"Essa descrição corresponde ao modelo SaaS, não ao IaaS — em IaaS o cliente ainda precisa gerenciar SO/runtime/aplicação."
+    }
+  }
+},
+{
+  id:"cld-04", topicId:"cloud-computing", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — regiões e zonas de disponibilidade, item 8.2 do Anexo IV (Infraestrutura)",
+  stem:"Sobre a distribuição geográfica de um provedor de nuvem, é correto afirmar que:",
+  options:{
+    A:"uma região é um único data center isolado; uma zona de disponibilidade agrupa várias regiões.",
+    B:"uma região é uma área geográfica ampla que reúne data centers do provedor; uma zona de disponibilidade é um ou mais data centers isolados fisicamente dentro de uma mesma região, usados para tolerância a falha.",
+    C:"região e zona de disponibilidade são termos sinônimos, usados por fornecedores diferentes.",
+    D:"todas as zonas de disponibilidade de um provedor ficam sempre na mesma sala física.",
+    E:"uma região só pode conter uma única zona de disponibilidade, nunca mais de uma."
+  },
+  correct:"B",
+  explanation:{
+    core:"Região é a unidade geográfica mais ampla (ex: 'Sudeste do Brasil'); dentro dela existem uma ou mais zonas de disponibilidade — data centers fisicamente isolados entre si, para que a falha de uma zona não derrube o serviço inteiro.",
+    detail:"É essa separação física entre zonas de uma mesma região que permite arquiteturas de alta disponibilidade: distribuir uma aplicação por múltiplas zonas para tolerar a queda de uma delas.",
+    wrong:{
+      A:"Inverte a hierarquia: é a região que é a unidade mais ampla; a zona de disponibilidade é a subdivisão dentro dela.",
+      C:"São conceitos com escopo/hierarquia diferentes, não sinônimos.",
+      D:"Zonas de disponibilidade são justamente isoladas fisicamente entre si (não na mesma sala) — essa separação é o que garante tolerância a falha.",
+      E:"O objetivo de ter múltiplas zonas dentro de uma região é justamente oferecer redundância — a maioria dos provedores mantém mais de uma zona por região."
+    }
+  }
+},
+{
+  id:"cld-05", topicId:"cloud-computing", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — gestão de custos na nuvem, item 8.4 do Anexo IV (Infraestrutura)",
+  stem:"O modelo de cobrança mais característico da computação em nuvem pública é:",
+  options:{
+    A:"pagamento único e vitalício, sem qualquer cobrança recorrente.",
+    B:"pagamento sob demanda (pay-as-you-go), cobrando pelo que efetivamente é utilizado, com opções de desconto por reserva de capacidade a longo prazo.",
+    C:"cobrança fixa e idêntica para todos os clientes, independentemente do volume de uso.",
+    D:"cobrança exclusivamente baseada no número de funcionários da empresa cliente.",
+    E:"ausência total de qualquer modelo de cobrança, sendo os serviços sempre gratuitos."
+  },
+  correct:"B",
+  explanation:{
+    core:"O modelo de cobrança característico da nuvem pública é o pay-as-you-go: paga-se pelo consumo real de recursos, com opções de desconto para quem se compromete com reserva de capacidade por período mais longo.",
+    detail:"Essa flexibilidade de cobrança sob demanda é um dos principais argumentos comerciais da computação em nuvem em relação à infraestrutura própria tradicional (que exige investimento fixo antecipado).",
+    wrong:{
+      A:"Pagamento único vitalício não corresponde ao modelo real de cobrança recorrente e proporcional ao uso da nuvem pública.",
+      C:"A cobrança varia conforme o consumo de cada cliente, não é fixa e idêntica para todos.",
+      D:"O número de funcionários não é, tipicamente, a métrica de cobrança de infraestrutura em nuvem — o que importa é o consumo de recursos computacionais.",
+      E:"Serviços de nuvem pública têm, sim, modelo de cobrança — apesar de existirem camadas gratuitas limitadas em alguns provedores, não é a regra geral."
+    }
+  }
+},
+{
+  id:"cld-06", topicId:"cloud-computing", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — alta disponibilidade×recuperação de desastres, item 8.1 do Anexo IV (Infraestrutura)",
+  stem:"Sobre alta disponibilidade e recuperação de desastres em ambientes de nuvem, é correto afirmar que:",
+  options:{
+    A:"alta disponibilidade visa manter o serviço no ar mesmo diante da falha de componentes individuais; recuperação de desastres visa restaurar a operação após uma falha catastrófica mais ampla.",
+    B:"alta disponibilidade e recuperação de desastres são o mesmo conceito, com nomes diferentes.",
+    C:"recuperação de desastres é sempre desnecessária em ambientes de nuvem pública.",
+    D:"alta disponibilidade elimina completamente a necessidade de qualquer plano de recuperação de desastres.",
+    E:"recuperação de desastres trata exclusivamente da segurança física de um único servidor."
+  },
+  correct:"A",
+  explanation:{
+    core:"Alta disponibilidade lida com falhas pontuais e localizadas (um servidor, um componente) mantendo o serviço no ar através de redundância; recuperação de desastres trata de cenários mais amplos e catastróficos (perda de uma região inteira, por exemplo), com planos de restauração específicos.",
+    detail:"Os dois conceitos são complementares dentro de uma estratégia de continuidade: alta disponibilidade minimiza impacto de falhas do dia a dia; recuperação de desastres prepara a organização para eventos raros e severos.",
+    wrong:{
+      B:"São conceitos relacionados, mas com escopo e escala de falha diferentes — não são o mesmo conceito com nomes diferentes.",
+      C:"Mesmo em nuvem pública, eventos catastróficos (falha de região inteira, erro humano grave) ainda exigem planejamento de recuperação de desastres.",
+      D:"Alta disponibilidade reduz a frequência de indisponibilidade por falhas pontuais, mas não substitui um plano específico para cenários catastróficos mais amplos.",
+      E:"Recuperação de desastres trata de continuidade operacional diante de falhas amplas, não apenas segurança física de um único servidor."
+    }
+  }
 }
 ];
 
@@ -3354,12 +4816,15 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     try { var v = localStorage.getItem("pn_sim_enfase"); return (v && enfaseById[v]) ? v : ENFASES[0].id; } catch(e){ return ENFASES[0].id; }
   }
   function saveSelectedEnfase(id){ try { localStorage.setItem("pn_sim_enfase", id); } catch(e){} }
-  /* Só "processos-negocio" tem banco de questões hoje — as demais ênfases
-     do edital aparecem no seletor (com vagas reais do Anexo I) mas ainda
-     sem conteúdo. Quando outra ênfase ganhar questões, é só passar a
-     marcar seus tópicos com enfase:"<id>" e trocar esta função por um
-     filtro real sobre TOPICS. */
-  function topicsForEnfase(enfaseId){ return enfaseId === "processos-negocio" ? TOPICS : []; }
+  /* Cada tópico carrega um array enfase:[...] (ver window.TOPICS) — um
+     mesmo tópico pode pertencer a mais de uma área quando o conteúdo do
+     Anexo IV é essencialmente o mesmo texto nas duas ênfases (ex: o bloco
+     de Segurança da Informação e o de Lógica/Raciocínio Lógico são quase
+     idênticos entre Processos de Negócios e Infraestrutura). Uma nova área
+     passa a "ter conteúdo" automaticamente assim que o primeiro tópico com
+     esse enfase é adicionado — não precisa mexer aqui. */
+  function topicsForEnfase(enfaseId){ return TOPICS.filter(function(t){ return t.enfase.indexOf(enfaseId) !== -1; }); }
+  function enfaseHasContent(enfaseId){ return topicsForEnfase(enfaseId).length > 0; }
   function questionsForEnfase(enfaseId){
     var ids = topicsForEnfase(enfaseId).map(function(t){ return t.id; });
     return QUESTIONS.filter(function(q){ return ids.indexOf(q.topicId) !== -1; });
@@ -3488,7 +4953,7 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
         '<div class="enfase-pill'+(ef.id===enfase.id?' active':'')+'" data-ef="'+ef.id+'">'+
           '<span class="en">'+ef.nome.replace("Análise de Sistemas — ","")+'</span>'+
           '<span class="ev">'+ef.vagaImediata+' · '+ef.crTotal+' no cadastro de reserva</span>'+
-          (ef.hasContent ? '' : '<span class="elock">🔒 sem banco de questões ainda</span>')+
+          (enfaseHasContent(ef.id) ? '' : '<span class="elock">🔒 em construção</span>')+
         '</div>'
       );
       pill.addEventListener("click", function(){
@@ -3500,12 +4965,12 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     });
     host.appendChild(enfaseRow);
 
-    if (!enfase.hasContent){
+    if (!enfaseHasContent(enfase.id)){
       host.appendChild(el(
         '<div class="card enfase-empty">'+
-          '<p><b>Ainda não construímos o banco de questões para '+enfase.nome+'.</b></p>'+
-          '<p>O perfil usado neste projeto (desenvolvimento/engenharia de software) foi combinado com o padrão histórico da Cesgranrio para recomendar <b>Processos de Negócios</b> como a área de estudo prioritária — por isso o conteúdo começou por ali.</p>'+
-          '<p>Se você quiser, dá para montar o banco desta área também (mesmo processo: mapear o Anexo IV, cruzar com o histórico da banca e escrever as questões em lotes). É só pedir na conversa.</p>'+
+          '<p><b>O banco de questões desta área ainda está em construção.</b></p>'+
+          '<p>O simulador está sendo expandido área por área, seguindo o mesmo processo usado em Processos de Negócios: mapear o Anexo IV do edital, cruzar com o padrão histórico da Cesgranrio (quando existe prova antiga daquela ênfase) e escrever as questões em lotes com explicação completa.</p>'+
+          '<p>Enquanto isso, escolha outra área no seletor acima para praticar.</p>'+
         '</div>'
       ));
       return;
