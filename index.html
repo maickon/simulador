@@ -387,7 +387,50 @@ HAVING COUNT(p.id) > 0;</pre>
       <li><b>Leitura suja (dirty read)</b>: ler dado de uma transação que ainda não deu commit — só acontece no nível mais baixo, <code>READ UNCOMMITTED</code>.</li>
     </ul>
 
+    <h4>Metadados e independência de dados</h4>
+    <p><b>Metadados</b>: dados sobre dados — nome de coluna, tipo, tamanho, restrições, geralmente guardados no dicionário de dados do SGBD. <b>Independência lógica</b>: mudar o esquema conceitual sem precisar alterar os programas aplicativos. <b>Independência física</b>: mudar a forma de armazenamento físico (índices, organização de arquivo) sem alterar o esquema lógico nem os programas — são dois conceitos paralelos, um não "causa" o outro.</p>
+
+    <h4>Engenharia reversa de modelos de dados</h4>
+    <p>Partir de uma base já existente (ou do seu esquema físico) para reconstruir o modelo lógico/conceitual — útil quando a documentação original não existe ou está desatualizada.</p>
+
+    <h4>SGBD e DDL × DML</h4>
+    <p>Um SGBD reúne, no mínimo: definição da estrutura dos dados, manipulação dos dados, controle de acesso/concorrência e recuperação após falha. <b>DDL</b> (Definição): <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code> — define a estrutura. <b>DML</b> (Manipulação): <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code> — mexe no conteúdo.</p>
+
     <div class="tip"><b>Como a banca cobra:</b> quase sempre com o schema desenhado no enunciado. Treine "rodar" o SQL na mão, linha por linha, antes de olhar as alternativas — a maioria dos erros vem de responder pela definição teórica em vez de executar a consulta de verdade.</div>
+  `
+},
+{
+  id:"bigdata-nosql", tier:"P2", enfase:["processos-negocio"],
+  name:"Big Data, NoSQL & Integração de Dados",
+  editalRef:"Anexo IV · itens 1.18–1.23",
+  summary:"Tipos de NoSQL, Data Lake×DW×Data Mart, banco em memória, ETL×integração via BD, MDM, Big Data.",
+  html: `
+    <h4>NoSQL — os 4 tipos mais cobrados</h4>
+    <table>
+      <tr><th>Tipo</th><th>Como guarda o dado</th></tr>
+      <tr><td>Chave-valor</td><td>par simples (chave identificadora → valor) — ótimo para busca rápida por chave</td></tr>
+      <tr><td>Orientado a documentos</td><td>registros semiestruturados (ex: JSON), estrutura flexível e aninhada, sem exigir esquema fixo</td></tr>
+      <tr><td>Colunar</td><td>organiza por coluna em vez de por linha — bom para agregação sobre grandes volumes</td></tr>
+      <tr><td>Orientado a grafos</td><td>nós + relacionamentos — ótimo para consultas de conexão complexa entre entidades (ex: redes sociais)</td></tr>
+    </table>
+    <p>O <b>modelo relacional</b> continua sendo tabelas com chaves; o <b>modelo multidimensional</b> organiza em cubos (fato + dimensões) para análise — já vimos isso no bloco de BI/OLAP.</p>
+
+    <h4>Data Lake × Data Warehouse × Data Mart × Lakehouse</h4>
+    <p><b>Data Lake</b>: dados brutos, estruturados e não estruturados, sem esquema exigido antecipadamente (<i>schema-on-read</i>). <b>Data Warehouse</b>: dados já tratados, com esquema definido antes da carga (<i>schema-on-write</i>). <b>Data Mart</b>: recorte departamental de um Data Warehouse. <b>Data Lakehouse</b>: tenta unir a flexibilidade do Lake com a governança/estrutura do Warehouse.</p>
+
+    <h4>Banco de dados em memória</h4>
+    <p>Processa e guarda dados primariamente na RAM em vez de disco — resposta muito mais rápida, ao custo de maior dependência de energia. Isso não significa ausência de persistência: soluções modernas usam snapshot/log em disco para não perder dados num desligamento.</p>
+
+    <h4>Integração de dados — três técnicas, não confunda</h4>
+    <p><b>ETL</b>: extrai, transforma e carrega — processa o dado antes de entregar no destino. <b>Transferência de Arquivos</b>: move dados brutos entre sistemas via arquivo (CSV, XML) trocado fisicamente, sem exigir conexão direta em tempo real. <b>Integração via Base de Dados</b>: sistemas diferentes leem/escrevem diretamente numa base compartilhada ou replicada.</p>
+
+    <h4>MDM (Master Data Management) e qualidade de dados</h4>
+    <p>Garante uma visão única, consistente e confiável das entidades centrais do negócio (cliente, produto, fornecedor) compartilhadas entre sistemas — evita duplicidade e divergência de cadastro. Não é o mesmo MDM de segurança (Mobile Device Management) — mesma sigla, conceito totalmente diferente, cuidado com essa pegadinha.</p>
+
+    <h4>Big Data — os "Vs"</h4>
+    <p><b>Volume</b> (quantidade), <b>Velocidade</b> (rapidez de geração/processamento), <b>Variedade</b> (diversidade de formatos/fontes) — frequentemente complementados por <b>Veracidade</b> (confiabilidade) e <b>Valor</b> (utilidade extraída).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente forte nas provas antigas (só "mineração de dados" apareceu, e baixo) — é extensão natural do bloco de BD que já é Prioridade 1. Espere definição conceitual e comparação entre termos parecidos, não cálculo.</div>
   `
 },
 {
@@ -450,6 +493,12 @@ HAVING COUNT(p.id) > 0;</pre>
     <h4>Diagrama de sequência</h4>
     <p>Mostra a ordem temporal das mensagens trocadas entre objetos. A <b>linha de vida</b> (lifeline, linha vertical tracejada) representa a existência do objeto ao longo do tempo; setas cheias são mensagens síncronas, setas abertas são assíncronas.</p>
 
+    <h4>Paradigma estruturado — DFD</h4>
+    <p>O Diagrama de Fluxo de Dados (DFD) usa 4 elementos: <b>processos</b> (transformam dado), <b>fluxos de dados</b> (movimentam dado entre elementos), <b>depósitos de dados</b> (armazenam dado) e <b>entidades externas</b> (fonte/destino fora do sistema). É a contraparte "clássica" do diagrama de casos de uso no paradigma orientado a objetos — organiza o sistema em torno de processo/fluxo, não em torno de objeto.</p>
+
+    <h4>Ambientes de desenvolvimento (IDE)</h4>
+    <p>Reúne, numa única ferramenta: editor de código, compilador/interpretador integrado, depurador (debugger) e, com frequência, integração com controle de versão — tudo para agilizar o ciclo escrever→testar→corrigir.</p>
+
     <div class="tip"><b>Como a banca cobra:</b> o formato "afirmação 1 PORQUE afirmação 2" aparece muito aqui — a primeira frase costuma estar certa, a segunda é onde mora a pegadinha (verdadeira mas não relacionada, ou sutilmente errada).</div>
   `
 },
@@ -500,6 +549,23 @@ Folga de C = 12 − 9 = 3 dias</pre>
 
     <h4>Story Points</h4>
     <p>Medem esforço/complexidade/incerteza RELATIVOS de um item comparado a outros já estimados — não são uma unidade de tempo (hora/dia). É essa natureza relativa que costuma ser cobrada.</p>
+
+    <h4>Gestão de projeto × gestão de produto</h4>
+    <p><b>Projeto</b>: entrega um resultado específico, com início e fim definidos, dentro de prazo/escopo. <b>Produto</b>: evolução contínua ao longo de todo o ciclo de vida, sem fim predeterminado, orientada por valor de mercado/necessidade do usuário.</p>
+
+    <h4>Estruturas organizacionais</h4>
+    <table>
+      <tr><th>Estrutura</th><th>A quem o time se reporta</th><th>Autoridade do gerente de projetos</th></tr>
+      <tr><td>Funcional</td><td>gerente funcional (por especialidade)</td><td>baixa ou inexistente</td></tr>
+      <tr><td>Matricial</td><td>dupla subordinação (funcional + projeto)</td><td>compartilhada</td></tr>
+      <tr><td>Projetizada</td><td>diretamente ao gerente de projetos</td><td>ampla</td></tr>
+    </table>
+
+    <h4>Escritório de Projetos (PMO)</h4>
+    <p><b>De suporte</b>: papel consultivo — modelos, boas práticas, treinamento, baixo controle. <b>De controle</b>: exige conformidade a um framework, controle moderado. <b>Diretivo</b>: assume e gerencia os projetos diretamente, alto controle.</p>
+
+    <h4>Áreas de conhecimento clássicas (PMBOK anterior à 7ª ed.)</h4>
+    <p>Integração, Escopo, Cronograma, Custos, Qualidade, Recursos, Comunicações, <b>Riscos</b> (identificar/analisar/planejar resposta/monitorar eventos incertos), Aquisições e Partes Interessadas — cada uma cobre um aspecto de gestão diferente do projeto.</p>
 
     <div class="tip"><b>Como a banca cobra:</b> caminho crítico é cálculo puro — pratique montar o diagrama de rede na mão. Scrum costuma vir como "associe o papel/evento à descrição certa" ou cenário ("quem deve remover este impedimento?").</div>
   `
@@ -575,7 +641,23 @@ Folga de C = 12 − 9 = 3 dias</pre>
     <h4>Criptografia híbrida — por que os dois tipos coexistem</h4>
     <p>Criptografia simétrica é muito mais rápida para cifrar grandes volumes de dados; criptografia assimétrica é mais lenta, mas resolve o problema de como combinar uma chave secreta sem um canal seguro prévio. Por isso sistemas reais (como o TLS) usam assimétrica só para negociar uma chave simétrica de sessão, e depois cifram o tráfego real com essa chave simétrica.</p>
 
-    <div class="tip"><b>Como a banca cobra:</b> formato "afirmação 1 PORQUE afirmação 2" é comum aqui também — decore a função exata de cada mecanismo, porque a pegadinha costuma trocar a função de um mecanismo pela de outro parecido (IDS por IPS, RBAC por ABAC, assinatura por cifragem, SAST por DAST).</div>
+    <h4>MDM, SSO e Proxy — mais três siglas para não trocar</h4>
+    <ul>
+      <li><b>MDM</b> (Mobile Device Management) aqui é <i>gestão de dispositivos móveis</i> corporativos — política remota, apagamento em caso de perda. Cuidado: existe outro "MDM" (Master Data Management, gestão de dados mestres) no bloco de Arquitetura de Dados — mesma sigla, conceito diferente.</li>
+      <li><b>SSO</b> (Single Sign-On): uma autenticação dá acesso a vários sistemas, sem logar de novo em cada um.</li>
+      <li><b>Proxy direto</b> (forward): intermedia cliente interno → internet, pode ocultar identidade/filtrar conteúdo. <b>Proxy reverso</b>: intermedia externo → servidor interno, pode balancear carga e esconder a topologia real.</li>
+    </ul>
+
+    <h4>Ataques em cenário: DDoS e Path Traversal</h4>
+    <p><b>DDoS</b>: volume de requisições vindo de muitas origens diferentes simultaneamente, sobrecarregando e derrubando o serviço. <b>Path Traversal</b>: manipular o caminho de um arquivo (ex: <code>../../../../etc/passwd</code>) para escapar do diretório permitido e acessar arquivo fora do escopo da aplicação.</p>
+
+    <h4>Governança de segurança: PSI e Classificação</h4>
+    <p><b>Política de Segurança da Informação (PSI)</b>: diretrizes/normas/responsabilidades que orientam o comportamento de todos (não só TI) no tratamento da informação. <b>Classificação de informações</b>: categorizar por sensibilidade (pública/interna/confidencial/restrita), aplicando controle proporcional a cada nível — não o mesmo controle para tudo.</p>
+
+    <h4>Certificado digital e ICP-Brasil</h4>
+    <p>Certificado digital vincula uma chave pública a uma identidade, emitido por uma Autoridade Certificadora (AC). A <b>ICP-Brasil</b> é a cadeia nacional de confiança que credencia essas ACs no país.</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> formato "afirmação 1 PORQUE afirmação 2" é comum aqui também — decore a função exata de cada mecanismo, porque a pegadinha costuma trocar a função de um mecanismo pela de outro parecido (IDS por IPS, RBAC por ABAC, assinatura por cifragem, SAST por DAST, e agora também MDM de dispositivo por MDM de dados mestres).</div>
   `
 },
 
@@ -616,6 +698,18 @@ Folga de C = 12 − 9 = 3 dias</pre>
 
     <h4>OLTP × OLAP</h4>
     <p><b>OLTP</b> (sistemas transacionais): otimizado para inserir/atualizar registros rapidamente, um de cada vez. <b>OLAP</b> (sistemas analíticos): otimizado para consultas complexas sobre grandes volumes históricos, normalmente somente leitura.</p>
+
+    <h4>Pirâmide DIKW — Dado, Informação, Conhecimento, Inteligência</h4>
+    <p><b>Dado</b>: fato bruto, sem contexto (ex: "35"). <b>Informação</b>: dado contextualizado, com significado (ex: "temperatura de 35°C"). <b>Conhecimento</b>: informação combinada com experiência/interpretação. <b>Inteligência</b>: aplicar o conhecimento para antecipar cenários e apoiar decisão estratégica.</p>
+
+    <h4>Mapeamento de fontes de dados</h4>
+    <p>Identificar e documentar de onde vêm os dados necessários (sistemas de origem, formato, estrutura, responsável) — base para planejar a extração/integração antes de qualquer ETL.</p>
+
+    <h4>Dados estruturados × não estruturados × semiestruturados</h4>
+    <p><b>Estruturados</b>: esquema rígido e bem definido (tabela relacional). <b>Não estruturados</b>: sem esquema predefinido (e-mail, imagem, vídeo). <b>Semiestruturados</b>: alguma organização, mas sem esquema fixo (JSON, XML).</p>
+
+    <h4>Planilhas como ferramenta de análise</h4>
+    <p><b>Tabelas dinâmicas</b> (pivot tables) resumem/agrupam/cruzam grandes volumes de dados de forma interativa, sem reescrever fórmula a cada nova pergunta — é a ferramenta mais citada dentro do item de manipulação de dados em planilhas.</p>
 
     <div class="tip"><b>Como a banca cobra:</b> historicamente esse bloco apareceu mais forte na prova de SAP do que na de Processos de Negócio no mesmo edital — mas com os mesmos enunciados. Decore a diferença exata entre drill down/up e slice/dice, que é onde mora a maior parte das pegadinhas.</div>
   `
@@ -713,7 +807,16 @@ Folga de C = 12 − 9 = 3 dias</pre>
     <h4>Segurança em nuvem — responsabilidade compartilhada</h4>
     <p>O provedor de nuvem responde pela segurança <b>DA nuvem</b> (infraestrutura física, virtualização); o cliente responde pela segurança <b>NA nuvem</b> (configuração de acesso, dados, aplicações que ele implanta) — a divisão exata varia conforme o modelo (IaaS/PaaS/SaaS), mas o cliente nunca fica isento de responsabilidade.</p>
 
-    <div class="tip"><b>Como a banca cobra:</b> sem precedente direto nas provas antigas — são todos itens novos do edital 2026. Tratam-se de siglas e processos com definição bem específica; a banca tende a cobrar a definição literal de cada termo, então vale decorar a ordem das fases (incidente, pentest) e o que cada letra do STRIDE significa.</div>
+    <h4>DLP e CASB</h4>
+    <p><b>DLP</b> (Data Loss Prevention): detecta e previne vazamento/transmissão não autorizada de dado sensível (monitora e-mail, upload pra nuvem, dispositivo removível). <b>CASB</b> (Cloud Access Security Broker): ponto de controle entre os usuários da organização e os serviços de nuvem que eles usam, aplicando política/visibilidade/conformidade sobre esse uso.</p>
+
+    <h4>Ciclo de Gestão de Vulnerabilidades</h4>
+    <p><b>Identificação</b> (scanner encontra) → <b>Avaliação/priorização</b> (por criticidade/exposição) → <b>Correção</b> (patch/mitigação) → <b>Verificação</b> (confirma que sumiu) — é um ciclo contínuo, não uma ação única.</p>
+
+    <h4>Segurança em IoT</h4>
+    <p>Dispositivos IoT trazem desafios extras: capacidade computacional limitada (dificulta criptografia robusta), credenciais padrão de fábrica não trocadas, e dificuldade de atualizar em escala — histórico real de botnets formadas por dispositivos IoT comprometidos (ex: Mirai).</p>
+
+    <div class="tip"><b>Como a banca cobra:</b> sem precedente direto nas provas antigas — são todos itens novos do edital 2026. Tratam-se de siglas e processos com definição bem específica; a banca tende a cobrar a definição literal de cada termo, então vale decorar a ordem das fases (incidente, pentest, gestão de vulnerabilidades) e o que cada letra do STRIDE significa.</div>
   `
 },
 
@@ -743,6 +846,15 @@ Folga de C = 12 − 9 = 3 dias</pre>
 
     <h4>Prototipação — fidelidade</h4>
     <p><b>Baixa fidelidade</b> (wireframe, papel): rápido e barato, foca em fluxo/conceito, sem detalhe visual. <b>Alta fidelidade</b>: se aproxima da aparência e comportamento reais do produto final — mais caro e demorado de produzir.</p>
+
+    <h4>Fluxo de navegação (user flow)</h4>
+    <p>Mapeia a sequência de telas/passos que um usuário percorre para completar uma tarefa — ajuda a achar ponto de atrito e simplificar o caminho até o objetivo, antes mesmo de desenhar qualquer tela em detalhe.</p>
+
+    <h4>Interoperabilidade entre navegadores</h4>
+    <p>Garantir que a aplicação web funcione e apareça de forma consistente em navegadores diferentes (Chrome, Firefox, Safari, Edge), já que cada um pode ter suporte diferente a um mesmo padrão web.</p>
+
+    <h4>Storytelling com dados</h4>
+    <p>Construir uma narrativa que combina dado + visualização + contexto para comunicar um insight de forma clara e persuasiva, guiando quem lê até uma conclusão ou decisão — não é só "colocar um gráfico", é dar sentido a ele.</p>
 
     <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — é conteúdo inteiramente novo no edital 2026. Espere definições literais e comparações conceituais (não cálculo), sem histórico específico da Cesgranrio para calibrar o nível de profundidade exigido.</div>
   `
@@ -4793,6 +4905,947 @@ Qual é a saída impressa por esse programa?`,
       C:"Mesmo em nuvem pública, eventos catastróficos (falha de região inteira, erro humano grave) ainda exigem planejamento de recuperação de desastres.",
       D:"Alta disponibilidade reduz a frequência de indisponibilidade por falhas pontuais, mas não substitui um plano específico para cenários catastróficos mais amplos.",
       E:"Recuperação de desastres trata de continuidade operacional diante de falhas amplas, não apenas segurança física de um único servidor."
+    }
+  }
+},
+
+/* ============================================================
+   LOTE 6 — cobertura de lacunas do Anexo IV (Processos de Negócios)
+   Auditoria item a item do syllabus oficial contra o banco existente.
+   41 questões novas + 1 tópico novo (bigdata-nosql).
+   ============================================================ */
+
+/* ---------------- sql-dados — +6 (fundamentos que faltavam) ---------------- */
+{
+  id:"sql-15", topicId:"sql-dados", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Metadados — item 1.6 do Anexo IV",
+  stem:"No contexto de bancos de dados, metadados correspondem a:",
+  options:{
+    A:"os dados de maior volume armazenados no banco, usados para análises estatísticas.",
+    B:"dados que descrevem outros dados — por exemplo, o nome de uma coluna, seu tipo, tamanho e restrições — geralmente armazenados no dicionário de dados do SGBD.",
+    C:"registros duplicados que devem ser removidos durante a normalização.",
+    D:"o conjunto de senhas de acesso ao banco de dados.",
+    E:"apenas os dados que já foram excluídos do banco, mas mantidos em log."
+  },
+  correct:"B",
+  explanation:{
+    core:"Metadados são 'dados sobre dados' — descrevem a estrutura, o tipo e as restrições dos dados reais armazenados, sem serem, eles mesmos, o conteúdo de negócio.",
+    detail:"É o dicionário de dados do SGBD que guarda esse tipo de informação: nome de tabela/coluna, tipo de dado, tamanho, chave, restrição de integridade, entre outros.",
+    wrong:{
+      A:"Volume de dados não tem relação com a definição de metadados — metadados descrevem estrutura, não medem quantidade.",
+      C:"Remoção de duplicidade é uma preocupação de normalização/qualidade de dados, não a definição de metadados.",
+      D:"Senhas de acesso são dados de segurança/autenticação, não metadados sobre a estrutura das tabelas.",
+      E:"Metadados não são sobre dados excluídos — são sobre a descrição estrutural dos dados vigentes no banco."
+    }
+  }
+},
+{
+  id:"sql-16", topicId:"sql-dados", tier:"P1", format:"porque",
+  source:"inedita", insp:"Independência de dados lógica × física — item 1.15 do Anexo IV",
+  stem:"Afirmação 1: a independência de dados lógica permite alterar o esquema conceitual (lógico) do banco de dados sem exigir alteração nos programas aplicativos que o utilizam.\n\nPORQUE\n\nAfirmação 2: a independência de dados física permite alterar a forma de armazenamento físico dos dados (como índices ou organização de arquivos) sem exigir alteração no esquema lógico nem nos programas aplicativos.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"B",
+  explanation:{
+    core:"Independência lógica e independência física são dois conceitos DISTINTOS e PARALELOS — cada um isola um nível diferente de mudança (esquema conceitual × armazenamento físico) — ambas as afirmações são corretas isoladamente.",
+    detail:"A segunda afirmação não é a CAUSA da primeira: elas descrevem dois tipos de independência de dados que coexistem na arquitetura de três esquemas (externo/conceitual/interno), sem uma depender logicamente da outra para ser verdadeira.",
+    wrong:{
+      A:"Não há relação de causa/justificativa entre as duas — são dois conceitos paralelos, cada um descrevendo um nível diferente de independência.",
+      C:"A segunda afirmação também é verdadeira — descreve corretamente a independência física.",
+      D:"A primeira afirmação também é verdadeira — descreve corretamente a independência lógica.",
+      E:"Ambas as afirmações descrevem corretamente os dois tipos clássicos de independência de dados."
+    }
+  }
+},
+{
+  id:"sql-17", topicId:"sql-dados", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Engenharia reversa de modelos de dados — item 1.9 do Anexo IV",
+  stem:"A técnica de engenharia reversa aplicada a modelos de dados consiste em:",
+  options:{
+    A:"criar um banco de dados do zero, sem nenhuma base de dados existente.",
+    B:"partir de uma base de dados já existente (ou de seu esquema físico) para reconstruir o modelo lógico/conceitual correspondente, útil quando a documentação original não existe ou está desatualizada.",
+    C:"excluir permanentemente todos os dados de uma tabela.",
+    D:"migrar dados de um SGBD para uma planilha eletrônica.",
+    E:"criptografar os dados armazenados em um banco de dados legado."
+  },
+  correct:"B",
+  explanation:{
+    core:"Engenharia reversa de dados vai do FÍSICO/EXISTENTE para o LÓGICO/CONCEITUAL — o caminho oposto ao da modelagem tradicional (que parte do conceitual para o físico).",
+    detail:"É uma técnica valiosa em sistemas legados, onde o modelo de dados nunca foi documentado formalmente ou a documentação ficou desatualizada em relação ao banco real.",
+    wrong:{
+      A:"Criar do zero é engenharia 'direta' (forward), o oposto da engenharia reversa, que parte de algo já existente.",
+      C:"Exclusão de dados não tem relação com reconstrução de modelo — são atividades completamente diferentes.",
+      D:"Migração para planilha é uma atividade de exportação de dados, não de reconstrução de modelo lógico/conceitual.",
+      E:"Criptografia é uma medida de segurança, sem relação com reconstruir a modelagem de um banco existente."
+    }
+  }
+},
+{
+  id:"sql-18", topicId:"sql-dados", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Funções do SGBD — item 1.13 do Anexo IV",
+  stem:"Entre as principais funções de um Sistema Gerenciador de Banco de Dados (SGBD), estão:",
+  options:{
+    A:"exclusivamente a interface gráfica de usuário para consulta de dados.",
+    B:"definição da estrutura dos dados (DDL), manipulação dos dados (DML), controle de acesso e concorrência, e garantia de integridade e recuperação após falhas.",
+    C:"apenas a geração de relatórios impressos.",
+    D:"unicamente o armazenamento físico dos dados em disco, sem qualquer camada de controle de acesso.",
+    E:"a criação de páginas web dinâmicas."
+  },
+  correct:"B",
+  explanation:{
+    core:"Um SGBD reúne um conjunto de funções centrais: definir estrutura, manipular conteúdo, controlar acesso/concorrência entre usuários simultâneos, e garantir integridade e recuperação diante de falhas.",
+    detail:"Nenhuma dessas funções isoladamente resume o que é um SGBD — é justamente o CONJUNTO delas que caracteriza a ferramenta, diferenciando-a de um simples sistema de arquivos.",
+    wrong:{
+      A:"Interface gráfica é apenas um possível meio de acesso, não a função central de um SGBD.",
+      C:"Geração de relatórios impressos é uma aplicação possível sobre os dados, não uma função central e definidora do SGBD.",
+      D:"Um SGBD sempre inclui camada de controle de acesso — armazenamento sem controle algum não caracterizaria um SGBD.",
+      E:"Criação de páginas web dinâmicas é função de uma camada de aplicação, não do SGBD em si."
+    }
+  }
+},
+{
+  id:"sql-19", topicId:"sql-dados", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"DDL × DML — itens 1.11 e 1.12 do Anexo IV",
+  stem:"Sobre as linguagens DDL e DML em SQL, é correto afirmar que:",
+  options:{
+    A:"comandos como CREATE TABLE, ALTER TABLE e DROP TABLE pertencem à DDL (Linguagem de Definição de Dados); comandos como INSERT, UPDATE, DELETE e SELECT pertencem à DML (Linguagem de Manipulação de Dados).",
+    B:"DDL e DML são termos sinônimos, ambos usados apenas para consultar dados.",
+    C:"o comando SELECT pertence à DDL, pois define a estrutura da consulta.",
+    D:"o comando CREATE TABLE pertence à DML, pois manipula o conteúdo da tabela.",
+    E:"DDL é usada apenas em bancos de dados NoSQL, nunca em bancos relacionais."
+  },
+  correct:"A",
+  explanation:{
+    core:"DDL (Data Definition Language) define/altera a ESTRUTURA (CREATE, ALTER, DROP); DML (Data Manipulation Language) mexe no CONTEÚDO (INSERT, UPDATE, DELETE, SELECT).",
+    detail:"É uma separação clássica de SQL, presente em praticamente qualquer SGBD relacional — confundir 'estrutura' com 'conteúdo' é o erro mais comum nesse tema.",
+    wrong:{
+      B:"São categorias distintas de comando, com propósitos diferentes (definir estrutura × manipular dado), não sinônimos.",
+      C:"SELECT consulta CONTEÚDO, não define estrutura — pertence à DML, não à DDL.",
+      D:"CREATE TABLE define ESTRUTURA (cria a tabela), não manipula conteúdo — pertence à DDL, não à DML.",
+      E:"DDL é amplamente utilizada em bancos relacionais tradicionais — não é exclusiva de NoSQL (que, aliás, muitas vezes nem usa SQL como linguagem)."
+    }
+  }
+},
+{
+  id:"sql-20", topicId:"sql-dados", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Avaliação de modelos de dados — item 1.8 do Anexo IV",
+  stem:"Ao avaliar a qualidade de um modelo de dados, um dos critérios centrais a considerar é:",
+  options:{
+    A:"o número absoluto de tabelas no modelo, independentemente de sua relação com os requisitos do negócio.",
+    B:"se o modelo representa fielmente as regras de negócio, mantém a integridade dos dados e está adequadamente normalizado, evitando redundância desnecessária.",
+    C:"exclusivamente a velocidade de digitação do modelador durante a criação do diagrama.",
+    D:"o uso obrigatório de bancos de dados NoSQL, independentemente do caso de uso.",
+    E:"a ausência total de qualquer relacionamento entre tabelas."
+  },
+  correct:"B",
+  explanation:{
+    core:"Um modelo de dados de boa qualidade é avaliado pela sua fidelidade às regras de negócio, pela integridade garantida e pelo nível adequado de normalização — não por métricas superficiais como quantidade de tabelas.",
+    detail:"Um modelo com muitas tabelas não é, por si só, melhor ou pior — o que importa é se ele representa corretamente o domínio do problema, sem redundância desnecessária nem perda de integridade.",
+    wrong:{
+      A:"Quantidade de tabelas isolada não diz nada sobre a qualidade do modelo — o que importa é a adequação ao negócio.",
+      C:"Velocidade de digitação é irrelevante para a qualidade técnica de um modelo de dados.",
+      D:"A escolha de NoSQL × relacional depende do caso de uso — não existe uma regra de que NoSQL seja sempre obrigatório.",
+      E:"Ausência total de relacionamentos entre tabelas tipicamente indica um modelo pobre, que não representa adequadamente as regras de negócio."
+    }
+  }
+},
+
+/* ---------------- BIG DATA, NOSQL & INTEGRAÇÃO DE DADOS — 7 (tópico novo) ---------------- */
+{
+  id:"bd2-01", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Bancos de dados NoSQL — item 1.18 do Anexo IV",
+  stem:"Sobre os principais tipos de bancos de dados NoSQL, é correto afirmar que:",
+  options:{
+    A:"o modelo chave-valor armazena dados como pares simples (chave identificadora e valor associado), sendo otimizado para buscas rápidas por chave; o modelo orientado a documentos armazena registros semiestruturados (como JSON), permitindo estruturas mais flexíveis e aninhadas.",
+    B:"todos os bancos NoSQL utilizam obrigatoriamente a linguagem SQL padrão para consultas.",
+    C:"o modelo orientado a grafos é o mais indicado para armazenar dados tabulares simples, sem relacionamentos.",
+    D:"bancos de dados colunares armazenam os dados exclusivamente por linha, da mesma forma que um banco relacional tradicional.",
+    E:"NoSQL é um termo que se refere exclusivamente a bancos de dados que armazenam apenas números."
+  },
+  correct:"A",
+  explanation:{
+    core:"Chave-valor é o modelo mais simples (par chave→valor, busca rápida por chave); documentos guardam registros semiestruturados flexíveis (JSON), sem exigir esquema fixo entre registros.",
+    detail:"Cada tipo de NoSQL resolve um problema de acesso diferente — não existe 'o' banco NoSQL genérico, e sim uma família de modelos com propósitos distintos (chave-valor, documento, colunar, grafo).",
+    wrong:{
+      B:"Muitos bancos NoSQL usam linguagens de consulta próprias, diferentes do SQL padrão relacional — não é uma obrigatoriedade.",
+      C:"Grafos são indicados justamente para dados COM muitos relacionamentos complexos entre entidades — o oposto de dados tabulares simples e sem relação.",
+      D:"É justamente o oposto: bancos colunares organizam por COLUNA, não por linha como o modelo relacional tradicional.",
+      E:"NoSQL não tem relação com armazenar apenas números — é uma categoria ampla de modelos de dados não-relacionais, para diversos tipos de conteúdo."
+    }
+  }
+},
+{
+  id:"bd2-02", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Diferenciação entre modelos de banco de dados — item 1.23 do Anexo IV",
+  stem:"Sobre a diferenciação entre modelos de banco de dados, é correto afirmar que:",
+  options:{
+    A:"o modelo relacional organiza dados em tabelas com linhas e colunas, relacionadas por chaves; o modelo multidimensional organiza dados em cubos (fatos e dimensões) otimizados para análise; o modelo de documentos armazena registros semiestruturados flexíveis; o modelo de grafos representa dados como nós e relacionamentos, otimizado para consultas de conexões complexas entre entidades.",
+    B:"todos os quatro modelos armazenam dados de forma idêntica, diferindo apenas na sintaxe da linguagem de consulta.",
+    C:"o modelo de grafos é uma variação do modelo relacional, sem nenhuma diferença estrutural entre eles.",
+    D:"o modelo multidimensional só pode ser implementado em bancos de dados NoSQL, nunca em SGBDs relacionais.",
+    E:"o modelo de documentos exige que todo registro tenha exatamente a mesma estrutura de campos que os demais."
+  },
+  correct:"A",
+  explanation:{
+    core:"Cada modelo resolve um tipo de problema de acesso a dado diferente: relacional (integridade transacional, tabelas), multidimensional (análise/agregação, cubos), documentos (flexibilidade de esquema), grafos (relacionamento complexo entre entidades).",
+    detail:"Reconhecer QUANDO usar cada um é o que a banca costuma cobrar — não é sobre um modelo ser 'melhor' que outro em absoluto, e sim mais adequado a um tipo de problema específico.",
+    wrong:{
+      B:"Cada modelo armazena e organiza os dados de forma estruturalmente diferente — não é só sintaxe de consulta.",
+      C:"Grafos têm estrutura própria (nós + arestas/relacionamentos) bem distinta da estrutura tabular do modelo relacional.",
+      D:"Cubos multidimensionais também podem ser implementados sobre SGBDs relacionais (modelagem estrela/floco de neve) — não é exclusivo de NoSQL.",
+      E:"Uma das vantagens do modelo de documentos é justamente PERMITIR estruturas diferentes entre registros — não exigir uniformidade rígida."
+    }
+  }
+},
+{
+  id:"bd2-03", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Data Lakes e Big Data — item 1.22 do Anexo IV",
+  stem:"Sobre as estruturas de armazenamento de dados analíticos, é correto afirmar que:",
+  options:{
+    A:"um Data Lake armazena dados brutos, estruturados e não estruturados, sem exigir esquema definido previamente (schema-on-read); um Data Warehouse armazena dados já tratados e estruturados segundo um esquema definido previamente (schema-on-write); um Data Mart é um subconjunto departamental de um Data Warehouse; um Data Lakehouse busca combinar a flexibilidade do Data Lake com recursos de governança/estrutura do Data Warehouse.",
+    B:"Data Lake e Data Warehouse são termos sinônimos, sem qualquer diferença conceitual.",
+    C:"um Data Mart deve, obrigatoriamente, ser maior em volume de dados do que o Data Warehouse do qual deriva.",
+    D:"um Data Lakehouse é, por definição, incapaz de armazenar dados estruturados.",
+    E:"Data Warehouse exige esquema definido apenas no momento da leitura dos dados (schema-on-read), nunca antecipadamente."
+  },
+  correct:"A",
+  explanation:{
+    core:"A diferença central Lake×Warehouse é QUANDO o esquema é aplicado: Lake aceita dado bruto sem esquema prévio (schema-on-read); Warehouse exige esquema definido antes da carga (schema-on-write). Mart é um recorte do Warehouse; Lakehouse tenta unir os dois mundos.",
+    detail:"Essa distinção de 'quando o esquema é imposto' é o critério técnico mais preciso para diferenciar Lake de Warehouse — mais importante do que apenas 'estruturado × não estruturado'.",
+    wrong:{
+      B:"São conceitos com propósito e abordagem de esquema diferentes, não sinônimos.",
+      C:"Data Mart é tipicamente MENOR (recorte departamental), não maior, do que o Data Warehouse do qual deriva.",
+      D:"Lakehouse é justamente pensado para acomodar tanto dados estruturados quanto não estruturados, combinando os dois mundos.",
+      E:"É o oposto: Data Warehouse aplica schema-on-WRITE (antes da carga) — schema-on-read é característica do Data Lake."
+    }
+  }
+},
+{
+  id:"bd2-04", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Banco de dados em memória — item 1.20 do Anexo IV",
+  stem:"Um banco de dados em memória (in-memory database) se caracteriza por:",
+  options:{
+    A:"armazenar e processar os dados primariamente na memória RAM, em vez de depender de leitura/escrita em disco para cada operação — resultando em tempos de resposta significativamente mais rápidos, ao custo de maior dependência de energia/volatilidade da memória.",
+    B:"ser, por definição, incapaz de garantir qualquer persistência dos dados após um desligamento do servidor.",
+    C:"ser aplicável exclusivamente a bancos de dados relacionais tradicionais baseados em disco.",
+    D:"armazenar os dados exclusivamente em fitas magnéticas.",
+    E:"ser sempre mais lento do que um banco de dados tradicional baseado em disco."
+  },
+  correct:"A",
+  explanation:{
+    core:"Bancos em memória priorizam RAM em vez de disco para operações do dia a dia, ganhando velocidade — mas ficam mais expostos à volatilidade da memória (dados podem se perder sem mecanismos de persistência adicionais).",
+    detail:"Isso não significa ausência TOTAL de persistência: soluções modernas usam snapshot periódico e/ou log de transações gravados em disco justamente para mitigar essa volatilidade.",
+    wrong:{
+      B:"É uma afirmação absoluta demais: bancos em memória modernos costumam ter mecanismos de persistência (snapshot/log), mesmo priorizando RAM no dia a dia.",
+      C:"O conceito de banco em memória é aplicável tanto a bancos relacionais quanto a NoSQL — não é exclusivo de um modelo baseado em disco.",
+      D:"Fitas magnéticas são um meio de armazenamento antigo e lento, o oposto do que caracteriza um banco em memória.",
+      E:"É justamente o oposto: bancos em memória tendem a ser MAIS RÁPIDOS do que os baseados em disco, para a maioria das operações."
+    }
+  }
+},
+{
+  id:"bd2-05", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Integração de dados (ETL, Transferência de Arquivos e Integração via BD) — item 1.19 do Anexo IV",
+  stem:"Sobre técnicas de integração de dados entre sistemas, é correto afirmar que:",
+  options:{
+    A:"ETL (Extração, Transformação e Carga) processa e transforma os dados antes de carregá-los no destino; transferência de arquivos move dados brutos entre sistemas por meio de arquivos (ex: CSV, XML) trocados fisicamente; integração via base de dados permite que sistemas diferentes leiam/escrevam diretamente numa base de dados compartilhada ou replicada.",
+    B:"as três técnicas são idênticas, apenas com nomes comerciais diferentes por fornecedor.",
+    C:"transferência de arquivos exige, obrigatoriamente, conexão direta em tempo real entre os bancos de dados de origem e destino.",
+    D:"integração via base de dados nunca pode ser utilizada quando os sistemas envolvidos são de fornecedores diferentes.",
+    E:"ETL, por definição, nunca realiza qualquer transformação sobre os dados, apenas os copia."
+  },
+  correct:"A",
+  explanation:{
+    core:"São três abordagens distintas de integração, cada uma com seu mecanismo: ETL transforma antes de carregar; transferência de arquivos troca arquivos físicos (sem exigir conexão direta em tempo real); integração via BD compartilha/replica a própria base entre sistemas.",
+    detail:"Reconhecer o mecanismo por trás de cada técnica evita confundir 'mover dado' (arquivo) com 'processar e carregar dado' (ETL) ou com 'compartilhar acesso direto ao dado' (via BD).",
+    wrong:{
+      B:"São técnicas com mecanismos de integração genuinamente diferentes, não apenas nomenclatura de fornecedor.",
+      C:"Transferência de arquivos é justamente uma alternativa a conexões em tempo real — os arquivos são trocados de forma assíncrona/física, sem exigir conexão direta contínua.",
+      D:"Integração via base de dados pode, sim, ser usada entre sistemas de fornecedores diferentes, desde que haja um mecanismo de acesso/replicação compatível entre eles.",
+      E:"É a definição oposta de ETL: o 'T' de Transform é justamente a etapa de transformação dos dados antes da carga."
+    }
+  }
+},
+{
+  id:"bd2-06", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Qualidade de dados e gestão de dados mestres — item 1.21 do Anexo IV",
+  stem:"A Gestão de Dados Mestres (Master Data Management - MDM), no contexto de qualidade de dados, tem como objetivo principal:",
+  options:{
+    A:"armazenar exclusivamente logs de erro do sistema.",
+    B:"garantir uma visão única, consistente e confiável das entidades centrais do negócio (como cliente, produto, fornecedor) compartilhadas entre diferentes sistemas, evitando duplicidade e divergência de cadastro.",
+    C:"substituir totalmente a necessidade de qualquer banco de dados transacional.",
+    D:"ser aplicável exclusivamente a dados não estruturados, como imagens e vídeos.",
+    E:"eliminar por completo a necessidade de backup de dados mestres."
+  },
+  correct:"B",
+  explanation:{
+    core:"MDM (aqui, Master Data Management) busca uma versão única e confiável das entidades-chave do negócio, evitando que cada sistema tenha seu próprio cadastro divergente do mesmo cliente/produto/fornecedor.",
+    detail:"Esse é um MDM diferente do MDM de segurança (Mobile Device Management, gestão de dispositivo móvel) — mesma sigla, contextos e conceitos completamente diferentes; a banca pode explorar exatamente essa ambiguidade.",
+    wrong:{
+      A:"Logs de erro são tratados por ferramentas de monitoramento/observabilidade, não pelo MDM de dados mestres.",
+      C:"MDM não substitui bancos transacionais — ele governa a consistência dos dados mestres USADOS por esses sistemas transacionais.",
+      D:"MDM trata tipicamente de dados estruturados de cadastro (cliente, produto), não é exclusivo de dados não estruturados.",
+      E:"Governança de dados mestres não elimina a necessidade de backup — são preocupações complementares, não substitutas."
+    }
+  }
+},
+{
+  id:"bd2-07", topicId:"bigdata-nosql", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Data Lakes e soluções para Big Data — item 1.22 do Anexo IV",
+  stem:"O conceito de Big Data é frequentemente caracterizado por dimensões (os 'Vs'), incluindo:",
+  options:{
+    A:"apenas o Volume de dados, sendo essa a única dimensão relevante do conceito.",
+    B:"Volume (quantidade de dados), Velocidade (rapidez de geração/processamento) e Variedade (diversidade de formatos e fontes de dados) — frequentemente complementadas por Veracidade (confiabilidade) e Valor (utilidade extraída).",
+    C:"apenas critérios financeiros de custo de armazenamento em nuvem.",
+    D:"exclusivamente o número de servidores físicos utilizados para armazenar os dados.",
+    E:"Big Data se refere unicamente a bancos de dados relacionais de grande porte."
+  },
+  correct:"B",
+  explanation:{
+    core:"Os 'Vs' do Big Data (Volume, Velocidade, Variedade — e, em versões estendidas, Veracidade e Valor) caracterizam o que torna um cenário de dados 'Big Data', além do simples tamanho.",
+    detail:"Volume sozinho não basta: dados grandes, mas homogêneos e estáticos, não representam o mesmo desafio de dados grandes, variados e que chegam em alta velocidade.",
+    wrong:{
+      A:"Volume é apenas uma das dimensões — reduzir o conceito a ela ignora velocidade, variedade e as demais dimensões reconhecidas.",
+      C:"Custo de armazenamento é uma preocupação de gestão financeira, não a definição conceitual de Big Data.",
+      D:"Número de servidores físicos é um detalhe de infraestrutura, não a característica definidora do conceito de Big Data.",
+      E:"Big Data está mais associado a soluções NoSQL/distribuídas para grandes volumes heterogêneos — não é sinônimo de banco relacional de grande porte."
+    }
+  }
+},
+
+/* ---------------- eng-software — +3 ---------------- */
+{
+  id:"es-20", topicId:"eng-software", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Paradigma estruturado — item 5.3 do Anexo IV",
+  stem:"No paradigma estruturado de análise de sistemas, o Diagrama de Fluxo de Dados (DFD) utiliza, entre seus elementos gráficos principais:",
+  options:{
+    A:"classes, atributos e métodos, conectados por setas de herança.",
+    B:"processos (transformam dados), fluxos de dados (movimentam dados entre elementos), depósitos de dados (armazenam dados) e entidades externas (fontes/destinos de dados fora do sistema).",
+    C:"exclusivamente casos de uso e atores, sem qualquer outro elemento.",
+    D:"linhas de vida e mensagens síncronas/assíncronas entre objetos.",
+    E:"estados e transições disparadas por eventos."
+  },
+  correct:"B",
+  explanation:{
+    core:"O DFD é a ferramenta central do paradigma estruturado, representando o sistema através de 4 elementos: processo, fluxo de dados, depósito de dados e entidade externa.",
+    detail:"É um modelo orientado a PROCESSO/FLUXO, diferente da UML (orientada a objeto) — não confunda os dois vocabulários.",
+    wrong:{
+      A:"Classes/atributos/métodos/herança são elementos de UML (paradigma orientado a objetos), não do DFD.",
+      C:"Casos de uso e atores são elementos de diagrama de caso de uso (UML), não do DFD.",
+      D:"Linhas de vida e mensagens são elementos de diagrama de sequência (UML), não do DFD.",
+      E:"Estados e transições são elementos de diagrama de máquina de estados (UML), não do DFD."
+    }
+  }
+},
+{
+  id:"es-21", topicId:"eng-software", tier:"P1", format:"porque",
+  source:"inedita", insp:"Paradigma estruturado × orientado a objetos — item 5.3 do Anexo IV",
+  stem:"Afirmação 1: o paradigma estruturado e o paradigma orientado a objetos representam abordagens distintas para a análise e projeto de sistemas.\n\nPORQUE\n\nAfirmação 2: o paradigma estruturado organiza o sistema em torno de processos e fluxo de dados (como no DFD), enquanto o paradigma orientado a objetos organiza o sistema em torno de objetos que encapsulam dados e comportamento (como nos diagramas UML).",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"A",
+  explanation:{
+    core:"Estruturado e orientado a objetos são, de fato, paradigmas distintos de análise/projeto de sistemas.",
+    detail:"A segunda afirmação explica exatamente a raiz dessa distinção: o eixo organizador de cada paradigma é diferente — processo/fluxo de um lado, objeto (dado+comportamento encapsulados) do outro — o que justifica diretamente por que são considerados abordagens distintas.",
+    wrong:{
+      B:"A relação causal é direta: é justamente essa diferença de eixo organizador que faz os dois paradigmas serem distintos.",
+      C:"A segunda afirmação está correta — descreve com precisão a diferença de foco entre os dois paradigmas.",
+      D:"A primeira afirmação também é verdadeira — os dois paradigmas são amplamente reconhecidos como abordagens distintas.",
+      E:"Ambas as afirmações estão corretas."
+    }
+  }
+},
+{
+  id:"es-22", topicId:"eng-software", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Ambientes de desenvolvimento de software — item 5.5 do Anexo IV",
+  stem:"Um Ambiente de Desenvolvimento Integrado (IDE) se caracteriza por reunir, em uma única ferramenta, recursos como:",
+  options:{
+    A:"exclusivamente um navegador de internet para consultar documentação online.",
+    B:"editor de código, compilador/interpretador integrado, depurador (debugger), e frequentemente integração com sistemas de controle de versão — tudo isso facilitando o ciclo de escrever, testar e corrigir código.",
+    C:"apenas um processador de texto para redigir documentação de requisitos.",
+    D:"um sistema exclusivamente de gerenciamento de banco de dados, sem qualquer recurso de edição de código.",
+    E:"uma ferramenta que substitui totalmente a necessidade de testes de software."
+  },
+  correct:"B",
+  explanation:{
+    core:"Uma IDE integra, num único ambiente, o que de outra forma exigiria ferramentas separadas: edição, compilação/interpretação, depuração e, frequentemente, controle de versão — acelerando o ciclo de desenvolvimento.",
+    detail:"É essa INTEGRAÇÃO de múltiplos recursos (não cada um isoladamente) que caracteriza e justifica o nome 'Ambiente de Desenvolvimento Integrado'.",
+    wrong:{
+      A:"Um navegador para documentação é, no máximo, um recurso auxiliar — não define o que é uma IDE.",
+      C:"Um processador de texto para requisitos é uma ferramenta de outra natureza, sem relação com o conjunto de recursos de uma IDE.",
+      D:"Uma IDE inclui edição/depuração de código como recursos centrais — não é apenas um SGBD.",
+      E:"IDEs frequentemente incluem suporte a testes (rodar/depurar testes), mas não substituem a necessidade de testar o software."
+    }
+  }
+},
+
+/* ---------------- gestao-projetos — +6 ---------------- */
+{
+  id:"pm-13", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Gestão de projeto × gestão de produto — item 2.2 do Anexo IV",
+  stem:"Sobre a diferença entre gestão de projeto e gestão de produto, é correto afirmar que:",
+  options:{
+    A:"gestão de projeto foca em entregar um resultado específico dentro de um prazo e escopo definidos, com início e fim determinados; gestão de produto foca na evolução contínua de um produto ao longo de todo o seu ciclo de vida, sem um fim predeterminado, orientada por valor de mercado e necessidade do usuário.",
+    B:"gestão de projeto e gestão de produto são termos sinônimos, sem qualquer distinção prática.",
+    C:"gestão de produto sempre tem prazo fixo de início e fim, assim como um projeto.",
+    D:"gestão de projeto é responsável por decidir a visão de longo prazo e o roadmap de um produto.",
+    E:"gestão de produto se aplica apenas a produtos físicos, nunca a software."
+  },
+  correct:"A",
+  explanation:{
+    core:"Projeto é temporário, com início/fim e escopo definido; produto é uma iniciativa contínua, evoluindo ao longo do tempo conforme mercado e usuário — são horizontes de tempo e objetivo diferentes.",
+    detail:"Um mesmo produto pode ser desenvolvido através de vários projetos ao longo de sua vida (cada release, por exemplo, pode ser um projeto), mas a gestão do PRODUTO em si não tem data de término predefinida enquanto ele estiver em operação/evolução.",
+    wrong:{
+      B:"São conceitos com natureza e horizonte de tempo diferentes, não sinônimos.",
+      C:"É justamente o oposto: gestão de produto tipicamente NÃO tem fim predeterminado, ao contrário de um projeto.",
+      D:"Visão de longo prazo e roadmap são responsabilidade da gestão de PRODUTO, não da gestão de projeto.",
+      E:"Gestão de produto é amplamente aplicada a produtos de software (é, inclusive, um dos contextos mais comuns hoje em dia)."
+    }
+  }
+},
+{
+  id:"pm-14", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Estruturas organizacionais — item 2.5 do Anexo IV",
+  stem:"Sobre as estruturas organizacionais no contexto de gerenciamento de projetos, é correto afirmar que:",
+  options:{
+    A:"na estrutura funcional, o gerente de projetos tem autoridade plena sobre os recursos, e os funcionários se reportam exclusivamente a ele; na estrutura projetizada, os funcionários se reportam a um gerente funcional, sem qualquer vínculo com projetos.",
+    B:"na estrutura funcional, os funcionários se reportam a um gerente funcional (por especialidade), e a autoridade do gerente de projetos é limitada ou inexistente; na estrutura projetizada, os funcionários se reportam diretamente ao gerente de projetos, que tem autoridade ampla sobre os recursos; a estrutura matricial combina elementos das duas, gerando dupla subordinação.",
+    C:"as estruturas funcional, matricial e projetizada são idênticas, diferindo apenas no nome.",
+    D:"a estrutura matricial elimina completamente a necessidade de um gerente funcional.",
+    E:"a autoridade do gerente de projetos é sempre máxima, independentemente da estrutura organizacional adotada."
+  },
+  correct:"B",
+  explanation:{
+    core:"É um espectro de autoridade do gerente de projetos: baixa na estrutura funcional, compartilhada/dupla na matricial, alta na projetizada — o vínculo de subordinação dos funcionários muda de acordo.",
+    detail:"Decorar esse espectro (funcional → matricial fraca/balanceada/forte → projetizada) é o que a banca costuma pedir, geralmente através de um cenário descrevendo o comportamento de subordinação.",
+    wrong:{
+      A:"Inverte completamente as duas estruturas descritas — troca a autoridade e o vínculo de subordinação entre funcional e projetizada.",
+      C:"São estruturas com distribuição de autoridade e vínculo de subordinação diferentes entre si, não idênticas.",
+      D:"A estrutura matricial mantém o gerente funcional, combinando-o com o gerente de projetos — não elimina nenhum dos dois papéis.",
+      E:"A autoridade do gerente de projetos varia conforme a estrutura — não é sempre máxima (é justamente baixa na estrutura funcional)."
+    }
+  }
+},
+{
+  id:"pm-15", topicId:"gestao-projetos", tier:"P1", format:"cenario",
+  source:"inedita", insp:"Estrutura matricial aplicada a um cenário — item 2.5 do Anexo IV",
+  stem:"Em uma organização na qual os membros de um projeto continuam subordinados aos seus gerentes funcionais (de suas respectivas áreas), mas dedicam parte do seu tempo às atividades do projeto sob a coordenação de um gerente de projetos com autoridade compartilhada, a estrutura organizacional descrita é a:",
+  options:{ A:"Funcional", B:"Matricial", C:"Projetizada", D:"Hierárquica pura", E:"Circular" },
+  correct:"B",
+  explanation:{
+    core:"A dupla subordinação descrita — ao gerente funcional E, simultaneamente, à coordenação do gerente de projetos — é a marca registrada da estrutura matricial.",
+    detail:"Na funcional pura não haveria coordenação de projeto relevante; na projetizada os funcionários se reportariam diretamente ao gerente de projetos, sem o gerente funcional no meio.",
+    wrong:{
+      A:"Na estrutura funcional não há essa coordenação de projeto com autoridade relevante — os funcionários respondem só ao gerente funcional.",
+      C:"Na estrutura projetizada não haveria mais o vínculo com o gerente funcional — a subordinação seria direta ao gerente de projetos.",
+      D:"'Hierárquica pura' não é uma das estruturas clássicas de gerenciamento de projetos descritas no PMBOK.",
+      E:"'Circular' não é uma estrutura organizacional reconhecida no contexto de gerenciamento de projetos."
+    }
+  }
+},
+{
+  id:"pm-16", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Escritório de Projetos (PMO) — item 2.6 do Anexo IV",
+  stem:"Sobre os tipos de Escritório de Projetos (PMO - Project Management Office), é correto afirmar que:",
+  options:{
+    A:"um PMO de suporte oferece um papel consultivo, fornecendo modelos, boas práticas e treinamento, com baixo grau de controle sobre os projetos; um PMO diretivo assume o controle direto dos projetos, gerenciando-os ativamente, com alto grau de controle.",
+    B:"todos os tipos de PMO têm exatamente o mesmo grau de controle sobre os projetos da organização.",
+    C:"um PMO de suporte assume o controle total e direto de todos os projetos, sem qualquer autonomia das equipes.",
+    D:"o PMO diretivo apenas sugere boas práticas, sem qualquer autoridade sobre os projetos.",
+    E:"não existe distinção entre diferentes tipos de PMO segundo o PMBOK."
+  },
+  correct:"A",
+  explanation:{
+    core:"Os tipos clássicos de PMO variam num espectro de controle: suporte (baixo, consultivo) → controle (médio, exige conformidade) → diretivo (alto, gerencia diretamente).",
+    detail:"É esse grau CRESCENTE de controle — de simplesmente sugerir até efetivamente gerenciar — que diferencia os três tipos entre si.",
+    wrong:{
+      B:"Cada tipo de PMO tem um grau de controle diferente sobre os projetos — não são equivalentes entre si.",
+      C:"Essa descrição de controle total corresponde ao PMO DIRETIVO, não ao de suporte (que é consultivo e de baixo controle).",
+      D:"É o oposto: o PMO diretivo é justamente o que tem MAIOR autoridade, assumindo a gestão direta dos projetos.",
+      E:"O PMBOK reconhece explicitamente a distinção entre os tipos de PMO (suporte, controle, diretivo)."
+    }
+  }
+},
+{
+  id:"pm-17", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Processos, grupos de processos e área de conhecimento — item 3 do Anexo IV",
+  stem:"Nas edições clássicas do PMBOK (anteriores à 7ª), a área de conhecimento responsável por identificar, analisar, planejar respostas e monitorar eventos incertos que podem afetar positiva ou negativamente os objetivos do projeto é:",
+  options:{ A:"Gerenciamento do Escopo", B:"Gerenciamento de Riscos", C:"Gerenciamento de Aquisições", D:"Gerenciamento das Comunicações", E:"Gerenciamento da Qualidade" },
+  correct:"B",
+  explanation:{
+    core:"Gerenciamento de Riscos é a área de conhecimento dedicada especificamente a identificar, analisar, planejar resposta e monitorar eventos incertos (ameaças e oportunidades) do projeto.",
+    detail:"É importante lembrar que risco não é só 'coisa ruim que pode acontecer' — a definição formal do PMBOK inclui também eventos incertos POSITIVOS (oportunidades), não só ameaças.",
+    wrong:{
+      A:"Gerenciamento do Escopo trata de definir e controlar o que está (e o que não está) incluído no projeto — não de eventos incertos.",
+      C:"Gerenciamento de Aquisições trata de contratos e fornecedores externos ao projeto — não é a área central de gestão de risco.",
+      D:"Gerenciamento das Comunicações trata do fluxo de informação entre stakeholders — não é a área de gestão de risco.",
+      E:"Gerenciamento da Qualidade trata de padrões e conformidade das entregas — não é a área central de gestão de risco."
+    }
+  }
+},
+{
+  id:"pm-18", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Projetos e a organização — item 2.5 do Anexo IV",
+  stem:"Sobre a relação entre projetos e a organização, é correto afirmar que:",
+  options:{
+    A:"projetos devem ser sempre selecionados e priorizados de forma alinhada aos objetivos estratégicos da organização, sendo o meio pelo qual estratégias se transformam em resultados concretos.",
+    B:"projetos não têm nenhuma relação com a estratégia organizacional, sendo decisões puramente operacionais e isoladas.",
+    C:"toda organização deve executar todos os projetos propostos, independentemente de seu alinhamento estratégico.",
+    D:"a estratégia organizacional é definida exclusivamente pelo gerente de projetos de cada iniciativa.",
+    E:"projetos e operações continuadas (operations) são exatamente a mesma coisa, sem distinção."
+  },
+  correct:"A",
+  explanation:{
+    core:"Projetos são o veículo prático pelo qual uma organização executa sua estratégia — daí a importância de selecioná-los e priorizá-los alinhados aos objetivos estratégicos, e não isoladamente.",
+    detail:"Essa é justamente a ponte entre gestão de projetos e gestão de portfólio: o portfólio garante esse alinhamento entre a estratégia da organização e o conjunto de projetos executados.",
+    wrong:{
+      B:"É o oposto: projetos bem selecionados são justamente o mecanismo de execução da estratégia organizacional.",
+      C:"Executar todo projeto proposto, sem priorização, contraria o próprio princípio de gestão estratégica de portfólio.",
+      D:"Estratégia organizacional é definida em nível executivo/estratégico da organização, não pelo gerente de um projeto individual.",
+      E:"Projetos são temporários e únicos; operações continuadas são permanentes e repetitivas — são conceitos distintos, ainda que complementares."
+    }
+  }
+},
+
+/* ---------------- ux — +3 ---------------- */
+{
+  id:"ux-07", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — desenho de interação web, item 6.3 do Anexo IV",
+  stem:"No desenho e planejamento de interação em aplicações web, um fluxo de navegação (user flow) tem como objetivo:",
+  options:{
+    A:"documentar exclusivamente o código-fonte da aplicação, sem relação com a experiência do usuário.",
+    B:"mapear a sequência de passos e telas que um usuário percorre para completar uma tarefa específica dentro da aplicação, ajudando a identificar pontos de atrito e simplificar o caminho até o objetivo.",
+    C:"substituir a necessidade de qualquer teste de usabilidade com usuários reais.",
+    D:"ser utilizado exclusivamente na fase de manutenção do sistema, nunca durante o projeto inicial.",
+    E:"definir exclusivamente a paleta de cores da interface."
+  },
+  correct:"B",
+  explanation:{
+    core:"Um fluxo de navegação mapeia o CAMINHO que o usuário percorre para cumprir uma tarefa — sua utilidade central é revelar pontos de atrito e oportunidades de simplificação antes de detalhar cada tela visualmente.",
+    detail:"É uma ferramenta de planejamento usada normalmente ANTES do design visual detalhado, ajudando a validar a lógica da jornada do usuário.",
+    wrong:{
+      A:"Fluxo de navegação é sobre a experiência de navegação do usuário, não sobre documentação de código-fonte.",
+      C:"Fluxo de navegação complementa, mas não substitui, testes de usabilidade com usuários reais.",
+      D:"É uma ferramenta de planejamento usada tipicamente já nas fases iniciais de projeto, não restrita à manutenção.",
+      E:"Paleta de cores é decisão de design visual, não do fluxo de navegação em si."
+    }
+  }
+},
+{
+  id:"ux-08", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — interoperabilidade entre navegadores, item 6.7 do Anexo IV",
+  stem:"A interoperabilidade de interfaces web entre diversos navegadores refere-se à necessidade de:",
+  options:{
+    A:"garantir que uma aplicação web funcione e seja exibida de forma consistente, independentemente do navegador (Chrome, Firefox, Safari, Edge etc.) utilizado pelo usuário, considerando diferenças de suporte a padrões web entre eles.",
+    B:"restringir o acesso da aplicação a um único navegador específico, para simplificar o desenvolvimento.",
+    C:"eliminar completamente a necessidade de testes em mais de um navegador.",
+    D:"garantir apenas que a aplicação funcione em dispositivos móveis, sem relação com navegadores desktop.",
+    E:"um conceito aplicável exclusivamente a aplicativos nativos, nunca a aplicações web."
+  },
+  correct:"A",
+  explanation:{
+    core:"Interoperabilidade entre navegadores é sobre consistência: a aplicação deve funcionar de forma equivalente em diferentes navegadores, apesar de cada um poder implementar padrões web com pequenas diferenças.",
+    detail:"Ignorar essa preocupação é uma causa comum de bugs 'que só acontecem em um navegador específico' — daí a importância de testar em múltiplos navegadores.",
+    wrong:{
+      B:"Restringir a um único navegador é o oposto do objetivo de interoperabilidade — que busca justamente funcionar bem em vários.",
+      C:"É justamente o contrário: buscar interoperabilidade aumenta (não elimina) a necessidade de testar em múltiplos navegadores.",
+      D:"O conceito envolve navegadores em geral, tanto desktop quanto mobile — não é restrito a um tipo de dispositivo.",
+      E:"É um conceito específico de aplicações WEB (acessadas via navegador) — aplicativos nativos não dependem de navegador para funcionar."
+    }
+  }
+},
+{
+  id:"ux-09", topicId:"ux", tier:"P3", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — storytelling com dados, item 6.5 do Anexo IV",
+  stem:"O storytelling com dados, no contexto de comunicação e UX, consiste em:",
+  options:{
+    A:"apresentar dados brutos, sem qualquer contextualização, deixando toda a interpretação a cargo do público.",
+    B:"construir uma narrativa que combina dados, visualizações e contexto para comunicar um insight de forma clara e persuasiva, guiando o público a uma conclusão ou tomada de decisão.",
+    C:"uma técnica aplicável exclusivamente à criação de obras de ficção literária, sem relação com dados corporativos.",
+    D:"substituir completamente a necessidade de gráficos e visualizações, utilizando apenas texto.",
+    E:"uma técnica que deve sempre evitar qualquer forma de contextualização dos dados apresentados."
+  },
+  correct:"B",
+  explanation:{
+    core:"Storytelling com dados une dado + visualização + contexto numa narrativa coerente, com o objetivo de comunicar um insight de forma que guie o público a entender e agir sobre ele.",
+    detail:"É diferente de simplesmente 'mostrar um gráfico' — a narrativa dá significado e direção à informação apresentada.",
+    wrong:{
+      A:"Apresentar dados brutos sem contextualização é exatamente o oposto do que o storytelling com dados busca fazer.",
+      C:"É uma técnica de comunicação aplicável a relatórios, dashboards e apresentações corporativas, não restrita à ficção literária.",
+      D:"Storytelling com dados costuma USAR visualizações como parte central da narrativa, não substituí-las por texto puro.",
+      E:"Contextualização é justamente o elemento central que diferencia storytelling de uma simples exibição de números."
+    }
+  }
+},
+
+/* ---------------- bi-olap — +4 ---------------- */
+{
+  id:"bi-09", topicId:"bi-olap", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Dado, informação, conhecimento e inteligência — item 7.1 do Anexo IV",
+  stem:"Na hierarquia clássica Dado-Informação-Conhecimento-Inteligência (DIKW), é correto afirmar que:",
+  options:{
+    A:"dado é um fato bruto, sem contexto (ex: '35'); informação é o dado contextualizado, com significado (ex: 'temperatura de 35°C'); conhecimento é a informação combinada com experiência/interpretação, permitindo compreensão mais ampla; inteligência envolve aplicar o conhecimento para antecipar cenários e apoiar decisões estratégicas.",
+    B:"dado, informação, conhecimento e inteligência são termos sinônimos, sem qualquer hierarquia entre eles.",
+    C:"informação é sempre mais bruta e menos processada do que o dado.",
+    D:"conhecimento é apenas um sinônimo técnico para banco de dados.",
+    E:"inteligência, nessa hierarquia, refere-se exclusivamente a sistemas de inteligência artificial."
+  },
+  correct:"A",
+  explanation:{
+    core:"A hierarquia DIKW progride do mais bruto (dado) ao mais elaborado (inteligência): dado é fato sem contexto; informação é dado com significado; conhecimento agrega interpretação/experiência; inteligência aplica esse conhecimento para antecipar e decidir.",
+    detail:"Cada nível se constrói sobre o anterior — sem dado não há informação, sem informação não há conhecimento, e assim sucessivamente.",
+    wrong:{
+      B:"Há uma hierarquia clara e amplamente reconhecida entre os quatro níveis, não são sinônimos.",
+      C:"É o oposto: informação é MAIS processada/contextualizada do que o dado bruto, não menos.",
+      D:"Conhecimento, nessa hierarquia, é um conceito abstrato sobre compreensão — não é sinônimo técnico de banco de dados.",
+      E:"'Inteligência', nesse contexto da pirâmide DIKW, é um conceito mais amplo (capacidade de decisão estratégica), não restrito a sistemas de IA."
+    }
+  }
+},
+{
+  id:"bi-10", topicId:"bi-olap", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Mapeamento de fontes de dados — item 7.3 do Anexo IV",
+  stem:"O mapeamento de fontes de dados, como etapa de um projeto de BI/Data Warehouse, consiste em:",
+  options:{
+    A:"eliminar permanentemente fontes de dados consideradas redundantes, sem qualquer análise prévia.",
+    B:"identificar e documentar de onde vêm os dados necessários (sistemas de origem, formatos, estruturas, responsáveis), servindo de base para o planejamento do processo de extração e integração.",
+    C:"criptografar todas as fontes de dados de uma organização.",
+    D:"uma atividade que só pode ser realizada após a conclusão total do Data Warehouse.",
+    E:"restringir-se exclusivamente a fontes de dados internas, nunca externas."
+  },
+  correct:"B",
+  explanation:{
+    core:"Mapeamento de fontes de dados é uma etapa de LEVANTAMENTO e documentação — identificar onde os dados residem e como estão estruturados, antes de planejar como extraí-los e integrá-los.",
+    detail:"Sem esse mapeamento prévio, o processo de ETL/integração corre o risco de ignorar fontes relevantes ou mal interpretar a estrutura dos dados de origem.",
+    wrong:{
+      A:"Eliminar fontes sem análise prévia é o oposto de mapear/documentar — o mapeamento é justamente a análise que precede qualquer decisão de descarte.",
+      C:"Criptografia é uma medida de segurança, não a atividade de mapeamento/documentação de fontes.",
+      D:"É uma etapa que ocorre justamente ANTES da construção do Data Warehouse, orientando seu planejamento — não depois de concluído.",
+      E:"Fontes de dados mapeadas podem ser tanto internas quanto externas à organização — não há essa restrição."
+    }
+  }
+},
+{
+  id:"bi-11", topicId:"bi-olap", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Dados estruturados e dados não estruturados — item 7.4 do Anexo IV",
+  stem:"Sobre os tipos de dados quanto à sua estrutura, é correto afirmar que:",
+  options:{
+    A:"dados estruturados seguem um esquema rígido e bem definido (como tabelas relacionais); dados não estruturados não possuem um esquema predefinido (como e-mails, imagens, vídeos); dados semiestruturados têm alguma organização, mas sem um esquema rígido fixo (como arquivos JSON ou XML).",
+    B:"todos os dados armazenados digitalmente são, por definição, estruturados.",
+    C:"dados não estruturados só podem ser armazenados em bancos de dados relacionais tradicionais.",
+    D:"dados semiestruturados são sinônimos de dados totalmente sem organização.",
+    E:"imagens e vídeos são exemplos clássicos de dados estruturados."
+  },
+  correct:"A",
+  explanation:{
+    core:"A classificação por estrutura vai de um extremo rígido (estruturado, esquema fixo) a um extremo livre (não estruturado, sem esquema), com o semiestruturado no meio (alguma organização, sem esquema tabular fixo).",
+    detail:"Um dos erros mais comuns é classificar JSON/XML como 'não estruturado' — na verdade eles têm ALGUMA organização (tags, chaves), o que os torna semiestruturados, não totalmente sem estrutura.",
+    wrong:{
+      B:"Boa parte dos dados digitais (imagens, vídeos, texto livre) não segue um esquema rígido — não são todos estruturados.",
+      C:"Dados não estruturados costumam ser armazenados em soluções voltadas para esse fim (Data Lakes, sistemas de arquivo, NoSQL de documento), não exclusivamente em bancos relacionais tradicionais.",
+      D:"Dados semiestruturados têm alguma organização (ex: chaves de um JSON) — não são totalmente sem organização.",
+      E:"Imagens e vídeos são exemplos clássicos de dados NÃO estruturados, não estruturados."
+    }
+  }
+},
+{
+  id:"bi-12", topicId:"bi-olap", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Manipulação de dados em planilhas — item 7.9 do Anexo IV",
+  stem:"Sobre manipulação de dados em planilhas eletrônicas como ferramenta de análise, é correto afirmar que:",
+  options:{
+    A:"tabelas dinâmicas (pivot tables) permitem resumir, agrupar e cruzar grandes volumes de dados de forma interativa, sem a necessidade de reescrever fórmulas para cada nova análise.",
+    B:"planilhas eletrônicas não permitem nenhum tipo de cálculo automático, apenas armazenamento estático de valores.",
+    C:"fórmulas de planilha são recalculadas apenas uma vez, no momento da criação do arquivo, e nunca mais se atualizam.",
+    D:"tabelas dinâmicas exigem conhecimento de programação avançada para serem criadas.",
+    E:"planilhas eletrônicas são incompatíveis com a criação de gráficos e dashboards simples."
+  },
+  correct:"A",
+  explanation:{
+    core:"Tabelas dinâmicas são a ferramenta central de análise interativa em planilhas — permitem reorganizar, agrupar e resumir dados sem reescrever fórmula a cada nova pergunta analítica.",
+    detail:"Essa flexibilidade é o que torna a tabela dinâmica um recurso tão citado quando se fala em manipulação de dados em planilha para fins analíticos.",
+    wrong:{
+      B:"Planilhas eletrônicas são justamente conhecidas por seus recursos de cálculo automático via fórmulas — o oposto do que a alternativa afirma.",
+      C:"Fórmulas de planilha tipicamente se recalculam automaticamente sempre que os dados de entrada mudam, não apenas uma vez.",
+      D:"Tabelas dinâmicas são projetadas para uso por usuários de negócio sem conhecimento de programação, através de interface visual de arrastar/soltar campos.",
+      E:"Planilhas eletrônicas modernas oferecem recursos nativos de criação de gráficos e dashboards simples, sem incompatibilidade."
+    }
+  }
+},
+
+/* ---------------- seguranca — +8 ---------------- */
+{
+  id:"seg-16", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"MDM (Mobile Device Management) — item 9.7 do Anexo IV",
+  stem:"No contexto de segurança da informação, MDM (Mobile Device Management) é uma solução que tem como função:",
+  options:{
+    A:"gerenciar bancos de dados mestres corporativos (Master Data Management).",
+    B:"gerenciar e proteger centralizadamente dispositivos móveis corporativos (smartphones, tablets), permitindo aplicar políticas de segurança, configuração remota e apagamento de dados em caso de perda ou roubo do dispositivo.",
+    C:"substituir completamente a necessidade de antivírus em qualquer dispositivo.",
+    D:"gerenciar exclusivamente servidores físicos localizados em data center.",
+    E:"ser um protocolo de criptografia de dados em trânsito."
+  },
+  correct:"B",
+  explanation:{
+    core:"Nesse contexto de segurança da informação, MDM é Mobile Device Management: gestão centralizada de dispositivos móveis corporativos, com políticas de segurança e capacidade de ação remota (bloqueio, apagamento) em caso de perda/roubo.",
+    detail:"É importante não confundir com o OUTRO 'MDM' (Master Data Management, gestão de dados mestres) do bloco de Arquitetura de Dados — mesma sigla, contextos completamente diferentes; opção A explora justamente essa pegadinha.",
+    wrong:{
+      A:"Essa é a definição do OUTRO MDM (Master Data Management, de dados mestres) — não o MDM de segurança da informação tratado aqui.",
+      C:"MDM foca em gestão de dispositivo móvel, não substitui a necessidade de antivírus (que trata de detecção de malware).",
+      D:"MDM é voltado a dispositivos MÓVEIS, não a servidores físicos de data center.",
+      E:"MDM não é um protocolo de criptografia — é uma categoria de solução de gestão/política de dispositivo."
+    }
+  }
+},
+{
+  id:"seg-17", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"SSO — item 9.8 do Anexo IV",
+  stem:"O SSO (Single Sign-On) permite que um usuário:",
+  options:{
+    A:"realize uma única autenticação e, a partir dela, obtenha acesso a múltiplos sistemas/aplicações sem precisar se autenticar novamente em cada um.",
+    B:"utilize uma senha diferente para cada sistema, aumentando a segurança individual de cada aplicação.",
+    C:"tenha acesso físico a um único servidor específico, sem relação com autenticação de sistemas.",
+    D:"substitua completamente a necessidade de qualquer mecanismo de autenticação multifator.",
+    E:"seja identificado exclusivamente por biometria, sem uso de senha em nenhuma etapa."
+  },
+  correct:"A",
+  explanation:{
+    core:"SSO permite uma única autenticação inicial que concede acesso a múltiplos sistemas integrados, sem exigir novo login em cada um.",
+    detail:"Isso melhora a experiência do usuário e centraliza o controle de acesso, mas não é, por si só, um mecanismo de reforço de segurança como o MFA — são conceitos complementares, não substitutos.",
+    wrong:{
+      B:"É o oposto do propósito do SSO — que busca justamente EVITAR múltiplas autenticações separadas.",
+      C:"SSO trata de autenticação em sistemas/aplicações, não de acesso físico a um servidor específico.",
+      D:"SSO e MFA resolvem problemas diferentes (conveniência de acesso único × reforço de verificação de identidade) — SSO não substitui MFA.",
+      E:"SSO não exige, por definição, uso exclusivo de biometria — pode ser implementado com senha, token, ou combinação de fatores."
+    }
+  }
+},
+{
+  id:"seg-18", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Proxy direto × reverso — item 9.2 do Anexo IV",
+  stem:"Sobre proxies em redes de computadores, é correto afirmar que:",
+  options:{
+    A:"um proxy direto (forward proxy) intermedia requisições de clientes internos para a internet, podendo ocultar a identidade do cliente e aplicar filtros de conteúdo; um proxy reverso intermedia requisições vindas de fora para servidores internos, podendo distribuir carga e ocultar a topologia real dos servidores.",
+    B:"proxy direto e proxy reverso são termos sinônimos, sem qualquer diferença de direção do tráfego.",
+    C:"um proxy reverso só pode ser usado para bloquear o acesso de usuários internos à internet.",
+    D:"proxies nunca podem ser combinados com balanceamento de carga.",
+    E:"um proxy direto é responsável por proteger servidores internos de requisições externas, e não o inverso."
+  },
+  correct:"A",
+  explanation:{
+    core:"A diferença central é a DIREÇÃO do tráfego intermediado: proxy direto fica do lado do CLIENTE (interno → internet); proxy reverso fica do lado do SERVIDOR (externo → interno).",
+    detail:"Um proxy reverso é frequentemente usado junto com balanceamento de carga, justamente por já estar posicionado na frente dos servidores internos, recebendo o tráfego externo.",
+    wrong:{
+      B:"Têm direções de tráfego opostas — proxy direto protege/filtra saída de clientes internos; proxy reverso protege entrada para servidores internos.",
+      C:"Essa é uma função possível do proxy DIRETO (filtrar acesso à internet de usuários internos), não do proxy reverso.",
+      D:"Proxy reverso é frequentemente combinado com balanceamento de carga — não há incompatibilidade entre os dois.",
+      E:"Inverte as definições: é o proxy REVERSO que protege servidores internos de requisições externas, não o direto."
+    }
+  }
+},
+{
+  id:"seg-19", topicId:"seguranca", tier:"P1", format:"cenario",
+  source:"inedita", insp:"Ataques — DDoS, item 9.4 do Anexo IV",
+  stem:"Um site de e-commerce ficou indisponível após receber um volume anormalmente alto de requisições, originadas simultaneamente de milhares de endereços IP diferentes, distribuídos ao redor do mundo, sobrecarregando os servidores. Esse cenário é característico de um ataque de:",
+  options:{ A:"SQL Injection", B:"Cross-Site Scripting (XSS)", C:"DDoS (Distributed Denial of Service)", D:"Path Traversal", E:"Engenharia social" },
+  correct:"C",
+  explanation:{
+    core:"DDoS é definido justamente por essa característica: volume de tráfego malicioso vindo de MÚLTIPLAS origens distribuídas simultaneamente, com o objetivo de sobrecarregar e indisponibilizar o serviço-alvo.",
+    detail:"A distribuição geográfica das origens do ataque (o 'D' de Distributed) é o que diferencia DDoS de um simples DoS (Denial of Service) partindo de uma única origem.",
+    wrong:{
+      A:"SQL Injection explora entrada não validada em consultas SQL — não é um ataque de volume de tráfego distribuído.",
+      B:"XSS injeta script malicioso no navegador da vítima — não descreve sobrecarga de servidor por volume de requisições.",
+      D:"Path Traversal explora manipulação de caminho de arquivo para acesso indevido — não tem relação com volume de tráfego.",
+      E:"Engenharia social explora manipulação psicológica de pessoas — não descreve um ataque técnico de sobrecarga de tráfego."
+    }
+  }
+},
+{
+  id:"seg-20", topicId:"seguranca", tier:"P1", format:"cenario",
+  source:"inedita", insp:"Ataques — Path Traversal, item 9.4 do Anexo IV",
+  stem:"Uma aplicação web permite que o usuário baixe arquivos informando o nome do arquivo em um parâmetro da URL, sem validação adequada. Um atacante, então, envia uma requisição contendo '../../../../etc/passwd' nesse parâmetro, conseguindo acessar um arquivo fora do diretório permitido pela aplicação. Essa vulnerabilidade é conhecida como:",
+  options:{ A:"Cross-Site Request Forgery (CSRF)", B:"SQL Injection", C:"Path Traversal (ou Directory Traversal)", D:"Negação de Serviço (DoS)", E:"Spoofing" },
+  correct:"C",
+  explanation:{
+    core:"Path Traversal explora falta de validação no caminho de arquivo informado pelo usuário, usando sequências como '../' para 'subir' diretórios e acessar arquivos fora da pasta permitida pela aplicação.",
+    detail:"É uma vulnerabilidade clássica de aplicações que constroem caminhos de arquivo diretamente a partir de entrada do usuário, sem sanitização ou restrição adequada.",
+    wrong:{
+      A:"CSRF explora requisições forjadas usando a sessão já autenticada da vítima — não tem relação com manipulação de caminho de arquivo.",
+      B:"SQL Injection explora consultas SQL mal construídas — não é sobre navegação de diretórios de arquivo.",
+      D:"DoS trata de indisponibilizar um serviço, não de acessar arquivo fora do diretório permitido.",
+      E:"Spoofing trata de falsificar identidade/origem de uma comunicação — não descreve o cenário de acesso indevido a arquivo."
+    }
+  }
+},
+{
+  id:"seg-21", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Políticas de Segurança da Informação — item 9.17 do Anexo IV",
+  stem:"Uma Política de Segurança da Informação (PSI), em uma organização, tem como principal finalidade:",
+  options:{
+    A:"ser um documento técnico voltado exclusivamente à equipe de TI, sem relação com os demais colaboradores da organização.",
+    B:"estabelecer diretrizes, normas e responsabilidades relacionadas à proteção da informação, orientando o comportamento esperado de todos os envolvidos (colaboradores, terceiros) no tratamento de ativos de informação da organização.",
+    C:"substituir completamente a necessidade de controles técnicos de segurança, como firewall e criptografia.",
+    D:"ser aplicável apenas a informações armazenadas em meio físico (papel), nunca a dados digitais.",
+    E:"ser revisada e aprovada apenas uma única vez, sem qualquer necessidade de atualização futura."
+  },
+  correct:"B",
+  explanation:{
+    core:"A PSI é o documento-guarda-chuva que estabelece diretrizes, normas e responsabilidades de segurança da informação para TODA a organização, não só para a TI — orienta o comportamento esperado de qualquer pessoa que lide com ativos de informação.",
+    detail:"Ela é o ponto de partida conceitual do qual derivam normas e procedimentos técnicos mais específicos, mas não substitui os controles técnicos — complementa-os com diretrizes de comportamento e governança.",
+    wrong:{
+      A:"A PSI se aplica a TODOS os colaboradores e terceiros que lidam com informação da organização, não apenas à equipe de TI.",
+      C:"A PSI é um documento de diretrizes — não substitui controles técnicos como firewall/criptografia, que continuam necessários.",
+      D:"A PSI cobre informação em qualquer formato, digital ou físico, não é restrita a papel.",
+      E:"Boas práticas de governança recomendam revisão periódica da PSI, não uma aprovação única e definitiva."
+    }
+  }
+},
+{
+  id:"seg-22", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Classificação de informações — item 9.18 do Anexo IV",
+  stem:"A classificação de informações, prática recomendada de segurança da informação, consiste em:",
+  options:{
+    A:"categorizar as informações de acordo com seu grau de sensibilidade e criticidade (ex: pública, interna, confidencial, restrita), definindo controles de proteção proporcionais a cada nível.",
+    B:"aplicar o mesmo nível de proteção a todas as informações da organização, independentemente de seu conteúdo.",
+    C:"uma prática aplicável exclusivamente a informações financeiras, nunca a dados pessoais.",
+    D:"eliminar a necessidade de qualquer controle de acesso, uma vez que a informação tenha sido classificada.",
+    E:"uma atividade de responsabilidade exclusiva do departamento jurídico, sem envolvimento da área de TI."
+  },
+  correct:"A",
+  explanation:{
+    core:"Classificar informação é atribuir um nível de sensibilidade/criticidade a ela, permitindo aplicar controles de proteção PROPORCIONAIS — informação restrita recebe mais controle do que informação pública.",
+    detail:"Sem essa classificação, uma organização tende a subproteger dados críticos ou superproteger (com custo desnecessário) dados de baixa sensibilidade — a classificação existe para calibrar esse esforço.",
+    wrong:{
+      B:"É justamente o oposto do propósito da classificação: aplicar o MESMO nível a tudo ignora que informações têm sensibilidades diferentes.",
+      C:"Classificação de informação se aplica a qualquer tipo de dado sensível da organização, incluindo dados pessoais, não só financeiros.",
+      D:"Classificar a informação não elimina controle de acesso — pelo contrário, orienta QUAL controle de acesso deve ser aplicado a cada nível.",
+      E:"É uma atividade que envolve tanto áreas de negócio quanto TI e segurança da informação, não é exclusiva do jurídico."
+    }
+  }
+},
+{
+  id:"seg-23", topicId:"seguranca", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"ICP-Brasil e certificado digital — item 9.19 do Anexo IV",
+  stem:"Sobre certificado digital e a ICP-Brasil, é correto afirmar que:",
+  options:{
+    A:"um certificado digital vincula uma chave pública a uma identidade (pessoa física, jurídica ou sistema), sendo emitido por uma Autoridade Certificadora (AC); a ICP-Brasil é a cadeia nacional de confiança que regula e credencia essas Autoridades Certificadoras no Brasil.",
+    B:"um certificado digital armazena a senha do usuário em texto puro, para fins de auditoria.",
+    C:"a ICP-Brasil é uma empresa privada de antivírus, sem relação com certificação digital.",
+    D:"qualquer pessoa pode emitir seu próprio certificado digital reconhecido legalmente, sem necessidade de uma Autoridade Certificadora.",
+    E:"certificados digitais são utilizados exclusivamente para cifrar senhas de Wi-Fi."
+  },
+  correct:"A",
+  explanation:{
+    core:"Um certificado digital liga uma chave pública a uma identidade verificada, emitido por uma AC confiável; no Brasil, a ICP-Brasil é a infraestrutura oficial que credencia e regula essas Autoridades Certificadoras.",
+    detail:"É essa cadeia de confiança (ICP-Brasil → ACs credenciadas → certificados emitidos) que dá validade jurídica a assinaturas e certificados digitais no país.",
+    wrong:{
+      B:"Certificado digital não armazena senha em texto puro — ele guarda uma chave pública vinculada a uma identidade, com base em criptografia assimétrica.",
+      C:"ICP-Brasil é a infraestrutura nacional de chaves públicas, não uma empresa de antivírus.",
+      D:"Certificados digitais com validade legal exigem emissão por uma Autoridade Certificadora credenciada — autoemissão sem esse credenciamento não tem o mesmo reconhecimento.",
+      E:"Certificados digitais têm uso muito mais amplo (assinatura digital, autenticação, cifragem de comunicação) do que apenas Wi-Fi — inclusive não é seu uso típico nesse contexto."
+    }
+  }
+},
+
+/* ---------------- seguranca-avancada — +4 ---------------- */
+{
+  id:"seg2-09", topicId:"seguranca-avancada", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — DLP, item 9.2 do Anexo IV",
+  stem:"A ferramenta de segurança DLP (Data Loss Prevention) tem como principal função:",
+  options:{
+    A:"detectar e prevenir o vazamento ou a transmissão não autorizada de dados sensíveis para fora da organização, monitorando canais como e-mail, upload para nuvem e dispositivos removíveis.",
+    B:"realizar backup automático de todos os dados da organização.",
+    C:"substituir completamente a necessidade de um firewall de rede.",
+    D:"gerenciar exclusivamente a rotação de senhas dos usuários.",
+    E:"ser um protocolo de comunicação entre servidores web."
+  },
+  correct:"A",
+  explanation:{
+    core:"DLP monitora e controla canais de saída de dados (e-mail, upload, dispositivo removível) para impedir vazamento não autorizado de informação sensível.",
+    detail:"É uma ferramenta de PREVENÇÃO DE VAZAMENTO, diferente de backup (que trata de disponibilidade/recuperação) ou de firewall (que trata de controle de tráfego de rede em geral).",
+    wrong:{
+      B:"Backup trata de disponibilidade/recuperação de dados, não de prevenir vazamento — são preocupações diferentes.",
+      C:"DLP e firewall resolvem problemas diferentes (vazamento de dado sensível × controle de tráfego de rede) — um não substitui o outro.",
+      D:"Rotação de senha é gerenciada por políticas de identidade/acesso, não pelo DLP.",
+      E:"DLP é uma categoria de ferramenta de segurança, não um protocolo de comunicação entre servidores."
+    }
+  }
+},
+{
+  id:"seg2-10", topicId:"seguranca-avancada", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — CASB, item 9.2 do Anexo IV",
+  stem:"O CASB (Cloud Access Security Broker) atua como:",
+  options:{
+    A:"um ponto de controle de segurança posicionado entre os usuários de uma organização e os serviços em nuvem que eles utilizam, aplicando políticas de segurança, visibilidade e conformidade sobre esse uso.",
+    B:"um substituto completo para qualquer solução de firewall on-premises.",
+    C:"uma ferramenta exclusiva para backup de dados em nuvem, sem relação com controle de acesso.",
+    D:"um protocolo de criptografia utilizado apenas em redes locais (LAN).",
+    E:"uma certificação profissional de segurança em nuvem."
+  },
+  correct:"A",
+  explanation:{
+    core:"CASB fica posicionado entre usuários e serviços de nuvem, dando à organização visibilidade e controle de política sobre o uso desses serviços — algo que soluções tradicionais on-premises não enxergam diretamente.",
+    detail:"É uma resposta ao desafio de 'Shadow IT' (uso de serviços de nuvem sem conhecimento/aprovação formal da TI), trazendo visibilidade sobre esse uso.",
+    wrong:{
+      B:"CASB é focado especificamente em uso de nuvem, não substitui integralmente um firewall on-premises tradicional (que cobre outros cenários de rede).",
+      C:"CASB tem escopo de controle de acesso e política sobre uso de nuvem, não é uma ferramenta de backup.",
+      D:"CASB não é um protocolo de criptografia de LAN — é uma categoria de solução de segurança voltada a serviços em nuvem.",
+      E:"CASB é uma categoria de ferramenta/solução de segurança, não uma certificação profissional."
+    }
+  }
+},
+{
+  id:"seg2-11", topicId:"seguranca-avancada", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — gestão de vulnerabilidades, item 9.2 do Anexo IV",
+  stem:"O ciclo de Gestão de Vulnerabilidades tipicamente envolve as etapas de:",
+  options:{
+    A:"identificação (descoberta de vulnerabilidades, geralmente via scanner), avaliação/priorização (com base em criticidade e exposição), correção (aplicação de patch/mitigação) e verificação (confirmação de que a vulnerabilidade foi efetivamente eliminada).",
+    B:"uma única etapa de instalação de antivírus, sem qualquer processo contínuo.",
+    C:"apenas a divulgação pública de vulnerabilidades encontradas, sem nenhuma ação de correção.",
+    D:"um processo que ocorre uma única vez na vida útil de um sistema, sem repetição.",
+    E:"exclusivamente a criação de senhas fortes para os usuários do sistema."
+  },
+  correct:"A",
+  explanation:{
+    core:"Gestão de vulnerabilidades é um CICLO contínuo: identificar, avaliar/priorizar por criticidade, corrigir e verificar que a correção realmente funcionou — e reiniciar o ciclo continuamente.",
+    detail:"Não é um evento único: novas vulnerabilidades surgem constantemente (em softwares, configurações, dependências), exigindo repetição periódica desse ciclo.",
+    wrong:{
+      B:"Antivírus é apenas uma das ferramentas de segurança do ambiente, não o processo completo de gestão de vulnerabilidades.",
+      C:"Divulgar sem corrigir contraria o próprio propósito da gestão de vulnerabilidades, que busca efetivamente ELIMINAR o risco encontrado.",
+      D:"É um processo CONTÍNUO e cíclico, repetido regularmente — não uma atividade única ao longo da vida do sistema.",
+      E:"Senhas fortes são apenas um controle específico de autenticação, não o processo completo de gestão de vulnerabilidades."
+    }
+  }
+},
+{
+  id:"seg2-12", topicId:"seguranca-avancada", tier:"P2", format:"conceitual",
+  source:"inedita", insp:"Sem precedente nas provas antigas — segurança em IoT, item 9.21 do Anexo IV",
+  stem:"Sobre segurança em dispositivos IoT (Internet of Things), é correto afirmar que:",
+  options:{
+    A:"dispositivos IoT costumam apresentar desafios de segurança adicionais em relação a computadores tradicionais, como capacidade computacional limitada (dificultando criptografia robusta), uso frequente de credenciais padrão de fábrica não alteradas, e dificuldade de aplicação de atualizações de segurança em larga escala.",
+    B:"dispositivos IoT são, por natureza, imunes a qualquer tipo de ataque cibernético.",
+    C:"a segurança em IoT é idêntica, em todos os aspectos, à segurança de servidores corporativos tradicionais, sem nenhuma particularidade.",
+    D:"dispositivos IoT nunca se conectam à internet, eliminando qualquer superfície de ataque de rede.",
+    E:"botnets formadas por dispositivos comprometidos (como o caso histórico do malware Mirai) nunca envolveram dispositivos IoT."
+  },
+  correct:"A",
+  explanation:{
+    core:"Dispositivos IoT trazem desafios próprios: hardware limitado (dificulta criptografia pesada), credenciais padrão raramente trocadas pelo usuário, e dificuldade prática de aplicar patch de segurança em milhares/milhões de dispositivos espalhados.",
+    detail:"Esses fatores combinados tornam dispositivos IoT alvos atrativos para comprometimento em massa — o histórico real de botnets como a do malware Mirai (que infectou câmeras e roteadores domésticos usando credenciais padrão) ilustra exatamente esse risco.",
+    wrong:{
+      B:"Dispositivos IoT são, na prática, frequentemente MAIS vulneráveis do que sistemas tradicionais, não imunes a ataques.",
+      C:"IoT tem particularidades reais (capacidade limitada, atualização difícil em escala) que a diferenciam da segurança de servidores corporativos tradicionais.",
+      D:"A própria definição de IoT pressupõe conectividade à internet/rede — essa conectividade é justamente parte da superfície de ataque.",
+      E:"O malware Mirai é um caso histórico real e amplamente documentado de botnet formada justamente por dispositivos IoT comprometidos (câmeras, roteadores domésticos)."
     }
   }
 }

@@ -10,8 +10,8 @@ O edital tem 5 ênfases de TI. O banco de questões está sendo construído áre
 
 | Ênfase | Status | Questões |
 |---|---|---|
-| Análise de Sistemas — Processos de Negócios | ✅ completo | 108 |
-| Análise de Sistemas — Infraestrutura | ✅ completo | 110 |
+| Análise de Sistemas — Processos de Negócios | ✅ completo | 149 |
+| Análise de Sistemas — Infraestrutura | ✅ completo | 134 |
 | Análise de Sistemas — SAP | 🔒 em construção | — |
 | Análise de Sistemas — Segurança Cibernética e da Informação | 🔒 em construção | — |
 | Ciência de Dados | 🔒 em construção | — |
