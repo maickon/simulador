@@ -165,6 +165,11 @@
   .qtext table{ border-collapse:collapse; font-family:ui-monospace,monospace; font-size:13px; margin:12px 10px 12px 0; display:inline-table; vertical-align:top; font-variant-numeric:tabular-nums; }
   .qtext th,.qtext td{ border:1px solid var(--line); padding:5px 11px; text-align:left; }
   .qtext th{ background:var(--surface-2); }
+  .qtext .passage{ background:var(--surface-2); border-radius:10px; padding:18px 22px; margin:0 0 20px; font-size:14.5px; line-height:1.85; white-space:normal; }
+  .qtext .passage-title{ font-family:"Manrope",sans-serif; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--accent-strong); margin-bottom:10px; display:block; }
+  .qtext .passage .ln{ display:inline-block; min-width:20px; color:var(--ink-soft); font-family:ui-monospace,monospace; font-size:10.5px; margin-right:6px; user-select:none; }
+  .qtext .passage-source{ font-size:11.5px; color:var(--ink-soft); font-style:italic; margin-top:10px; display:block; }
+  .qtext .passage-q{ font-weight:600; }
   pre.codeblock{ background:var(--surface-2); border:1px solid var(--line); border-radius:9px; padding:14px 16px; font-size:13px; overflow-x:auto; margin:14px 0; font-family:ui-monospace,monospace; line-height:1.5; max-width:100%; }
   .opts{ display:flex; flex-direction:column; gap:9px; }
   .opt{ display:flex; gap:12px; align-items:flex-start; padding:13px 16px; border:1px solid var(--line); border-radius:10px; cursor:pointer; background:var(--surface); }
@@ -293,6 +298,7 @@
         <button data-tab="study">Área de Estudo</button>
         <button data-tab="history">Histórico</button>
         <button data-tab="concurso">Concurso</button>
+        <button data-tab="plano">Plano de Estudos</button>
       </nav>
     </div>
   </header>
@@ -316,6 +322,9 @@
 
     <!-- ===================== CONCURSO (INFO) ===================== -->
     <section class="view" id="view-concurso"></section>
+
+    <!-- ===================== PLANO DE ESTUDOS ===================== -->
+    <section class="view" id="view-plano"></section>
 
   </div>
 
@@ -1151,8 +1160,352 @@ Get-ADUser -Filter * | Select-Object Name, Enabled</pre>
 
     <div class="tip"><b>Como a banca cobra:</b> sem precedente nas provas antigas — nuvem pública nunca apareceu no acervo histórico. Cuidado especial com a diferença entre escalabilidade e elasticidade (troca comum de definição) e com o quadro de responsabilidade IaaS×PaaS×SaaS.</div>
   `
+},
+
+/* ============================================================
+   CONHECIMENTOS GERAIS — Língua Portuguesa e Língua Inglesa.
+   Comuns às 5 ênfases (Fase 2 do edital): por isso o campo
+   enfase inclui todas as áreas — este conteúdo aparece na Área
+   de Estudo e no "Treino por Tópico" independentemente da área
+   selecionada, mas fica FORA da amostragem dos modos Treino
+   Rápido/Simulado Médio/Simulado Completo (que simulam só a
+   Fase 1, Conhecimentos Específicos). Tem seu próprio modo de
+   prova dedicado ("Conhecimentos Gerais") na aba Provas.
+   ============================================================ */
+{
+  id:"lingua-portuguesa", tier:"P1", enfase:["processos-negocio","infraestrutura","sap","seguranca-cibernetica","ciencia-dados"],
+  name:"Língua Portuguesa (Conhecimentos Gerais)",
+  editalRef:"Fase 2 · Conhecimentos Gerais · 10 questões, 1,0 cada",
+  summary:"Interpretação de texto, coesão e conectivos, pontuação, crase, regência, colocação pronominal, concordância — presente em 100% das provas antigas catalogadas.",
+  html: `
+    <div class="tip"><b>Por que isto importa mesmo para quem já domina TI:</b> segundo o edital, zerar Língua Portuguesa OU Língua Inglesa elimina o candidato do concurso, <b>independentemente da nota em Conhecimentos Específicos</b>. Não precisa virar especialista em gramática — precisa fechar o básico com segurança para não correr risco de eliminação.</div>
+
+    <h4>1. Interpretação de texto: três níveis de pergunta</h4>
+    <p>A banca costuma variar o nível de exigência dentro do mesmo texto. Reconhecer o nível ajuda a não "viajar" na resposta:</p>
+    <ul>
+      <li><b>Localização:</b> a resposta está escrita quase literalmente em algum trecho do texto — cuidado com alternativas que parafraseiam bem, mas trocam um detalhe (um nome, uma causa, uma consequência).</li>
+      <li><b>Inferência:</b> a resposta não está escrita, mas decorre logicamente do que foi dito — a alternativa correta é a única que não exige nenhuma informação de fora do texto.</li>
+      <li><b>Paráfrase/reescrita:</b> pede a frase reescrita "sem alteração de sentido" — a armadilha clássica é uma reescrita que muda intensidade, causa/consequência ou quantificador ("todos" virando "a maioria", por exemplo).</li>
+    </ul>
+
+    <h4>2. Coesão referencial</h4>
+    <p>Pronomes (ele, isso, aquilo, o qual), advérbios (ali, então) e elipses retomam algo dito antes (ou, mais raramente, anunciam algo que vem depois). Para resolver uma questão de referência, releia a frase substituindo o termo apontado pela alternativa candidata — se o sentido da frase continuar coerente, é essa a resposta.</p>
+
+    <h4>3. Conectivos e relações lógico-semânticas</h4>
+    <table>
+      <tr><th>Relação</th><th>Conectivos comuns</th></tr>
+      <tr><td>Causa/explicação</td><td>porque, já que, uma vez que, como (no início da oração)</td></tr>
+      <tr><td>Consequência</td><td>portanto, logo, por isso, de modo que</td></tr>
+      <tr><td>Condição</td><td>se, caso, contanto que, desde que</td></tr>
+      <tr><td>Concessão/contraste</td><td>embora, ainda que, mas, porém, no entanto, contudo</td></tr>
+      <tr><td>Comparação</td><td>como, tal qual, assim como</td></tr>
+      <tr><td>Finalidade</td><td>para que, a fim de que</td></tr>
+    </table>
+    <div class="tip"><b>Pegadinha recorrente:</b> "como" no início de oração normalmente indica causa ("Como estava chovendo, saí mais cedo"), não comparação — a banca já explorou exatamente essa ambiguidade.</div>
+
+    <h4>4. Pontuação</h4>
+    <table>
+      <tr><th>Sinal</th><th>Função mais cobrada</th></tr>
+      <tr><td>Dois-pontos</td><td>anunciar uma enumeração, explicação ou citação que detalha o que foi dito antes</td></tr>
+      <tr><td>Travessão (par)</td><td>isolar um comentário/explicação intercalada que desenvolve a ideia anterior</td></tr>
+      <tr><td>Reticências</td><td>interrupção de ideia, hesitação, ou omissão proposital de algo que se subentende</td></tr>
+      <tr><td>Ponto e vírgula</td><td>separar itens de uma enumeração já pontuada por vírgulas internas, ou orações coordenadas de sentido mais distante</td></tr>
+    </table>
+
+    <h4>5. Crase</h4>
+    <p>Crase é a fusão da preposição "a" com o artigo feminino "a(s)" ou com pronomes demonstrativos iniciados por "a" (aquele, aquilo, aquela). Regras que mais derrubam candidato:</p>
+    <ul>
+      <li><b>Nunca antes de verbo</b> (infinitivo): "disposta a ajudar", nunca "disposta à ajudar".</li>
+      <li><b>Nunca antes de palavra masculina</b>: "a cavalo", "a lápis" — sem crase.</li>
+      <li><b>Nunca antes de pronome pessoal reto ou de tratamento na maioria dos casos</b>: não se usa antes de "ela", "você", "Vossa Senhoria".</li>
+      <li><b>Locuções adverbiais femininas de tempo/modo geralmente pedem crase</b>: "às pressas", "à noite" (mas "a tempo", sem crase, é exceção consagrada).</li>
+      <li><b>Antes de nome de lugar</b>: só há crase se o lugar aceitar o artigo "a" antes dele ("Fui à Bahia" porque se diz "a Bahia é linda"; mas "Fui a Belo Horizonte", sem crase, porque não se diz "a Belo Horizonte é linda").</li>
+    </ul>
+
+    <h4>6. Regência verbal e nominal</h4>
+    <table>
+      <tr><th>Palavra</th><th>Regência na norma-padrão</th></tr>
+      <tr><td>preferir</td><td>preferir algo A algo (nunca "preferir... do que")</td></tr>
+      <tr><td>assistir (ver)</td><td>assistir AO filme/jogo</td></tr>
+      <tr><td>aspirar (desejar)</td><td>aspirar A um cargo</td></tr>
+      <tr><td>obedecer / desobedecer</td><td>obedecer AO regulamento</td></tr>
+      <tr><td>visar (pretender)</td><td>visar A um objetivo (uso formal)</td></tr>
+      <tr><td>atento, obediente</td><td>atento/obediente A algo</td></tr>
+      <tr><td>orgulhoso, cheio, diferente</td><td>orgulhoso/cheio/diferente DE algo</td></tr>
+      <tr><td>coerente, compatível</td><td>coerente/compatível COM algo</td></tr>
+    </table>
+
+    <h4>7. Colocação pronominal</h4>
+    <p>Três posições possíveis do pronome oblíquo átono em relação ao verbo: <b>próclise</b> (antes: "não me disse"), <b>ênclise</b> (depois: "disse-me"), <b>mesóclise</b> (no meio, só em futuro do presente/pretérito sem palavra atrativa antes: "dir-me-ia").</p>
+    <ul>
+      <li><b>Regra de ouro:</b> nunca se inicia uma oração (ou período) com pronome oblíquo átono — "Se atrasou" está errado; o certo é "Atrasou-se" ou "Ele se atrasou".</li>
+      <li><b>Palavras atrativas</b> (exigem próclise): negativas (não, nunca, ninguém), pronomes indefinidos (poucos, alguém, tudo), pronomes relativos (que, quem, o qual), advérbios sem pausa antes do verbo, conjunções subordinativas.</li>
+    </ul>
+
+    <h4>8. Concordância verbal e nominal — casos que a banca adora</h4>
+    <ul>
+      <li><b>Haver impessoal</b> (sentido de existir): sempre singular — "Havia muitos problemas" (nunca "Haviam").</li>
+      <li><b>Fazer indicando tempo decorrido</b>: sempre singular — "Faz dois meses" (nunca "Fazem").</li>
+      <li><b>Existir</b>: ao contrário de haver, é verbo pessoal — concorda normalmente: "Existem diversas formas".</li>
+      <li><b>"Mais de um" + substantivo singular</b>: verbo no singular — "Mais de um gerente relatou...".</li>
+      <li><b>A maioria/parte de + substantivo plural</b>: verbo pode concordar tanto com "maioria" (singular) quanto com o substantivo (plural) — mas a concordância interna da frase precisa ser consistente.</li>
+      <li><b>Anexo, incluso, obrigado, mesmo, próprio</b>: são adjetivos e concordam em gênero/número com o substantivo/pronome a que se referem — "Seguem anexos os documentos", "Nós mesmos organizamos".</li>
+    </ul>
+
+    <h4>9. Figuras de linguagem mais citadas</h4>
+    <table>
+      <tr><th>Figura</th><th>Ideia central</th></tr>
+      <tr><td>Metáfora</td><td>comparação implícita, sem conectivo comparativo</td></tr>
+      <tr><td>Metonímia</td><td>troca de um termo por outro com quem mantém relação de proximidade/contiguidade</td></tr>
+      <tr><td>Hipérbole</td><td>exagero proposital</td></tr>
+      <tr><td>Eufemismo</td><td>suavização de uma ideia desagradável</td></tr>
+      <tr><td>Ironia</td><td>dizer o oposto do que se pensa, geralmente com intenção crítica</td></tr>
+    </table>
+
+    <div class="tip"><b>Como a banca cobra:</b> confirmado diretamente nos cadernos de prova de 2006 (Analista de Sistemas Pleno) e 2018 (Processos de Negócio) — sempre um único texto (crônica, texto de opinião ou trecho literário) com 10 questões que misturam interpretação e gramática em contexto, nunca questões de gramática soltas sem texto de apoio.</div>
+  `
+},
+{
+  id:"lingua-inglesa", tier:"P1", enfase:["processos-negocio","infraestrutura","sap","seguranca-cibernetica","ciencia-dados"],
+  name:"Língua Inglesa (Conhecimentos Gerais)",
+  editalRef:"Fase 2 · Conhecimentos Gerais · 10 questões, 1,0 cada",
+  summary:"Leitura e interpretação de texto técnico/jornalístico em inglês: ideia central, referência pronominal, vocabulário em contexto, inferência, voz passiva, verbos modais.",
+  html: `
+    <div class="tip"><b>Por que isto importa mesmo para quem já domina TI:</b> assim como em Português, zerar Língua Inglesa elimina o candidato, <b>independentemente da nota em Conhecimentos Específicos</b>. A boa notícia: a banca não pede tradução nem gramática decorada — pede leitura atenta de um único texto técnico/jornalístico, sempre no mesmo formato.</div>
+
+    <h4>1. O texto é sempre o mesmo tipo</h4>
+    <p>Confirmado nas provas antigas (2006 e 2018): um único texto jornalístico/técnico de porte médio (300–500 palavras), geralmente sobre tecnologia, energia ou negócios, seguido de 10 questões de múltipla escolha em inglês. Não é preciso vocabulário raro — o texto é escrito para ser lido por um profissional não nativo.</p>
+
+    <h4>2. Estratégia de leitura: skimming e scanning</h4>
+    <ul>
+      <li><b>Skimming</b> (leitura de varredura): antes de ler as perguntas, passe os olhos pelo texto rapidamente para captar o tema geral e a estrutura dos parágrafos — isso já resolve sozinho as perguntas de "ideia principal"/"título".</li>
+      <li><b>Scanning</b> (leitura de localização): para perguntas de vocabulário, referência ou detalhe específico, volte ao número da linha indicado e releia só o trecho ao redor — não é preciso reler o texto inteiro a cada questão.</li>
+    </ul>
+
+    <h4>3. Tipos de pergunta recorrentes</h4>
+    <table>
+      <tr><th>Tipo</th><th>O que pede</th></tr>
+      <tr><td>Main idea / title</td><td>a ideia central do texto todo, não de um parágrafo isolado</td></tr>
+      <tr><td>Reference</td><td>a que palavra/expressão anterior um pronome (it, they, this, that) se refere</td></tr>
+      <tr><td>Vocabulary in context</td><td>sinônimo ou antônimo de uma palavra, sempre considerando o sentido no texto, não o significado mais comum do dicionário</td></tr>
+      <tr><td>EXCEPT</td><td>pede o único item que <b>não</b> foi mencionado no texto — leia a pergunta com atenção redobrada para essa palavra</td></tr>
+      <tr><td>Inference</td><td>conclusão que decorre logicamente do texto, mesmo sem estar escrita literalmente</td></tr>
+      <tr><td>Passive voice</td><td>identificar a única alternativa com verbo na voz passiva (be + particípio, incluindo com modal: "can be updated")</td></tr>
+      <tr><td>Modal verbs</td><td>qual palavra substitui um verbo modal (must, would, should) sem mudar o sentido</td></tr>
+    </table>
+
+    <h4>4. Falsos cognatos (false friends) mais comuns</h4>
+    <table>
+      <tr><th>Palavra em inglês</th><th>Significado real</th><th>Não confundir com</th></tr>
+      <tr><td>actually</td><td>na verdade</td><td>atualmente</td></tr>
+      <tr><td>parents</td><td>pais</td><td>parentes</td></tr>
+      <tr><td>push</td><td>empurrar</td><td>puxar</td></tr>
+      <tr><td>pretend</td><td>fingir</td><td>pretender</td></tr>
+      <tr><td>library</td><td>biblioteca</td><td>livraria</td></tr>
+      <tr><td>eventually</td><td>finalmente/eventualmente com o tempo</td><td>eventualmente (de vez em quando)</td></tr>
+    </table>
+
+    <h4>5. Voz passiva rápida</h4>
+    <p>Estrutura: verbo <b>to be</b> + particípio passado. Ex.: "the system is used", "advances have been made", "technology can be updated". Se não houver "be" + particípio, a oração está na ativa, mesmo que o sujeito pareça "sofrer" a ação (como em "the team faced a problem" — ativa, apesar de "problema" soar negativo).</p>
+
+    <h4>6. Verbos modais mais cobrados</h4>
+    <table>
+      <tr><th>Modal</th><th>Ideia principal</th></tr>
+      <tr><td>must / have to</td><td>obrigação, necessidade</td></tr>
+      <tr><td>should / ought to</td><td>recomendação, conselho</td></tr>
+      <tr><td>may / might</td><td>possibilidade</td></tr>
+      <tr><td>can / could</td><td>capacidade ou possibilidade</td></tr>
+      <tr><td>will</td><td>previsão/certeza futura ("is going to" é a substituição mais próxima)</td></tr>
+      <tr><td>would</td><td>hipótese, ação futura vista do passado, ou repetição no passado</td></tr>
+    </table>
+
+    <h4>7. Conectores comuns</h4>
+    <table>
+      <tr><th>Conector</th><th>Relação</th></tr>
+      <tr><td>however, although, despite, even though</td><td>contraste/concessão</td></tr>
+      <tr><td>since, given that, because</td><td>causa</td></tr>
+      <tr><td>unless</td><td>condição negativa ("a menos que")</td></tr>
+      <tr><td>therefore, thus, as a result</td><td>consequência</td></tr>
+    </table>
+
+    <div class="tip"><b>Como a banca cobra:</b> confirmado diretamente nos cadernos de prova de 2006 e 2018 — mesmo formato nas duas provas, com décadas de diferença. É o bloco mais previsível e estável da prova inteira em termos de estrutura.</div>
+  `
 }
 ];
+
+var GERAIS_TOPIC_IDS = ["lingua-portuguesa","lingua-inglesa"];
+
+/* Textos-base (passages) reutilizados pelas questões de Língua
+   Portuguesa e Língua Inglesa — cada bloco de 10 questões de um
+   mesmo idioma compartilha um único texto, exatamente como no
+   caderno de prova real (uma leitura, várias perguntas). */
+var PASSAGE_PT1 =
+  '<div class="passage"><span class="passage-title">Texto para as questões associadas</span>' +
+  '<span class="ln">1</span>Toda empresa tem um relógio que ninguém vê,<br>' +
+  '<span class="ln">2</span>mas que todo mundo escuta bater. Não é o<br>' +
+  '<span class="ln">3</span>relógio da parede da sala de reuniões, tampouco<br>' +
+  '<span class="ln">4</span>o do computador, sempre implacável no canto da<br>' +
+  '<span class="ln">5</span>tela. É o relógio da paciência, e ele começa<br>' +
+  '<span class="ln">6</span>a andar no instante em que alguém promete uma<br>' +
+  '<span class="ln">7</span>entrega para "semana que vem".<br>' +
+  '<span class="ln">8</span>Um gerente experiente me contou, certa vez, que<br>' +
+  '<span class="ln">9</span>aprendera a temer duas frases: "está quase pronto"<br>' +
+  '<span class="ln">10</span>e "só falta um ajuste". A primeira é uma<br>' +
+  '<span class="ln">11</span>nuvem que promete chuva e nunca desaba; a<br>' +
+  '<span class="ln">12</span>segunda, um horizonte que recua um passo a<br>' +
+  '<span class="ln">13</span>cada passo que se dá em sua direção.<br>' +
+  '<span class="ln">14</span>Ele preferia, dizia, um "não vai dar tempo"<br>' +
+  '<span class="ln">15</span>dito sem rodeios logo na segunda-feira, porque<br>' +
+  '<span class="ln">16</span>esse tipo de sinceridade permite recalcular a rota<br>' +
+  '<span class="ln">17</span>enquanto ainda há estrada pela frente.<br>' +
+  '<span class="ln">18</span>O problema, explicava, é que ninguém gosta de<br>' +
+  '<span class="ln">19</span>ser a pessoa que atrasa o time todo. Então<br>' +
+  '<span class="ln">20</span>o atraso se disfarça: vira "um imprevisto", vira<br>' +
+  '<span class="ln">21</span>"uma dependência externa", vira, nos casos mais<br>' +
+  '<span class="ln">22</span>criativos, um parágrafo inteiro de justificativa que<br>' +
+  '<span class="ln">23</span>poderia ter sido, do início ao fim, apenas<br>' +
+  '<span class="ln">24</span>quatro palavras: eu não estimei direito.<br>' +
+  '<span class="ln">25</span>Há, é claro, atrasos legítimos: um fornecedor que<br>' +
+  '<span class="ln">26</span>falha, um requisito que muda, uma emergência real.<br>' +
+  '<span class="ln">27</span>O que o gerente condenava não era o atraso<br>' +
+  '<span class="ln">28</span>em si, mas o silêncio que o acompanha —<br>' +
+  '<span class="ln">29</span>aquele intervalo em que todos já sabem, menos<br>' +
+  '<span class="ln">30</span>quem precisa saber primeiro.<br>' +
+  '<span class="ln">31</span>Corrigir isso, segundo ele, exigia menos disciplina<br>' +
+  '<span class="ln">32</span>de cronograma e mais coragem de avisar cedo.<br>' +
+  '<span class="ln">33</span>Equipes que avisam cedo erram o prazo com a<br>' +
+  '<span class="ln">34</span>mesma frequência que as outras; a diferença é<br>' +
+  '<span class="ln">35</span>que ninguém é pego de surpresa, e surpresa,<br>' +
+  '<span class="ln">36</span>no mundo corporativo, custa muito mais caro do<br>' +
+  '<span class="ln">37</span>que atraso.<br>' +
+  '<span class="ln">38</span>No fim, o relógio da paciência não pune quem<br>' +
+  '<span class="ln">39</span>chega depois do combinado. Pune quem deixa os<br>' +
+  '<span class="ln">40</span>outros descobrirem isso sozinhos.<br>' +
+  '<span class="passage-source">(Texto original, escrito para fins de treino, no estilo de crônica/texto de opinião cobrado pela banca.)</span></div>';
+
+var PASSAGE_PT2 =
+  '<div class="passage"><span class="passage-title">Texto para as questões associadas</span>' +
+  '<span class="ln">1</span>Há uma frase que virou piada e, ao mesmo<br>' +
+  '<span class="ln">2</span>tempo, diagnóstico preciso da vida corporativa contemporânea:<br>' +
+  '<span class="ln">3</span>"essa reunião podia ter sido um e-mail". Poucas<br>' +
+  '<span class="ln">4</span>expressões resumem tão bem certo tipo de fadiga<br>' +
+  '<span class="ln">5</span>profissional: a sensação de que o tempo é<br>' +
+  '<span class="ln">6</span>devorado por rituais que já perderam a função<br>' +
+  '<span class="ln">7</span>original.<br>' +
+  '<span class="ln">8</span>Reuniões nasceram para resolver o que um texto<br>' +
+  '<span class="ln">9</span>não resolve sozinho: alinhar visões divergentes, decidir<br>' +
+  '<span class="ln">10</span>algo em conjunto, sentir o tom de uma<br>' +
+  '<span class="ln">11</span>equipe que um documento não transmite. O problema<br>' +
+  '<span class="ln">12</span>não é a reunião em si, mas o hábito<br>' +
+  '<span class="ln">13</span>de convocá-la para qualquer coisa, inclusive para<br>' +
+  '<span class="ln">14</span>comunicar decisões já tomadas, o que transforma um<br>' +
+  '<span class="ln">15</span>instrumento de construção coletiva em uma vitrine<br>' +
+  '<span class="ln">16</span>de formalidades.<br>' +
+  '<span class="ln">17</span>Uma pesquisa informal, citada por consultores de<br>' +
+  '<span class="ln">18</span>produtividade, estima que profissionais de escritório<br>' +
+  '<span class="ln">19</span>passam, em média, um quinto da semana de<br>' +
+  '<span class="ln">20</span>trabalho em reuniões — número que, por si só,<br>' +
+  '<span class="ln">21</span>já deveria acender um alerta em qualquer área<br>' +
+  '<span class="ln">22</span>de gestão minimamente atenta a custos.<br>' +
+  '<span class="ln">23</span>Não se trata de eliminar reuniões, e sim de<br>' +
+  '<span class="ln">24</span>devolver a elas um propósito nítido: pauta objetiva,<br>' +
+  '<span class="ln">25</span>dono claro da decisão e, de preferência, um<br>' +
+  '<span class="ln">26</span>horário de término tão respeitado quanto o de<br>' +
+  '<span class="ln">27</span>início. Equipes maduras costumam adotar uma regra<br>' +
+  '<span class="ln">28</span>simples, quase caseira: se o assunto pode ser<br>' +
+  '<span class="ln">29</span>resolvido com uma pergunta e uma resposta, ele<br>' +
+  '<span class="ln">30</span>não precisa de trinta minutos, uma pauta e<br>' +
+  '<span class="ln">31</span>uma ata.<br>' +
+  '<span class="ln">32</span>No fundo, a queixa sobre reuniões improdutivas não<br>' +
+  '<span class="ln">33</span>é sobre calendário cheio. É sobre tempo tratado<br>' +
+  '<span class="ln">34</span>como recurso infinito, quando ele é, de todos<br>' +
+  '<span class="ln">35</span>os recursos de uma equipe, o único que<br>' +
+  '<span class="ln">36</span>nunca volta.<br>' +
+  '<span class="passage-source">(Texto original, escrito para fins de treino, no estilo de crônica/texto de opinião cobrado pela banca.)</span></div>';
+
+var PASSAGE_EN1 =
+  '<div class="passage"><span class="passage-title">Text for the associated questions</span>' +
+  '<span class="ln">1</span>For decades, cybersecurity was treated as a problem<br>' +
+  '<span class="ln">2</span>that belonged exclusively to the IT department. Executives<br>' +
+  '<span class="ln">3</span>signed off on firewalls and antivirus licenses, then<br>' +
+  '<span class="ln">4</span>moved on to what they considered more pressing<br>' +
+  '<span class="ln">5</span>matters. That assumption has become dangerously outdated.<br>' +
+  '<span class="ln">6</span>Today, most successful attacks do not begin with<br>' +
+  '<span class="ln">7</span>a broken firewall; they begin with a single<br>' +
+  '<span class="ln">8</span>employee who clicks on a convincing email, reuses<br>' +
+  '<span class="ln">9</span>a weak password, or shares a file through<br>' +
+  '<span class="ln">10</span>an unapproved application. In other words, the weakest<br>' +
+  '<span class="ln">11</span>link in most security chains is no longer<br>' +
+  '<span class="ln">12</span>a piece of software. It is a person who<br>' +
+  '<span class="ln">13</span>was never taught to recognize the warning signs.<br>' +
+  '<span class="ln">14</span>This shift explains why a growing number of<br>' +
+  '<span class="ln">15</span>companies now require every employee, regardless of role,<br>' +
+  '<span class="ln">16</span>to complete regular security training. The logic is<br>' +
+  '<span class="ln">17</span>simple: a single careless click in the finance<br>' +
+  '<span class="ln">18</span>or human resources department can be just as<br>' +
+  '<span class="ln">19</span>costly as a vulnerability left unpatched on a<br>' +
+  '<span class="ln">20</span>server. Some organizations have gone further, running simulated<br>' +
+  '<span class="ln">21</span>phishing campaigns to measure how many employees would<br>' +
+  '<span class="ln">22</span>fall for a fake message under real conditions.<br>' +
+  '<span class="ln">23</span>The results, according to several consultants in the<br>' +
+  '<span class="ln">24</span>field, tend to be humbling for management teams<br>' +
+  '<span class="ln">25</span>that assumed their staff was already well informed.<br>' +
+  '<span class="ln">26</span>None of this means that technical defenses have<br>' +
+  '<span class="ln">27</span>become less important. Firewalls, encryption and monitoring tools<br>' +
+  '<span class="ln">28</span>remain indispensable, and no amount of employee training<br>' +
+  '<span class="ln">29</span>will replace them. What has changed is the<br>' +
+  '<span class="ln">30</span>understanding that technology alone cannot compensate for a<br>' +
+  '<span class="ln">31</span>workforce that does not know how a real<br>' +
+  '<span class="ln">32</span>attack looks like in practice. Security, in that<br>' +
+  '<span class="ln">33</span>sense, stopped being a purely technical discipline and<br>' +
+  '<span class="ln">34</span>became, instead, a shared organizational habit, closer to<br>' +
+  '<span class="ln">35</span>workplace safety than to network engineering.<br>' +
+  '<span class="ln">36</span>Companies that treat this shift seriously are not<br>' +
+  '<span class="ln">37</span>necessarily the ones spending the most on security<br>' +
+  '<span class="ln">38</span>software. More often, they are the ones that<br>' +
+  '<span class="ln">39</span>have understood something simpler: technology can be updated<br>' +
+  '<span class="ln">40</span>overnight, but habits take considerably longer to change.<br>' +
+  '<span class="passage-source">(Original text, written for practice purposes, in the journalistic/technical style used by the board.)</span></div>';
+
+var PASSAGE_EN2 =
+  '<div class="passage"><span class="passage-title">Text for the associated questions</span>' +
+  '<span class="ln">1</span>A decade ago, the idea that a company<br>' +
+  '<span class="ln">2</span>could operate entirely without a physical office sounded,<br>' +
+  '<span class="ln">3</span>to most executives, closer to a marketing stunt<br>' +
+  '<span class="ln">4</span>than to a serious business model. Today, an<br>' +
+  '<span class="ln">5</span>increasing number of companies, some of them quite<br>' +
+  '<span class="ln">6</span>large, have adopted exactly that model, hiring employees<br>' +
+  '<span class="ln">7</span>who may never set foot in a shared<br>' +
+  '<span class="ln">8</span>workspace, let alone meet a colleague in person.<br>' +
+  '<span class="ln">9</span>What changed was not simply the availability of<br>' +
+  '<span class="ln">10</span>video calls and messaging apps, most of which<br>' +
+  '<span class="ln">11</span>already existed years earlier. What changed was a<br>' +
+  '<span class="ln">12</span>gradual shift in what companies were willing to<br>' +
+  '<span class="ln">13</span>measure. Instead of tracking hours spent at a<br>' +
+  '<span class="ln">14</span>desk, many managers began focusing on outcomes: whether<br>' +
+  '<span class="ln">15</span>a project was delivered on time, whether a<br>' +
+  '<span class="ln">16</span>client was satisfied, whether a decision was made<br>' +
+  '<span class="ln">17</span>quickly enough. Once presence stopped being the main<br>' +
+  '<span class="ln">18</span>proxy for productivity, the physical office lost much<br>' +
+  '<span class="ln">19</span>of its original justification.<br>' +
+  '<span class="ln">20</span>This does not mean the transition has been<br>' +
+  '<span class="ln">21</span>painless. Remote-first companies often report that onboarding<br>' +
+  '<span class="ln">22</span>new employees takes longer, since informal knowledge that<br>' +
+  '<span class="ln">23</span>used to spread through casual hallway conversations now<br>' +
+  '<span class="ln">24</span>has to be documented deliberately. Some also admit<br>' +
+  '<span class="ln">25</span>that spontaneous collaboration, the kind that happens when<br>' +
+  '<span class="ln">26</span>two people run into each other near a<br>' +
+  '<span class="ln">27</span>coffee machine, is harder to replace than most<br>' +
+  '<span class="ln">28</span>remote-work advocates initially expected.<br>' +
+  '<span class="ln">29</span>Even so, few of these companies say they<br>' +
+  '<span class="ln">30</span>would return to a fully centralized structure. The<br>' +
+  '<span class="ln">31</span>consensus, among the ones interviewed for this report,<br>' +
+  '<span class="ln">32</span>is that hybrid arrangements, combining occasional in-person<br>' +
+  '<span class="ln">33</span>gatherings with a mostly remote routine, offer a<br>' +
+  '<span class="ln">34</span>reasonable compromise: enough structure to preserve a sense<br>' +
+  '<span class="ln">35</span>of shared culture, and enough flexibility to attract<br>' +
+  '<span class="ln">36</span>talent regardless of where people happen to live.<br>' +
+  '<span class="passage-source">(Original text, written for practice purposes, in the journalistic/technical style used by the board.)</span></div>';
 
 /* ============================================================
    BANCO DE QUESTÕES — Lote 1 · Prioridade 1 (28 questões)
@@ -5848,6 +6201,870 @@ Qual é a saída impressa por esse programa?`,
       E:"O malware Mirai é um caso histórico real e amplamente documentado de botnet formada justamente por dispositivos IoT comprometidos (câmeras, roteadores domésticos)."
     }
   }
+},
+
+/* ============================================================
+   LOTE 7 — Conhecimentos Gerais: Língua Portuguesa (20) e
+   Língua Inglesa (20). Cada bloco de 10 compartilha um único
+   texto-base (ver PASSAGE_PT1/PT2/EN1/EN2 acima), replicando o
+   formato real confirmado nas provas de 2006 e 2018: um texto,
+   dez perguntas.
+   ============================================================ */
+
+/* ---------------- LÍNGUA PORTUGUESA — Texto 1 (10) ---------------- */
+{
+  id:"pt-01", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — confirmado em 100% das provas antigas catalogadas (2006, 2018); interpretação de texto de opinião/crônica",
+  stem: PASSAGE_PT1 + '<div class="passage-q">De acordo com o texto, a principal crítica do gerente entrevistado não recai sobre o atraso em si, mas sobre:</div>',
+  options:{
+    A:"a falta de um cronograma suficientemente detalhado.",
+    B:"o silêncio que costuma acompanhar o atraso, escondendo-o de quem precisa saber primeiro.",
+    C:"a incompetência técnica das equipes que trabalham sob pressão.",
+    D:"a existência de fornecedores externos pouco confiáveis.",
+    E:"o uso de justificativas por escrito em vez de conversas presenciais."
+  },
+  correct:"B",
+  explanation:{
+    core:"O texto é explícito (l. 27-30): 'o que o gerente condenava não era o atraso em si, mas o silêncio que o acompanha'.",
+    detail:"A questão testa leitura por localização: a resposta está quase literalmente escrita no texto, e a alternativa correta é a única que reproduz fielmente essa ideia central, sem trocar a causa da crítica.",
+    wrong:{
+      A:"O texto nunca atribui o problema à falta de cronograma — pelo contrário, sugere que atrasos acontecem mesmo em equipes que avisam cedo.",
+      C:"O texto não fala de incompetência técnica; fala de comunicação e do momento em que o atraso é revelado.",
+      D:"Fornecedores são citados apenas como um exemplo de causa legítima de atraso (l. 25-26), não como o alvo da crítica do gerente.",
+      E:"O texto não compara formas de comunicação (escrita x presencial); discute o momento e a transparência do aviso."
+    }
+  }
+},
+{
+  id:"pt-02", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — conectivos e relação semântica",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Em \'Ele preferia, dizia, um "não vai dar tempo" dito sem rodeios logo na segunda-feira, porque esse tipo de sinceridade permite recalcular a rota enquanto ainda há estrada pela frente\' (l. 14-17), o conectivo "porque" introduz relação semântica de:</div>',
+  options:{ A:"causa/explicação", B:"condição", C:"concessão", D:"comparação", E:"finalidade" },
+  correct:"A",
+  explanation:{
+    core:"\"Porque\" introduz o motivo pelo qual o gerente preferia a sinceridade antecipada — uma relação de causa/explicação.",
+    detail:"Reconhecer essa relação exige perguntar: a segunda oração responde 'por quê' a primeira é verdadeira/preferível? Se sim, é causa — exatamente o caso aqui.",
+    wrong:{
+      B:"Condição exigiria uma hipótese ('se... então'), não uma justificativa de preferência já afirmada.",
+      C:"Concessão introduziria uma ideia que contraria a expectativa gerada pela primeira oração, o que não ocorre aqui.",
+      D:"Comparação exigiria um paralelo explícito entre dois elementos, não uma explicação de motivo.",
+      E:"Finalidade indicaria um objetivo a ser alcançado ('para que'), não uma causa/explicação."
+    }
+  }
+},
+{
+  id:"pt-03", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — figuras de linguagem",
+  stem: PASSAGE_PT1 + '<div class="passage-q">A expressão "uma nuvem que promete chuva e nunca desaba" (l. 10-11) é empregada, no texto, como metáfora para:</div>',
+  options:{
+    A:"um projeto tecnicamente inviável desde o início.",
+    B:"uma promessa de entrega que nunca se cumpre de fato.",
+    C:"um fornecedor externo pouco confiável.",
+    D:"uma reunião que se estende além do necessário.",
+    E:"um cronograma revisado com frequência excessiva."
+  },
+  correct:"B",
+  explanation:{
+    core:"A metáfora da nuvem que nunca desaba retoma a frase \"está quase pronto\" (l. 9), citada logo antes — uma promessa que se anuncia mas não se concretiza.",
+    detail:"É metáfora, não comparação, porque não há conectivo comparativo (\"como\", \"tal qual\"): a nuvem simplesmente É a promessa vazia, por associação implícita de sentido.",
+    wrong:{
+      A:"O texto não discute viabilidade técnica de projetos, apenas comunicação sobre prazos.",
+      C:"Fornecedores externos são mencionados só mais adiante (l. 25-26), em outro contexto.",
+      D:"O texto não aborda duração de reuniões em nenhum momento.",
+      E:"Revisão de cronograma não é o tema da metáfora — o tema é a promessa que não se cumpre."
+    }
+  }
+},
+{
+  id:"pt-04", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — inferência textual",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Infere-se do texto que, para o gerente entrevistado, equipes que comunicam um atraso logo no início do projeto:</div>',
+  options:{
+    A:"cometem menos erros de estimativa do que as demais equipes.",
+    B:"erram o prazo com frequência semelhante às demais, mas evitam o efeito surpresa.",
+    C:"nunca sofrem atraso, pois se planejam com mais cuidado.",
+    D:"são vistas como menos comprometidas pela liderança da empresa.",
+    E:"precisam, obrigatoriamente, renegociar o escopo do projeto inteiro."
+  },
+  correct:"B",
+  explanation:{
+    core:"O texto afirma (l. 33-35): 'Equipes que avisam cedo erram o prazo com a mesma frequência que as outras; a diferença é que ninguém é pego de surpresa'.",
+    detail:"A inferência correta não extrapola o texto: ele não diz que essas equipes erram menos, e sim que o efeito da comunicação antecipada é evitar a surpresa, não eliminar o atraso.",
+    wrong:{
+      A:"O texto nega explicitamente essa ideia ao dizer que a frequência de erro é 'semelhante' entre os dois grupos.",
+      C:"Contradiz diretamente o texto, que afirma que essas equipes também erram o prazo.",
+      D:"O texto não faz nenhuma afirmação sobre como a liderança avalia o comprometimento dessas equipes.",
+      E:"Renegociação de escopo não é mencionada em nenhum momento do texto."
+    }
+  }
+},
+{
+  id:"pt-05", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — reescrita/paráfrase sem alteração de sentido",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Assinale a opção que reescreve o trecho "Equipes que avisam cedo erram o prazo com a mesma frequência que as outras; a diferença é que ninguém é pego de surpresa, e surpresa, no mundo corporativo, custa muito mais caro do que atraso" (l. 33-37) sem alteração do sentido original:</div>',
+  options:{
+    A:"Como avisam cedo, essas equipes cometem menos erros de prazo do que as demais, o que evita surpresas custosas.",
+    B:"Mesmo avisando cedo, essas equipes atrasam tanto quanto as outras; o que muda é que a surpresa — mais cara que o próprio atraso no ambiente corporativo — deixa de ocorrer.",
+    C:"Avisar cedo impede que essas equipes atrasem o prazo, ao contrário do que ocorre com as demais.",
+    D:"Essas equipes evitam o atraso ao avisar cedo, o que custa mais caro do que a própria surpresa.",
+    E:"O atraso é mais caro do que a surpresa para essas equipes, que avisam cedo e, por isso, erram menos."
+  },
+  correct:"B",
+  explanation:{
+    core:"A reescrita correta preserva os dois pontos centrais do trecho original: a frequência de erro continua igual, e o que muda é a ausência de surpresa — sendo a surpresa, e não o atraso, o elemento mais custoso.",
+    detail:"As demais alternativas alteram pelo menos um desses dois pontos: ou afirmam que o erro diminui, ou invertem qual dos dois elementos (atraso ou surpresa) é mais custoso.",
+    wrong:{
+      A:"Afirma que a frequência de erro diminui ('cometem menos erros'), o que o texto não diz — ele diz que a frequência é a mesma.",
+      C:"Afirma que avisar cedo impede o atraso, contradizendo o texto, que mantém a mesma frequência de erro entre os dois grupos.",
+      D:"Inverte a relação de custo: o texto diz que a surpresa custa mais caro que o atraso, não o contrário.",
+      E:"Repete o erro de afirmar que essas equipes 'erram menos', o que não corresponde ao texto."
+    }
+  }
+},
+{
+  id:"pt-06", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — pontuação",
+  stem: PASSAGE_PT1 + '<div class="passage-q">O travessão em "...mas o silêncio que o acompanha — aquele intervalo em que todos já sabem, menos quem precisa saber primeiro." (l. 28-30) tem a função de:</div>',
+  options:{
+    A:"introduzir a fala direta de um interlocutor citado no texto.",
+    B:"isolar uma explicação que retoma e desenvolve a ideia apresentada imediatamente antes.",
+    C:"indicar uma enumeração de itens relacionados ao silêncio.",
+    D:"marcar uma pausa hesitante, típica da linguagem oral transcrita.",
+    E:"substituir a vírgula em uma oração coordenada de sentido aditivo."
+  },
+  correct:"B",
+  explanation:{
+    core:"O travessão isola um comentário explicativo ('aquele intervalo em que todos já sabem, menos quem precisa saber primeiro') que detalha o que é 'o silêncio' mencionado antes dele.",
+    detail:"É uma função clássica do travessão (isolar aposto/explicação intercalada), diferente de introduzir fala (que exigiria contexto de diálogo) ou substituir vírgula em simples adição.",
+    wrong:{
+      A:"Não há indício de discurso direto de um interlocutor nesse trecho — é o próprio narrador explicando um conceito.",
+      C:"Não há enumeração de itens; há uma única explicação contínua sobre o que significa o silêncio.",
+      D:"O trecho não reproduz fala oral hesitante; é um comentário estruturado e completo.",
+      E:"O travessão aqui não liga duas orações coordenadas aditivas — ele isola uma explicação da ideia anterior."
+    }
+  }
+},
+{
+  id:"pt-07", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — regência verbal (preferir)",
+  stem: PASSAGE_PT1 + '<div class="passage-q">No trecho \'Ele preferia, dizia, um "não vai dar tempo" dito sem rodeios\' (l. 14), o verbo preferir exige, na norma-padrão, ao estabelecer uma comparação entre duas opções, a preposição:</div>',
+  options:{ A:"do que", B:"que", C:"a", D:"para", E:"com" },
+  correct:"C",
+  explanation:{
+    core:"Na norma-padrão, o verbo \"preferir\" rege a preposição \"a\" ao comparar duas opções: \"prefiro X a Y\" (nunca \"prefiro X do que Y\").",
+    detail:"É um dos casos de regência verbal mais cobrados em provas: \"Prefiro café a chá\", nunca \"Prefiro café do que chá\" — mesmo sendo essa segunda forma comum na fala coloquial.",
+    wrong:{
+      A:"\"Do que\" é a construção coloquial mais frequente, mas é rejeitada pela norma-padrão nesse verbo específico.",
+      B:"\"Que\" sozinho, sem a preposição \"a\", não atende à regência formal do verbo preferir em comparações.",
+      D:"\"Para\" não é a preposição regida por \"preferir\" em nenhuma de suas construções comparativas.",
+      E:"\"Com\" não é a preposição regida por \"preferir\"; é usada, por exemplo, com verbos como \"concordar\"."
+    }
+  }
+},
+{
+  id:"pt-08", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — crase",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Assinale a opção em que o uso do acento indicativo de crase está inteiramente correto:</div>',
+  options:{
+    A:"Cheguei à empresa às oito horas, disposta à trabalhar até tarde.",
+    B:"Entreguei o relatório à ela, que prometeu revisá-lo à tempo.",
+    C:"A proposta é semelhante àquela apresentada à diretoria na última reunião.",
+    D:"Ele se dirigiu à Paris para tratar do assunto pessoalmente.",
+    E:"Estamos dispostos à ajudar às pessoas que mais precisam."
+  },
+  correct:"C",
+  explanation:{
+    core:"\"Semelhante àquela\" funde a preposição exigida por \"semelhante\" com o pronome demonstrativo \"aquela\"; \"apresentada à diretoria\" funde a preposição exigida por \"apresentar algo A alguém\" com o artigo feminino de \"diretoria\". Os dois usos são regidos e corretos.",
+    detail:"As demais alternativas erram porque colocam crase antes de verbo no infinitivo, antes de pronome pessoal, antes de locução consagrada sem artigo, ou antes de nome de lugar sem adjunto que justifique o artigo.",
+    wrong:{
+      A:"\"À trabalhar\" está errado: nunca há crase antes de verbo no infinitivo, já que o infinitivo não admite artigo feminino.",
+      B:"\"À ela\" está errado (não se usa crase antes de pronome pessoal reto); \"à tempo\" também está errado — a locução consagrada é \"a tempo\", sem crase.",
+      D:"\"À Paris\" está errado: nomes de cidade só recebem o artigo (e, portanto, podem ter crase) quando vêm acompanhados de adjunto que os particularize; sem isso, o correto é \"foi a Paris\".",
+      E:"\"À ajudar\" está errado pelo mesmo motivo do item A: não há crase antes de infinitivo."
+    }
+  }
+},
+{
+  id:"pt-09", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — concordância verbal",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Assinale a única alternativa que atende plenamente às regras de concordância verbal da norma-padrão:</div>',
+  options:{
+    A:"Mais de um gerente relatou o mesmo problema durante a reunião de terça-feira.",
+    B:"Haviam muitos atrasos que poderiam ter sido evitados com mais comunicação.",
+    C:"A maioria dos funcionários concorda que a comunicação precisam melhorar.",
+    D:"Fazem dois meses que a equipe não recebe um retorno claro da diretoria.",
+    E:"Existe, segundo o gerente, diversas formas de evitar esse tipo de atraso."
+  },
+  correct:"A",
+  explanation:{
+    core:"Com o sujeito \"mais de um\" seguido de substantivo no singular, a concordância padrão é no singular: \"Mais de um gerente relatou\".",
+    detail:"As demais alternativas violam regras clássicas: haver impessoal é sempre invariável, fazer indicando tempo decorrido também é impessoal e invariável, e existir (diferente de haver) é verbo pessoal e deve concordar com o sujeito.",
+    wrong:{
+      B:"\"Haver\" com sentido de existir é impessoal e fica sempre no singular: o correto é \"Havia muitos atrasos\".",
+      C:"Há quebra de concordância interna: se o sujeito de \"precisam\" é \"a comunicação\" (singular), o verbo deveria ser \"precisa\".",
+      D:"\"Fazer\" indicando tempo decorrido é impessoal e invariável: o correto é \"Faz dois meses\".",
+      E:"\"Existir\", ao contrário de \"haver\", é verbo pessoal e concorda com o sujeito plural: o correto é \"Existem diversas formas\"."
+    }
+  }
+},
+{
+  id:"pt-10", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — colocação pronominal",
+  stem: PASSAGE_PT1 + '<div class="passage-q">Assinale a única alternativa em que a colocação do pronome oblíquo átono está de acordo com a norma-padrão:</div>',
+  options:{
+    A:"Poucos lhe avisaram sobre o real tamanho do problema antes do prazo.",
+    B:"O relatório, que mantinha-nos otimistas, chegou atrasado.",
+    C:"Avisaria-lhe cedo se tivesse percebido o atraso a tempo.",
+    D:"Se atrasou por conta de um problema técnico não previsto.",
+    E:"Não avisaram-lhe sobre o problema, o que gerou desconfiança na equipe."
+  },
+  correct:"A",
+  explanation:{
+    core:"O pronome indefinido \"poucos\" é palavra atrativa e exige próclise obrigatória: \"Poucos lhe avisaram\" está correto.",
+    detail:"As demais alternativas ferem regras de colocação: pronome relativo também é atrativo (exige próclise), assim como o advérbio \"não\"; e nenhuma oração pode começar por pronome oblíquo átono.",
+    wrong:{
+      B:"O pronome relativo \"que\" é palavra atrativa e exige próclise: o correto seria \"que nos mantinha\", não \"mantinha-nos\".",
+      C:"Nenhuma oração pode ser iniciada por pronome oblíquo átono; a forma correta, sem palavra atrativa antes, seria a mesóclise \"Avisar-lhe-ia\".",
+      D:"Pelo mesmo motivo do item anterior: não se inicia oração com pronome átono; o correto seria \"Atrasou-se\" ou \"Ele se atrasou\".",
+      E:"O advérbio \"não\" é palavra atrativa e exige próclise: o correto seria \"Não lhe avisaram\", não \"avisaram-lhe\"."
+    }
+  }
+},
+
+/* ---------------- LÍNGUA PORTUGUESA — Texto 2 (10) ---------------- */
+{
+  id:"pt-11", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — interpretação/ideia central",
+  stem: PASSAGE_PT2 + '<div class="passage-q">A expressão "essa reunião podia ter sido um e-mail" (l. 3) é apresentada no texto como um(a):</div>',
+  options:{
+    A:"crítica exagerada e sem fundamento real sobre a vida corporativa.",
+    B:"piada que também funciona como diagnóstico preciso de um problema real.",
+    C:"sugestão formal de política de recursos humanos.",
+    D:"defesa de que toda reunião deveria ser substituída por e-mail.",
+    E:"reclamação restrita, segundo o texto, a equipes de tecnologia."
+  },
+  correct:"B",
+  explanation:{
+    core:"O texto abre afirmando que a frase 'virou piada e, ao mesmo tempo, diagnóstico preciso da vida corporativa contemporânea' (l. 1-2) — as duas ideias coexistem, não se excluem.",
+    detail:"A resposta correta precisa capturar as duas dimensões citadas (humor e diagnóstico real), não apenas uma delas.",
+    wrong:{
+      A:"O texto não trata a frase como exagero sem fundamento — ao contrário, reconhece nela um diagnóstico preciso.",
+      C:"O texto nunca menciona política de RH como proposta formal.",
+      D:"O texto rejeita explicitamente essa leitura mais adiante, ao dizer que 'não se trata de eliminar reuniões' (l. 23).",
+      E:"O texto não restringe o problema a equipes de tecnologia; fala de 'vida corporativa' em geral."
+    }
+  }
+},
+{
+  id:"pt-12", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — conectivos e relação semântica",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Em "O problema não é a reunião em si, mas o hábito de convocá-la para qualquer coisa" (l. 11-13), a conjunção "mas" estabelece relação de:</div>',
+  options:{ A:"adição", B:"oposição/contraste", C:"conclusão", D:"causa", E:"condição" },
+  correct:"B",
+  explanation:{
+    core:"\"Mas\" contrapõe duas ideias (o que NÃO é o problema × o que É o problema), configurando uma relação de oposição/contraste.",
+    detail:"A estrutura \"não é X, mas Y\" é um recurso clássico de contraste para redirecionar a atenção do leitor de uma causa aparente para a causa real.",
+    wrong:{
+      A:"Não há soma de ideias equivalentes; há substituição de uma ideia por outra, de sentido oposto.",
+      C:"Não há fechamento lógico de um raciocínio anterior; há contraposição de duas afirmações.",
+      D:"\"Mas\" não introduz motivo/explicação; introduz contraste.",
+      E:"Não há hipótese envolvida na construção; é uma afirmação direta com contraposição."
+    }
+  }
+},
+{
+  id:"pt-13", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — figuras de linguagem",
+  stem: PASSAGE_PT2 + '<div class="passage-q">A expressão "vitrine de formalidades" (l. 15-16) constitui um exemplo de:</div>',
+  options:{
+    A:"comparação explícita, marcada por conectivo comparativo.",
+    B:"metáfora, ao associar a reunião a uma exposição de aparências, sem conectivo comparativo.",
+    C:"hipérbole, por exagerar deliberadamente a frequência das reuniões.",
+    D:"eufemismo, por suavizar uma crítica que, de outro modo, seria direta.",
+    E:"ironia, por afirmar o oposto do que de fato se pensa sobre reuniões."
+  },
+  correct:"B",
+  explanation:{
+    core:"\"Vitrine de formalidades\" associa a reunião a uma vitrine (lugar de exposição/aparência) sem usar nenhum conectivo comparativo como \"como\" — é, portanto, metáfora.",
+    detail:"Se o texto dissesse \"a reunião é como uma vitrine\", seria comparação explícita; ao dizer diretamente que a reunião \"se transforma\" numa vitrine, o texto funde os dois termos, caracterizando a metáfora.",
+    wrong:{
+      A:"Não há conectivo comparativo (\"como\", \"tal qual\") nessa passagem — por isso não é comparação explícita.",
+      C:"A expressão não exagera uma quantidade ou frequência; qualifica o caráter da reunião mal utilizada.",
+      D:"Eufemismo suaviza uma ideia desagradável; \"vitrine de formalidades\" é, ao contrário, uma crítica direta e vívida.",
+      E:"Não há inversão de sentido: o texto quer dizer exatamente o que a expressão comunica, sem ironia."
+    }
+  }
+},
+{
+  id:"pt-14", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — inferência textual",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Infere-se do quarto parágrafo do texto (l. 23-31) que, segundo o autor, uma reunião bem conduzida deve ter, entre outras características:</div>',
+  options:{
+    A:"duração mínima de trinta minutos, para garantir aprofundamento do assunto.",
+    B:"pauta objetiva e um responsável claramente definido pela decisão a ser tomada.",
+    C:"participação obrigatória de toda a equipe, sem exceção.",
+    D:"registro em ata formal, assinada por todos os presentes.",
+    E:"frequência diária, para manter o alinhamento constante da equipe."
+  },
+  correct:"B",
+  explanation:{
+    core:"O texto afirma (l. 24-25) que devolver às reuniões 'um propósito nítido' inclui 'pauta objetiva, dono claro da decisão'.",
+    detail:"As demais características citadas no texto (horário de término respeitado, regra de dispensar reunião quando cabe uma pergunta e resposta) reforçam a ideia de objetividade, não de duração mínima, obrigatoriedade de participação ou burocracia de registro.",
+    wrong:{
+      A:"O texto sugere o contrário: reuniões que cabem em 'uma pergunta e uma resposta' não precisam de trinta minutos (l. 28-31).",
+      C:"O texto não menciona participação obrigatória de toda a equipe em nenhum momento.",
+      D:"O texto cita \"ata\" apenas como algo dispensável para assuntos simples (l. 31), não como exigência formal.",
+      E:"O texto não trata de frequência de reuniões, apenas de sua condução e propósito."
+    }
+  }
+},
+{
+  id:"pt-15", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — reescrita/paráfrase sem alteração de sentido",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Assinale a opção que reescreve o trecho "Não se trata de eliminar reuniões, e sim de devolver a elas um propósito nítido" (l. 23-24) sem alteração do sentido original:</div>',
+  options:{
+    A:"A proposta do texto é extinguir por completo as reuniões corporativas.",
+    B:"O texto defende que as reuniões sejam mantidas, mas com um objetivo claramente definido.",
+    C:"O texto sugere que reuniões só devem ocorrer quando for possível eliminá-las depois.",
+    D:"Segundo o texto, reuniões nítidas são aquelas realizadas com a câmera de vídeo ligada.",
+    E:"O texto recomenda substituir todas as reuniões por mensagens escritas."
+  },
+  correct:"B",
+  explanation:{
+    core:"O trecho original nega a ideia de eliminação ('não se trata de eliminar') e afirma, em seu lugar, a necessidade de propósito claro — exatamente o que a alternativa B reproduz.",
+    detail:"Qualquer reescrita que afirme extinção de reuniões ou substituição por outro meio de comunicação contraria diretamente o \"não se trata de eliminar\" do texto original.",
+    wrong:{
+      A:"Contradiz o texto, que nega explicitamente a ideia de extinguir reuniões.",
+      C:"Distorce o sentido: o texto não condiciona a realização de reuniões à possibilidade de eliminá-las depois.",
+      D:"Inventa um sentido de \"nítido\" (imagem de vídeo) que não corresponde ao uso do texto (propósito nítido = objetivo claro).",
+      E:"Contradiz o texto, que não propõe substituir reuniões por mensagens escritas, apenas torná-las mais objetivas."
+    }
+  }
+},
+{
+  id:"pt-16", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — pontuação",
+  stem: PASSAGE_PT2 + '<div class="passage-q">O travessão em "...um quinto da semana de trabalho em reuniões — número que, por si só, já deveria acender um alerta..." (l. 19-21) tem a função de:</div>',
+  options:{
+    A:"introduzir uma enumeração de números e estatísticas.",
+    B:"isolar um comentário do autor que avalia o dado estatístico apresentado antes.",
+    C:"indicar a fala direta de um consultor citado no texto.",
+    D:"substituir os dois-pontos que antecederiam uma citação direta.",
+    E:"marcar hesitação típica da linguagem oral transcrita."
+  },
+  correct:"B",
+  explanation:{
+    core:"O travessão isola o comentário avaliativo do autor ('número que, por si só, já deveria acender um alerta...') sobre o dado estatístico mencionado imediatamente antes.",
+    detail:"Não há enumeração, fala direta ou citação nesse trecho — apenas uma opinião do autor introduzida logo após o dado, função clássica do travessão isolando um comentário.",
+    wrong:{
+      A:"Não há uma lista de números sendo enumerada; há um único dado seguido de comentário.",
+      C:"O trecho não reproduz a fala literal de nenhum consultor; é uma avaliação do próprio autor do texto.",
+      D:"Não há citação direta introduzida nesse ponto do texto.",
+      E:"O comentário é estruturado e completo, sem marcas de hesitação da oralidade."
+    }
+  }
+},
+{
+  id:"pt-17", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — regência nominal",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Em "...um alerta em qualquer área de gestão minimamente atenta a custos" (l. 21-22), o adjetivo "atenta" exige a preposição "a". Assinale o adjetivo que, na norma-padrão, exige a mesma preposição "a":</div>',
+  options:{ A:"obediente", B:"orgulhoso", C:"cheio", D:"diferente", E:"coerente" },
+  correct:"A",
+  explanation:{
+    core:"\"Obediente\" exige a preposição \"a\" (obediente ÀS normas), assim como \"atento/atenta\" (atento A algo) — mesma regência nominal.",
+    detail:"As demais opções exigem preposições diferentes: \"orgulhoso\" e \"cheio\" pedem \"de\", e \"coerente\" pede \"com\" — todos casos clássicos de regência nominal cobrados em prova.",
+    wrong:{
+      B:"\"Orgulhoso\" exige a preposição \"de\" (orgulhoso DO resultado), não \"a\".",
+      C:"\"Cheio\" exige a preposição \"de\" (cheio DE tarefas), não \"a\".",
+      D:"\"Diferente\" exige a preposição \"de\" (diferente DE outras equipes), não \"a\".",
+      E:"\"Coerente\" exige a preposição \"com\" (coerente COM a proposta), não \"a\"."
+    }
+  }
+},
+{
+  id:"pt-18", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — concordância nominal",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Assinale a única alternativa que atende plenamente às regras de concordância nominal da norma-padrão:</div>',
+  options:{
+    A:"Segue anexo os documentos solicitados pela diretoria.",
+    B:"Havia menas reuniões marcadas para aquela tarde do que o previsto.",
+    C:"Elas próprias organizaram a pauta da reunião, sem qualquer ajuda externa.",
+    D:"As próprias diretoria reconheceu o problema de agenda naquele trimestre.",
+    E:"Nós mesmo organizamos a pauta da reunião antes do horário previsto."
+  },
+  correct:"C",
+  explanation:{
+    core:"\"Próprias\" concorda corretamente em gênero e número com \"elas\" (feminino plural): \"Elas próprias organizaram\".",
+    detail:"\"Próprio\", \"mesmo\", \"anexo\" e \"incluso\" são adjetivos e devem concordar com o substantivo/pronome a que se referem — erro clássico é tratá-los como advérbios invariáveis.",
+    wrong:{
+      A:"\"Anexo\" deveria concordar com \"documentos\" (masculino plural): o correto é \"Seguem anexos os documentos\".",
+      B:"\"Menas\" não existe na língua portuguesa; \"menos\" é invariável: o correto é \"Havia menos reuniões\".",
+      D:"Há quebra de concordância entre o artigo/pronome plural (\"as próprias\") e o substantivo singular (\"diretoria\"): o correto seria \"A própria diretoria reconheceu\".",
+      E:"\"Mesmo\" deveria concordar com \"nós\" (plural): o correto é \"Nós mesmos organizamos\"."
+    }
+  }
+},
+{
+  id:"pt-19", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — classificação de sujeito (oração sem sujeito)",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Em "Não se trata de eliminar reuniões" (l. 23), o sujeito da forma verbal "trata" é classificado como:</div>',
+  options:{ A:"sujeito simples", B:"sujeito composto", C:"sujeito oculto (elíptico)", D:"sujeito indeterminado", E:"oração sem sujeito (sujeito inexistente)" },
+  correct:"E",
+  explanation:{
+    core:"\"Tratar-se de\" é construção impessoal (equivalente a \"há\"/\"existe [sobre]\"): não há sujeito ao qual o verbo se refira, caracterizando oração sem sujeito.",
+    detail:"É um caso análogo ao de \"haver\" impessoal: assim como \"há problemas\" não tem sujeito, \"trata-se de problemas\" também não tem — o \"se\" aqui é partícula de indeterminação/impessoalização, não pronome reflexivo com sujeito próprio.",
+    wrong:{
+      A:"Sujeito simples exigiria um núcleo identificável ao qual o verbo se refere, o que não ocorre em construções impessoais como esta.",
+      B:"Sujeito composto exigiria dois ou mais núcleos, o que não é o caso.",
+      C:"Sujeito oculto/elíptico existiria se houvesse um sujeito determinado, apenas não expresso na frase — não é o caso de uma construção impessoal.",
+      D:"Sujeito indeterminado ocorreria em construções como \"falaram de você\" (sujeito existe, mas não se sabe quem é) — diferente de \"trata-se de\", em que não há sujeito algum."
+    }
+  }
+},
+{
+  id:"pt-20", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — vozes verbais",
+  stem: PASSAGE_PT2 + '<div class="passage-q">Considere a frase hipotética "As decisões já tomadas são comunicadas na reunião", construída a partir do tema do segundo parágrafo do texto (l. 8-16). Essa frase está na voz:</div>',
+  options:{ A:"ativa", B:"passiva analítica", C:"passiva sintética", D:"reflexiva", E:"passiva pronominal" },
+  correct:"B",
+  explanation:{
+    core:"A frase usa o verbo \"ser\" (são) seguido de particípio (\"comunicadas\") — estrutura clássica da voz passiva analítica.",
+    detail:"Voz passiva sintética usaria a partícula apassivadora \"se\" (\"comunicam-se as decisões\"); como a frase usa \"ser + particípio\", é passiva analítica.",
+    wrong:{
+      A:"Na voz ativa, o sujeito praticaria a ação (\"a equipe comunica as decisões\"); aqui, o sujeito \"as decisões\" recebe a ação.",
+      C:"A passiva sintética se constrói com \"se\" (partícula apassivadora): \"comunicam-se as decisões\", forma diferente da apresentada.",
+      D:"Voz reflexiva exigiria que o sujeito praticasse e recebesse a ação simultaneamente (\"a equipe se organiza\"), o que não é o caso.",
+      E:"\"Passiva pronominal\" é outro nome para a passiva sintética (com \"se\"), que não é a construção usada na frase."
+    }
+  }
+},
+
+/* ---------------- LÍNGUA INGLESA — Text 1 (10) ---------------- */
+{
+  id:"en-01", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — confirmado em 100% das provas antigas catalogadas (2006, 2018); leitura de texto jornalístico/técnico",
+  stem: PASSAGE_EN1 + '<div class="passage-q">The main purpose of the text is to:</div>',
+  options:{
+    A:"criticize IT departments for failing to prevent cyberattacks.",
+    B:"argue that technical security tools should be entirely replaced by employee training.",
+    C:"explain why cybersecurity has become a responsibility shared beyond the IT department.",
+    D:"describe, in technical detail, how phishing campaigns are designed.",
+    E:"prove that human error is the only possible cause of successful cyberattacks."
+  },
+  correct:"C",
+  explanation:{
+    core:"The text's central argument (lines 32-35) is that security 'stopped being a purely technical discipline and became... a shared organizational habit' — this is the main idea the whole text builds toward.",
+    detail:"The text never criticizes IT departments directly, nor does it argue for replacing technical tools — it explicitly says the opposite (lines 26-29).",
+    wrong:{
+      A:"The text does not blame IT departments; it explains why the old assumption (security = IT's job alone) became outdated.",
+      B:"The text explicitly states technical defenses 'remain indispensable' (line 28) and are not meant to be replaced.",
+      D:"Phishing campaigns are mentioned briefly as an example (lines 20-22), not described in technical detail.",
+      E:"The text presents human error as the most common starting point of attacks, not the 'only possible cause'."
+    }
+  }
+},
+{
+  id:"en-02", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — reference (pronoun resolution)",
+  stem: PASSAGE_EN1 + '<div class="passage-q">The pronoun "they" in "they begin with a single employee who clicks..." (line 7) refers to:</div>',
+  options:{ A:"firewalls", B:"attacks", C:"executives", D:"departments", E:"companies" },
+  correct:"B",
+  explanation:{
+    core:"The full sentence is: 'most successful attacks do not begin with a broken firewall; they begin with a single employee...' — \"they\" replaces \"attacks\" to avoid repetition.",
+    detail:"Reference questions are solved by scanning backward for the nearest plural noun that makes logical sense as the subject of the second clause — here, \"attacks\" is the only fit.",
+    wrong:{
+      A:"\"Firewalls\" is mentioned right before, but the sentence contrasts firewalls WITH what attacks actually begin with — it is not what \"they\" refers to.",
+      C:"\"Executives\" is mentioned earlier in the text, in a different sentence, and does not fit the grammatical subject position here.",
+      D:"\"Departments\" is too far back in the text and does not fit the sentence's logic.",
+      E:"\"Companies\" is not mentioned in this specific sentence or its immediate context."
+    }
+  }
+},
+{
+  id:"en-03", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — vocabulary in context (synonym)",
+  stem: PASSAGE_EN1 + '<div class="passage-q">The word "outdated" (line 5) could best be replaced, without change in meaning, by:</div>',
+  options:{ A:"accurate", B:"obsolete", C:"essential", D:"recent", E:"reliable" },
+  correct:"B",
+  explanation:{
+    core:"\"Outdated\" means no longer valid or up to date — \"obsolete\" expresses the same idea.",
+    detail:"The sentence says the old assumption 'has become dangerously outdated', meaning it no longer applies — consistent only with \"obsolete\" among the options.",
+    wrong:{
+      A:"\"Accurate\" means correct/precise, the opposite of what the sentence implies about the outdated assumption.",
+      C:"\"Essential\" means necessary, unrelated to the idea of something no longer being valid.",
+      D:"\"Recent\" means the opposite of outdated — something recent is new, not obsolete.",
+      E:"\"Reliable\" means trustworthy, unrelated to the idea of an assumption becoming invalid over time."
+    }
+  }
+},
+{
+  id:"en-04", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — vocabulary in context (antonym)",
+  stem: PASSAGE_EN1 + '<div class="passage-q">The word "indispensable" (line 28) and the word "unnecessary" express:</div>',
+  options:{ A:"similar ideas", B:"opposite ideas", C:"ideas related to cost", D:"ideas related to employee training", E:"equally uncertain ideas" },
+  correct:"B",
+  explanation:{
+    core:"\"Indispensable\" means absolutely necessary; \"unnecessary\" means not needed — the two words express opposite ideas.",
+    detail:"The text uses \"indispensable\" to affirm that firewalls, encryption and monitoring tools cannot be dispensed with, the exact opposite of calling them unnecessary.",
+    wrong:{
+      A:"The words have opposite, not similar, meanings.",
+      C:"Neither word is inherently about cost — both describe how necessary something is.",
+      D:"Neither word specifically relates to training; both describe necessity in general.",
+      E:"Neither word expresses uncertainty; both make a definite claim about necessity, in opposite directions."
+    }
+  }
+},
+{
+  id:"en-05", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — EXCEPT (exclusion) question",
+  stem: PASSAGE_EN1 + '<div class="passage-q">According to the text, all of the following are mentioned as being related to how an attack can happen, EXCEPT:</div>',
+  options:{
+    A:"clicking on a convincing email.",
+    B:"reusing a weak password.",
+    C:"sharing a file through an unapproved application.",
+    D:"a vulnerability left unpatched on a server.",
+    E:"an employee being physically threatened by an intruder."
+  },
+  correct:"E",
+  explanation:{
+    core:"Lines 6-10 and 18-20 mention email clicks, weak password reuse, unapproved file sharing and unpatched server vulnerabilities — but physical threats by intruders are never mentioned anywhere in the text.",
+    detail:"EXCEPT questions require checking every option against the text; four will be traceable to specific lines, and the correct answer is the one with no textual basis at all.",
+    wrong:{
+      A:"Directly mentioned in lines 7-8 as a way attacks begin.",
+      B:"Directly mentioned in lines 8-9 as a way attacks begin.",
+      C:"Directly mentioned in lines 9-10 as a way attacks begin.",
+      D:"Mentioned in lines 18-19 as a comparably costly security failure."
+    }
+  }
+},
+{
+  id:"en-06", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — inference",
+  stem: PASSAGE_EN1 + '<div class="passage-q">Based on the text, one can infer that simulated phishing campaigns are used by companies mainly to:</div>',
+  options:{
+    A:"punish employees who fail to detect fake messages.",
+    B:"replace the need for firewalls and encryption tools.",
+    C:"assess how prepared employees really are to identify threats.",
+    D:"reduce the overall cost of IT security software licenses.",
+    E:"eliminate the role of the IT department entirely."
+  },
+  correct:"C",
+  explanation:{
+    core:"Lines 20-25 describe simulated phishing campaigns as a way 'to measure how many employees would fall for a fake message', with results described as 'humbling' for management that overestimated staff readiness.",
+    detail:"The text frames these campaigns as an assessment tool, not a punitive or cost-cutting measure, and never suggests eliminating IT departments.",
+    wrong:{
+      A:"The text describes the purpose as measurement/assessment, not punishment.",
+      B:"The text explicitly states technical tools remain indispensable (line 28), not replaceable by this practice.",
+      D:"Cost reduction of software licenses is never mentioned in the text.",
+      E:"The text never suggests eliminating the IT department's role."
+    }
+  }
+},
+{
+  id:"en-07", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — passive voice identification",
+  stem: PASSAGE_EN1 + '<div class="passage-q">Check the item in which there is a verb in the passive voice:</div>',
+  options:{
+    A:"\"Executives signed off on firewalls and antivirus licenses\" (lines 2-3)",
+    B:"\"the weakest link in most security chains is no longer a piece of software\" (lines 10-11)",
+    C:"\"Some organizations have gone further, running simulated phishing campaigns\" (lines 20-21)",
+    D:"\"Companies that treat this shift seriously are not necessarily the ones spending the most\" (lines 36-37)",
+    E:"\"technology can be updated overnight\" (line 39)"
+  },
+  correct:"E",
+  explanation:{
+    core:"\"Can be updated\" follows the passive voice pattern: modal + \"be\" + past participle, with the subject (\"technology\") receiving the action rather than performing it.",
+    detail:"All the other options use active-voice or copular (linking-verb) constructions, where the subject performs the action or is simply described, not acted upon.",
+    wrong:{
+      A:"\"Signed off\" is a simple past active verb — the subject (\"Executives\") performs the action.",
+      B:"\"Is\" here is a linking/copular verb describing a state, not a passive construction.",
+      C:"\"Have gone\" and \"running\" are active forms — the subject performs the actions.",
+      D:"\"Treat\" and \"spending\" are active forms describing what companies do."
+    }
+  }
+},
+{
+  id:"en-08", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — modal verb equivalence",
+  stem: PASSAGE_EN1 + '<div class="passage-q">In "no amount of employee training will replace them" (lines 28-29), the word that could replace "will" without a significant change in meaning is:</div>',
+  options:{ A:"might", B:"should", C:"is going to", D:"used to", E:"may" },
+  correct:"C",
+  explanation:{
+    core:"\"Will\" here expresses a confident future prediction/assertion — \"is going to\" conveys the closest equivalent degree of certainty about a future event.",
+    detail:"\"Might\" and \"may\" would weaken the statement to mere possibility, \"should\" would turn it into a recommendation, and \"used to\" refers to past habits — none preserve the original meaning.",
+    wrong:{
+      A:"\"Might\" expresses only possibility, weaker than the certainty conveyed by \"will\" in this context.",
+      B:"\"Should\" would turn the statement into advice or expectation, not a confident prediction.",
+      D:"\"Used to\" refers to a repeated action in the past, unrelated to a future prediction.",
+      E:"\"May\" expresses possibility, not the confident assertion conveyed by \"will\" here."
+    }
+  }
+},
+{
+  id:"en-09", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — paraphrase substitution",
+  stem: PASSAGE_EN1 + '<div class="passage-q">The fragment "became, instead, a shared organizational habit" (lines 33-34) could best be substituted, without change in meaning, by:</div>',
+  options:{
+    A:"turned into a rare corporate exception.",
+    B:"turned into a responsibility shared across the organization.",
+    C:"remained an exclusively technical matter.",
+    D:"became a temporary trend without any lasting effect.",
+    E:"became a subject reserved for IT specialists."
+  },
+  correct:"B",
+  explanation:{
+    core:"\"A shared organizational habit\" means something practiced regularly and collectively across the organization — closest in meaning to \"a responsibility shared across the organization\".",
+    detail:"The other options either contradict the idea of sharing (options C and E) or introduce meanings absent from the text (rarity, temporariness).",
+    wrong:{
+      A:"\"Rare exception\" contradicts \"habit\", which implies something regular and common, not exceptional.",
+      C:"Contradicts the text directly, which states security \"stopped being a purely technical discipline\" (lines 32-33).",
+      D:"\"Habit\" implies something lasting and regular, not temporary.",
+      E:"Contradicts the idea of \"shared\", which implies broader than just IT specialists."
+    }
+  }
+},
+{
+  id:"en-10", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — title selection (main idea)",
+  stem: PASSAGE_EN1 + '<div class="passage-q">Mark the title that best expresses the main idea of the text:</div>',
+  options:{
+    A:"The History of Firewalls and Antivirus Software",
+    B:"How to Design an Effective Phishing Campaign",
+    C:"Why Cybersecurity Has Become Everyone's Responsibility",
+    D:"The Decline of Technical Security Tools in Modern Companies",
+    E:"IT Departments: The Last Line of Defense"
+  },
+  correct:"C",
+  explanation:{
+    core:"The whole text argues that security shifted from an IT-only concern to a shared, company-wide responsibility — exactly what option C states.",
+    detail:"A good title captures the text's central argument, not a secondary detail (like phishing campaigns) or a claim the text contradicts (like technical tools declining in importance).",
+    wrong:{
+      A:"The text is not a historical account of these tools; it only mentions them briefly.",
+      B:"Phishing campaigns are a supporting example, not the text's main subject.",
+      D:"Contradicts the text, which states technical tools 'remain indispensable' (line 28).",
+      E:"Contradicts the text's main argument that responsibility extends beyond the IT department."
+    }
+  }
+},
+
+/* ---------------- LÍNGUA INGLESA — Text 2 (10) ---------------- */
+{
+  id:"en-11", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — main idea",
+  stem: PASSAGE_EN2 + '<div class="passage-q">The main idea of the text is that:</div>',
+  options:{
+    A:"remote work is a temporary trend that most companies are now abandoning.",
+    B:"video calls and messaging apps are the main reason companies became remote-first.",
+    C:"a shift in how companies measure productivity, not just new technology, enabled remote-first work.",
+    D:"hybrid work arrangements have proven impossible to implement successfully.",
+    E:"companies that adopted remote-first models plan to return to fully centralized offices."
+  },
+  correct:"C",
+  explanation:{
+    core:"Lines 9-13 explicitly state that what changed 'was not simply the availability of video calls... What changed was a gradual shift in what companies were willing to measure'.",
+    detail:"The text distinguishes between an available technology (video calls, long present) and a change in management mindset (measuring outcomes, not presence) as the real enabler.",
+    wrong:{
+      A:"The text states the opposite: 'few of these companies say they would return to a fully centralized structure' (lines 29-30).",
+      B:"The text explicitly rejects this as the main cause, since these tools 'already existed years earlier' (line 11).",
+      D:"The text describes hybrid arrangements as a 'reasonable compromise' (line 34), not a failure.",
+      E:"Directly contradicted by lines 29-30."
+    }
+  }
+},
+{
+  id:"en-12", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — reference (pronoun/demonstrative resolution)",
+  stem: PASSAGE_EN2 + '<div class="passage-q">The word "that" in "have adopted exactly that model" (lines 5-6) refers to:</div>',
+  options:{
+    A:"a marketing stunt.",
+    B:"a serious business model.",
+    C:"operating entirely without a physical office.",
+    D:"hiring employees who travel frequently.",
+    E:"meeting a colleague in person."
+  },
+  correct:"C",
+  explanation:{
+    core:"\"That model\" points back to the idea introduced at the start of the text: 'the idea that a company could operate entirely without a physical office' (lines 1-2).",
+    detail:"Reference questions require locating the full concept being pointed back to, not just the nearest noun — here, it's an entire idea, not a single word.",
+    wrong:{
+      A:"\"Marketing stunt\" is how the idea used to be dismissed, not the model itself being adopted.",
+      B:"\"Serious business model\" is the category the idea was compared to, not what \"that model\" refers to.",
+      D:"Frequent travel is never mentioned in the text.",
+      E:"Meeting a colleague in person is mentioned as something that does NOT happen in this model, not the model itself."
+    }
+  }
+},
+{
+  id:"en-13", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — vocabulary in context (synonym)",
+  stem: PASSAGE_EN2 + '<div class="passage-q">The word "painless" (line 20) is closest in meaning to:</div>',
+  options:{ A:"effortless", B:"profitable", C:"permanent", D:"documented", E:"unexpected" },
+  correct:"A",
+  explanation:{
+    core:"\"Painless\" describes something done without difficulty — \"effortless\" expresses the closest equivalent meaning.",
+    detail:"The sentence states the transition to remote-first work 'has been painless' is being denied (\"This does not mean...\"), meaning the process actually involved real difficulty, consistent with \"effortless\" as the intended contrast.",
+    wrong:{
+      B:"\"Profitable\" relates to financial gain, unrelated to the idea of difficulty or ease.",
+      C:"\"Permanent\" relates to duration, not to ease or difficulty.",
+      D:"\"Documented\" relates to record-keeping, a separate idea mentioned elsewhere in the paragraph.",
+      E:"\"Unexpected\" relates to surprise, not to the ease or difficulty of a process."
+    }
+  }
+},
+{
+  id:"en-14", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — vocabulary in context (antonym)",
+  stem: PASSAGE_EN2 + '<div class="passage-q">The words "gradual" (line 11) and "sudden" express:</div>',
+  options:{ A:"similar ideas", B:"opposite ideas", C:"ideas related to cost", D:"ideas equally related to technology", E:"synonymous ideas" },
+  correct:"B",
+  explanation:{
+    core:"\"Gradual\" describes something that happens slowly, over time; \"sudden\" describes something that happens quickly, all at once — the two express opposite ideas.",
+    detail:"The text uses \"gradual\" specifically to emphasize that the shift in management mindset took time, unlike a sudden change.",
+    wrong:{
+      A:"The words describe opposite paces of change, not similar ones.",
+      C:"Neither word is inherently about cost.",
+      D:"Neither word is inherently about technology; both describe the pace of a change.",
+      E:"The words are antonyms, not synonyms."
+    }
+  }
+},
+{
+  id:"en-15", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — EXCEPT (exclusion) question",
+  stem: PASSAGE_EN2 + '<div class="passage-q">According to the text, all of the following are mentioned as challenges faced by remote-first companies, EXCEPT:</div>',
+  options:{
+    A:"onboarding new employees takes longer.",
+    B:"informal knowledge needs to be documented deliberately.",
+    C:"spontaneous collaboration is harder to replace than expected.",
+    D:"client satisfaction has measurably declined since the shift.",
+    E:"some collaboration used to happen informally, near a coffee machine."
+  },
+  correct:"D",
+  explanation:{
+    core:"Lines 21-28 mention longer onboarding, the need to document informal knowledge, and spontaneous collaboration being harder to replace — but the text never states that client satisfaction has declined.",
+    detail:"Client satisfaction is mentioned earlier (line 16) only as one of the outcomes companies started measuring, never as a metric that worsened.",
+    wrong:{
+      A:"Directly mentioned in lines 21-22.",
+      B:"Directly mentioned in lines 22-24.",
+      C:"Directly mentioned in lines 25-28.",
+      E:"Directly mentioned in lines 26-27 as an example of informal collaboration."
+    }
+  }
+},
+{
+  id:"en-16", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — inference",
+  stem: PASSAGE_EN2 + '<div class="passage-q">One can infer from the text that, for the companies described, the physical office:</div>',
+  options:{
+    A:"remains essential for measuring employee productivity.",
+    B:"lost much of its justification once presence stopped being used as a proxy for productivity.",
+    C:"is still considered the only reliable place for spontaneous collaboration.",
+    D:"was never an important part of company culture.",
+    E:"will inevitably be reintroduced within the next decade."
+  },
+  correct:"B",
+  explanation:{
+    core:"Lines 17-19 state directly: 'Once presence stopped being the main proxy for productivity, the physical office lost much of its original justification.'",
+    detail:"This is close to a direct restatement rather than a deep inference, but it still requires connecting the cause (change in what is measured) to its effect (the office's loss of justification).",
+    wrong:{
+      A:"Contradicts the text, which describes a shift away from presence-based measurement.",
+      C:"The text says spontaneous collaboration is 'harder to replace' outside the office, not that it is impossible elsewhere.",
+      D:"The text does not claim the office was unimportant historically, only that its justification changed.",
+      E:"The text makes no prediction about reintroducing centralized offices; it describes hybrid models as the current consensus."
+    }
+  }
+},
+{
+  id:"en-17", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — passive voice identification",
+  stem: PASSAGE_EN2 + '<div class="passage-q">Check the item in which there is a verb in the passive voice:</div>',
+  options:{
+    A:"\"the idea ... sounded ... closer to a marketing stunt\" (lines 1-3)",
+    B:"\"many managers began focusing on outcomes\" (lines 13-14)",
+    C:"\"whether a decision was made quickly enough\" (line 16)",
+    D:"\"few of these companies say they would return\" (lines 29-30)",
+    E:"\"offer a reasonable compromise\" (line 33)"
+  },
+  correct:"C",
+  explanation:{
+    core:"\"Was made\" follows the passive voice pattern (\"be\" + past participle), with \"a decision\" receiving the action instead of performing it.",
+    detail:"All other options use active or linking-verb constructions in which the subject performs the action or is simply described.",
+    wrong:{
+      A:"\"Sounded\" is a linking verb describing a state, not a passive construction.",
+      B:"\"Began focusing\" is an active verb form — \"managers\" perform the action.",
+      D:"\"Say\" and \"would return\" are active forms describing what the companies do/would do.",
+      E:"\"Offer\" is an active verb — hybrid arrangements perform the action of offering."
+    }
+  }
+},
+{
+  id:"en-18", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — modal verb meaning",
+  stem: PASSAGE_EN2 + '<div class="passage-q">In "few of these companies say they would return to a fully centralized structure" (lines 29-30), the word "would" indicates:</div>',
+  options:{
+    A:"a repeated action in the past.",
+    B:"a polite request.",
+    C:"a hypothetical or unlikely future action, from the companies\' own point of view.",
+    D:"an obligation imposed by an external authority.",
+    E:"a fact that has already happened in the past."
+  },
+  correct:"C",
+  explanation:{
+    core:"Here \"would\" expresses what these companies consider a hypothetical, unlikely course of action (returning to a centralized structure), from their own current perspective.",
+    detail:"This is different from \"would\" indicating a repeated past habit (\"we would meet every Monday\") — the context here is a hypothetical, future-oriented statement, not a memory of routine.",
+    wrong:{
+      A:"\"Would\" for repeated past action requires a habitual context (e.g., \"we would always...\"), absent here.",
+      B:"There is no request being made in this sentence; it is a statement about companies' own views.",
+      D:"No external obligation is mentioned or implied — this is about the companies' own preference/likelihood.",
+      E:"The sentence describes a hypothetical possibility, not something that already happened."
+    }
+  }
+},
+{
+  id:"en-19", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — paraphrase substitution",
+  stem: PASSAGE_EN2 + '<div class="passage-q">The fragment "offer a reasonable compromise" (line 33) could best be substituted, without change in meaning, by:</div>',
+  options:{
+    A:"create an unavoidable conflict.",
+    B:"represent a balanced middle-ground solution.",
+    C:"eliminate the need for any further discussion.",
+    D:"prove that remote work is always superior to office work.",
+    E:"guarantee equal productivity for every employee."
+  },
+  correct:"B",
+  explanation:{
+    core:"\"A reasonable compromise\" describes a solution that balances competing needs — closest in meaning to \"a balanced middle-ground solution\".",
+    detail:"The following clause in the text (lines 34-36) reinforces this: hybrid models balance \"enough structure\" with \"enough flexibility\", the essence of a middle-ground compromise.",
+    wrong:{
+      A:"\"Compromise\" implies resolving tension, the opposite of creating conflict.",
+      C:"Nothing in the text suggests the discussion is considered closed or unnecessary.",
+      D:"The text does not claim remote work is always superior; it describes a hybrid balance.",
+      E:"Productivity guarantees are never mentioned in the text."
+    }
+  }
+},
+{
+  id:"en-20", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — title selection (main idea)",
+  stem: PASSAGE_EN2 + '<div class="passage-q">Mark the title that best expresses the main idea of the text:</div>',
+  options:{
+    A:"The End of the Physical Office",
+    B:"Why Video Calls Changed the Modern Workplace",
+    C:"What Really Enabled the Rise of Remote-First Companies",
+    D:"The Failure of Hybrid Work Arrangements",
+    E:"Coffee Machines: The Last Obstacle to Remote Work"
+  },
+  correct:"C",
+  explanation:{
+    core:"The text's central argument is about what actually enabled remote-first work — a shift in measurement mindset, not merely new technology — matching option C precisely.",
+    detail:"A strong title reflects the text's actual causal argument, not a conclusion the text avoids (like the office disappearing) or a claim it contradicts (like hybrid work failing).",
+    wrong:{
+      A:"The text describes hybrid models as the consensus, not the complete end of physical offices.",
+      B:"The text explicitly argues video calls were NOT the main reason for the change (lines 9-11).",
+      D:"Contradicts the text, which describes hybrid arrangements as a reasonable, working compromise.",
+      E:"Coffee machines are used as a small illustrative detail, not the text's main subject."
+    }
+  }
 }
 ];
 
@@ -5857,7 +7074,7 @@ Qual é a saída impressa por esse programa?`,
 (function(){
   "use strict";
 
-  var FORMAT_LABEL = { conceitual:"Conceitual", cenario:"Cenário", calculo:"Cálculo", codigo:"Código", porque:"Afirmação PORQUE", visual:"Interpretação visual" };
+  var FORMAT_LABEL = { conceitual:"Conceitual", cenario:"Cenário", calculo:"Cálculo", codigo:"Código", porque:"Afirmação PORQUE", visual:"Interpretação visual", interpretacao:"Interpretação de texto" };
   var TIER_LABEL = { P1:"Prioridade 1", P2:"Prioridade 2", P3:"Prioridade 3" };
   var TIER_WEIGHT = { P1:4, P2:2, P3:1 };
 
@@ -5877,7 +7094,13 @@ Qual é a saída impressa por esse programa?`,
      passa a "ter conteúdo" automaticamente assim que o primeiro tópico com
      esse enfase é adicionado — não precisa mexer aqui. */
   function topicsForEnfase(enfaseId){ return TOPICS.filter(function(t){ return t.enfase.indexOf(enfaseId) !== -1; }); }
-  function enfaseHasContent(enfaseId){ return topicsForEnfase(enfaseId).length > 0; }
+  /* Conteúdo "de verdade" de uma ênfase é medido só pelos tópicos de
+     Conhecimentos Específicos — os tópicos de Língua Portuguesa/Inglesa
+     pertencem às 5 ênfases por serem comuns (Fase 2 do edital) e não
+     podem, sozinhos, tirar uma área do estado "em construção". */
+  function enfaseHasContent(enfaseId){
+    return topicsForEnfase(enfaseId).filter(function(t){ return GERAIS_TOPIC_IDS.indexOf(t.id) === -1; }).length > 0;
+  }
   function questionsForEnfase(enfaseId){
     var ids = topicsForEnfase(enfaseId).map(function(t){ return t.id; });
     return QUESTIONS.filter(function(q){ return ids.indexOf(q.topicId) !== -1; });
@@ -5944,7 +7167,10 @@ Qual é a saída impressa por esse programa?`,
      garante que Prioridade 1 puxe mais questões que P2/P3 conforme o
      banco crescer nas próximas fases, sem exigir mudança aqui. */
   function pickQuestions(count, topicFilter){
-    var pool = questionsForEnfase(state.enfase).filter(function(q){ return !topicFilter || q.topicId === topicFilter; });
+    var pool = questionsForEnfase(state.enfase).filter(function(q){
+      if (topicFilter) return q.topicId === topicFilter;
+      return GERAIS_TOPIC_IDS.indexOf(q.topicId) === -1;
+    });
     var remaining = pool.slice();
     var picked = [];
     var n = Math.min(count, pool.length);
@@ -5971,6 +7197,7 @@ Qual é a saída impressa por esse programa?`,
     if (tab==="study"){ document.getElementById("view-study").classList.add("active"); renderStudyList(); }
     if (tab==="history"){ document.getElementById("view-history").classList.add("active"); renderHistory(); }
     if (tab==="concurso"){ document.getElementById("view-concurso").classList.add("active"); renderConcurso(); }
+    if (tab==="plano"){ document.getElementById("view-plano").classList.add("active"); renderPlano(); }
   }
   document.getElementById("mainTabs").addEventListener("click", function(e){
     var b = e.target.closest("button[data-tab]");
@@ -6018,19 +7245,34 @@ Qual é a saída impressa por esse programa?`,
     });
     host.appendChild(enfaseRow);
 
+    /* ---- Conhecimentos Gerais (Fase 2: Português + Inglês) — comum a
+       todas as áreas, independentemente do estado do banco de
+       Conhecimentos Específicos daquela ênfase. Zerar Português OU
+       Inglês elimina o candidato, segundo o edital, então este bloco
+       fica sempre visível, mesmo em áreas ainda "em construção". */
+    var geraisCard = el(
+      '<div class="card" style="padding:20px 24px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">'+
+        '<div><h3 style="font-size:15px;margin-bottom:4px;">Conhecimentos Gerais — Português &amp; Inglês</h3>'+
+        '<p style="font-size:13px;color:var(--ink-soft);max-width:56ch;margin:0;">Fase 2 do edital, comum a todas as ênfases. Zerar qualquer uma das duas disciplinas elimina o candidato, mesmo com boa nota em Conhecimentos Específicos. Simula exatamente o formato real: um texto, 10 perguntas, por idioma.</p></div>'+
+        '<button class="btn primary" id="startGeraisBtn" style="white-space:nowrap;">Simular Conhecimentos Gerais</button>'+
+      '</div>'
+    );
+    geraisCard.querySelector("#startGeraisBtn").addEventListener("click", startGeraisQuiz);
+    host.appendChild(geraisCard);
+
     if (!enfaseHasContent(enfase.id)){
       host.appendChild(el(
         '<div class="card enfase-empty">'+
           '<p><b>O banco de questões desta área ainda está em construção.</b></p>'+
           '<p>O simulador está sendo expandido área por área, seguindo o mesmo processo usado em Processos de Negócios: mapear o Anexo IV do edital, cruzar com o padrão histórico da Cesgranrio (quando existe prova antiga daquela ênfase) e escrever as questões em lotes com explicação completa.</p>'+
-          '<p>Enquanto isso, escolha outra área no seletor acima para praticar.</p>'+
+          '<p>Enquanto isso, escolha outra área no seletor acima para praticar Conhecimentos Específicos, ou use o botão acima para treinar Português e Inglês.</p>'+
         '</div>'
       ));
       return;
     }
 
-    var pool = questionsForEnfase(enfase.id);
-    var topics = topicsForEnfase(enfase.id);
+    var topics = topicsForEnfase(enfase.id).filter(function(t){ return GERAIS_TOPIC_IDS.indexOf(t.id) === -1; });
+    var pool = questionsForEnfase(enfase.id).filter(function(q){ return GERAIS_TOPIC_IDS.indexOf(q.topicId) === -1; });
     var total = pool.length;
     var byTier = {}; pool.forEach(function(q){ byTier[q.tier]=(byTier[q.tier]||0)+1; });
 
@@ -6099,6 +7341,33 @@ Qual é a saída impressa por esse programa?`,
     renderRunner();
     state.quiz.timerHandle = setInterval(updateTimer, 1000);
   }
+  /* Simula a Fase 2 do edital (Conhecimentos Gerais): sorteia um texto
+     completo de Língua Portuguesa (10 questões) e um de Língua Inglesa
+     (10 questões), reproduzindo o formato real — um texto, dez
+     perguntas por idioma — em vez da amostragem ponderada por tópico
+     usada nos modos de Conhecimentos Específicos. */
+  function startGeraisQuiz(){
+    function pickPassage(topicId){
+      var qs = QUESTIONS.filter(function(q){ return q.topicId === topicId; });
+      var byPassage = {};
+      qs.forEach(function(q){
+        var key = q.stem.slice(0,220);
+        byPassage[key] = byPassage[key] || [];
+        byPassage[key].push(q);
+      });
+      var groups = Object.keys(byPassage).map(function(k){ return byPassage[k]; });
+      return groups[Math.floor(Math.random()*groups.length)] || [];
+    }
+    var questions = pickPassage("lingua-portuguesa").concat(pickPassage("lingua-inglesa"));
+    if (!questions.length){ alert("Não há questões suficientes para esse modo ainda."); return; }
+    state.quiz = {
+      active:true, topicFilter:null, isGerais:true, questions: questions,
+      answers:{}, current:0, startedAt: Date.now(), timerHandle:null
+    };
+    switchToView("run");
+    renderRunner();
+    state.quiz.timerHandle = setInterval(updateTimer, 1000);
+  }
   function switchToView(id){
     document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("active"); });
     document.getElementById("view-"+id).classList.add("active");
@@ -6119,7 +7388,7 @@ Qual é a saída impressa por esse programa?`,
 
     host.innerHTML = "";
     var headMeta = '<div class="runner-meta">'+
-      '<span>'+(q.topicFilter ? topicById[q.topicFilter].name : "Todos os tópicos")+'</span>'+
+      '<span>'+(q.topicFilter ? topicById[q.topicFilter].name : (q.isGerais ? "Conhecimentos Gerais — Português & Inglês" : "Todos os tópicos"))+'</span>'+
       '<span class="timer" id="quizTimer">00:00</span>'+
       '<span>'+answeredCount+'/'+q.questions.length+' respondidas</span>'+
     '</div>';
@@ -6208,8 +7477,9 @@ Qual é a saída impressa por esse programa?`,
     var pct = Math.round((correct / q.questions.length) * 100);
 
     var attempt = {
-      mode: q.topicFilter ? "Treino por tópico" : (q.questions.length<=10 ? "Treino Rápido" : (q.questions.length<=20 ? "Simulado Médio" : "Simulado Completo")),
+      mode: q.isGerais ? "Conhecimentos Gerais (Português + Inglês)" : (q.topicFilter ? "Treino por tópico" : (q.questions.length<=10 ? "Treino Rápido" : (q.questions.length<=20 ? "Simulado Médio" : "Simulado Completo"))),
       topicFilter: q.topicFilter || null,
+      isGerais: !!q.isGerais,
       total: q.questions.length,
       correct: correct,
       pct: pct,
@@ -6485,6 +7755,115 @@ Qual é a saída impressa por esse programa?`,
       '<p style="margin-top:10px;">CR = Vagas + Cadastro de Reserva. ⭐ marca a ênfase selecionada atualmente no simulador. Remuneração do cargo (todas as ênfases): salário básico R$ 8.647,34, com garantia de remuneração mínima de R$ 14.973,62.</p>'+
       '<div class="note"><b>Nota:</b> os dados de vaga aqui são só uma referência de contexto — a decisão de qual ênfase prestar já foi feita nesta conversa com base no seu perfil, e não muda automaticamente se você só trocar a área no seletor de provas.</div>';
     host.appendChild(vagas);
+  }
+
+  /* ============================================================
+     PLANO DE ESTUDOS
+     Gerado dinamicamente a partir da data de hoje até a prova
+     (29/11/2026) e dos tópicos já cadastrados para a ênfase
+     selecionada — não é um cronograma fixo digitado uma vez, é
+     recalculado a cada visita, então nunca fica desatualizado.
+     ============================================================ */
+  function addDays(date, n){ var d = new Date(date.getTime()); d.setDate(d.getDate()+n); return d; }
+  function fmtDate(date){ return date.toLocaleDateString("pt-BR", { day:"2-digit", month:"2-digit" }); }
+
+  function renderPlano(){
+    var host = document.getElementById("view-plano");
+    host.innerHTML = "";
+    var enfase = enfaseById[state.enfase] || ENFASES[0];
+
+    var EXAM_DATE = new Date("2026-11-29T00:00:00");
+    var now = new Date();
+    var msPerDay = 86400000;
+    var daysLeft = Math.max(1, Math.ceil((EXAM_DATE - now) / msPerDay));
+
+    host.appendChild(el(
+      '<header class="pagehead">'+
+        '<span class="eyebrow"><span class="dot"></span>'+enfase.nome+'</span>'+
+        '<h1>Plano de estudos até a prova</h1>'+
+        '<p>Roteiro calculado a partir de hoje até 29/11/2026, cruzando os tópicos já cadastrados para esta ênfase com um cronograma de repetição espaçada. É uma referência para organizar o ritmo, recalculada toda vez que você abre esta aba — ajuste ao seu tempo real disponível.</p>'+
+      '</header>'
+    ));
+
+    if (daysLeft <= 0){
+      host.appendChild(el('<div class="card infodoc"><p><b>A data de prova prevista (29/11/2026) já passou ou é hoje.</b> Se o edital foi retificado com nova data, os cálculos abaixo deixam de valer — confira o cronograma oficial na aba Concurso.</p></div>'));
+      return;
+    }
+
+    var weeksLeft = Math.floor(daysLeft/7);
+    var hero = el('<div class="card infodoc" style="text-align:center;"></div>');
+    hero.innerHTML =
+      '<div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;">'+
+        '<div><div style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:var(--accent-strong);">'+daysLeft+'</div><div style="color:var(--ink-soft);font-size:13px;">dias até a prova</div></div>'+
+        '<div><div style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:var(--accent-strong);">'+weeksLeft+'</div><div style="color:var(--ink-soft);font-size:13px;">semanas cheias restantes</div></div>'+
+      '</div>';
+    host.appendChild(hero);
+
+    /* ---- a ciência por trás da repetição espaçada ---- */
+    var science = el('<div class="card infodoc"></div>');
+    science.innerHTML =
+      '<h2>Por que repetir espaçado funciona melhor do que decorar de uma vez</h2>'+
+      '<p>A curva do esquecimento (Ebbinghaus) mostra que, sem revisão, a maior parte do que se estuda é esquecida em poucos dias. Repetir a mesma informação em intervalos crescentes é a forma mais estudada de empurrar esse conteúdo da memória de curto prazo para a de longo prazo — a ponto de a resposta certa "vir na hora", quase por instinto, no dia da prova.</p>'+
+      '<p>Isso não é garantia estatística para este concurso específico — é o mesmo princípio por trás de qualquer método de repetição espaçada (o usado, por exemplo, em aplicativos de idiomas). Adaptamos os intervalos abaixo ao seu calendário real:</p>'+
+      '<table><thead><tr><th>Quando</th><th>O que fazer</th></tr></thead><tbody>'+
+        '<tr><td class="dt">Dia 0</td><td>Ler a Área de Estudo do tópico + Treino por Tópico (10-15 questões)</td></tr>'+
+        '<tr><td class="dt">Dia 1</td><td>Revisão rápida: reler só os erros do treino anterior</td></tr>'+
+        '<tr><td class="dt">Dia 3</td><td>Novo Treino por Tópico do mesmo assunto</td></tr>'+
+        '<tr><td class="dt">Dia 7</td><td>Novo treino, já misturado com outro tópico no Treino Rápido</td></tr>'+
+        '<tr><td class="dt">Dia 16</td><td>Revisão dentro de um Simulado Médio</td></tr>'+
+        '<tr><td class="dt">Dia 30</td><td>Revisão final dentro de um Simulado Completo</td></tr>'+
+      '</tbody></table>'+
+      '<div class="note"><b>Na prática:</b> você não precisa controlar essas datas manualmente — o histórico da aba Histórico já registra quando e como você foi em cada tentativa. Use-o para ver há quanto tempo não revisa um tópico.</div>';
+    host.appendChild(science);
+
+    /* ---- fases do plano, com base nos tópicos reais da ênfase ---- */
+    var topicsByTier = { P1:[], P2:[], P3:[] };
+    topicsForEnfase(enfase.id).forEach(function(t){
+      if (GERAIS_TOPIC_IDS.indexOf(t.id) === -1 && topicsByTier[t.tier]) topicsByTier[t.tier].push(t.name);
+    });
+    var totalEspecificos = topicsByTier.P1.length + topicsByTier.P2.length + topicsByTier.P3.length;
+
+    var finalDays = Math.min(7, Math.max(3, Math.round(daysLeft*0.08)));
+    var remaining = daysLeft - finalDays;
+    var p1Days = Math.max(1, Math.round(remaining*0.40));
+    var p2Days = Math.max(1, Math.round(remaining*0.28));
+    var p3Days = Math.max(1, Math.round(remaining*0.17));
+    var p4Days = Math.max(1, remaining - p1Days - p2Days - p3Days);
+
+    var cursor = now;
+    var phase1Start = cursor; var phase1End = addDays(cursor, p1Days); cursor = phase1End;
+    var phase2Start = cursor; var phase2End = addDays(cursor, p2Days); cursor = phase2End;
+    var phase3Start = cursor; var phase3End = addDays(cursor, p3Days); cursor = phase3End;
+    var phase4Start = cursor; var phase4End = addDays(cursor, p4Days); cursor = phase4End;
+    var phase5Start = cursor; var phase5End = EXAM_DATE;
+
+    function pctAte(n){ return totalEspecificos ? Math.round((n/totalEspecificos)*100) : 0; }
+    var pctFase1 = pctAte(topicsByTier.P1.length);
+    var pctFase2 = pctAte(topicsByTier.P1.length + topicsByTier.P2.length);
+    var pctFase3 = pctAte(totalEspecificos);
+
+    var phases = el('<div class="card infodoc"></div>');
+    phases.innerHTML =
+      '<h2>Roteiro em 5 fases</h2>'+
+      '<table><thead><tr><th>Fase</th><th>Período</th><th>Foco</th><th>Cobertura acumulada</th></tr></thead><tbody>'+
+        '<tr class="hi"><td>1 · Núcleo (Prioridade 1)</td><td class="dt">'+fmtDate(phase1Start)+' – '+fmtDate(phase1End)+'</td>'+
+          '<td>'+(topicsByTier.P1.length ? topicsByTier.P1.join(", ") : "tópicos de Prioridade 1 desta ênfase")+'. Comece também Português/Inglês em paralelo, 2 sessões por semana.</td>'+
+          '<td class="dt">'+pctFase1+"% do Específicas"+'</td></tr>'+
+        '<tr><td>2 · Reforço (Prioridade 2)</td><td class="dt">'+fmtDate(phase2Start)+' – '+fmtDate(phase2End)+'</td>'+
+          '<td>'+(topicsByTier.P2.length ? topicsByTier.P2.join(", ") : "tópicos de Prioridade 2 desta ênfase")+'. Mantenha revisão espaçada da Prioridade 1 (Simulado Médio misturando P1+P2).</td>'+
+          '<td class="dt">'+pctFase2+"% do Específicas"+'</td></tr>'+
+        '<tr><td>3 · Itens sem precedente (Prioridade 3)</td><td class="dt">'+fmtDate(phase3Start)+' – '+fmtDate(phase3End)+'</td>'+
+          '<td>'+(topicsByTier.P3.length ? topicsByTier.P3.join(", ") : "tópicos de Prioridade 3 desta ênfase")+'. Aumente a frequência de Conhecimentos Gerais para 3x/semana.</td>'+
+          '<td class="dt">'+pctFase3+"% do Específicas"+'</td></tr>'+
+        '<tr><td>4 · Simulados completos</td><td class="dt">'+fmtDate(phase4Start)+' – '+fmtDate(phase4End)+'</td>'+
+          '<td>Alterne Simulado Completo (Específicas) e Simulado de Conhecimentos Gerais, cronometrando as 4h30 reais. Depois de cada um, volte à Área de Estudo só dos tópicos com pior desempenho na aba Resultados.</td>'+
+          '<td class="dt">100%</td></tr>'+
+        '<tr class="hi"><td>5 · Reta final</td><td class="dt">'+fmtDate(phase5Start)+' – '+fmtDate(phase5End)+'</td>'+
+          '<td>Sem conteúdo novo. Revisão leve dos tópicos de Prioridade 1 e de Português/Inglês, sono em dia. Estudo de última hora tende a ajudar pouco a memória de longo prazo — o objetivo aqui é chegar descansado, não "descobrir" assunto novo.</td>'+
+          '<td class="dt">manutenção</td></tr>'+
+      '</tbody></table>'+
+      '<div class="note"><b>Isto é uma estimativa de ritmo, não uma promessa de nota:</b> os percentuais mostram cobertura de tópicos do Anexo IV já cadastrados no simulador, calculados sobre o banco desta ênfase hoje — ajuste os prazos à sua realidade (trabalho, outras obrigações) sem culpa.</div>';
+    host.appendChild(phases);
   }
 
   /* ---------- boot ---------- */

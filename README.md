@@ -16,17 +16,19 @@ O edital tem 5 ênfases de TI. O banco de questões está sendo construído áre
 | Análise de Sistemas — Segurança Cibernética e da Informação | 🔒 em construção | — |
 | Ciência de Dados | 🔒 em construção | — |
 
-Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco de Dados básico, Gestão de Projetos) são compartilhados entre ênfases cujo Anexo IV traz o mesmo conteúdo quase literalmente — por isso o total de questões de cada área não é a simples soma de blocos exclusivos.
+Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco de Dados básico, Gestão de Projetos) são compartilhados entre ênfases cujo Anexo IV traz o mesmo conteúdo quase literalmente — por isso o total de questões de cada área não é a simples soma de blocos exclusivos. **Língua Portuguesa e Língua Inglesa** (Fase 2 do edital, Conhecimentos Gerais) são comuns às 5 ênfases: 40 questões (20+20), organizadas em 2 textos completos por idioma, replicando o formato real (zerar Português ou Inglês elimina o candidato, independentemente da ênfase).
 
 ## O que tem aqui
 
 - **`index.html`** — aplicação completa em HTML/CSS/JS puro (sem build, sem dependências), com:
   - **Seletor de área**, guiado pelas vagas reais do Anexo I do edital, cobrindo as 5 ênfases de TI.
   - **Questões inéditas** organizadas por Prioridade 1 (núcleo histórico da banca), Prioridade 2 (reforço) e Prioridade 3 (itens novos do edital sem precedente nas provas antigas), cada uma com explicação pedagógica completa — não só o gabarito, mas por que a resposta certa está certa e por que cada alternativa errada falha.
-  - **4 modos de prova**: Treino Rápido, Simulado Médio, Simulado Completo e Treino por Tópico.
-  - **Área de Estudo** com conteúdo condensado por tópico, pensado para o contexto exato da prova.
+  - **4 modos de prova de Conhecimentos Específicos**: Treino Rápido, Simulado Médio, Simulado Completo e Treino por Tópico.
+  - **Modo dedicado de Conhecimentos Gerais** (Português + Inglês), sorteando um texto completo de 10 questões por idioma, disponível em qualquer área — inclusive nas ainda em construção.
+  - **Área de Estudo** com conteúdo condensado por tópico, pensado para o contexto exato da prova, incluindo mini-apostilas de Língua Portuguesa e Língua Inglesa.
   - **Histórico de tentativas** persistente entre visitas, com revisão completa de qualquer prova antiga (via capacidade de banco de dados do runtime de Artifacts da Claude, com fallback em `localStorage`).
   - **Aba Concurso** com cronograma, formato de prova e vagas de todas as ênfases de TI, direto do edital oficial.
+  - **Aba Plano de Estudos**, recalculada a cada visita a partir da data de hoje até a prova (29/11/2026): roteiro em 5 fases com cronograma de revisão espaçada e estimativa de cobertura do Anexo IV.
 
 ## Como usar
 
