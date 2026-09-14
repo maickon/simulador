@@ -10,15 +10,15 @@ O edital tem 5 ênfases de TI. O banco de questões está sendo construído áre
 
 | Ênfase | Status | Questões |
 |---|---|---|
-| Análise de Sistemas — Processos de Negócios | ✅ completo | 149 |
-| Análise de Sistemas — Infraestrutura | ✅ completo | 134 |
+| Análise de Sistemas — Processos de Negócios | ✅ completo | 220 |
+| Análise de Sistemas — Infraestrutura | ✅ completo | 209 |
 | Análise de Sistemas — SAP | 🔒 em construção | — |
 | Análise de Sistemas — Segurança Cibernética e da Informação | 🔒 em construção | — |
 | Ciência de Dados | 🔒 em construção | — |
 
 Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco de Dados básico, Gestão de Projetos) são compartilhados entre ênfases cujo Anexo IV traz o mesmo conteúdo quase literalmente — por isso o total de questões de cada área não é a simples soma de blocos exclusivos. **Língua Portuguesa e Língua Inglesa** (Fase 2 do edital, Conhecimentos Gerais) são comuns às 5 ênfases: 50 questões (25+25), organizadas em 3 textos por idioma (2 completos de 10 questões + 1 curto de 5, para o modo Rápido), replicando o formato real (zerar Português ou Inglês elimina o candidato, independentemente da ênfase).
 
-Todo o banco passa por uma calibração de dificuldade deliberada: além do formato "conceitual" (identificar/definir), inclui cálculo aplicado (complexidade ciclomática via grafo, pontos de função com tabela de pesos completa), categorização fina dentro de uma taxonomia (custo da qualidade, fases do Processo Unificado) e comparação visual quase-idêntica (esquemas relacionais, diagramas E-R) — os formatos que, na prática, geram a maior parte da dificuldade real das provas da Cesgranrio.
+Todo o banco passa por uma calibração de dificuldade contínua, guiada por uma auditoria formato a formato das 290 questões reais catalogadas: além do "conceitual" (identificar/definir), o banco vem reforçando cálculo aplicado (complexidade ciclomática via grafo, pontos de função com tabela de pesos completa, subnetting, RAID, CPI/SPI), rastreamento de código (Bash, PowerShell, Java, Python), categorização fina dentro de uma taxonomia (custo da qualidade, fases do Processo Unificado, HIDS×NIDS) e comparação visual quase-idêntica (esquemas relacionais, máquinas de estado, diagramas E-R) — os formatos que, na prática, geram a maior parte da dificuldade real das provas da Cesgranrio. Essa calibração é incremental: cada lote novo aumenta a proporção desses formatos mais difíceis em relação ao "conceitual" simples.
 
 ## O que tem aqui
 

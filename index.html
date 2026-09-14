@@ -3343,6 +3343,23 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     }
   }
 },
+{
+  id:"lgpd-07", topicId:"lgpd", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Aplicação do princípio da finalidade a um cenário — item 4.6 do Anexo IV",
+  stem:"Uma empresa coleta o CPF de seus clientes exclusivamente para emitir nota fiscal de uma compra. Meses depois, sem consentimento adicional nem qualquer outra base legal específica para essa nova finalidade, a empresa passa a utilizar esse mesmo CPF para enviar propaganda de produtos completamente não relacionados à compra original. Essa prática, à luz da LGPD, viola principalmente o princípio da:",
+  options:{ A:"finalidade", B:"transparência", C:"segurança", D:"livre acesso", E:"qualidade dos dados" },
+  correct:"A",
+  explanation:{
+    core:"O princípio da finalidade exige que o tratamento de dados pessoais ocorra para propósitos legítimos, específicos, explícitos e informados ao titular no momento da coleta — sem uso posterior incompatível com essas finalidades originais.",
+    detail:"O CPF foi coletado com finalidade específica (emissão de nota fiscal); usá-lo depois para uma finalidade totalmente diferente (propaganda), sem nova base legal, é o exemplo clássico de violação ao princípio da finalidade, mesmo que os demais princípios (segurança, transparência) não tenham sido violados nesse cenário.",
+    wrong:{
+      B:"Transparência trata do dever de informar claramente como os dados são tratados — o problema aqui não é falta de informação, é o uso para uma finalidade diferente da original.",
+      C:"Segurança trata de proteger os dados contra acessos não autorizados/vazamentos — não é o que está em jogo nesse cenário.",
+      D:"Livre acesso garante ao titular consulta facilitada e gratuita sobre como seus dados são tratados — não é o princípio violado na descrição.",
+      E:"Qualidade dos dados trata de exatidão, clareza e atualização dos dados — não da finalidade para a qual eles são usados."
+    }
+  }
+},
 
 /* ---------------- LÓGICA MATEMÁTICA — 8 ---------------- */
 {
@@ -3520,6 +3537,29 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
       B:"12 não corresponde a nenhuma potência de 2 — não é um resultado possível para o número de linhas de uma tabela-verdade completa.",
       D:"4 corresponde apenas ao número de proposições simples (n), não ao número de linhas da tabela-verdade (que é 2ⁿ).",
       E:"2⁵ = 32 corresponderia a 5 proposições simples, não 4."
+    }
+  }
+},
+{
+  id:"log-09", topicId:"logica-matematica", tier:"P2", format:"calculo",
+  source:"inedita", insp:"Validade de silogismo categórico — mesmo mecanismo da prova de Infraestrutura de 2018 (Q33)",
+  stem:"Considere as premissas: \"Todo servidor de produção é monitorado 24 horas\" e \"Nenhum servidor de teste é monitorado 24 horas\". A partir dessas duas premissas, qual das conclusões abaixo é logicamente válida?",
+  options:{
+    A:"Nenhum servidor de teste é servidor de produção.",
+    B:"Todo servidor de produção é servidor de teste.",
+    C:"Algum servidor de teste é servidor de produção.",
+    D:"Nenhum servidor é monitorado 24 horas.",
+    E:"Todo servidor monitorado 24 horas é servidor de teste."
+  },
+  correct:"A",
+  explanation:{
+    core:"Se todo servidor de produção é monitorado 24h, e nenhum servidor de teste é monitorado 24h, então nenhum servidor pode ser, ao mesmo tempo, de produção e de teste — porque, se fosse, seria monitorado 24h (por ser de produção) e não seria monitorado 24h (por ser de teste), uma contradição. Logo, nenhum servidor de teste é servidor de produção.",
+    detail:"Esse é um silogismo categórico válido (forma clássica: Todo P é M; Nenhum T é M; logo, Nenhum T é P) — vale a pena reconhecer esse padrão, pois a banca costuma misturar conclusões que PARECEM decorrer das premissas, mas na verdade não são logicamente garantidas por elas.",
+    wrong:{
+      B:"Não há nenhuma premissa que relacione diretamente \"ser de produção\" com \"ser de teste\" dessa forma — essa conclusão não decorre logicamente das premissas dadas.",
+      C:"Contradiz diretamente a conclusão válida (A): se nenhum servidor de teste é de produção, não pode haver \"algum\" que seja.",
+      D:"As premissas afirmam que servidores de PRODUÇÃO SÃO monitorados 24h — logo, existe sim pelo menos uma categoria de servidor monitorada 24h; essa conclusão contradiz a primeira premissa.",
+      E:"Inverte e distorce a segunda premissa: ela diz que NENHUM servidor de teste é monitorado 24h, o oposto de dizer que todo servidor monitorado 24h é de teste."
     }
   }
 },
@@ -4310,6 +4350,63 @@ Esse trecho está vulnerável a SQL Injection. Qual das entradas abaixo, digitad
     }
   }
 },
+{
+  id:"net-09", topicId:"redes", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Cálculo de sub-rede CIDR — mesmo mecanismo da prova de Infraestrutura de 2018 (Q22)",
+  stem:"Uma sub-rede foi definida com o prefixo /27. Desconsiderando os endereços de rede e de broadcast dessa sub-rede, quantos endereços utilizáveis para hosts ela oferece?",
+  options:{ A:"16", B:"30", C:"32", D:"62", E:"64" },
+  correct:"B",
+  explanation:{
+    core:"/27 deixa 32−27 = 5 bits para hosts, o que dá 2⁵ = 32 endereços totais na sub-rede. Descontando o endereço de rede e o de broadcast, restam 32 − 2 = 30 endereços utilizáveis.",
+    detail:"Esse desconto de 2 endereços (rede e broadcast) é o detalhe que mais derruba candidato — o total de endereços do bloco (32) não é igual ao total de hosts utilizáveis (30).",
+    wrong:{
+      A:"Corresponde a 2⁴, resultado de usar 4 bits de host em vez dos 5 bits reais de uma máscara /27.",
+      C:"É o total de endereços do bloco (2⁵=32), sem descontar rede e broadcast.",
+      D:"Corresponde ao cálculo correto (2⁶−2) para uma máscara /26, não /27.",
+      E:"Corresponde a 2⁶, usando 6 bits de host em vez dos 5 reais de uma máscara /27."
+    }
+  }
+},
+{
+  id:"net-10", topicId:"redes", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Cálculo de tempo de transmissão — tema recorrente desde a prova de 2012",
+  stem:"Um arquivo de 20 MB precisa ser transmitido por um enlace com taxa de 4 Mbps. Desconsiderando overhead de protocolo e admitindo 1 byte = 8 bits, quanto tempo, aproximadamente, leva a transmissão desse arquivo?",
+  options:{ A:"5 segundos", B:"20 segundos", C:"40 segundos", D:"80 segundos", E:"160 segundos" },
+  correct:"C",
+  explanation:{
+    core:"Primeiro converte o tamanho do arquivo de bytes para bits: 20 MB × 8 = 160 Mb. Depois divide pela taxa do enlace: 160 Mb ÷ 4 Mbps = 40 segundos.",
+    detail:"O erro mais comum nesse tipo de conta é esquecer de converter bytes (MB) para bits (Mb) antes de dividir pela taxa, que é sempre expressa em bits por segundo.",
+    wrong:{
+      A:"Corresponde a dividir 20 (em MB, sem converter para bits) por 4 — ignora a conversão de bytes para bits.",
+      B:"Não corresponde a nenhuma operação direta com os valores dados de forma consistente com a fórmula correta.",
+      D:"O dobro do valor correto — consistente com converter usando um fator de 16 em vez de 8, ou dividir a taxa por 2 antes do cálculo.",
+      E:"Corresponde ao valor em Mb (160) sem realizar a divisão pela taxa de transmissão."
+    }
+  }
+},
+{
+  id:"net-11", topicId:"redes", tier:"P1", format:"visual",
+  source:"inedita", insp:"Domínios de colisão e de broadcast — tema recorrente desde a prova de 2012 (Q35)",
+  stem:"Uma rede é composta por um switch central conectado a 3 hubs; cada hub tem 4 computadores conectados a ele, e nenhum roteador está presente nessa rede. Quantos domínios de colisão e quantos domínios de broadcast essa rede possui, respectivamente?",
+  options:{
+    A:"1 domínio de colisão e 1 domínio de broadcast",
+    B:"3 domínios de colisão e 1 domínio de broadcast",
+    C:"3 domínios de colisão e 3 domínios de broadcast",
+    D:"12 domínios de colisão e 1 domínio de broadcast",
+    E:"1 domínio de colisão e 3 domínios de broadcast"
+  },
+  correct:"B",
+  explanation:{
+    core:"Um hub não segmenta domínio de colisão internamente (todos os 4 computadores de um mesmo hub compartilham 1 único domínio de colisão), mas o switch isola cada uma de suas portas em um domínio de colisão próprio — resultando em 3 domínios de colisão, um por hub. Nenhum dos dois equipamentos (hub ou switch) segmenta domínio de broadcast — só um roteador faria isso — então toda a rede continua sendo 1 único domínio de broadcast.",
+    detail:"É essa dupla regra (switch segmenta colisão, mas não broadcast) que costuma confundir: switch não é \"tão bom quanto um roteador\" para conter broadcast, só para conter colisão.",
+    wrong:{
+      A:"Trata a rede toda como um único domínio de colisão, ignorando que o switch isola cada porta/hub separadamente.",
+      C:"Assume, de forma incorreta, que o switch também segmenta domínio de broadcast — apenas um roteador faz isso.",
+      D:"Conta cada computador individualmente (12) como se cada um estivesse isolado em seu próprio domínio de colisão, ignorando que o hub compartilha o domínio entre seus 4 computadores.",
+      E:"Inverte a lógica: quem é segmentado pelo switch é o domínio de colisão (3), não o de broadcast (que permanece 1)."
+    }
+  }
+},
 
 /* ---------------- ADMINISTRAÇÃO UNIX/LINUX — 7 ---------------- */
 {
@@ -4471,6 +4568,71 @@ Qual é a saída exata produzida por esse script, na ordem em que aparece?`,
     }
   }
 },
+{
+  id:"lnx-08", topicId:"admin-linux", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Rastreamento de script Bash com for/mkdir/mv — mesmo mecanismo da prova de Infraestrutura de 2012 (Q27)",
+  stem:`Considere o script Bash abaixo, executado num diretório onde já existem os arquivos arquivo1.txt, arquivo2.txt e arquivo3.txt:
+
+<pre class="codeblock">#!/bin/bash
+for i in 1 2 3; do
+  mkdir -p backup$i
+  mv arquivo$i.txt backup$i/ 2>/dev/null
+done
+echo "Diretorios criados: $(ls -d backup*/ 2>/dev/null | wc -l)"</pre>
+
+Qual é a saída impressa pelo comando echo final?`,
+  options:{
+    A:"Diretorios criados: 0",
+    B:"Diretorios criados: 1",
+    C:"Diretorios criados: 3",
+    D:"Diretorios criados: 4",
+    E:"o script não executa, por erro de sintaxe no laço for"
+  },
+  correct:"C",
+  explanation:{
+    core:"O laço 'for i in 1 2 3' executa 3 vezes, criando backup1, backup2 e backup3 e movendo cada arquivoN.txt para o respectivo diretório. O comando final conta, com 'ls -d backup*/ | wc -l', quantos diretórios cujo nome começa com 'backup' existem: 3.",
+    detail:"A sintaxe 'for i in 1 2 3; do ... done' é válida e itera sobre a lista literal de valores 1, 2 e 3 — não há erro de sintaxe, e cada iteração cria exatamente um diretório novo.",
+    wrong:{
+      A:"O laço realmente cria os diretórios — não há motivo para a contagem ser zero, dado que os arquivos de origem existem.",
+      B:"O laço executa 3 vezes, uma para cada valor da lista '1 2 3', não apenas uma vez.",
+      D:"Apenas 3 diretórios (backup1, backup2, backup3) são criados pelo laço — não há um quarto diretório 'backup' sendo criado em nenhum outro trecho do script.",
+      E:"A sintaxe do laço 'for i in 1 2 3; do ... done' é válida em Bash; o script executa normalmente."
+    }
+  }
+},
+{
+  id:"lnx-09", topicId:"admin-linux", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Combinação grep/cut sobre /etc/passwd — mesmo mecanismo da prova de Infraestrutura de 2018 (Q48)",
+  stem:`Considere que o arquivo /etc/passwd de um servidor contém, entre outras, exatamente estas três linhas:
+
+<pre class="codeblock">root:x:0:0:root:/root:/bin/bash
+maria:x:1001:1001:Maria Silva:/home/maria:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</pre>
+
+Um administrador executa o comando:
+
+<pre class="codeblock">grep -v nologin /etc/passwd | cut -d: -f1</pre>
+
+Qual é a saída desse comando, considerando apenas essas três linhas?`,
+  options:{
+    A:"root",
+    B:"root<br>maria",
+    C:"root<br>maria<br>daemon",
+    D:"daemon",
+    E:"o comando falha, pois -v não é uma opção válida do grep"
+  },
+  correct:"B",
+  explanation:{
+    core:"'grep -v nologin' seleciona as linhas que NÃO contêm a palavra 'nologin', removendo a linha do usuário daemon (cujo shell é /usr/sbin/nologin) e mantendo as linhas de root e maria. Em seguida, 'cut -d: -f1' extrai apenas o primeiro campo (separado por ':'), que é o nome de usuário — resultando em 'root' e 'maria'.",
+    detail:"A opção '-v' do grep inverte a seleção (mostra o que NÃO casa com o padrão) — é um uso legítimo e muito comum do comando, não um erro.",
+    wrong:{
+      A:"Falta a linha de 'maria', que também não contém 'nologin' e por isso não é removida pelo grep -v.",
+      C:"Inclui 'daemon', mas essa linha contém 'nologin' e é justamente a removida pelo grep -v.",
+      D:"É exatamente a linha removida pelo comando, não a que sobra — 'daemon' contém 'nologin' e por isso é excluída pelo grep -v.",
+      E:"'-v' é uma opção padrão e amplamente documentada do grep, usada para inverter a seleção de linhas — não gera erro."
+    }
+  }
+},
 
 /* ---------------- ADMINISTRAÇÃO WINDOWS SERVER — 7 ---------------- */
 {
@@ -4619,6 +4781,51 @@ Qual é a saída exata produzida por esse script, na ordem em que aparece?`,
       B:"A segunda afirmação não é verdadeira — inverte a relação real de contenção entre Floresta e Domínio.",
       D:"A primeira afirmação é verdadeira, não falsa — Florestas realmente podem conter múltiplos domínios.",
       E:"A primeira afirmação é verdadeira, mesmo que a segunda esteja incorreta."
+    }
+  }
+},
+{
+  id:"win-08", topicId:"admin-windows", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Rastreamento de script PowerShell com índice negativo de array — mesmo mecanismo da prova de Infraestrutura de 2018 (Q51)",
+  stem:`Considere o script PowerShell abaixo:
+
+<pre class="codeblock">$servidores = @("srv-web01","srv-web02","srv-db01","srv-db02","srv-app01")
+Write-Output $servidores[-2]</pre>
+
+O que esse script imprime?`,
+  options:{ A:"srv-web01", B:"srv-db01", C:"srv-db02", D:"srv-app01", E:"um erro, pois PowerShell não aceita índices negativos" },
+  correct:"C",
+  explanation:{
+    core:"Em PowerShell, índices negativos contam a partir do FINAL do array: [-1] é o último elemento, [-2] é o penúltimo. O array tem 5 elementos; o penúltimo (índice -2) é 'srv-db02'.",
+    detail:"Contando a partir do fim: [-1]='srv-app01' (último), [-2]='srv-db02' (penúltimo), [-3]='srv-db01', e assim por diante — exatamente como listas em Python.",
+    wrong:{
+      A:"'srv-web01' é o primeiro elemento (índice 0), não o penúltimo (índice -2).",
+      B:"'srv-db01' está no índice -3 (antepenúltimo), não no índice -2.",
+      D:"'srv-app01' é o ÚLTIMO elemento (índice -1), não o penúltimo (índice -2).",
+      E:"PowerShell aceita índices negativos normalmente para contar elementos a partir do final do array — não gera erro."
+    }
+  }
+},
+{
+  id:"win-09", topicId:"admin-windows", tier:"P1", format:"cenario",
+  source:"inedita", insp:"RD Connection Broker/balanceamento de sessões — mesmo mecanismo da prova de Infraestrutura de 2012 (Q37)",
+  stem:"Uma empresa possui uma fazenda (farm) com múltiplos servidores de Remote Desktop Services (RDS) atendendo os mesmos usuários. Ela precisa que, quando um usuário se reconectar após uma queda de conexão, ele seja redirecionado automaticamente ao MESMO servidor onde sua sessão anterior ainda está ativa, em vez de abrir uma nova sessão em outro servidor da fazenda. O componente do Windows Server responsável por esse redirecionamento e balanceamento de sessões entre os servidores da fazenda é o:",
+  options:{
+    A:"RD Connection Broker (Session Broker)",
+    B:"RD Web Access",
+    C:"RD Licensing",
+    D:"RD Gateway",
+    E:"Active Directory Federation Services (AD FS)"
+  },
+  correct:"A",
+  explanation:{
+    core:"O RD Connection Broker (também chamado de Session Broker) é o componente responsável por rastrear sessões de usuário entre os servidores de uma fazenda RDS e redirecionar reconexões para o servidor correto, além de balancear novas conexões entre os servidores disponíveis.",
+    detail:"Sem esse componente, cada nova conexão poderia cair em qualquer servidor da fazenda, inclusive um diferente de onde a sessão anterior do usuário ainda está ativa — quebrando a continuidade do trabalho do usuário.",
+    wrong:{
+      B:"RD Web Access fornece uma interface web para os usuários acessarem aplicações/desktops publicados, mas não faz o balanceamento/redirecionamento de sessão.",
+      C:"RD Licensing gerencia as licenças de acesso (CALs) do ambiente RDS, sem relação com redirecionamento de sessão.",
+      D:"RD Gateway permite acesso remoto seguro via HTTPS a partir da internet, sem relação com balanceamento entre servidores da fazenda.",
+      E:"AD FS trata de federação de identidade entre organizações/domínios, não de balanceamento de sessões RDS."
     }
   }
 },
@@ -4785,6 +4992,88 @@ Qual é a saída impressa por esse programa?`,
     }
   }
 },
+{
+  id:"prog-08", topicId:"programacao-basica", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Rastreamento de herança/polimorfismo em Java — mesmo mecanismo das provas de 2006/2011/2018",
+  stem:`Analise o programa Java a seguir:
+
+<pre class="codeblock">class Animal {
+    String som() { return "..."; }
+    String som(int vezes) {
+        String r = "";
+        for (int i = 0; i < vezes; i++) r += som();
+        return r;
+    }
+}
+class Cachorro extends Animal {
+    @Override
+    String som() { return "Au"; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Cachorro();
+        System.out.println(a.som(3));
+    }
+}</pre>
+
+Ao ser executado, o programa imprime:`,
+  options:{ A:"...", B:"AuAuAu", C:"Au", D:"o programa não compila", E:"............" },
+  correct:"B",
+  explanation:{
+    core:"Mesmo com a variável declarada como tipo Animal, o objeto real referenciado é um Cachorro — por polimorfismo (ligação dinâmica), qualquer chamada a som() sem argumento, mesmo feita de DENTRO do método som(int) herdado de Animal, é resolvida em tempo de execução para a versão sobrescrita em Cachorro.",
+    detail:"O método som(int), herdado de Animal (Cachorro não o sobrescreve), chama internamente som() três vezes. Cada uma dessas chamadas é despachada dinamicamente para Cachorro.som(), que retorna \"Au\" — resultando em \"Au\"+\"Au\"+\"Au\" = \"AuAuAu\".",
+    wrong:{
+      A:"Seria o resultado se som(int) chamasse a versão de Animal.som() de forma estática (sem polimorfismo) — mas em Java a ligação é dinâmica, então a versão de Cachorro é usada.",
+      C:"Corresponde a uma única chamada de som(), mas o método som(3) faz o laço três vezes, concatenando o resultado three vezes.",
+      D:"O programa é sintaticamente válido — sobrescrita de método (@Override) e sobrecarga (som() e som(int)) coexistem sem problema em Java.",
+      E:"Assumiria que cada chamada interna a som() retorna \"...\" (versão de Animal) em vez da versão sobrescrita de Cachorro — ignora o polimorfismo."
+    }
+  }
+},
+{
+  id:"prog-09", topicId:"programacao-basica", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Rastreamento de generator/expressão geradora em Python — mesmo mecanismo da prova de Infraestrutura de 2018 (Q60)",
+  stem:`Analise o programa Python a seguir:
+
+<pre class="codeblock">def gen(n):
+    for i in range(n):
+        yield i * 2
+
+g = gen(4)
+total = sum(x for x in g if x > 2)
+print(total)</pre>
+
+Ao ser executado, esse programa imprime:`,
+  options:{ A:"6", B:"8", C:"10", D:"12", E:"14" },
+  correct:"C",
+  explanation:{
+    core:"gen(4) é um gerador que produz, um de cada vez, os valores i*2 para i de 0 a 3: 0, 2, 4, 6. A expressão geradora 'x for x in g if x > 2' filtra apenas os valores maiores que 2: 4 e 6. A soma desses valores é 4+6 = 10.",
+    detail:"É comum confundir range(n) com os valores já multiplicados por 2 — range(4) gera 0,1,2,3, e é o 'yield i*2' que os dobra para 0,2,4,6, antes do filtro 'x > 2' ser aplicado.",
+    wrong:{
+      A:"Corresponde à soma de apenas um dos dois valores filtrados (2+4, usando o valor 2 que na verdade é excluído pelo filtro 'x > 2', que é estrito).",
+      B:"Não corresponde à soma correta dos valores que passam pelo filtro (4 e 6).",
+      D:"Corresponde a somar todos os quatro valores gerados (0+2+4+6=12), ignorando o filtro 'if x > 2'.",
+      E:"Não corresponde a nenhuma combinação consistente dos valores gerados por essa função."
+    }
+  }
+},
+{
+  id:"prog-10", topicId:"programacao-basica", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Número de comparações em busca binária — mesmo mecanismo da prova de Infraestrutura de 2018 (Q68)",
+  stem:"Um vetor ordenado contém 1.000 elementos. No pior caso, quantas comparações, no máximo, o algoritmo de busca binária realiza para localizar um elemento (ou concluir que ele não está presente) nesse vetor?",
+  options:{ A:"8", B:"9", C:"10", D:"11", E:"999" },
+  correct:"C",
+  explanation:{
+    core:"O número máximo de comparações da busca binária é ⌈log₂(n)⌉. Como 2⁹=512 < 1.000 ≤ 1.024=2¹⁰, o número de comparações no pior caso é 10.",
+    detail:"A cada comparação, a busca binária descarta metade do espaço de busca restante: 1000 → 500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1 — são exatamente 10 divisões até restar 1 elemento.",
+    wrong:{
+      A:"Corresponde a log₂(256), um vetor bem menor que 1.000 elementos.",
+      B:"Corresponde a ⌊log₂(1000)⌋ arredondado para baixo sem o ajuste para cima (teto) exigido pela fórmula.",
+      D:"Um a mais do que o necessário — 2¹⁰=1024 já é suficiente para cobrir os 1.000 elementos.",
+      E:"Corresponde ao número de comparações de uma busca LINEAR no pior caso, não de uma busca binária."
+    }
+  }
+},
 
 /* ---------------- STORAGE (NAS/SAN) & VIRTUALIZAÇÃO — 6 ---------------- */
 {
@@ -4916,6 +5205,40 @@ Qual é a saída impressa por esse programa?`,
       C:"Virtualização de armazenamento não substitui a necessidade de backup — são preocupações distintas (disponibilidade/gestão × proteção contra perda de dados).",
       D:"O conceito de virtualização de armazenamento é aplicável tanto a ambientes SAN quanto NAS, não é exclusivo de um deles.",
       E:"Virtualização de armazenamento normalmente OTIMIZA o uso do espaço disponível (ex: thin provisioning), não reduz a capacidade total."
+    }
+  }
+},
+{
+  id:"sto-07", topicId:"storage-virtualizacao", tier:"P2", format:"calculo",
+  source:"inedita", insp:"Cálculo de capacidade útil em arranjo RAID — item 6 do Anexo IV (Infraestrutura)",
+  stem:"Um administrador configura um arranjo RAID 5 com 5 discos de 2 TB cada. Desconsiderando arredondamentos e overhead adicional, qual é a capacidade útil aproximada de armazenamento desse arranjo?",
+  options:{ A:"2 TB", B:"4 TB", C:"6 TB", D:"8 TB", E:"10 TB" },
+  correct:"D",
+  explanation:{
+    core:"RAID 5 dedica a capacidade equivalente a 1 disco para paridade, distribuída entre todos os discos do arranjo. Capacidade útil = (N−1) × tamanho do disco = (5−1) × 2 TB = 8 TB.",
+    detail:"É essa perda de 'um disco equivalente' para paridade que diferencia RAID 5 de simplesmente somar a capacidade de todos os discos (o que resultaria, errado, em 10 TB).",
+    wrong:{
+      A:"Corresponde à capacidade de um único disco, não do arranjo completo.",
+      B:"Corresponde a (N−1)/2 × tamanho do disco — fórmula de um RAID espelhado (RAID 1), não do RAID 5.",
+      C:"Corresponde a (N−2) × tamanho do disco — fórmula de dupla paridade (RAID 6), não do RAID 5 (paridade simples).",
+      E:"Corresponde à soma bruta de todos os discos (N × tamanho), sem descontar a capacidade usada para paridade."
+    }
+  }
+},
+{
+  id:"sto-08", topicId:"storage-virtualizacao", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Escolha de nível de RAID por requisito de tolerância a falha — item 6 do Anexo IV (Infraestrutura)",
+  stem:"Uma aplicação crítica exige que o arranjo de discos continue operando normalmente mesmo que até dois discos falhem simultaneamente, garantindo essa tolerância de forma determinística (não apenas provável) para qualquer combinação de dois discos. Qual nível de RAID atende a esse requisito com o menor número de discos dedicados à paridade?",
+  options:{ A:"RAID 0", B:"RAID 1", C:"RAID 5", D:"RAID 6", E:"RAID 10" },
+  correct:"D",
+  explanation:{
+    core:"RAID 6 usa dupla paridade, distribuída entre os discos, o que garante — para QUALQUER combinação de até 2 discos que falhem — que os dados ainda possam ser reconstruídos.",
+    detail:"RAID 5 tolera apenas 1 falha simultânea (uma segunda falha antes da reconstrução causa perda de dados); RAID 10 pode tolerar mais de uma falha em alguns casos, mas não de forma garantida para QUALQUER combinação de dois discos (se os dois discos de um mesmo par espelhado falharem, os dados desse par são perdidos) — por isso RAID 6 é a resposta que atende à garantia determinística pedida.",
+    wrong:{
+      A:"RAID 0 (apenas distribuição, sem redundância) não tolera nenhuma falha de disco — a perda de qualquer disco compromete todo o arranjo.",
+      B:"RAID 1 (espelhamento simples) tolera a falha de 1 disco por par espelhado, mas não garante tolerância a 2 falhas simultâneas em geral.",
+      C:"RAID 5 tolera apenas 1 falha simultânea, através de paridade simples — uma segunda falha antes da reconstrução causa perda de dados.",
+      E:"RAID 10 pode, em alguns casos específicos, sobreviver a duas falhas, mas não de forma garantida para qualquer combinação de dois discos — se ambos os discos de um mesmo espelho falharem, os dados são perdidos."
     }
   }
 },
@@ -5056,6 +5379,29 @@ Qual é a saída impressa por esse programa?`,
       C:"A segunda afirmação está correta — descreve com precisão a diferença de ênfase entre os dois frameworks.",
       D:"A primeira afirmação também é verdadeira — ITIL e COBIT são, de fato, amplamente reconhecidos como complementares.",
       E:"Ambas as afirmações estão corretas."
+    }
+  }
+},
+{
+  id:"itsm-07", topicId:"gestao-servicos-ti", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Incidente×Problema em cenário — reforça a distinção clássica de ITIL",
+  stem:"Um servidor de e-mail corporativo trava repetidamente, uma vez por semana, sempre no mesmo horário. A cada ocorrência, a equipe de suporte reinicia o serviço para restaurar o funcionamento imediatamente, mas ninguém investigou ainda por que o travamento acontece. Segundo o ITIL, a atividade de investigar a CAUSA RAIZ desses travamentos recorrentes, para eliminá-los definitivamente, pertence ao processo de:",
+  options:{
+    A:"Gerenciamento de Incidentes",
+    B:"Gerenciamento de Problemas",
+    C:"Gerenciamento de Mudanças",
+    D:"Gerenciamento de Configuração",
+    E:"Gerenciamento de Liberação"
+  },
+  correct:"B",
+  explanation:{
+    core:"Reiniciar o serviço a cada travamento é Gerenciamento de Incidentes (restaurar o serviço o mais rápido possível); investigar a causa raiz do travamento recorrente, para eliminá-lo de vez, é Gerenciamento de Problemas.",
+    detail:"É exatamente essa distinção — 'apagar o incêndio' × 'descobrir por que o incêndio começa' — que o ITIL formaliza como dois processos diferentes, ainda que relacionados (um Problema pode ser aberto a partir de Incidentes recorrentes).",
+    wrong:{
+      A:"Gerenciamento de Incidentes já foi realizado (reiniciar o serviço); ele restaura o funcionamento, mas não investiga a causa raiz.",
+      C:"Gerenciamento de Mudanças controla a implementação de alterações planejadas no ambiente, não a investigação de causa raiz de falhas recorrentes.",
+      D:"Gerenciamento de Configuração mantém o registro dos itens de configuração (CIs) do ambiente, sem relação direta com investigar a causa de uma falha recorrente.",
+      E:"Gerenciamento de Liberação trata do empacotamento e implantação controlada de novas versões, não da investigação de causa raiz de incidentes."
     }
   }
 },
@@ -5554,6 +5900,64 @@ CREATE TABLE ITEM_PEDIDO (
     }
   }
 },
+{
+  id:"sql-22", topicId:"sql-dados", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Identificação da 3FN a partir de dependências funcionais comparando múltiplos esquemas — mesmo mecanismo da prova de 2018 (Q42)",
+  stem:`Considere a seguinte notação: tabelas descritas por um nome e uma lista de colunas, separadas por vírgulas; colunas que participam da chave primária estão sublinhadas; dependências funcionais entre colunas são indicadas pelo símbolo →. Todos os esquemas abaixo atendem à 1FN e à 2FN.
+
+<pre class="codeblock">T1(x1,x2,x3)
+  x1 → x2
+  x2 → x3
+
+T2(y1,y2,y3,y4)
+  y1 → y2
+  y1 → y3
+  y1 → y4
+
+T3(z1,z2,z3)
+  z1 → z2
+  z1 → z3
+  z2 → z3</pre>
+
+Dos três esquemas acima, o único que está na Terceira Forma Normal (3FN) é:`,
+  options:{ A:"apenas T1", B:"apenas T2", C:"apenas T3", D:"T1 e T2", E:"nenhum dos três" },
+  correct:"B",
+  explanation:{
+    core:"Em T2, todos os atributos não-chave (y2, y3, y4) dependem diretamente da chave y1, sem nenhuma dependência transitiva entre atributos não-chave — está na 3FN.",
+    detail:"T1 viola a 3FN porque x1→x2→x3 é uma dependência transitiva (x3 depende de x2, que é não-chave). T3 também viola a 3FN: apesar de z1→z3 existir diretamente, a dependência adicional z2→z3 é, por si só, uma dependência entre dois atributos não-chave (z2 determinando z3) — o que já caracteriza uma violação de 3FN, independentemente de existir também uma dependência direta da chave.",
+    wrong:{
+      A:"T1 tem dependência transitiva clara (x1→x2→x3), violando a 3FN.",
+      C:"T3 tem a dependência z2→z3 entre dois atributos não-chave, o que viola a 3FN mesmo com z1→z3 também existindo.",
+      D:"T1 não está na 3FN (dependência transitiva) — apenas T2 atende ao critério.",
+      E:"T2 atende plenamente à 3FN — não é correto afirmar que nenhum dos três esquemas está nessa forma normal."
+    }
+  }
+},
+{
+  id:"sql-23", topicId:"sql-dados", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Identificação de operações conflitantes em um escalonamento (schedule) — mesmo mecanismo da prova de Infraestrutura de 2012 (Q57)",
+  stem:`Considere o escalonamento (schedule) de operações de duas transações concorrentes, na seguinte ordem cronológica:
+
+<pre class="codeblock">1) R1(A)
+2) W2(A)
+3) R1(B)
+4) W1(A)
+5) R2(B)</pre>
+
+Duas operações são consideradas conflitantes quando pertencem a transações diferentes, acessam o mesmo item de dado, e pelo menos uma delas é uma escrita (write). Quantos pares de operações conflitantes existem nesse escalonamento?`,
+  options:{ A:"0", B:"1", C:"2", D:"3", E:"4" },
+  correct:"C",
+  explanation:{
+    core:"Os únicos pares que envolvem transações diferentes sobre o MESMO item, com pelo menos uma escrita, são: (R1(A), W2(A)) — mesmo item A, transações diferentes, uma escrita — CONFLITO; e (W2(A), W1(A)) — mesmo item A, transações diferentes, ambas escritas — CONFLITO. Total: 2 pares conflitantes.",
+    detail:"R1(B) e R2(B) acessam o mesmo item B, mas são duas LEITURAS — leitura×leitura nunca é conflitante, mesmo entre transações diferentes. As operações da MESMA transação (como R1(A) e W1(A), ambas de T1) não contam como conflito entre si, pois conflito é definido especificamente entre transações diferentes.",
+    wrong:{
+      A:"Existem sim pares conflitantes nesse escalonamento — pelo menos o par R1(A)/W2(A) já configura um conflito.",
+      B:"Conta apenas um dos dois pares conflitantes reais, deixando de contar o par W2(A)/W1(A).",
+      D:"Inclui algum par que não atende à definição de conflito — como um par leitura-leitura (R1(B)/R2(B)), que nunca é conflitante.",
+      E:"Superestima a contagem, provavelmente incluindo pares da mesma transação ou pares leitura-leitura, que não se qualificam como conflitantes."
+    }
+  }
+},
 
 /* ---------------- BIG DATA, NOSQL & INTEGRAÇÃO DE DADOS — 7 (tópico novo) ---------------- */
 {
@@ -5717,6 +6121,23 @@ CREATE TABLE ITEM_PEDIDO (
     }
   }
 },
+{
+  id:"bd2-08", topicId:"bigdata-nosql", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Escolha do modelo NoSQL apropriado a partir de um cenário — item 1.18 e 1.23 do Anexo IV",
+  stem:"Uma rede social precisa armazenar e consultar rapidamente relacionamentos complexos entre seus usuários — amizades diretas, seguidores, e recomendações de conexão baseadas em conexões de segundo e terceiro grau (\"amigos de amigos de amigos\"). O modelo de banco de dados NoSQL mais adequado para esse caso de uso específico é o modelo:",
+  options:{ A:"chave-valor", B:"orientado a documentos", C:"colunar", D:"orientado a grafos", E:"relacional tradicional" },
+  correct:"D",
+  explanation:{
+    core:"O modelo orientado a grafos representa entidades como nós e relacionamentos como arestas, sendo otimizado exatamente para consultas que percorrem cadeias de relacionamento (como \"amigos de amigos\") — o tipo de consulta descrito no cenário.",
+    detail:"Um banco relacional conseguiria responder essa consulta, mas exigiria múltiplos JOINs recursivos, cuja performance degrada rapidamente à medida que o grau de conexão aumenta — é justamente esse problema que o modelo de grafos resolve nativamente.",
+    wrong:{
+      A:"Chave-valor é otimizado para busca simples por uma chave única, sem suporte nativo a percorrer cadeias de relacionamento entre registros.",
+      B:"Orientado a documentos favorece registros semiestruturados independentes entre si — não é o mais indicado para consultas que atravessam múltiplos graus de relacionamento.",
+      C:"Colunar é otimizado para agregação sobre grandes volumes de uma mesma coluna (cenários analíticos), não para navegar relacionamentos entre entidades.",
+      E:"Um banco relacional resolveria a consulta com múltiplos JOINs recursivos, mas com desempenho que piora rapidamente conforme aumenta o grau de conexão — o oposto do que o cenário exige."
+    }
+  }
+},
 
 /* ---------------- eng-software — +3 ---------------- */
 {
@@ -5851,6 +6272,66 @@ Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 ·
       C:"Falha interna pressupõe que o defeito já foi encontrado em um produto construído e precisa de retrabalho — a revisão técnica aqui ocorre antes disso, de forma preventiva.",
       D:"Falha externa pressupõe que o defeito chegou até o cliente — o cenário descrito é justamente uma ação para evitar que isso aconteça.",
       E:"O modelo de custo da qualidade não trata \"retrabalho\" como uma quinta categoria autônoma — retrabalho é uma atividade tipicamente associada à categoria de falha (interna ou externa)."
+    }
+  }
+},
+{
+  id:"es-26", topicId:"eng-software", tier:"P1", format:"codigo",
+  source:"inedita", insp:"Rastreamento de sobrecarga/sobrescrita e polimorfismo em Java — mesmo mecanismo das provas de 2006, 2011 e 2018",
+  stem:`Analise as classes Java a seguir:
+
+<pre class="codeblock">class Conta {
+    static int contador = 0;
+    int saldo;
+    Conta(int s) { saldo = s; contador++; }
+    int getSaldo() { return saldo; }
+}
+class ContaEspecial extends Conta {
+    ContaEspecial(int s) { super(s * 2); }
+    int getSaldo() { return saldo + contador; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Conta c1 = new Conta(5);
+        ContaEspecial c2 = new ContaEspecial(3);
+        System.out.println(c1.getSaldo() + c2.getSaldo());
+    }
+}</pre>
+
+Ao ser executado, o programa imprime:`,
+  options:{ A:"8", B:"11", C:"13", D:"14", E:"16" },
+  correct:"C",
+  explanation:{
+    core:"c1 = new Conta(5): saldo=5, contador vira 1. c2 = new ContaEspecial(3): super(3*2=6), saldo=6, contador vira 2. c1.getSaldo() usa o método de Conta, retornando apenas saldo: 5. c2.getSaldo() usa o método sobrescrito de ContaEspecial, retornando saldo+contador: 6+2=8. Soma final: 5+8=13.",
+    detail:"O ponto-chave é que 'contador' é um campo static, compartilhado por TODAS as instâncias da classe (e das subclasses) — por isso seu valor reflete o total de objetos já criados no momento de cada chamada, não um valor por instância.",
+    wrong:{
+      A:"Corresponde a somar apenas os dois valores de saldo (5+6=11 seria isso, mas 8 não corresponde a nenhuma combinação direta e plausível dos valores).",
+      B:"Corresponde a 5+6 (somando os dois saldos brutos, sem aplicar o método getSaldo sobrescrito de ContaEspecial, que soma o contador).",
+      D:"Corresponde a considerar contador=3 em vez de 2 no momento da chamada de c2.getSaldo() — nesse ponto do programa, apenas 2 objetos (c1 e c2) já foram construídos.",
+      E:"Corresponde a somar saldo+contador também para c1 (5+2=7, mais 6+2=8, totalizando 15) ou outra combinação que aplica incorretamente o método sobrescrito também à instância de Conta."
+    }
+  }
+},
+{
+  id:"es-27", topicId:"eng-software", tier:"P1", format:"visual",
+  source:"inedita", insp:"Comparação entre dois diagramas de máquina de estados quase idênticos — mesmo mecanismo da prova de Software 2011 (Q26)",
+  stem:"Máquina de Estados 1: possui os estados Aguardando e Processando, com uma transição de Aguardando para Processando disparada pelo evento \"iniciar\", e uma transição de Processando para Aguardando disparada pelo evento \"concluir\".\n\nMáquina de Estados 2: possui os mesmos dois estados e as mesmas duas transições da Máquina 1, mas adiciona uma transição extra de Processando para o próprio estado Processando (uma autotransição/self-loop), disparada pelo evento \"progresso\".\n\nA diferença essencial introduzida pela Máquina 2 é que ela permite que o objeto:",
+  options:{
+    A:"saia do estado Processando sem que o evento \"concluir\" ocorra.",
+    B:"permaneça no estado Processando e reaja a eventos (como atualizações de progresso), sem que isso represente uma mudança de estado.",
+    C:"deixe de ter o estado Aguardando como parte do seu ciclo de vida.",
+    D:"tenha um estado inicial diferente do estado inicial da Máquina 1.",
+    E:"transite diretamente de Aguardando para o próprio estado Aguardando ao receber o evento \"progresso\"."
+  },
+  correct:"B",
+  explanation:{
+    core:"Uma autotransição (self-loop) — transição de um estado para ele mesmo — permite que o objeto reaja a um evento (execute uma ação associada à transição) SEM sair do estado em que está. É exatamente o que a transição \"progresso\" faz no estado Processando.",
+    detail:"Isso é diferente de uma transição para OUTRO estado: aqui, o estado do objeto continua sendo Processando antes e depois do evento — só a AÇÃO associada ao evento é executada.",
+    wrong:{
+      A:"A única transição que leva para fora de Processando continua sendo a disparada por \"concluir\" — a autotransição de \"progresso\" não leva a lugar nenhum fora de Processando.",
+      C:"O estado Aguardando continua presente e inalterado na Máquina 2 — apenas uma transição nova foi adicionada dentro de Processando.",
+      D:"Nada na descrição da Máquina 2 altera qual é o estado inicial — a mudança é apenas a adição de uma autotransição em Processando.",
+      E:"A autotransição descrita ocorre no estado Processando, disparada por \"progresso\" — não há autotransição em Aguardando na descrição."
     }
   }
 },
@@ -6028,6 +6509,52 @@ Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 ·
     }
   }
 },
+{
+  id:"pm-21", topicId:"gestao-projetos", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Cálculo de CPI/SPI (Análise de Valor Agregado) — mesmo mecanismo da prova de 2018 (Q62)",
+  stem:"Em um determinado ponto de controle, um projeto apresenta Valor Agregado (EV) de R$ 80.000, Valor Planejado (PV) de R$ 100.000 e Custo Real (AC) de R$ 90.000. Calcule, respectivamente, o Índice de Desempenho de Prazo (SPI = EV/PV) e o Índice de Desempenho de Custo (CPI = EV/AC) desse projeto.",
+  options:{
+    A:"SPI = 0,80; CPI ≈ 0,89",
+    B:"SPI = 1,25; CPI ≈ 0,89",
+    C:"SPI = 0,80; CPI = 1,125",
+    D:"SPI ≈ 0,89; CPI = 0,80",
+    E:"SPI = 1,125; CPI = 1,25"
+  },
+  correct:"A",
+  explanation:{
+    core:"SPI = EV/PV = 80.000/100.000 = 0,80 (o projeto entregou 80% do valor planejado para este ponto, indicando atraso). CPI = EV/AC = 80.000/90.000 ≈ 0,89 (o projeto está gastando mais do que o valor entregue, indicando estouro de custo).",
+    detail:"É importante lembrar o numerador fixo: tanto SPI quanto CPI usam EV (Valor Agregado) no numerador — SPI compara EV com o que foi PLANEJADO (PV); CPI compara EV com o que foi de fato GASTO (AC). Índices abaixo de 1 indicam desempenho pior do que o planejado, tanto em prazo quanto em custo.",
+    wrong:{
+      B:"Inverte a fração do SPI (PV/EV=1,25 em vez de EV/PV=0,80) — SPI corretamente calculado é 0,80, não 1,25.",
+      C:"Inverte a fração do CPI (AC/EV=1,125 em vez de EV/AC≈0,89) — CPI corretamente calculado é aproximadamente 0,89, não 1,125.",
+      D:"Troca os valores de SPI e CPI entre si — o cálculo de cada índice usa denominadores diferentes (PV para SPI, AC para CPI).",
+      E:"Inverte as duas frações simultaneamente (PV/EV e AC/EV em vez de EV/PV e EV/AC)."
+    }
+  }
+},
+{
+  id:"pm-22", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Regra dos 100% na construção da EAP/WBS — mesmo mecanismo da prova de Software 2011 (Q63)",
+  stem:"Ao construir a Estrutura Analítica do Projeto (EAP/WBS), o Nível 2 apresenta os pacotes de trabalho \"Módulo de Pagamento\" e \"Módulo de Catálogo\", mas não inclui nenhum pacote referente à \"Documentação do Usuário\", que também compõe o escopo aprovado do projeto, conforme registrado na Declaração de Escopo. Essa EAP viola a chamada:",
+  options:{
+    A:"regra dos 100% (a soma do trabalho representado nos níveis inferiores da EAP deve corresponder a 100% do escopo definido no nível superior/na Declaração de Escopo, sem omissões).",
+    B:"regra do caminho crítico.",
+    C:"regra da decomposição binária (toda EAP deveria ter exatamente dois pacotes por nível).",
+    D:"regra da conta de controle única (toda EAP deveria ter apenas uma conta de controle).",
+    E:"regra do nivelamento de recursos."
+  },
+  correct:"A",
+  explanation:{
+    core:"A regra dos 100% é o princípio central de construção de uma EAP: o trabalho representado em cada nível deve corresponder a 100% do escopo do nível imediatamente acima (e, no topo, a 100% do escopo total aprovado do projeto) — nenhum elemento do escopo aprovado pode ficar de fora.",
+    detail:"Ao omitir \"Documentação do Usuário\" (que está na Declaração de Escopo aprovada), a EAP deixa parte do escopo sem representação — exatamente o tipo de violação que a regra dos 100% existe para prevenir.",
+    wrong:{
+      B:"Caminho crítico é um conceito de cronograma (rede de atividades), não de construção da EAP.",
+      C:"Não existe, no PMBOK, uma exigência de número fixo de pacotes por nível da EAP — a decomposição varia conforme a natureza do trabalho.",
+      D:"Contas de controle são pontos de gerenciamento definidos dentro da EAP, mas não existe uma regra de \"conta de controle única\" — um projeto tipicamente tem várias.",
+      E:"Nivelamento de recursos é uma técnica de gerenciamento de cronograma para resolver sobrealocação, sem relação com completude de escopo na EAP."
+    }
+  }
+},
 
 /* ---------------- ux — +3 ---------------- */
 {
@@ -6190,6 +6717,40 @@ Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 ·
       C:"Fórmulas de planilha tipicamente se recalculam automaticamente sempre que os dados de entrada mudam, não apenas uma vez.",
       D:"Tabelas dinâmicas são projetadas para uso por usuários de negócio sem conhecimento de programação, através de interface visual de arrastar/soltar campos.",
       E:"Planilhas eletrônicas modernas oferecem recursos nativos de criação de gráficos e dashboards simples, sem incompatibilidade."
+    }
+  }
+},
+{
+  id:"bi-13", topicId:"bi-olap", tier:"P2", format:"calculo",
+  source:"inedita", insp:"Normalização de dados por escore-padrão (z-score) — mesmo mecanismo da prova SAP 2018 (Q62)",
+  stem:"Um analista deseja normalizar o valor 82 de um atributo cuja média, na base de dados, é 70, com desvio-padrão de 8, utilizando a técnica de normalização por escore-padrão (z-score), calculada pela fórmula z = (x − média) / desvio-padrão. Qual é o valor de z para esse dado?",
+  options:{ A:"0,5", B:"1,0", C:"1,5", D:"2,0", E:"12" },
+  correct:"C",
+  explanation:{
+    core:"z = (82 − 70) / 8 = 12 / 8 = 1,5.",
+    detail:"O z-score expressa a que distância (em desvios-padrão) um valor está da média — um z de 1,5 indica que 82 está 1,5 desvio-padrão acima da média de 70.",
+    wrong:{
+      A:"Não corresponde à divisão correta de 12 por 8.",
+      B:"Corresponde a tratar a diferença (12) como se fosse igual ao desvio-padrão, resultando em z=1 por engano.",
+      D:"Corresponde a uma conta com desvio-padrão 6 em vez de 8, ou outro erro de substituição na fórmula.",
+      E:"Corresponde apenas ao numerador da fórmula (x − média = 12), sem realizar a divisão pelo desvio-padrão."
+    }
+  }
+},
+{
+  id:"bi-14", topicId:"bi-olap", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Operações OLAP em cenário — item 7.5 do Anexo IV",
+  stem:"Um analista está visualizando um relatório de vendas agregado por Ano e decide expandir a visão para observar o detalhe por Trimestre e, em seguida, por Mês, mantendo inalteradas as demais dimensões da análise (produto, região). Essa operação OLAP é conhecida como:",
+  options:{ A:"roll-up", B:"drill-down", C:"slice", D:"dice", E:"pivoting" },
+  correct:"B",
+  explanation:{
+    core:"Drill-down é a operação que navega de um nível mais agregado (Ano) para níveis mais detalhados (Trimestre, depois Mês) dentro da mesma hierarquia de tempo.",
+    detail:"Roll-up é o caminho inverso (de detalhado para agregado); slice fixa um valor de uma dimensão para reduzir a visão a um \"corte\"; dice seleciona um subcubo a partir de múltiplos critérios; pivoting reorganiza os eixos de visualização do cubo, sem necessariamente mudar o nível de detalhe.",
+    wrong:{
+      A:"Roll-up é o oposto de drill-down: vai de um nível mais detalhado para um mais agregado, não o contrário.",
+      C:"Slice fixa um valor específico de uma dimensão (ex: 'apenas o ano de 2025'), sem relação com mudar o nível de detalhe temporal.",
+      D:"Dice seleciona um subcubo com base em critérios de várias dimensões simultaneamente, diferente de simplesmente aprofundar o nível de uma única dimensão.",
+      E:"Pivoting gira os eixos de visualização (por exemplo, trocando linhas por colunas), sem, por si só, mudar o nível de agregação dos dados."
     }
   }
 },
@@ -6367,6 +6928,46 @@ Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 ·
     }
   }
 },
+{
+  id:"seg-24", topicId:"seguranca", tier:"P1", format:"porque",
+  source:"inedita", insp:"Segurança física × lógica — dupla afirmação com pegadinha, item 9.1 do Anexo IV",
+  stem:"Afirmação 1: controles de segurança física (como catracas e crachás de acesso) e controles de segurança lógica (como senhas e criptografia) protegem exatamente os mesmos tipos de ameaça, sendo por isso intercambiáveis entre si.\n\nPORQUE\n\nAfirmação 2: a segurança da informação deve ser tratada de forma abrangente, combinando controles físicos e lógicos, já que uma falha em qualquer uma dessas camadas pode comprometer o ativo protegido.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"D",
+  explanation:{
+    core:"A primeira afirmação é falsa: segurança física e lógica protegem contra tipos DIFERENTES de ameaça (acesso físico não autorizado × acesso digital não autorizado) e não são intercambiáveis — um cofre trancado não impede um ataque de rede, assim como uma senha forte não impede um roubo físico do equipamento.",
+    detail:"A segunda afirmação está correta: é justamente por protegerem contra ameaças diferentes que as duas camadas são necessárias em conjunto — a abordagem abrangente da segurança da informação, e não a substituição de uma camada pela outra.",
+    wrong:{
+      A:"A primeira afirmação é falsa, então o par \"duas verdadeiras, uma justificando a outra\" está incorreto.",
+      B:"A primeira afirmação é falsa; a alternativa que trata as duas como verdadeiras não se aplica.",
+      C:"Inverte a avaliação correta: é a primeira afirmação que é falsa (as camadas não são intercambiáveis), e a segunda que é verdadeira.",
+      E:"A segunda afirmação está correta — descreve com precisão a necessidade de tratar a segurança de forma abrangente, combinando as duas camadas."
+    }
+  }
+},
+{
+  id:"seg-25", topicId:"seguranca", tier:"P1", format:"cenario",
+  source:"inedita", insp:"HIDS × NIDS em cenário — item 9.2 do Anexo IV",
+  stem:"Uma empresa quer detectar tentativas de acesso não autorizado especificamente a um servidor de banco de dados crítico, monitorando alterações em arquivos de log e chamadas de sistema realizadas localmente nesse servidor — sem depender da análise do tráfego de rede. A solução de detecção de intrusão mais adequada para esse cenário específico é:",
+  options:{ A:"NIDS (Network-based Intrusion Detection System)", B:"HIDS (Host-based Intrusion Detection System)", C:"firewall de borda", D:"proxy reverso", E:"WAF" },
+  correct:"B",
+  explanation:{
+    core:"HIDS monitora atividade dentro de um HOST específico — arquivos de log, chamadas de sistema, integridade de arquivos — exatamente o que o cenário descreve, sem depender de capturar tráfego de rede.",
+    detail:"NIDS, ao contrário, monitora o TRÁFEGO de rede que passa por um ponto da rede, analisando pacotes — é indicado para detectar padrões de ataque na comunicação entre hosts, não eventos internos de um servidor específico.",
+    wrong:{
+      A:"NIDS analisa tráfego de rede, não eventos internos (logs, chamadas de sistema) de um host específico — o cenário pede justamente o oposto.",
+      C:"Firewall de borda controla passagem de tráfego entre redes, sem visibilidade sobre logs ou chamadas de sistema internas de um servidor específico.",
+      D:"Proxy reverso intermedia requisições externas para servidores internos, sem função de monitorar logs/chamadas de sistema locais.",
+      E:"WAF protege aplicações web contra ataques na camada de aplicação, sem relação com monitorar logs/chamadas de sistema locais de um servidor."
+    }
+  }
+},
 
 /* ---------------- seguranca-avancada — +4 ---------------- */
 {
@@ -6458,6 +7059,46 @@ Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 ·
       C:"IoT tem particularidades reais (capacidade limitada, atualização difícil em escala) que a diferenciam da segurança de servidores corporativos tradicionais.",
       D:"A própria definição de IoT pressupõe conectividade à internet/rede — essa conectividade é justamente parte da superfície de ataque.",
       E:"O malware Mirai é um caso histórico real e amplamente documentado de botnet formada justamente por dispositivos IoT comprometidos (câmeras, roteadores domésticos)."
+    }
+  }
+},
+{
+  id:"seg2-13", topicId:"seguranca-avancada", tier:"P2", format:"cenario",
+  source:"inedita", insp:"Escolha de ferramenta de segurança a partir de um cenário — item 9.2 do Anexo IV",
+  stem:"Uma empresa quer detectar e bloquear, em tempo real, o envio de arquivos contendo números de cartão de crédito por e-mail corporativo para domínios externos não autorizados. A solução de segurança mais diretamente indicada para esse cenário específico é:",
+  options:{ A:"SIEM", B:"CASB", C:"DLP", D:"EDR", E:"WAF" },
+  correct:"C",
+  explanation:{
+    core:"DLP (Data Loss Prevention) é especificamente projetado para inspecionar o CONTEÚDO de comunicações (como e-mails e uploads) em busca de dados sensíveis e bloquear seu vazamento para fora da organização.",
+    detail:"SIEM correlaciona e centraliza logs de segurança (mais para detecção/investigação do que bloqueio de conteúdo em trânsito); CASB atua no controle de uso de serviços de nuvem; EDR foca em endpoints; WAF protege aplicações web contra ataques — nenhum desses tem o foco específico de inspecionar conteúdo sensível saindo por e-mail.",
+    wrong:{
+      A:"SIEM agrega e correlaciona eventos de segurança de várias fontes para detecção e investigação — não é a ferramenta primária de bloqueio de conteúdo sensível em e-mails.",
+      B:"CASB controla e monitora o uso de serviços de nuvem pela organização — não é voltado especificamente a inspecionar conteúdo de e-mails corporativos.",
+      D:"EDR (Endpoint Detection and Response) foca em detectar e responder a ameaças em dispositivos (endpoints), não em inspecionar conteúdo de comunicações por e-mail.",
+      E:"WAF protege aplicações web contra ataques como SQL Injection e XSS — não é voltado a analisar conteúdo de e-mails corporativos."
+    }
+  }
+},
+{
+  id:"seg2-14", topicId:"seguranca-avancada", tier:"P2", format:"porque",
+  source:"inedita", insp:"Gestão de vulnerabilidades — dupla afirmação com pegadinha, item 9.2 do Anexo IV",
+  stem:"Afirmação 1: identificar uma vulnerabilidade em um sistema é suficiente, por si só, para eliminar o risco associado a ela.\n\nPORQUE\n\nAfirmação 2: a gestão de vulnerabilidades é um ciclo contínuo que inclui identificação, avaliação/priorização, correção e verificação, sendo a etapa de correção a que efetivamente reduz o risco.",
+  options:{
+    A:"As duas afirmações são verdadeiras, e a segunda justifica a primeira.",
+    B:"As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.",
+    C:"A primeira afirmação é verdadeira e a segunda é falsa.",
+    D:"A primeira afirmação é falsa e a segunda é verdadeira.",
+    E:"As duas afirmações são falsas."
+  },
+  correct:"D",
+  explanation:{
+    core:"A primeira afirmação é falsa: apenas identificar uma vulnerabilidade não elimina risco nenhum — o risco só é de fato reduzido quando a vulnerabilidade é corrigida (e a correção, verificada).",
+    detail:"A segunda afirmação está correta e explica exatamente por que a primeira é falsa: a gestão de vulnerabilidades é um ciclo com várias etapas, e é a CORREÇÃO — não a mera identificação — que reduz o risco de fato.",
+    wrong:{
+      A:"A primeira afirmação é falsa, então não pode formar um par de duas verdadeiras que se justificam.",
+      B:"A primeira afirmação é falsa, então a alternativa que assume as duas como verdadeiras está incorreta.",
+      C:"Inverte a avaliação correta: a primeira afirmação é falsa (identificar não basta), e a segunda é verdadeira (descreve corretamente o ciclo de gestão de vulnerabilidades).",
+      E:"A segunda afirmação está correta — descreve com precisão as etapas do ciclo de gestão de vulnerabilidades."
     }
   }
 },
