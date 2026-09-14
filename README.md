@@ -16,7 +16,9 @@ O edital tem 5 ênfases de TI. O banco de questões está sendo construído áre
 | Análise de Sistemas — Segurança Cibernética e da Informação | 🔒 em construção | — |
 | Ciência de Dados | 🔒 em construção | — |
 
-Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco de Dados básico, Gestão de Projetos) são compartilhados entre ênfases cujo Anexo IV traz o mesmo conteúdo quase literalmente — por isso o total de questões de cada área não é a simples soma de blocos exclusivos. **Língua Portuguesa e Língua Inglesa** (Fase 2 do edital, Conhecimentos Gerais) são comuns às 5 ênfases: 40 questões (20+20), organizadas em 2 textos completos por idioma, replicando o formato real (zerar Português ou Inglês elimina o candidato, independentemente da ênfase).
+Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco de Dados básico, Gestão de Projetos) são compartilhados entre ênfases cujo Anexo IV traz o mesmo conteúdo quase literalmente — por isso o total de questões de cada área não é a simples soma de blocos exclusivos. **Língua Portuguesa e Língua Inglesa** (Fase 2 do edital, Conhecimentos Gerais) são comuns às 5 ênfases: 50 questões (25+25), organizadas em 3 textos por idioma (2 completos de 10 questões + 1 curto de 5, para o modo Rápido), replicando o formato real (zerar Português ou Inglês elimina o candidato, independentemente da ênfase).
+
+Todo o banco passa por uma calibração de dificuldade deliberada: além do formato "conceitual" (identificar/definir), inclui cálculo aplicado (complexidade ciclomática via grafo, pontos de função com tabela de pesos completa), categorização fina dentro de uma taxonomia (custo da qualidade, fases do Processo Unificado) e comparação visual quase-idêntica (esquemas relacionais, diagramas E-R) — os formatos que, na prática, geram a maior parte da dificuldade real das provas da Cesgranrio.
 
 ## O que tem aqui
 
@@ -24,7 +26,7 @@ Alguns tópicos (Segurança da Informação, Lógica/Raciocínio Lógico, Banco 
   - **Seletor de área**, guiado pelas vagas reais do Anexo I do edital, cobrindo as 5 ênfases de TI.
   - **Questões inéditas** organizadas por Prioridade 1 (núcleo histórico da banca), Prioridade 2 (reforço) e Prioridade 3 (itens novos do edital sem precedente nas provas antigas), cada uma com explicação pedagógica completa — não só o gabarito, mas por que a resposta certa está certa e por que cada alternativa errada falha.
   - **4 modos de prova de Conhecimentos Específicos**: Treino Rápido, Simulado Médio, Simulado Completo e Treino por Tópico.
-  - **Modo dedicado de Conhecimentos Gerais** (Português + Inglês), sorteando um texto completo de 10 questões por idioma, disponível em qualquer área — inclusive nas ainda em construção.
+  - **Conhecimentos Gerais separados por idioma**: Português e Inglês treinados independentemente, cada um com modo Rápido (texto curto, 5 questões) e Completo (texto integral, 10 questões, como na prova real) — disponível em qualquer área, inclusive nas ainda em construção.
   - **Área de Estudo** com conteúdo condensado por tópico, pensado para o contexto exato da prova, incluindo mini-apostilas de Língua Portuguesa e Língua Inglesa.
   - **Histórico de tentativas** persistente entre visitas, com revisão completa de qualquer prova antiga (via capacidade de banco de dados do runtime de Artifacts da Claude, com fallback em `localStorage`).
   - **Aba Concurso** com cronograma, formato de prova e vagas de todas as ênfases de TI, direto do edital oficial.

@@ -479,6 +479,32 @@ HAVING COUNT(p.id) > 0;</pre>
       <li><b>Complexidade ciclomática</b> (McCabe): número de caminhos linearmente independentes num fluxograma — calculada como <code>arestas − nós + 2</code>, ou simplesmente <code>número de decisões + 1</code>.</li>
     </ul>
 
+    <h4>Pontos de função — a tabela de pesos que a banca espera decorada</h4>
+    <p>A prova costuma dar uma tabela só com a <b>contagem</b> de cada tipo de função por nível de complexidade (baixa/média/alta) e pedir o total de <b>Pontos de Função Não Ajustados (PFNA)</b> — o candidato precisa saber de cor os pesos-padrão (método IFPUG) para multiplicar e somar:</p>
+    <table>
+      <tr><th>Tipo de função</th><th>Baixa</th><th>Média</th><th>Alta</th></tr>
+      <tr><td>Entrada Externa (EI)</td><td>3</td><td>4</td><td>6</td></tr>
+      <tr><td>Saída Externa (EO)</td><td>4</td><td>5</td><td>7</td></tr>
+      <tr><td>Consulta Externa (EQ)</td><td>3</td><td>4</td><td>6</td></tr>
+      <tr><td>Arquivo Lógico Interno (ILF)</td><td>7</td><td>10</td><td>15</td></tr>
+      <tr><td>Arquivo de Interface Externa (EIF)</td><td>5</td><td>7</td><td>10</td></tr>
+    </table>
+    <p>O cálculo é sempre o mesmo: para cada célula da tabela de contagem, multiplique <code>quantidade × peso</code> e some tudo. Não existe atalho lógico para adivinhar os pesos — é decoreba pura, e é exatamente por isso que a banca cobra: separa quem realmente estudou pontos de função de quem só "entende o conceito" por alto.</p>
+
+    <h4>Complexidade ciclomática — o formato "grafo com números dados"</h4>
+    <p>Além de contar decisões num pseudocódigo, a banca também gosta de dar diretamente o número de nós e arestas de um grafo de fluxo e pedir para aplicar a fórmula sem nenhum desenho: <code>M = Arestas − Nós + 2</code>. Exemplo: um grafo com 5 nós e 12 arestas tem M = 12 − 5 + 2 = 9. É só substituir os valores — mas quem não lembra a fórmula de cor trava na hora, mesmo sabendo o que é complexidade ciclomática.</p>
+
+    <h4>Custo da qualidade (Cost of Quality) — 4 categorias, uma pegadinha certa</h4>
+    <p>O modelo clássico (Crosby/Juran, citado pelo PMBOK e por Engenharia de Software) divide o custo da qualidade em 4 categorias. A banca gosta de listar uma atividade real e pedir a categoria exata — todas as opções costumam ser atividades de qualidade legítimas, só uma pertence à categoria perguntada:</p>
+    <table>
+      <tr><th>Categoria</th><th>O que inclui</th></tr>
+      <tr><td>Prevenção</td><td>evitar que o defeito aconteça: treinamento, revisões técnicas, planejamento e coordenação da qualidade</td></tr>
+      <tr><td>Avaliação</td><td>detectar defeitos já existentes: testes, inspeções, coleta de métricas de avaliação</td></tr>
+      <tr><td>Falha interna</td><td>corrigir defeito encontrado antes da entrega: retrabalho, depuração</td></tr>
+      <tr><td>Falha externa</td><td>corrigir defeito encontrado depois da entrega: suporte, correção em produção, garantia</td></tr>
+    </table>
+    <div class="tip"><b>Pegadinha clássica:</b> "condução de revisões técnicas" parece avaliação (porque revisa/inspeciona), mas é classificada como <b>prevenção</b> — a revisão técnica de um artefato antes de ele virar código evita que o defeito chegue a existir na fase seguinte, não apenas o detecta depois de pronto.</div>
+
     <h4>CMMI — níveis de maturidade, na ordem</h4>
     <p>1. Inicial → 2. Gerenciado → 3. Definido → 4. Gerenciado Quantitativamente → 5. Em Otimização. Decore a ordem — é o tipo de pergunta "complete a sequência" que a banca gosta de fazer.</p>
 
@@ -558,6 +584,7 @@ Folga de C = 12 − 9 = 3 dias</pre>
 
     <h4>Story Points</h4>
     <p>Medem esforço/complexidade/incerteza RELATIVOS de um item comparado a outros já estimados — não são uma unidade de tempo (hora/dia). É essa natureza relativa que costuma ser cobrada.</p>
+    <p><b>A escala do Planning Poker</b> (técnica mais usada para estimar em Story Points) segue uma progressão não linear, próxima de Fibonacci, exatamente para forçar o time a discutir quando a diferença de estimativa entre dois itens for pequena demais para importar: <code>0, 1, 2, 3, 5, 8, 13, 20, 40, 100</code>. Repare que não é a sequência de Fibonacci "pura" (que teria 21, 34 em vez de 20, 40) — é a versão adaptada e arredondada que os baralhos de Planning Poker realmente usam, e a banca já testou exatamente essa diferença sutil entre a sequência real e outras sequências numéricas parecidas (0 a 10 em ordem crescente, potências de 2, progressão aritmética simples).</p>
 
     <h4>Gestão de projeto × gestão de produto</h4>
     <p><b>Projeto</b>: entrega um resultado específico, com início e fim definidos, dentro de prazo/escopo. <b>Produto</b>: evolução contínua ao longo de todo o ciclo de vida, sem fim predeterminado, orientada por valor de mercado/necessidade do usuário.</p>
@@ -1505,6 +1532,57 @@ var PASSAGE_EN2 =
   '<span class="ln">34</span>reasonable compromise: enough structure to preserve a sense<br>' +
   '<span class="ln">35</span>of shared culture, and enough flexibility to attract<br>' +
   '<span class="ln">36</span>talent regardless of where people happen to live.<br>' +
+  '<span class="passage-source">(Original text, written for practice purposes, in the journalistic/technical style used by the board.)</span></div>';
+
+/* Textos curtos (5 questões cada) usados no modo "Rápido" de
+   Conhecimentos Gerais — mesma lógica dos textos longos, só que
+   menores, para uma sessão de treino mais breve. */
+var PASSAGE_PT3 =
+  '<div class="passage"><span class="passage-title">Texto para as questões associadas</span>' +
+  '<span class="ln">1</span>Toda empresa diz que valoriza feedback. Poucas, porém,<br>' +
+  '<span class="ln">2</span>sabem dar um feedback que realmente muda alguma<br>' +
+  '<span class="ln">3</span>coisa. A diferença não está na boa vontade<br>' +
+  '<span class="ln">4</span>de quem fala, mas na precisão do que<br>' +
+  '<span class="ln">5</span>é dito.<br>' +
+  '<span class="ln">6</span>Um feedback vago — "precisa melhorar sua comunicação" —<br>' +
+  '<span class="ln">7</span>deixa quem ouve tão perdido quanto estava antes.<br>' +
+  '<span class="ln">8</span>Um feedback específico — "na reunião de terça, você<br>' +
+  '<span class="ln">9</span>interrompeu três colegas antes de eles terminarem a<br>' +
+  '<span class="ln">10</span>ideia" — dá algo concreto para mudar amanhã.<br>' +
+  '<span class="ln">11</span>Especialistas em desenvolvimento de pessoas costumam repetir<br>' +
+  '<span class="ln">12</span>uma regra simples: feedback só ajuda quando descreve<br>' +
+  '<span class="ln">13</span>um comportamento observável, não uma característica da<br>' +
+  '<span class="ln">14</span>pessoa. Dizer que alguém "é desorganizado" convida à<br>' +
+  '<span class="ln">15</span>defesa; descrever que "duas entregas atrasaram por falta<br>' +
+  '<span class="ln">16</span>de checklist" convida à correção.<br>' +
+  '<span class="ln">17</span>Por trás dessa diferença há uma ideia maior:<br>' +
+  '<span class="ln">18</span>feedback não é um veredito sobre quem a<br>' +
+  '<span class="ln">19</span>pessoa é, mas um mapa sobre o que<br>' +
+  '<span class="ln">20</span>fazer diferente da próxima vez.<br>' +
+  '<span class="passage-source">(Texto original, escrito para fins de treino, no estilo de crônica/texto de opinião cobrado pela banca.)</span></div>';
+
+var PASSAGE_EN3 =
+  '<div class="passage"><span class="passage-title">Text for the associated questions</span>' +
+  '<span class="ln">1</span>Most companies that adopt automation tools expect an<br>' +
+  '<span class="ln">2</span>immediate drop in the time employees spend on<br>' +
+  '<span class="ln">3</span>repetitive tasks. In many cases, that drop does<br>' +
+  '<span class="ln">4</span>happen, at least on paper. What often goes<br>' +
+  '<span class="ln">5</span>unnoticed is that the time saved rarely disappears;<br>' +
+  '<span class="ln">6</span>it simply moves somewhere else.<br>' +
+  '<span class="ln">7</span>A customer service team that automates simple ticket<br>' +
+  '<span class="ln">8</span>replies, for example, frequently ends up spending that<br>' +
+  '<span class="ln">9</span>freed time on more complex cases, ones that<br>' +
+  '<span class="ln">10</span>used to be delayed for weeks. The total<br>' +
+  '<span class="ln">11</span>number of hours worked may stay exactly the<br>' +
+  '<span class="ln">12</span>same, even though the nature of the work<br>' +
+  '<span class="ln">13</span>has clearly changed.<br>' +
+  '<span class="ln">14</span>This pattern helps explain why some executives feel<br>' +
+  '<span class="ln">15</span>disappointed after an automation project: they expected<br>' +
+  '<span class="ln">16</span>headcount reduction, but got something different instead,<br>' +
+  '<span class="ln">17</span>a shift toward harder, less repetitive problems. Whether<br>' +
+  '<span class="ln">18</span>that outcome counts as success or failure depends<br>' +
+  '<span class="ln">19</span>entirely on what the project was meant to<br>' +
+  '<span class="ln">20</span>achieve in the first place.<br>' +
   '<span class="passage-source">(Original text, written for practice purposes, in the journalistic/technical style used by the board.)</span></div>';
 
 /* ============================================================
@@ -5407,6 +5485,75 @@ Qual é a saída impressa por esse programa?`,
     }
   }
 },
+{
+  id:"sql-21", topicId:"sql-dados", tier:"P1", format:"visual",
+  source:"inedita", insp:"Transformação de modelo E-R em esquema relacional com alternativas quase idênticas — item 1.2 do Anexo IV, no formato de comparação minuciosa usado na prova de 2018 (Q40)",
+  stem:`Considere o seguinte modelo conceitual: CLIENTE se relaciona com PEDIDO numa cardinalidade 1:N (um cliente faz vários pedidos; um pedido pertence a exatamente um cliente). PRODUTO se relaciona com PEDIDO numa cardinalidade N:N (um pedido pode conter vários produtos; um produto pode aparecer em vários pedidos), sendo QUANTIDADE um atributo próprio dessa relação N:N (não pertence nem a PEDIDO nem a PRODUTO isoladamente).
+
+As cinco alternativas a seguir são muito parecidas entre si — apenas uma preserva corretamente a semântica do modelo descrito. Assinale-a.`,
+  options:{
+    A:`<pre class="codeblock">CREATE TABLE CLIENTE (ID_CLIENTE NUMBER PRIMARY KEY, NOME VARCHAR2(100))
+CREATE TABLE PRODUTO (ID_PRODUTO NUMBER PRIMARY KEY, DESCR VARCHAR2(100))
+CREATE TABLE PEDIDO (
+  ID_PEDIDO NUMBER PRIMARY KEY, DATA DATE,
+  ID_CLIENTE NUMBER NOT NULL,
+  FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE))
+CREATE TABLE ITEM_PEDIDO (
+  ID_PEDIDO NUMBER NOT NULL, ID_PRODUTO NUMBER NOT NULL, QUANTIDADE NUMBER NOT NULL,
+  PRIMARY KEY (ID_PEDIDO, ID_PRODUTO),
+  FOREIGN KEY (ID_PEDIDO) REFERENCES PEDIDO(ID_PEDIDO),
+  FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO))</pre>`,
+    B:`<pre class="codeblock">CREATE TABLE CLIENTE (
+  ID_CLIENTE NUMBER PRIMARY KEY, NOME VARCHAR2(100),
+  ID_PEDIDO NUMBER, FOREIGN KEY (ID_PEDIDO) REFERENCES PEDIDO(ID_PEDIDO))
+CREATE TABLE PEDIDO (ID_PEDIDO NUMBER PRIMARY KEY, DATA DATE)
+CREATE TABLE PRODUTO (ID_PRODUTO NUMBER PRIMARY KEY, DESCR VARCHAR2(100))
+CREATE TABLE ITEM_PEDIDO (
+  ID_PEDIDO NUMBER NOT NULL, ID_PRODUTO NUMBER NOT NULL, QUANTIDADE NUMBER NOT NULL,
+  PRIMARY KEY (ID_PEDIDO, ID_PRODUTO),
+  FOREIGN KEY (ID_PEDIDO) REFERENCES PEDIDO(ID_PEDIDO),
+  FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO))</pre>`,
+    C:`<pre class="codeblock">CREATE TABLE CLIENTE (ID_CLIENTE NUMBER PRIMARY KEY, NOME VARCHAR2(100))
+CREATE TABLE PRODUTO (ID_PRODUTO NUMBER PRIMARY KEY, DESCR VARCHAR2(100))
+CREATE TABLE PEDIDO (
+  ID_PEDIDO NUMBER PRIMARY KEY, DATA DATE,
+  ID_CLIENTE NUMBER NOT NULL,
+  FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE))
+CREATE TABLE ITEM_PEDIDO (
+  ID_PEDIDO NUMBER PRIMARY KEY, ID_PRODUTO NUMBER NOT NULL, QUANTIDADE NUMBER NOT NULL,
+  FOREIGN KEY (ID_PEDIDO) REFERENCES PEDIDO(ID_PEDIDO),
+  FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO))</pre>`,
+    D:`<pre class="codeblock">CREATE TABLE CLIENTE (ID_CLIENTE NUMBER PRIMARY KEY, NOME VARCHAR2(100))
+CREATE TABLE PRODUTO (ID_PRODUTO NUMBER PRIMARY KEY, DESCR VARCHAR2(100))
+CREATE TABLE PEDIDO (
+  ID_PEDIDO NUMBER PRIMARY KEY, DATA DATE, QUANTIDADE NUMBER,
+  ID_CLIENTE NUMBER NOT NULL, ID_PRODUTO NUMBER NOT NULL,
+  FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE),
+  FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO))</pre>`,
+    E:`<pre class="codeblock">CREATE TABLE CLIENTE (ID_CLIENTE NUMBER PRIMARY KEY, NOME VARCHAR2(100))
+CREATE TABLE PRODUTO (ID_PRODUTO NUMBER PRIMARY KEY, DESCR VARCHAR2(100))
+CREATE TABLE PEDIDO (
+  ID_PEDIDO NUMBER PRIMARY KEY, DATA DATE,
+  ID_CLIENTE NUMBER NOT NULL,
+  FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE))
+CREATE TABLE ITEM_PEDIDO (
+  ID_PEDIDO NUMBER NOT NULL, ID_PRODUTO NUMBER NOT NULL,
+  PRIMARY KEY (ID_PEDIDO, ID_PRODUTO),
+  FOREIGN KEY (ID_PEDIDO) REFERENCES PEDIDO(ID_PEDIDO),
+  FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO))</pre>`
+  },
+  correct:"A",
+  explanation:{
+    core:"A alternativa A é a única que faz tudo certo ao mesmo tempo: a FK de CLIENTE fica do lado \"N\" (na tabela PEDIDO, que é quem referencia um único cliente); e a relação N:N entre PEDIDO e PRODUTO vira uma tabela associativa própria (ITEM_PEDIDO) com chave primária composta pelas duas FKs, carregando QUANTIDADE como atributo da própria relação.",
+    detail:"Esse é o padrão-ouro para qualquer transformação de modelo E-R em esquema relacional: relação 1:N → FK no lado \"muitos\"; relação N:N → tabela associativa nova, com PK composta pelas FKs das duas entidades envolvidas e os atributos exclusivos da relação (aqui, QUANTIDADE) residindo nessa tabela nova.",
+    wrong:{
+      B:"Inverte a direção da chave estrangeira do relacionamento 1:N: coloca ID_PEDIDO como FK dentro de CLIENTE, o que sugeriria (errado) que um cliente só pode ter um único pedido — o oposto da cardinalidade 1:N descrita.",
+      C:"A tabela ITEM_PEDIDO usa só ID_PEDIDO como chave primária (sem ID_PRODUTO), o que impede que o mesmo pedido tenha mais de um produto associado — descaracteriza a relação N:N, reduzindo-a a 1:N.",
+      D:"Elimina a tabela associativa e tenta representar a relação N:N direto dentro de PEDIDO com um único ID_PRODUTO — um pedido só poderia ter um produto, o que também descaracteriza a cardinalidade N:N do modelo.",
+      E:"É quase idêntica à correta, mas falta o atributo QUANTIDADE na tabela ITEM_PEDIDO — sem ele, a informação de quantas unidades de cada produto entraram no pedido se perde, violando o enunciado, que define QUANTIDADE como atributo da própria relação."
+    }
+  }
+},
 
 /* ---------------- BIG DATA, NOSQL & INTEGRAÇÃO DE DADOS — 7 (tópico novo) ---------------- */
 {
@@ -5641,6 +5788,72 @@ Qual é a saída impressa por esse programa?`,
     }
   }
 },
+{
+  id:"es-23", topicId:"eng-software", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Complexidade ciclomática via grafo com nós/arcos dados diretamente — mesmo mecanismo da prova de 2018 (Q25)",
+  stem:"Um grafo de fluxo de um programa possui 8 nós e 11 arestas. De acordo com a fórmula de McCabe (M = Arestas − Nós + 2), a complexidade ciclomática desse grafo é:",
+  options:{ A:"3", B:"5", C:"9", D:"11", E:"19" },
+  correct:"B",
+  explanation:{
+    core:"Aplicando a fórmula diretamente: M = 11 − 8 + 2 = 5.",
+    detail:"Não há atalho conceitual aqui — é substituição direta na fórmula. O erro mais comum é esquecer a constante \"+2\" ou trocar a ordem da subtração.",
+    wrong:{
+      A:"Corresponde a 11 − 8, esquecendo de somar a constante \"+2\" da fórmula.",
+      C:"Corresponde a nós + 1 (8+1), confundindo com a fórmula alternativa \"decisões + 1\" sem contar decisões de fato.",
+      D:"Repete apenas o número de arestas, sem aplicar a fórmula.",
+      E:"Corresponde a nós + arestas (8+11), somando os dois valores em vez de subtrair."
+    }
+  }
+},
+{
+  id:"es-24", topicId:"eng-software", tier:"P1", format:"calculo",
+  source:"inedita", insp:"Contagem de Pontos de Função Não Ajustados com tabela de pesos IFPUG — mesmo mecanismo da prova de 2018 (Q30)",
+  stem:`Um sistema passou por uma contagem de pontos de função, resultando na tabela abaixo (quantidade de cada tipo de função, por nível de complexidade):
+
+<pre class="codeblock">                                  Baixa   Média   Alta
+Entrada Externa (EI)                2       1      0
+Saída Externa (EO)                  1       2      1
+Consulta Externa (EQ)               0       1      0
+Arquivo Lógico Interno (ILF)        1       0      1
+Arquivo de Interface Externa (EIF)  0       1      0</pre>
+
+Usando os pesos-padrão do método IFPUG (EI: 3/4/6 · EO: 4/5/7 · EQ: 3/4/6 · ILF: 7/10/15 · EIF: 5/7/10, para baixa/média/alta respectivamente), quantos Pontos de Função Não Ajustados (PFNA) tem esse sistema?`,
+  options:{ A:"58", B:"61", C:"64", D:"67", E:"70" },
+  correct:"C",
+  explanation:{
+    core:"EI: 2×3 + 1×4 + 0×6 = 10. EO: 1×4 + 2×5 + 1×7 = 21. EQ: 0×3 + 1×4 + 0×6 = 4. ILF: 1×7 + 0×10 + 1×15 = 22. EIF: 0×5 + 1×7 + 0×10 = 7. Soma total: 10+21+4+22+7 = 64.",
+    detail:"O método é sempre o mesmo: multiplicar cada quantidade pelo peso correspondente à sua complexidade e somar tudo. Quem não tem os pesos-padrão decorados não consegue nem começar essa conta — é esse o motivo de a banca considerar essa questão difícil, mesmo sendo \"só uma soma\".",
+    wrong:{
+      A:"Resultado abaixo do correto — provavelmente decorrente de usar o peso da coluna \"baixa\" para alguma célula que na verdade é \"média\" ou \"alta\".",
+      B:"Próximo do correto, mas com pelo menos uma multiplicação usando o peso errado dentro da mesma linha da tabela.",
+      D:"Acima do correto — consistente com trocar o peso de \"média\" pelo de \"alta\" em uma das linhas.",
+      E:"Bem acima do correto — consistente com múltiplos erros de peso ou com somar uma linha adicional inexistente."
+    }
+  }
+},
+{
+  id:"es-25", topicId:"eng-software", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Categorização fina de custo da qualidade — mesmo mecanismo da prova de 2018 (Q26)",
+  stem:"Em um projeto de desenvolvimento de software, a atividade de \"condução de revisões técnicas dos artefatos de análise e projeto, antes do início da fase de codificação\" é classificada, segundo o modelo de custo da qualidade, como um custo de:",
+  options:{
+    A:"avaliação, pois inspeciona o artefato em busca de defeitos já existentes.",
+    B:"prevenção, pois evita que um defeito presente no artefato avance para as fases seguintes do desenvolvimento.",
+    C:"falha interna, pois corrige um defeito antes da entrega ao cliente.",
+    D:"falha externa, pois o defeito seria encontrado pelo cliente caso o artefato não fosse revisado.",
+    E:"retrabalho, categoria autônoma e independente das demais no modelo de custo da qualidade."
+  },
+  correct:"B",
+  explanation:{
+    core:"Revisão técnica de artefato ANTES da fase seguinte (codificação) é uma atividade de prevenção: seu objetivo é impedir que o defeito passe adiante, não apenas detectá-lo depois de o produto já estar pronto.",
+    detail:"A pegadinha está em confundir \"revisar/inspecionar\" com avaliação — mas a diferença correta é o MOMENTO e a INTENÇÃO: prevenção atua antes do defeito se propagar (revisão de artefato anterior à codificação); avaliação atua sobre um produto já construído (teste de um código já pronto).",
+    wrong:{
+      A:"Avaliação seria testar/inspecionar um PRODUTO já pronto (como um código já escrito) — aqui a revisão ocorre sobre um artefato anterior à própria codificação, prevenindo o defeito de avançar.",
+      C:"Falha interna pressupõe que o defeito já foi encontrado em um produto construído e precisa de retrabalho — a revisão técnica aqui ocorre antes disso, de forma preventiva.",
+      D:"Falha externa pressupõe que o defeito chegou até o cliente — o cenário descrito é justamente uma ação para evitar que isso aconteça.",
+      E:"O modelo de custo da qualidade não trata \"retrabalho\" como uma quinta categoria autônoma — retrabalho é uma atividade tipicamente associada à categoria de falha (interna ou externa)."
+    }
+  }
+},
 
 /* ---------------- gestao-projetos — +6 ---------------- */
 {
@@ -5766,6 +5979,52 @@ Qual é a saída impressa por esse programa?`,
       C:"Executar todo projeto proposto, sem priorização, contraria o próprio princípio de gestão estratégica de portfólio.",
       D:"Estratégia organizacional é definida em nível executivo/estratégico da organização, não pelo gerente de um projeto individual.",
       E:"Projetos são temporários e únicos; operações continuadas são permanentes e repetitivas — são conceitos distintos, ainda que complementares."
+    }
+  }
+},
+{
+  id:"pm-19", topicId:"gestao-projetos", tier:"P1", format:"conceitual",
+  source:"inedita", insp:"Escala exata de Story Points/Planning Poker — mesmo mecanismo de precisão numérica da prova de 2018 (Q31)",
+  stem:"Ao aplicar a técnica de Planning Poker para estimar itens do backlog em Pontos de História (Story Points), a sequência numérica utilizada pelos baralhos mais comuns dessa técnica é:",
+  options:{
+    A:"0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+    B:"0, 1, 2, 3, 5, 8, 13, 20, 40, 100",
+    C:"0, 1, 2, 4, 8, 16, 32, 64, 128",
+    D:"1, 2, 3, 6, 12, 24, 48, 96",
+    E:"1, 5, 10, 50, 100, 500, 1000"
+  },
+  correct:"B",
+  explanation:{
+    core:"A escala real dos baralhos de Planning Poker é 0, 1, 2, 3, 5, 8, 13, 20, 40, 100 — uma progressão não linear, próxima de Fibonacci, mas arredondada nos valores mais altos (20 e 40, não 21 e 34).",
+    detail:"O espaçamento crescente força o time a evitar debates inúteis sobre diferenças pequenas (\"é 7 ou 8?\") em itens grandes, onde a precisão exata importa cada vez menos — é esse racional que justifica por que a escala NÃO é uma sequência linear simples.",
+    wrong:{
+      A:"É uma sequência linear simples (incremento de 1 em 1), o oposto do espaçamento crescente característico do Planning Poker.",
+      C:"É uma sequência de potências de 2 — parecida na forma, mas não é a escala realmente usada pelos baralhos de Planning Poker.",
+      D:"É uma progressão aritmética com razão variável, mas não corresponde à sequência real usada na técnica.",
+      E:"É uma sequência de saltos muito grandes e regulares (×5, ×2, ×5, ×2...), incompatível com a granularidade fina que a escala real oferece para itens pequenos (0 a 5)."
+    }
+  }
+},
+{
+  id:"pm-20", topicId:"gestao-projetos", tier:"P1", format:"cenario",
+  source:"inedita", insp:"Classificação fina entre tipos de Sistema de Informação a partir de um cenário — mesmo mecanismo da prova de 2018 (Q54)",
+  stem:"Uma rede de farmácias implantou um sistema que, a partir de dados de estoque, validade dos lotes, histórico de vendas e preços de fornecedores, permite ao gestor simular diferentes cenários de reposição (\"e se eu comprar do fornecedor B em vez do A, qual o impacto na margem?\") e sugere a combinação de fornecedores que maximiza a margem, respeitando o prazo de validade dos produtos. O sistema não processa as vendas em si (isso é feito por outro sistema, no caixa) nem substitui o julgamento final do gestor — apenas modela cenários e recomenda caminhos.\n\nCom base na descrição, o tipo de Sistema de Informação implementado é:",
+  options:{
+    A:"Sistema de Processamento de Transações (SPT)",
+    B:"Sistema de Informação Gerencial (SIG)",
+    C:"Sistema Especialista",
+    D:"Sistema de Apoio à Decisão (SAD/DSS)",
+    E:"Sistema de Informação Executiva (EIS)"
+  },
+  correct:"D",
+  explanation:{
+    core:"A combinação \"simular cenários hipotéticos (e se...) + recomendar, sem substituir o julgamento humano\" é a marca registrada de um Sistema de Apoio à Decisão (SAD/DSS) — voltado a decisões semiestruturadas, não a relatórios fixos nem a processamento transacional.",
+    detail:"O detalhe que resolve a questão é \"não substitui o julgamento do gestor\": um Sistema Especialista tenderia a dar uma recomendação mais autônoma e definitiva, emulando o raciocínio de um especialista; um SAD apoia, mas deixa a decisão final por conta humana.",
+    wrong:{
+      A:"SPT registra e processa transações do dia a dia (como as vendas no caixa) — o próprio enunciado diz que essa função é de OUTRO sistema, não deste.",
+      B:"SIG entrega relatórios estruturados e periódicos a partir de dados internos — não realiza simulação de cenários hipotéticos (\"e se\"), que é a característica central descrita.",
+      C:"Um Sistema Especialista tenderia a emular o raciocínio de um especialista humano de forma mais autônoma e prescritiva — o enunciado enfatiza que o sistema apenas apoia, sem substituir o julgamento do gestor.",
+      E:"EIS agrega informações de alto nível para a alta gestão acompanhar indicadores — não é voltado à simulação operacional de cenários de reposição de estoque."
     }
   }
 },
@@ -7065,6 +7324,222 @@ Qual é a saída impressa por esse programa?`,
       E:"Coffee machines are used as a small illustrative detail, not the text's main subject."
     }
   }
+},
+
+/* ---------------- LÍNGUA PORTUGUESA — Texto 3, curto (5, modo Rápido) ---------------- */
+{
+  id:"pt-21", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — texto curto para o modo Rápido de Conhecimentos Gerais",
+  stem: PASSAGE_PT3 + '<div class="passage-q">Segundo o texto, a diferença entre um feedback eficaz e um feedback ineficaz está principalmente:</div>',
+  options:{
+    A:"na boa vontade de quem fala.",
+    B:"na precisão e especificidade do que é dito.",
+    C:"na frequência com que o feedback é dado.",
+    D:"no cargo hierárquico de quem fala.",
+    E:"no tom de voz utilizado durante a conversa."
+  },
+  correct:"B",
+  explanation:{
+    core:"O texto afirma diretamente (l. 3-5): \"a diferença não está na boa vontade de quem fala, mas na precisão do que é dito\".",
+    detail:"É uma questão de localização: a resposta está quase literalmente escrita no texto, bastando identificar a alternativa que reproduz fielmente essa ideia central.",
+    wrong:{
+      A:"O texto nega explicitamente que a diferença esteja na boa vontade.",
+      C:"Frequência do feedback não é mencionada em nenhum momento do texto.",
+      D:"Cargo hierárquico não é mencionado no texto como fator relevante.",
+      E:"Tom de voz não é mencionado no texto como fator relevante."
+    }
+  }
+},
+{
+  id:"pt-22", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — pontuação",
+  stem: PASSAGE_PT3 + '<div class="passage-q">Em \'Dizer que alguém "é desorganizado" convida à defesa; descrever que "duas entregas atrasaram por falta de checklist" convida à correção\' (l. 14-16), o ponto e vírgula estabelece entre as duas orações uma relação de:</div>',
+  options:{ A:"adição simples", B:"contraste entre duas situações paralelas", C:"causa", D:"condição", E:"conclusão" },
+  correct:"B",
+  explanation:{
+    core:"O ponto e vírgula separa duas orações de estrutura paralela que contrastam dois efeitos opostos (defesa × correção) provocados por dois tipos diferentes de fala.",
+    detail:"O paralelismo sintático (\"dizer que... convida à\" / \"descrever que... convida à\") reforça esse contraste — não é uma simples soma de ideias, é uma oposição de consequências.",
+    wrong:{
+      A:"Não é uma soma de ideias equivalentes; as duas orações contrastam efeitos opostos.",
+      C:"Não há relação de causa entre as duas orações; elas são paralelas e contrastantes, não uma explicando a outra.",
+      D:"Não há hipótese envolvida na construção; as duas afirmações são diretas.",
+      E:"Não há fechamento lógico de um raciocínio; há justaposição contrastante de dois exemplos."
+    }
+  }
+},
+{
+  id:"pt-23", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — figuras de linguagem/relação de sentido",
+  stem: PASSAGE_PT3 + '<div class="passage-q">A expressão "um mapa sobre o que fazer diferente" (l. 19-20) é empregada, no texto, em oposição a:</div>',
+  options:{
+    A:"\"um veredito sobre quem a pessoa é\" (l. 18), estabelecendo um contraste entre julgamento e orientação prática.",
+    B:"\"uma característica da pessoa\" (l. 13-14), sem nenhuma relação de oposição.",
+    C:"\"um comportamento observável\" (l. 13), reforçando a mesma ideia sem contraste.",
+    D:"\"checklist\" (l. 16), numa relação de sinonímia.",
+    E:"\"especialistas em desenvolvimento de pessoas\" (l. 11), sem relação direta de sentido."
+  },
+  correct:"A",
+  explanation:{
+    core:"O texto contrapõe diretamente \"mapa\" (orientação para ação futura) a \"veredito\" (julgamento definitivo sobre a pessoa) na mesma frase, usando a conjunção \"mas\".",
+    detail:"É uma metáfora dupla: \"veredito\" evoca julgamento irrecorrível; \"mapa\" evoca orientação prática e mutável — a oposição entre as duas imagens é o ponto central da conclusão do texto.",
+    wrong:{
+      B:"\"Característica da pessoa\" não é o termo em oposição direta a \"mapa\" nessa frase específica — o contraste explícito é com \"veredito\".",
+      C:"\"Comportamento observável\" está alinhado com a ideia de feedback eficaz, não em oposição a \"mapa\".",
+      D:"\"Checklist\" é apenas um exemplo citado antes, sem relação de sinonímia com \"mapa\".",
+      E:"Não há relação direta de sentido entre essa expressão e os especialistas citados no texto."
+    }
+  }
+},
+{
+  id:"pt-24", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — concordância verbal",
+  stem: PASSAGE_PT3 + '<div class="passage-q">Assinale a única alternativa que atende plenamente às regras de concordância verbal da norma-padrão:</div>',
+  options:{
+    A:"Segue anexo, a este e-mail, os exemplos de feedback específico citados na reunião.",
+    B:"Existe, segundo os especialistas, diversas formas de tornar um feedback mais específico.",
+    C:"A maioria dos gestores reconhece que um bom feedback exige preparo prévio.",
+    D:"Fazem dois anos que essa equipe não recebe um feedback estruturado.",
+    E:"Haviam, naquela reunião, diversos exemplos de feedback mal dado."
+  },
+  correct:"C",
+  explanation:{
+    core:"Com o sujeito \"a maioria\" (singular), a concordância padrão do verbo é no singular: \"a maioria... reconhece\".",
+    detail:"As demais alternativas repetem erros clássicos: \"anexo\" deveria concordar com o substantivo a que se refere, \"existir\" é verbo pessoal e deve concordar com o sujeito plural, \"fazer\" indicando tempo decorrido é impessoal, e \"haver\" impessoal é sempre invariável.",
+    wrong:{
+      A:"\"Anexo\" é adjetivo e deve concordar com \"exemplos\" (plural): o correto seria \"Seguem anexos os exemplos\".",
+      B:"\"Existir\", diferente de \"haver\", é verbo pessoal e concorda com o sujeito plural: o correto é \"Existem diversas formas\".",
+      D:"\"Fazer\" indicando tempo decorrido é impessoal e invariável: o correto é \"Faz dois anos\".",
+      E:"\"Haver\" com sentido de existir é impessoal e fica sempre no singular: o correto é \"Havia diversos exemplos\"."
+    }
+  }
+},
+{
+  id:"pt-25", topicId:"lingua-portuguesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Portuguesa — reescrita/paráfrase sem alteração de sentido",
+  stem: PASSAGE_PT3 + '<div class="passage-q">Assinale a opção que reescreve o trecho "feedback não é um veredito sobre quem a pessoa é, mas um mapa sobre o que fazer diferente da próxima vez" (l. 18-20) sem alteração do sentido original:</div>',
+  options:{
+    A:"Feedback deve avaliar o caráter da pessoa, não apenas suas ações pontuais.",
+    B:"Feedback funciona melhor quando orienta uma ação futura, em vez de julgar quem a pessoa é.",
+    C:"Feedback é inútil quando aponta comportamentos específicos, em vez de traços de personalidade.",
+    D:"Feedback deveria ser evitado sempre que envolver algum julgamento sobre a pessoa.",
+    E:"Feedback e julgamento de caráter são, na prática, a mesma coisa, segundo o texto."
+  },
+  correct:"B",
+  explanation:{
+    core:"A reescrita correta preserva a oposição central do trecho: feedback deve orientar uma ação futura (\"mapa\"), não julgar quem a pessoa é (\"veredito\").",
+    detail:"As demais alternativas invertem essa relação — defendem avaliação de caráter, condenam apontar comportamentos específicos, ou igualam feedback a julgamento, todos sentidos opostos ao do texto original.",
+    wrong:{
+      A:"Contradiz o texto, que rejeita justamente a ideia de avaliar o caráter da pessoa.",
+      C:"Inverte o texto: apontar comportamentos específicos é apresentado como a forma EFICAZ de feedback, não inútil.",
+      D:"O texto não recomenda evitar feedback, e sim torná-lo mais específico e orientado à ação.",
+      E:"Contradiz diretamente o texto, que opõe \"mapa\" a \"veredito\", não os iguala."
+    }
+  }
+},
+
+/* ---------------- LÍNGUA INGLESA — Text 3, short (5, modo Rápido) ---------------- */
+{
+  id:"en-21", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — texto curto para o modo Rápido de Conhecimentos Gerais",
+  stem: PASSAGE_EN3 + '<div class="passage-q">The main idea of the text is that automation:</div>',
+  options:{
+    A:"always reduces the total number of hours a team works.",
+    B:"tends to shift employee time toward more complex tasks rather than simply eliminating work.",
+    C:"inevitably leads to headcount reduction in customer service teams.",
+    D:"has no measurable effect on how teams spend their time.",
+    E:"is only useful for reducing the number of support tickets."
+  },
+  correct:"B",
+  explanation:{
+    core:"The text's central claim (lines 5-6, 9-13) is that time saved by automation \"rarely disappears; it simply moves somewhere else\" — toward more complex tasks, not toward fewer total hours worked.",
+    detail:"The text explicitly contrasts this with what executives often expect (headcount reduction), reinforcing that the shift in the NATURE of the work, not its elimination, is the main idea.",
+    wrong:{
+      A:"The text states the total number of hours 'may stay exactly the same' (lines 11-12), not that it always drops.",
+      C:"The text says executives 'expected headcount reduction, but got something different instead' (lines 15-17) — the opposite of what this option claims.",
+      D:"The text describes a clear effect (a shift in the nature of the work), not an absence of effect.",
+      E:"Ticket replies are only one example used to illustrate a broader pattern, not the text's main subject."
+    }
+  }
+},
+{
+  id:"en-22", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — reference (pronoun resolution)",
+  stem: PASSAGE_EN3 + '<div class="passage-q">The word "it" in "it simply moves somewhere else" (line 6) refers to:</div>',
+  options:{ A:"automation", B:"the time saved", C:"the customer service team", D:"the ticket replies", E:"the total number of hours" },
+  correct:"B",
+  explanation:{
+    core:"The full sentence is: 'the time saved rarely disappears; it simply moves somewhere else' — \"it\" replaces \"the time saved\" to avoid repetition.",
+    detail:"Reference questions are solved by checking which noun phrase, when substituted back into the sentence, keeps the meaning coherent — only \"the time saved\" fits grammatically and logically.",
+    wrong:{
+      A:"\"Automation\" is the broader topic of the text, but is not the subject performing the action of \"moving\" in this specific sentence.",
+      C:"\"The customer service team\" is introduced only in the next sentence, after this pronoun.",
+      D:"\"Ticket replies\" is mentioned later as an example, not as the antecedent of \"it\" here.",
+      E:"\"The total number of hours\" appears later in the text, in a different sentence."
+    }
+  }
+},
+{
+  id:"en-23", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — vocabulary in context (synonym)",
+  stem: PASSAGE_EN3 + '<div class="passage-q">The word "unnoticed" (line 5) is closest in meaning to:</div>',
+  options:{ A:"unrecognized", B:"expected", C:"celebrated", D:"measured", E:"automated" },
+  correct:"A",
+  explanation:{
+    core:"\"Unnoticed\" describes something that goes unrecognized or unobserved — \"unrecognized\" expresses the closest equivalent meaning.",
+    detail:"The sentence sets up a contrast: something happens (\"on paper\") while something else, less obvious, goes \"unnoticed\" — consistent with \"unrecognized\", not with words implying measurement or celebration.",
+    wrong:{
+      B:"\"Expected\" is closer to the opposite idea — something unnoticed is precisely NOT what was anticipated or planned for.",
+      C:"\"Celebrated\" implies positive public recognition, unrelated to something going unnoticed.",
+      D:"\"Measured\" implies deliberate tracking, the opposite of something that escapes attention.",
+      E:"\"Automated\" relates to the text's general topic, but is not a synonym for \"unnoticed\"."
+    }
+  }
+},
+{
+  id:"en-24", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — EXCEPT (exclusion) question",
+  stem: PASSAGE_EN3 + '<div class="passage-q">According to the text, all of the following are mentioned, EXCEPT:</div>',
+  options:{
+    A:"time saved by automation often moves to other tasks.",
+    B:"customer service teams may end up handling more complex cases.",
+    C:"the total number of hours worked may remain unchanged.",
+    D:"some executives expected headcount reduction from automation.",
+    E:"automation always increases the total number of employees needed."
+  },
+  correct:"E",
+  explanation:{
+    core:"Lines 5-6, 7-10, 11-12 and 14-17 mention the other four options directly — but the text never states that automation increases headcount; if anything, it mentions the opposite expectation (reduction).",
+    detail:"EXCEPT questions require checking each option against the text; the correct answer is the one that contradicts or has no basis in what was actually written.",
+    wrong:{
+      A:"Directly mentioned in lines 5-6.",
+      B:"Directly mentioned in lines 7-10.",
+      C:"Directly mentioned in lines 10-12.",
+      D:"Directly mentioned in lines 14-16."
+    }
+  }
+},
+{
+  id:"en-25", topicId:"lingua-inglesa", tier:"P1", format:"interpretacao",
+  source:"inedita", insp:"Bloco Língua Inglesa — inference",
+  stem: PASSAGE_EN3 + '<div class="passage-q">One can infer from the text that whether an automation project is considered successful:</div>',
+  options:{
+    A:"depends only on how many tickets are automated.",
+    B:"depends on comparing the outcome to what the project originally aimed to achieve.",
+    C:"is always negative when headcount is not reduced.",
+    D:"cannot be measured in customer service teams.",
+    E:"is guaranteed as long as repetitive tasks are removed."
+  },
+  correct:"B",
+  explanation:{
+    core:"Lines 18-20 state directly: 'Whether that outcome counts as success or failure depends entirely on what the project was meant to achieve in the first place.'",
+    detail:"This requires connecting the general discussion of automation outcomes to the text's explicit criterion for judging them: the original goal of the project, not a fixed metric like headcount.",
+    wrong:{
+      A:"Ticket volume is only an illustrative example, not the general criterion the text proposes.",
+      C:"Contradicts the text, which frames headcount reduction as just one possible (and not the only valid) original goal.",
+      D:"The text uses a customer service team specifically as its example, showing the outcome can indeed be discussed there.",
+      E:"The text explicitly says the outcome 'depends entirely' on the original goal, not that success is automatic."
+    }
+  }
 }
 ];
 
@@ -7104,6 +7579,22 @@ Qual é a saída impressa por esse programa?`,
   function questionsForEnfase(enfaseId){
     var ids = topicsForEnfase(enfaseId).map(function(t){ return t.id; });
     return QUESTIONS.filter(function(q){ return ids.indexOf(q.topicId) !== -1; });
+  }
+  /* Agrupa as questões de lingua-portuguesa/lingua-inglesa por texto-base
+     compartilhado (os primeiros 220 caracteres do stem identificam de
+     forma estável qual PASSAGE_* deu origem à questão, sem precisar de
+     um campo extra no schema). Cada grupo é um texto completo com suas
+     perguntas — usado tanto para montar o quiz de Conhecimentos Gerais
+     quanto para contar quantos textos existem de cada tamanho. */
+  function geraisPassageGroups(topicId){
+    var qs = QUESTIONS.filter(function(q){ return q.topicId === topicId; });
+    var byPassage = {};
+    qs.forEach(function(q){
+      var key = q.stem.slice(0,220);
+      byPassage[key] = byPassage[key] || [];
+      byPassage[key].push(q);
+    });
+    return Object.keys(byPassage).map(function(k){ return byPassage[k]; });
   }
 
   var state = { tab:"home", quiz:null, historyCache:null, enfase: loadSelectedEnfase() };
@@ -7249,15 +7740,38 @@ Qual é a saída impressa por esse programa?`,
        todas as áreas, independentemente do estado do banco de
        Conhecimentos Específicos daquela ênfase. Zerar Português OU
        Inglês elimina o candidato, segundo o edital, então este bloco
-       fica sempre visível, mesmo em áreas ainda "em construção". */
+       fica sempre visível, mesmo em áreas ainda "em construção".
+       Português e Inglês são treinados separadamente, cada um com um
+       modo Rápido (texto curto, 5 questões) e um Completo (texto
+       integral, 10 questões, como na prova real). */
+    var ptGroups = geraisPassageGroups("lingua-portuguesa");
+    var enGroups = geraisPassageGroups("lingua-inglesa");
+    function countBySize(groups, size){ return groups.filter(function(g){ return g.length===size; }).length; }
     var geraisCard = el(
-      '<div class="card" style="padding:20px 24px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">'+
-        '<div><h3 style="font-size:15px;margin-bottom:4px;">Conhecimentos Gerais — Português &amp; Inglês</h3>'+
-        '<p style="font-size:13px;color:var(--ink-soft);max-width:56ch;margin:0;">Fase 2 do edital, comum a todas as ênfases. Zerar qualquer uma das duas disciplinas elimina o candidato, mesmo com boa nota em Conhecimentos Específicos. Simula exatamente o formato real: um texto, 10 perguntas, por idioma.</p></div>'+
-        '<button class="btn primary" id="startGeraisBtn" style="white-space:nowrap;">Simular Conhecimentos Gerais</button>'+
+      '<div class="card" style="padding:20px 24px;margin-bottom:22px;">'+
+        '<h3 style="font-size:15px;margin-bottom:4px;">Conhecimentos Gerais — Português &amp; Inglês</h3>'+
+        '<p style="font-size:13px;color:var(--ink-soft);max-width:66ch;margin:0 0 16px;">Fase 2 do edital, comum a todas as ênfases. Zerar qualquer uma das duas disciplinas elimina o candidato, mesmo com boa nota em Conhecimentos Específicos. Escolha o idioma e o tamanho — a cada tentativa, um texto diferente é sorteado entre os disponíveis.</p>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;">'+
+          '<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;">'+
+            '<div style="font-weight:700;margin-bottom:10px;">Português</div>'+
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">'+
+              '<button class="btn" data-lang="pt" data-size="rapido">Rápido · 5 questões ('+countBySize(ptGroups,5)+' texto'+(countBySize(ptGroups,5)===1?"":"s")+')</button>'+
+              '<button class="btn primary" data-lang="pt" data-size="completo">Completo · 10 questões ('+countBySize(ptGroups,10)+' texto'+(countBySize(ptGroups,10)===1?"":"s")+')</button>'+
+            '</div>'+
+          '</div>'+
+          '<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;">'+
+            '<div style="font-weight:700;margin-bottom:10px;">Inglês</div>'+
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">'+
+              '<button class="btn" data-lang="en" data-size="rapido">Rápido · 5 questões ('+countBySize(enGroups,5)+' texto'+(countBySize(enGroups,5)===1?"":"s")+')</button>'+
+              '<button class="btn primary" data-lang="en" data-size="completo">Completo · 10 questões ('+countBySize(enGroups,10)+' texto'+(countBySize(enGroups,10)===1?"":"s")+')</button>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
       '</div>'
     );
-    geraisCard.querySelector("#startGeraisBtn").addEventListener("click", startGeraisQuiz);
+    geraisCard.querySelectorAll("button[data-lang]").forEach(function(btn){
+      btn.addEventListener("click", function(){ startGeraisQuiz(btn.dataset.lang, btn.dataset.size); });
+    });
     host.appendChild(geraisCard);
 
     if (!enfaseHasContent(enfase.id)){
@@ -7265,7 +7779,7 @@ Qual é a saída impressa por esse programa?`,
         '<div class="card enfase-empty">'+
           '<p><b>O banco de questões desta área ainda está em construção.</b></p>'+
           '<p>O simulador está sendo expandido área por área, seguindo o mesmo processo usado em Processos de Negócios: mapear o Anexo IV do edital, cruzar com o padrão histórico da Cesgranrio (quando existe prova antiga daquela ênfase) e escrever as questões em lotes com explicação completa.</p>'+
-          '<p>Enquanto isso, escolha outra área no seletor acima para praticar Conhecimentos Específicos, ou use o botão acima para treinar Português e Inglês.</p>'+
+          '<p>Enquanto isso, escolha outra área no seletor acima para praticar Conhecimentos Específicos, ou use os botões acima para treinar Português e Inglês.</p>'+
         '</div>'
       ));
       return;
@@ -7346,22 +7860,18 @@ Qual é a saída impressa por esse programa?`,
      (10 questões), reproduzindo o formato real — um texto, dez
      perguntas por idioma — em vez da amostragem ponderada por tópico
      usada nos modos de Conhecimentos Específicos. */
-  function startGeraisQuiz(){
-    function pickPassage(topicId){
-      var qs = QUESTIONS.filter(function(q){ return q.topicId === topicId; });
-      var byPassage = {};
-      qs.forEach(function(q){
-        var key = q.stem.slice(0,220);
-        byPassage[key] = byPassage[key] || [];
-        byPassage[key].push(q);
-      });
-      var groups = Object.keys(byPassage).map(function(k){ return byPassage[k]; });
-      return groups[Math.floor(Math.random()*groups.length)] || [];
-    }
-    var questions = pickPassage("lingua-portuguesa").concat(pickPassage("lingua-inglesa"));
+  /* lang: "pt" ou "en". size: "rapido" (texto curto, 5 questões) ou
+     "completo" (texto integral, 10 questões, como na prova real).
+     Sorteia UM texto entre os disponíveis daquele tamanho, para dar
+     variedade a cada nova tentativa conforme o banco de textos cresce. */
+  function startGeraisQuiz(lang, size){
+    var topicId = lang === "en" ? "lingua-inglesa" : "lingua-portuguesa";
+    var targetSize = size === "rapido" ? 5 : 10;
+    var groups = geraisPassageGroups(topicId).filter(function(g){ return g.length === targetSize; });
+    var questions = groups[Math.floor(Math.random()*groups.length)] || [];
     if (!questions.length){ alert("Não há questões suficientes para esse modo ainda."); return; }
     state.quiz = {
-      active:true, topicFilter:null, isGerais:true, questions: questions,
+      active:true, topicFilter:null, isGerais:true, geraisLang: lang, geraisSize: size, questions: questions,
       answers:{}, current:0, startedAt: Date.now(), timerHandle:null
     };
     switchToView("run");
@@ -7388,7 +7898,7 @@ Qual é a saída impressa por esse programa?`,
 
     host.innerHTML = "";
     var headMeta = '<div class="runner-meta">'+
-      '<span>'+(q.topicFilter ? topicById[q.topicFilter].name : (q.isGerais ? "Conhecimentos Gerais — Português & Inglês" : "Todos os tópicos"))+'</span>'+
+      '<span>'+(q.topicFilter ? topicById[q.topicFilter].name : (q.isGerais ? ("Conhecimentos Gerais — "+(q.geraisLang==="en"?"Inglês":"Português")+" ("+(q.geraisSize==="rapido"?"Rápido":"Completo")+")") : "Todos os tópicos"))+'</span>'+
       '<span class="timer" id="quizTimer">00:00</span>'+
       '<span>'+answeredCount+'/'+q.questions.length+' respondidas</span>'+
     '</div>';
@@ -7477,9 +7987,11 @@ Qual é a saída impressa por esse programa?`,
     var pct = Math.round((correct / q.questions.length) * 100);
 
     var attempt = {
-      mode: q.isGerais ? "Conhecimentos Gerais (Português + Inglês)" : (q.topicFilter ? "Treino por tópico" : (q.questions.length<=10 ? "Treino Rápido" : (q.questions.length<=20 ? "Simulado Médio" : "Simulado Completo"))),
+      mode: q.isGerais ? ("Conhecimentos Gerais — "+(q.geraisLang==="en"?"Inglês":"Português")+" ("+(q.geraisSize==="rapido"?"Rápido":"Completo")+")") : (q.topicFilter ? "Treino por tópico" : (q.questions.length<=10 ? "Treino Rápido" : (q.questions.length<=20 ? "Simulado Médio" : "Simulado Completo"))),
       topicFilter: q.topicFilter || null,
       isGerais: !!q.isGerais,
+      geraisLang: q.geraisLang || null,
+      geraisSize: q.geraisSize || null,
       total: q.questions.length,
       correct: correct,
       pct: pct,
